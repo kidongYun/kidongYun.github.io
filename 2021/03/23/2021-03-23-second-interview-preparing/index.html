@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>2차 면접 준비 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. TCP 특징  제어를 한다. 가상회선을 구축하고 해당 회선을 따라서 데이터를 주고 받는다. 주고받는 데이터가 오류가 있으면 안될때 사용.   TCP Header  32비트 SYN, FIN, ACK 플래그 존재. SYN : 연결을 맺고싶을 때 FIN : 연결을 끊고싶을 때 ACK : 상대방의 정보를 잘 받았을 때.   3 ways HandShake  클">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2차 면접 준비">
+<meta property="og:url" content="http://example.com/2021/03/23/2021-03-23-second-interview-preparing/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. TCP 특징  제어를 한다. 가상회선을 구축하고 해당 회선을 따라서 데이터를 주고 받는다. 주고받는 데이터가 오류가 있으면 안될때 사용.   TCP Header  32비트 SYN, FIN, ACK 플래그 존재. SYN : 연결을 맺고싶을 때 FIN : 연결을 끊고싶을 때 ACK : 상대방의 정보를 잘 받았을 때.   3 ways HandShake  클">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-22T15:54:00.000Z">
+<meta property="article:modified_time" content="2021-05-25T14:42:09.063Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2021-03-23-second-interview-preparing" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/23/2021-03-23-second-interview-preparing/" class="article-date">
+  <time datetime="2021-03-22T15:54:00.000Z" itemprop="datePublished">2021-03-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2차 면접 준비
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-TCP"><a href="#1-TCP" class="headerlink" title="1. TCP"></a>1. TCP</h3><ol>
+<li><p>특징</p>
+<ul>
+<li>제어를 한다.</li>
+<li>가상회선을 구축하고 해당 회선을 따라서 데이터를 주고 받는다.</li>
+<li>주고받는 데이터가 오류가 있으면 안될때 사용.</li>
+</ul>
+</li>
+<li><p>TCP Header</p>
+<ul>
+<li>32비트</li>
+<li>SYN, FIN, ACK 플래그 존재.</li>
+<li>SYN : 연결을 맺고싶을 때</li>
+<li>FIN : 연결을 끊고싶을 때</li>
+<li>ACK : 상대방의 정보를 잘 받았을 때.</li>
+</ul>
+</li>
+<li><p>3 ways HandShake</p>
+<ul>
+<li>클라이언트가 SYN 신호가 1이 된 상태로 전송</li>
+<li>서버가 이를 수신했다는 의미로 ACK 신호를 1로 바꾸고, 마찬가지로 SYN 신호도 1로 바꾸어 전송</li>
+<li>클라이언트가 서버의 데이터를 수신했다는 의미로 ACK 플래그를 1로 바꾸어 전송.</li>
+</ul>
+</li>
+<li><p>4 ways handshake</p>
+<ul>
+<li>클라이언트가 FIN 플래그를 전송</li>
+<li>서버가 수신완료를 의미하기 위해 ACK 플래그를 전송</li>
+<li>서버가 작업이 모두 완료되면 FIN 플래그를 전송</li>
+<li>클라이언트가 수신완료를 알리기 위해 ACK 플래그를 전송</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-TLS"><a href="#2-TLS" class="headerlink" title="2. TLS"></a>2. TLS</h3><pre><code>Transport Layer Security
+netscape사에서 처음으로 발표한 SSL 기술을 IETF 에서 표준적으로 정의한 용어.</code></pre>
+<ol>
+<li><p>배경</p>
+<ul>
+<li>기존 HTTP 데이터를 암호화하지 않고 주고 받는 다면 DCE 장비들에서 데이터들이 노출이 됨.</li>
+<li>잘못된 상대방과 통신할 가능성이 있음.</li>
+</ul>
+</li>
+<li><p>기능</p>
+<ul>
+<li>암복호화</li>
+<li>인증</li>
+<li>무결성</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-웹-통신-흐름"><a href="#3-웹-통신-흐름" class="headerlink" title="3. 웹 통신 흐름"></a>3. 웹 통신 흐름</h3><ul>
+<li>웹브라우저 특정 URL 접속.</li>
+<li>DNS 서버 탐색을 해서 IP를 얻어냄 (local hosts 파일, 로컬 DNS 서버)</li>
+<li>ARP 프로토콜 IP -&gt; MAC 주소로 변경.</li>
+<li>MAC 주소에 해당하는 Destination terminal을 찾아간다 (OSPF, RIP)</li>
+<li>포트번호를 통해서 웹서버 프로세스에 접근한다.</li>
+<li>정적 리소스 파일 요청이라면 웹서버에서 처리.</li>
+<li>동적 컨텐츠라면 WAS에게 넘긴다.</li>
+<li>WAS에 있는 서블릿 컨테이너가 DispatcherServlet 을 생성.</li>
+<li>DispatcherServlet이 RequestMapping에 맞춰서 실행.</li>
+<li>view 파일이라면 resolver 에 맞춰서 응답 값 전달. 아니면 String.</li>
+</ul>
+<h3 id="4-웹서버와-WAS를-구분시켜서-두는-이유"><a href="#4-웹서버와-WAS를-구분시켜서-두는-이유" class="headerlink" title="4. 웹서버와 WAS를 구분시켜서 두는 이유."></a>4. 웹서버와 WAS를 구분시켜서 두는 이유.</h3><ol>
+<li>로드밸런싱 (modjk) - nginx의 경우 upstream 설정.</li>
+<li>보안 (WAS는 데이터베이스 등을 접근하기 때문에 외부로부터 노출 X)</li>
+<li>캐시 적중률 향상, 페이지 부재 감소</li>
+</ol>
+<h3 id="5-Sync-vs-Async"><a href="#5-Sync-vs-Async" class="headerlink" title="5. Sync vs Async"></a>5. Sync vs Async</h3><p>시간이 주요 관점.</p>
+<h3 id="6-Blocking-vs-Non-Blocking"><a href="#6-Blocking-vs-Non-Blocking" class="headerlink" title="6. Blocking vs Non Blocking"></a>6. Blocking vs Non Blocking</h3><p>제어가 주요 관점.</p>
+<h3 id="7-함수형-프로그래밍"><a href="#7-함수형-프로그래밍" class="headerlink" title="7. 함수형 프로그래밍."></a>7. 함수형 프로그래밍.</h3><p>특징 </p>
+<ol>
+<li>멱등성 : 동일한 입력에 대해서 동일한 출력이 나온다.</li>
+<li>순수함수 : 멱등성을 지키는 함수. (의존성 문제, 테스트 코드 작성)</li>
+<li>일급객체 : 함수를 일급객체로 볼 수 있다.</li>
+<li>선언적 프로그래밍 방식 : 어떻게 할까보다 무엇을 할까가 포커스.</li>
+</ol>
+<p>자바에서의 함수형 프로그래밍</p>
+<ol>
+<li>익명클래스</li>
+<li>람다, 메서드 레퍼런스.</li>
+<li>스트림.</li>
+</ol>
+<h3 id="8-프로세스"><a href="#8-프로세스" class="headerlink" title="8. 프로세스"></a>8. 프로세스</h3><ol>
+<li><p>개념 : 메모리에 상주되어 있는 프로그램.</p>
+</li>
+<li><p>PCB </p>
+<pre><code> - 메모리 영역 (TEXT, DATA, HEAP, STACK)
+ - PID : 프로세스 식별자.
+ - 프로세스 상태 : new, ready, running, waiting, halted
+ - 프로그램 카운터 : 다음 실행할 명령어의 주소.</code></pre>
+</li>
+<li><p>IPC</p>
+</li>
+</ol>
+<h3 id="9-Docker"><a href="#9-Docker" class="headerlink" title="9. Docker"></a>9. Docker</h3><h3 id="10-MVC"><a href="#10-MVC" class="headerlink" title="10. MVC"></a>10. MVC</h3><ol>
+<li>Model, View, Controller의 역할</li>
+<li>업무의 분할, 디버깅이 용이</li>
+</ol>
+<p>MODEL-VIEW-CONTROLLER</p>
+<h3 id="11-elasticsearch"><a href="#11-elasticsearch" class="headerlink" title="11. elasticsearch"></a>11. elasticsearch</h3><ol>
+<li>노드, 샤드, 레플리카</li>
+<li>역색인</li>
+<li>querydsl</li>
+<li>구조<ul>
+<li>키바나 : 로그 모니터링</li>
+<li>엘라스틱서치 : 데이터 저장 및 데이터 조회</li>
+<li>로그스태쉬 : 다른 저장소와 연동</li>
+</ul>
+</li>
+</ol>
+<h3 id="12-GC"><a href="#12-GC" class="headerlink" title="12. GC"></a>12. GC</h3><ol>
+<li>Stop the worlld</li>
+<li>eden, survivor1, survivor2, old, minorGC, fullGC</li>
+<li>Parallel GC, CMS GC, G1GC</li>
+</ol>
+<p>Mark-Sweep-Compaction</p>
+<h3 id="13-JVM"><a href="#13-JVM" class="headerlink" title="13. JVM"></a>13. JVM</h3><ol>
+<li>Class Loader - 디스크에 존재하는 class파일을 메인메모리에 적재.</li>
+<li>Runtime data area - Heap, Method, Stack, </li>
+<li>GC</li>
+<li>Execution engine - 자바 인터프리터, JIT 컴파일러.</li>
+</ol>
+<h3 id="14-Spring-Framework"><a href="#14-Spring-Framework" class="headerlink" title="14. Spring Framework."></a>14. Spring Framework.</h3><ol>
+<li>Spring IOC, DL, DI, AOP</li>
+<li>Spring Web MVC, Spring Data JPA, Spring DAta redis, Spring test</li>
+</ol>
+<h3 id="15-Spring-AOP"><a href="#15-Spring-AOP" class="headerlink" title="15. Spring AOP"></a>15. Spring AOP</h3><ol>
+<li>Advice - 언제.</li>
+<li>Weaving - Aspect를 Target에 넣는 행위 자체.</li>
+<li>JointPoint - Advice가 적용 가능한 지점.</li>
+<li>Aspect - 공통 기능.</li>
+<li>Target - 공통 기능을 넣을 대상 객체</li>
+</ol>
+<h3 id="16-캐시"><a href="#16-캐시" class="headerlink" title="16. 캐시"></a>16. 캐시</h3><ol>
+<li>파레토 법칙 -&gt; 개념</li>
+<li>지역성</li>
+<li>Look aside, Write back</li>
+</ol>
+<h3 id="17-SOLID"><a href="#17-SOLID" class="headerlink" title="17. SOLID"></a>17. SOLID</h3><ol>
+<li>S : 단일책임의 원칙.</li>
+</ol>
+<ul>
+<li>하나의 클래스는 하나의 기능을 가진다.</li>
+</ul>
+<ol start="2">
+<li>O : 개방폐쇄의 원칙</li>
+</ol>
+<ul>
+<li>코드를 확장하는 것에는 열려있고, 변경에는 닫혀있어야하는 원리</li>
+</ul>
+<ol start="3">
+<li>L : 리스코브 치환의 원칙.</li>
+</ol>
+<ul>
+<li>서브타입은 언제나 기반타입과 호환이 될 수 있어야 한다.</li>
+</ul>
+<ol start="4">
+<li>I : 인터페이스 분리의 원칙.</li>
+</ol>
+<ul>
+<li>하나의 일반적인 인터페이스 보다는 여러 개의 구체적인 인터페이스가 좋다.</li>
+</ul>
+<ol start="5">
+<li>D : 의존성 역전의 원칙.</li>
+</ol>
+<ul>
+<li><h3 id="18-TDD"><a href="#18-TDD" class="headerlink" title="18. TDD"></a>18. TDD</h3></li>
+</ul>
+<p>테스트 코드를 먼저 작성하고 소스 코드를 작성하는 방법.</p>
+<p>단점 : TDD를 하면 개발 시간이 늘어난다.</p>
+<p>장점 :<br>    TDD를 하면 결함이 줄어든다. 지속적으로 테스트를 하면서 코드를 작성하기 때문.<br>    TDD를 하면 소스코드의 의존성을 감소시킬 수 있다.<br>    리팩토링에 대한 비용이 줄어든다.</p>
+<h3 id="19-FunctionalInterface"><a href="#19-FunctionalInterface" class="headerlink" title="19. FunctionalInterface"></a>19. FunctionalInterface</h3><p>Consumer<T> -&gt; 입력 : T타입, 출력 : void<br>Supplicer<T> -&gt; 입력 : void, 출력 : T타입<br>Function&lt;T, R&gt; -&gt; 입력 : T, 출력 : R<br>Predicate<T> -&gt; 입력 : T, 출력 : boolean</p>
+<h3 id="20-Hash"><a href="#20-Hash" class="headerlink" title="20. Hash"></a>20. Hash</h3><ol>
+<li>해시 기본 구조 (해시코드, 해시테이블)</li>
+<li>해시충돌 (체이닝, 이중해시)</li>
+</ol>
+<h3 id="21-Heap"><a href="#21-Heap" class="headerlink" title="21. Heap"></a>21. Heap</h3><p>트리구조, 자식노드가 루트노드보다 우선순위가 높지 않다.<br>삽입, 삭제 동작원리.</p>
+<h3 id="22-이진-탐색-트리"><a href="#22-이진-탐색-트리" class="headerlink" title="22. 이진 탐색 트리"></a>22. 이진 탐색 트리</h3><h3 id="23-JPA-ORM의-장점"><a href="#23-JPA-ORM의-장점" class="headerlink" title="23. JPA (ORM의 장점)"></a>23. JPA (ORM의 장점)</h3><p>벤더사 독립적이다.</p>
+<p>persistent context 라는 캐싱 영역이 존재한다.</p>
+<p>트랜잭션 관리가 용이하다.</p>
+<p>CRUD 쿼리를 직접 짜지않기 때문에 생산성이 좋아진다.</p>
+<h3 id="24-N-1-문제"><a href="#24-N-1-문제" class="headerlink" title="24. N+1 문제"></a>24. N+1 문제</h3><p>이렇게 하위 엔티티들을 첫 쿼리 실행시 한번에 가져오지 않고, Lazy Loading으로 필요한 곳에서 사용되어 쿼리가 실행될때 발생하는 문제가 N+1 쿼리 문제입니다.</p>
+<p>해결방법 : joinFetch, EntityGraph</p>
+<h3 id="25-인덱스"><a href="#25-인덱스" class="headerlink" title="25. 인덱스."></a>25. 인덱스.</h3><ol>
+<li>B-TREE 구조.</li>
+<li>INDEX RANGE SCAN, FULL TABLE SCAN</li>
+<li>INDEX ACCCESS 조건, FILTER 조건</li>
+</ol>
+<h3 id="26-JOIN"><a href="#26-JOIN" class="headerlink" title="26. JOIN"></a>26. JOIN</h3><ol>
+<li>NETSTED LOOP JOIN</li>
+<li>HASH JOIN</li>
+<li>SORT MERGE JOIN</li>
+</ol>
+<h3 id="27-Checked-Exception-Unchecked-Exception"><a href="#27-Checked-Exception-Unchecked-Exception" class="headerlink" title="27. Checked Exception, Unchecked Exception"></a>27. Checked Exception, Unchecked Exception</h3><h3 id="28-Redis"><a href="#28-Redis" class="headerlink" title="28. Redis"></a>28. Redis</h3><ol>
+<li>메모리에서 동작.<ul>
+<li>물리적 메모리 크기보다 크면, 디스크를 활용하게 되기 때문에 성능 감소 -&gt; 레디스를 쓰는 이유가 사라짐.</li>
+</ul>
+</li>
+<li>Collection<ul>
+<li>Set, SortedSet, List, Hash,</li>
+</ul>
+</li>
+<li>RedisTemplate</li>
+<li>레디스는 싱글스레드 처리</li>
+</ol>
+<h3 id="29-프로세스-vs-쓰레드"><a href="#29-프로세스-vs-쓰레드" class="headerlink" title="29. 프로세스 vs 쓰레드"></a>29. 프로세스 vs 쓰레드</h3><p>프로세스 : 프로그램이 메인 메모리에 올라감.<br>PCB : PID, 메모리(Heap, Text, Stack, Data), PC</p>
+<p>쓰레드 : 프로세스 내부에서의 코드의 흐름.<br>Heap 영역 제외 공유.<br>데이터 공유 비용이 더 쌈.</p>
+<p>IPC - Inter Process Communication</p>
+<h3 id="30-쿠키-세션-JWT"><a href="#30-쿠키-세션-JWT" class="headerlink" title="30. 쿠키, 세션, JWT"></a>30. 쿠키, 세션, JWT</h3><h3 id="31-Spring-security"><a href="#31-Spring-security" class="headerlink" title="31. Spring security"></a>31. Spring security</h3><ol>
+<li>Filter based 처리</li>
+<li>인증, 권한</li>
+<li>Security Context</li>
+</ol>
+<h3 id="32-JWT"><a href="#32-JWT" class="headerlink" title="32. JWT"></a>32. JWT</h3><p>header.payload.signature</p>
+<p>장점. 사용자 인증에 필요한 모든 정보는 토큰 자체에 포함하기 때문에 저장소 X, 확장 유지보수에서 유리</p>
+<p>단점. 유효기간. -&gt; Refresh Token 해결</p>
+<h3 id="33-REST"><a href="#33-REST" class="headerlink" title="33. REST"></a>33. REST</h3><p>HTTP URL, HTTP Method</p>
+<p>Open API</p>
+<h3 id="34-ACID"><a href="#34-ACID" class="headerlink" title="34. ACID"></a>34. ACID</h3><p>트랜잭션이란 논리적 작업 단위.</p>
+<p>A : 원자성 - 해당 작업이 논리적으로 데이터 정합성 관점에서 더 이상 나눠질 수 없음.</p>
+<p>C : 일관성 - 해당 트랜잭션의 결과가 항상 동일하다.</p>
+<p>I : 독립성 - 해당 트랜잭션이 동작될 떄 다른 트랜잭션 개입 X</p>
+<p>D : 지속성 - 해다 트랜잭션의 결과가 일시적이지 않고 영구히 지속되어야함.</p>
+<h3 id="35-테스트-종류"><a href="#35-테스트-종류" class="headerlink" title="35. 테스트 종류"></a>35. 테스트 종류</h3><p>유닛테스트</p>
+<p>통합테스트</p>
+<p>기능테스트</p>
+<h3 id="36-DP-Greedy"><a href="#36-DP-Greedy" class="headerlink" title="36. DP, Greedy,"></a>36. DP, Greedy,</h3><h3 id="37-빌더패턴-프록시패턴"><a href="#37-빌더패턴-프록시패턴" class="headerlink" title="37. 빌더패턴, 프록시패턴"></a>37. 빌더패턴, 프록시패턴</h3><h3 id="38-nginx-로드밸런싱-적용"><a href="#38-nginx-로드밸런싱-적용" class="headerlink" title="38. nginx 로드밸런싱 적용."></a>38. nginx 로드밸런싱 적용.</h3><ol>
+<li>upstream 설정<br> 분배규칙<br> weight</li>
+</ol>
+<h3 id="39-Hash"><a href="#39-Hash" class="headerlink" title="39. Hash"></a>39. Hash</h3><p>hashAlgorithm을 설계 -&gt; hashAlgorithm은 HashCode를 반환 -&gt; hashCode를 hashtable 크기에 맞게 모듈러 연산 -&gt; 이 결과 값이 배열의 키가 되며 해당 인덱스에 value 값을 저장</p>
+<p>value 가 여러개일 경우 충돌이 발생했다 하며 해결 방법은 연결리스트를 두는 Chanining 방법, Open Addressing 방법이 있음.<br>여기서는 Chaining 방법을 고려</p>
+<p>값이 여러개가 되면 연결리스트를 두고 차곡차곡 쌓음.<br>충돌이 많이 나는 경우에는 이 부분을 트리구조로 변경하여 검색의 속도를 높일 수 있음.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/23/2021-03-23-second-interview-preparing/" data-id="ckp45ihfb00aleswbfgr3c189" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/03/24/2021-04-08-docker-postgresql/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Docker Postgreql Command
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/03/23/2021-03-23-spring-boot-redis/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">스프링 부트 레디스 적용</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

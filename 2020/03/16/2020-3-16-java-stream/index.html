@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Java 8 Stream | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. Why do we use the stream ?You don’t need to think about how to build.It’s like the Query. How do we get the max value before the Java8, We always use the ‘for’ keyword or ‘if’ keyword for getting t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 8 Stream">
+<meta property="og:url" content="http://example.com/2020/03/16/2020-3-16-java-stream/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. Why do we use the stream ?You don’t need to think about how to build.It’s like the Query. How do we get the max value before the Java8, We always use the ‘for’ keyword or ‘if’ keyword for getting t">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-16T02:21:54.000Z">
+<meta property="article:modified_time" content="2021-05-25T14:42:09.037Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-3-16-java-stream" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/16/2020-3-16-java-stream/" class="article-date">
+  <time datetime="2020-03-16T02:21:54.000Z" itemprop="datePublished">2020-03-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java 8 Stream
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-Why-do-we-use-the-stream"><a href="#1-Why-do-we-use-the-stream" class="headerlink" title="1. Why do we use the stream ?"></a>1. Why do we use the stream ?</h3><h4 id="You-don’t-need-to-think-about-how-to-build"><a href="#You-don’t-need-to-think-about-how-to-build" class="headerlink" title="You don’t need to think about how to build."></a>You don’t need to think about how to build.</h4><p>It’s like the <em>Query</em>. How do we get the max value before the Java8, We always use the ‘for’ keyword or ‘if’ keyword for getting that data. And We should consider the logic for getting the result of calculating like the max value. In other word, If you don’t use the <em>Stream</em> then you always think about how we build the logic for getting some data. But if you use this, you don’t need to think about the focus of the building.</p>
+<h4 id="You-can-get-the-advantage-of-the-parallel"><a href="#You-can-get-the-advantage-of-the-parallel" class="headerlink" title="You can get the advantage of the parallel."></a>You can get the advantage of the parallel.</h4><p>Previus the Java8, Parallel coding is too difficult to a lot of the Java developers. You should use the <em>‘Thread’</em> technic and always consider about the <em>‘Mutual Exclusion’</em> It’s too low technic to Application Developers. So If you use the <em>Stream</em> then you can get the parallel advantage without <em>Thread</em>, The thinking about the <em>Locking</em>.</p>
+<h4 id="It’s-more-readable-than-previous"><a href="#It’s-more-readable-than-previous" class="headerlink" title="It’s more readable than previous."></a>It’s more readable than previous.</h4><p>You just concentrate about the think you want using the <em>stream</em> like the <em>query</em>. so consequently, the source code is more shorter that previous and more intuitive.</p>
+<h3 id="2-Stream-Manipulation-Computation"><a href="#2-Stream-Manipulation-Computation" class="headerlink" title="2. Stream Manipulation Computation"></a>2. Stream Manipulation Computation</h3><p>It’s the summary of the use of stream basically.</p>
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h4><p><em>‘filter()’</em> function is for seperating the elements of the stream utilzing any function returning <em>boolean</em> value.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Get the even numbers from the number list. */</span></span><br><span class="line">List&lt;Integer&gt; evenNumbers = numbers.stream().filter(i -&gt; i % <span class="number">2</span> == <span class="number">0</span>).collect(toList());</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="takewhile"><a href="#takewhile" class="headerlink" title="takewhile()"></a>takewhile()</h4><p>Do you know the <em>break</em> keyword for the Java ? when you want to finish some iteration status, You can use this keyword. In the <em>filter()</em> function, It’s always iterate everything elements although you got the value you want. If you want to stop the iteration when you complete your mission then use this keyword.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Get the small numbers from the number list. */</span></span><br><span class="line">List&lt;Integer&gt; smallNumbers = numbers.stream().takeWhile(i -&gt; i &lt; <span class="number">5</span>).collect(toList())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="dropwhile"><a href="#dropwhile" class="headerlink" title="dropwhile()"></a>dropwhile()</h4><p>It’s other side of the <em>takewhile()</em> function. If you want to get the large number then use this keyword.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Get the large numbers from the number list. */</span></span><br><span class="line">List&lt;Integer&gt; smallNumbers = numbers.stream().dropWhile(i -&gt; i &lt; <span class="number">5</span>).collect(toList());</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="distinct"><a href="#distinct" class="headerlink" title="distinct()"></a>distinct()</h4><p>If you don’t want to get duplicate value like the <em>Set</em> then use this.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Get the numbers without duplcate value. */</span></span><br><span class="line">List&lt;Integer&gt; uniqueNumbers = numbers.stream().distinct().collect(toList());</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="limit"><a href="#limit" class="headerlink" title="limit()"></a>limit()</h4><p>You can limit the number of the result using this function</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Get the limited numbers */</span></span><br><span class="line">List&lt;Integer&gt; limitedNumbers = numbers.stream().limit(<span class="number">3</span>).collect(toList());</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="skip"><a href="#skip" class="headerlink" title="skip()"></a>skip()</h4><p>If you want to skip the elements coming first, then use this function.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Get the skipped numbers */</span></span><br><span class="line">List&lt;Integer&gt; skipedNumbers = numbers.stream().skip(<span class="number">3</span>).collect(toList());</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h4><p>If you want translate the type of the stream. then use this function.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Dish&gt; menu;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Get the list of names from the menu. */</span></span><br><span class="line">List&lt;String&gt; dishNames = menu.stream().map(Dish::getName).collect(toList());</span><br></pre></td></tr></table></figure>
+
+<p>The type of the <em>menu</em> is the List<Dish> and the type of the <em>dishNames</em> is the List<String>. It’s different. So You should convert the type using the map() function like the above code.</p>
+<h3 id="3-Stream-Search-Computation"><a href="#3-Stream-Search-Computation" class="headerlink" title="3. Stream Search Computation"></a>3. Stream Search Computation</h3><h4 id="allMatch"><a href="#allMatch" class="headerlink" title="allMatch()"></a>allMatch()</h4><p>It return the <em>boolean</em> value. It checkes what the all of the elements pass the condition off or not.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">boolean</span> allMatechNumbers = numbers.stream().allMatch(i -&gt; i &gt; <span class="number">0</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="anyMatch"><a href="#anyMatch" class="headerlink" title="anyMatch()"></a>anyMatch()</h4><p>If the elements pass the condition at least 1 thing, then It will return <em>true</em>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">boolean</span> anyMatechesNumbers = numbers.stream().anyMatch(i -&gt; i &gt; <span class="number">9</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="nonMatch"><a href="#nonMatch" class="headerlink" title="nonMatch()"></a>nonMatch()</h4><p>Everyting should be fail about the condition. if you want get the <em>true</em>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">boolean</span> nonMatchNumbers = numbers.stream().noneMatch(i -&gt; i &gt; <span class="number">10</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="findFirst"><a href="#findFirst" class="headerlink" title="findFirst()"></a>findFirst()</h4><p>If you want to get the first element of the result, then use this.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Get the first element value but It may be null. */</span></span><br><span class="line">Optional&lt;Integer&gt; firstNumber = numbers.stream().findFirst();</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Get the first element value. It has to be not null. */</span></span><br><span class="line">Integer firstNumber = numbers.stream().findFirst().get();</span><br></pre></td></tr></table></figure>
+
+<p>This function allow to get the null value basically because of empty list source. So It’s return the type Optional thing. but If you sure that don’t have the <em>null</em> value, You can get the result without <em>Optional</em> using the <em>get()</em> function.</p>
+<h4 id="findAny"><a href="#findAny" class="headerlink" title="findAny()"></a>findAny()</h4><blockquote>
+<p>If you want to get element randomly from the result, then use this.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Get the any element value but It may be able to be null */</span></span><br><span class="line">Optional&lt;Integer&gt; randomNumber = numbers.stream().findAny();</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Get the any element value */</span></span><br><span class="line">Integer firstNumber = numbers.stream().findFirst().get();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-Primitive-Specialized-Stream"><a href="#4-Primitive-Specialized-Stream" class="headerlink" title="4. Primitive Specialized Stream"></a>4. Primitive Specialized Stream</h3><p>The <em>stream</em> offer the privitive specialized stream like <em>IntStream</em>, <em>LongStream</em>, <em>DoubleStream</em>. I think you already know the terms of <em>Boxing</em>, <em>Unboxking</em>. It’s the translating between the primitive type and the Object type. Actually You should pay really high cost when it occurred. So Java8 offer us primitive specialized stream to avoid this high cost.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/** It&#x27;s the example of &#x27;IntStream&#x27; */</span></span><br><span class="line"><span class="keyword">int</span> Calories = menu.stream().mapToInt(Dish::getCalories).sum();</span><br><span class="line"></span><br><span class="line"><span class="comment">/** You can translate between primitive type and object type like the below if you want */</span></span><br><span class="line">IntStream intStream = menu.stream().mapToInt(Dish::getCalories);</span><br><span class="line">Stream&lt;Integer&gt; stream = intStream.boxed();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-The-various-way-to-build-the-stream"><a href="#5-The-various-way-to-build-the-stream" class="headerlink" title="5. The various way to build the stream"></a>5. The various way to build the stream</h3><h4 id="Stream-of"><a href="#Stream-of" class="headerlink" title="Stream.of()"></a>Stream.of()</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Stream&lt;String&gt; stream = Stream.of(<span class="string">&quot;Mordern&quot;</span>, <span class="string">&quot;Java&quot;</span>, <span class="string">&quot;In&quot;</span>, <span class="string">&quot;Action&quot;</span>);</span><br><span class="line"></span><br><span class="line">stream.map(String::toUpperCase).forEach(System.out::println);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Arrays-stream"><a href="#Arrays-stream" class="headerlink" title="Arrays.stream()"></a>Arrays.stream()</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] numbers = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">13</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> snum = Arrays.stream(numbers).sum();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Stream-iterate"><a href="#Stream-iterate" class="headerlink" title="Stream.iterate()"></a>Stream.iterate()</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Stream.iterate(<span class="number">0</span>, n -&gt; n + <span class="number">2</span>)</span><br><span class="line">    .limit(<span class="number">10</span>)</span><br><span class="line">    .forEach(System.out::println);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Stream-generate"><a href="#Stream-generate" class="headerlink" title="Stream.generate()"></a>Stream.generate()</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Stream.generate(Math::random)</span><br><span class="line">    .limit(<span class="number">5</span>)</span><br><span class="line">    .forEach(System.out.println);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/03/16/2020-3-16-java-stream/" data-id="ckp45ihem007teswbcxis4axl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/16/2020-3-16-java-collector/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java 8 Reduce and Collector
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/24/2020-02-24-mysqldump/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">How to use the mysql dump file.</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

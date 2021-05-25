@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/16/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2019-09-23-caesar-cipher" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-caesar-cipher/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-caesar-cipher/">Coding Test - Caesar Cipher / Modulus, ASCII</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Character 자료형을 가지고 노는 문제는 ASC 코드를 활용할 확률이 높다.</span><br><span class="line">문자들이 순환되어져야 한다면 Modulus 연산을 활용하자.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>어떤 문장의 각 알파벳을 일정한 거리만큼 밀어서 다른 알파벳으로 바꾸는 암호화 방식을 시저 암호라고 합니다. 예를 들어 AB는 1만큼 밀면 BC가 되고, 3만큼 밀면 DE가 됩니다. z는 1만큼 밀면 a가 됩니다. 문자열 s와 거리 n을 입력받아 s를 n만큼 민 암호문을 만드는 함수, solution을 완성해 보세요.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : String s, int n</span><br><span class="line">output : String answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/12926">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>ASC 코드를 활용하여 알파벳을 밀어내는 경우를 구현할 수 있다. 대문자와 소문자의 ASC코드값은 다름으로 둘은 구분해서 구현 해야한다. <br><br> ‘Z’ -&gt; ‘A’ 갈 수 있도록 하기 위해 Modulus 연산을 활용해야 한다. 총 알파벳의 개수는 26임으로 26으로 나누어 27 부터는 다시 1로 돌아갈 수 있도록 만든다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>특별한 자료구조가 필요하지 않다.</p>
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>대문자, 소문자, 공백을 구분하고 각각에 대해 Modulus 연산을 활용해 n만큼 숫자를 밀어준다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.length(); i++) &#123;</span><br><span class="line">	<span class="keyword">if</span>(s.charAt(i) &gt;= <span class="number">97</span> &amp;&amp; s.charAt(i) &lt;= <span class="number">122</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> value = ((s.charAt(i) - <span class="number">97</span> + n) % <span class="number">26</span>) + <span class="number">97</span>;</span><br><span class="line">		answer += (<span class="keyword">char</span>)value;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span>(s.charAt(i) &gt;= <span class="number">65</span> &amp;&amp; s.charAt(i) &lt;= <span class="number">90</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> value = ((s.charAt(i) - <span class="number">65</span> + n) % <span class="number">26</span>) + <span class="number">65</span>;</span><br><span class="line">		answer += (<span class="keyword">char</span>)value;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		answer += <span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-caesar-cipher/" data-id="ckp45ihcu001qeswbapqza69d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-data-type-casting" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-data-type-casting/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-data-type-casting/">Data Type Casting</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Data-Type-Casting"><a href="#Data-Type-Casting" class="headerlink" title="Data Type Casting"></a>Data Type Casting</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Java8 이상에서 제공하는 자료형들의 데이터 타입 변환을 위한 함수들을 정리한다. </span><br></pre></td></tr></table></figure>
+
+<h3 id="String-gt-char"><a href="#String-gt-char" class="headerlink" title="String -&gt; char[]"></a>String -&gt; char[]</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot;something&quot;</span>;</span><br><span class="line"><span class="keyword">char</span>[] chs = str.toCharArray();</span><br></pre></td></tr></table></figure>
+
+<h3 id="char-gt-string"><a href="#char-gt-string" class="headerlink" title="char[] -&gt; string"></a>char[] -&gt; string</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>[] chs = &#123;<span class="string">&#x27;s&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;g&#x27;</span>&#125;;</span><br><span class="line">String str = <span class="keyword">new</span> String(chs, <span class="number">0</span>, chs.length);</span><br></pre></td></tr></table></figure>
+
+<h3 id="String-gt-int"><a href="#String-gt-int" class="headerlink" title="String -&gt; int"></a>String -&gt; int</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot;72&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> num = Integer.parseInt(str);</span><br></pre></td></tr></table></figure>
+
+<h3 id="int-gt-String"><a href="#int-gt-String" class="headerlink" title="int -&gt; String"></a>int -&gt; String</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">72</span>;</span><br><span class="line">String str = <span class="number">72</span> + <span class="string">&quot;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="char-gt-int"><a href="#char-gt-int" class="headerlink" title="char -&gt; int"></a>char -&gt; int</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> ch = <span class="string">&#x27;8&#x27;</span>;</span><br><span class="line"><span class="keyword">int</span> num = Integer.parseInt(ch + <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="int-gt-char"><a href="#int-gt-char" class="headerlink" title="int -&gt; char"></a>int -&gt; char</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">char</span> ch = Character.forDigit(num, <span class="number">10</span>); <span class="comment">// forDigit 2번째 파라미터는 10진법을 의미 </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="int-gt-Integer"><a href="#int-gt-Integer" class="headerlink" title="int[] -&gt; Integer[]"></a>int[] -&gt; Integer[]</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] num1 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">Integer[] num2 = Arrays.stream(num1).boxed().toArray(Integer[]::<span class="keyword">new</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Integer-gt-int"><a href="#Integer-gt-int" class="headerlink" title="Integer[] -&gt; int[]"></a>Integer[] -&gt; int[]</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer[] num1 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] num2 = Arrays.stream(num1).mapToInt(Integer::intValue).toArray();</span><br></pre></td></tr></table></figure>
+
+<h3 id="String-gt-Character"><a href="#String-gt-Character" class="headerlink" title="String -&gt; Character[]"></a>String -&gt; Character[]</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot;something&quot;</span>;</span><br><span class="line">Character[] ch = str.chars().mapToObj(c -&gt; (<span class="keyword">char</span>)c).toArray(Character[]::<span class="keyword">new</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Character-gt-String"><a href="#Character-gt-String" class="headerlink" title="Character[] -&gt; String"></a>Character[] -&gt; String</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Character[] ch = &#123;<span class="string">&#x27;s&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;g&#x27;</span>&#125;;</span><br><span class="line">String str = Arrays.stream(ch1).map(String::valueOf).collect(Collectors.joining());</span><br></pre></td></tr></table></figure>
+
+<h3 id="char-gt-Character"><a href="#char-gt-Character" class="headerlink" title="char[] -&gt; Character[]"></a>char[] -&gt; Character[]</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>[] ch1 = &#123;<span class="string">&#x27;s&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;g&#x27;</span>&#125;;</span><br><span class="line">Character[] ch2 = <span class="keyword">new</span> String(ch1, <span class="number">0</span>, ch1.length).chars().mapToObj(c -&gt; (<span class="keyword">char</span>)c).toArray(Character[]::<span class="keyword">new</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Character-gt-char"><a href="#Character-gt-char" class="headerlink" title="Character[] -&gt; char[]"></a>Character[] -&gt; char[]</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Character[] ch1 = &#123;<span class="string">&#x27;s&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;g&#x27;</span>&#125;;</span><br><span class="line"><span class="keyword">char</span>[] ch2 = Arrays.stream(ch1).map(String::valueOf).collect(Collectors.joining()).toCharArray();</span><br></pre></td></tr></table></figure>
+
+<h3 id="T-gt-List"><a href="#T-gt-List" class="headerlink" title="T[] -&gt; List"></a>T[] -&gt; List<T></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T[] arr;    <span class="comment">// Generic임으로 T에 primitive 자료형은 사용 불가</span></span><br><span class="line">List&lt;T&gt; list = Arrays.asList(arr);</span><br></pre></td></tr></table></figure>
+
+<h3 id="List-gt-T"><a href="#List-gt-T" class="headerlink" title="List -&gt; T[]"></a>List<T> -&gt; T[]</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;T&gt; list; <span class="comment">// Generic임으로 T에 primitive 자료형은 사용 불가</span></span><br><span class="line">T[] arr = list.toArray(<span class="keyword">new</span> T[list.size()]);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-data-type-casting/" data-id="ckp45ihcu001reswba1i50tiv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-determining-square_root" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-determining-square_root/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-determining-square_root/">Determining Square Root / String</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">String 문자열을 특정 구분자를 활용해 String[]로 나눌때 split()함수를 활용한다.</span><br><span class="line">특히 주의할 점은 구분자가 &quot;.&quot;이라면 &quot;\\.&quot;로 표기해야한다.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>임의의 양의 정수 n에 대해, n이 어떤 양의 정수 x의 제곱인지 아닌지 판단하려 합니다. <br><br> n이 양의 정수 x의 제곱이라면 x+1의 제곱을 리턴하고, n이 양의 정수 x의 제곱이 아니라면 -1을 리턴하는 함수를 완성하세요.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : long n</span><br><span class="line">output : String answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/12934">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>입력된 값 n에 제곱근을 취했을 때 정수라면 n값에 1을 더하고 제곱을 하여 반환한다. 이 문제는 split() 함수를 사용할 때 구분자가 “.”일 경우 다르게 표기해야 하기 때문에 주의가 필요하다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>특별한 자료구조가 필요하지 않다.</p>
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span>((Math.sqrt(n)+<span class="string">&quot;&quot;</span>).split(<span class="string">&quot;\\.&quot;</span>)[<span class="number">1</span>].equals(<span class="string">&quot;0&quot;</span>))</span><br><span class="line">	answer = (<span class="keyword">long</span>)Math.pow((Integer.parseInt((Math.sqrt(n)+<span class="string">&quot;&quot;</span>).split(<span class="string">&quot;\\.&quot;</span>)[<span class="number">0</span>])+<span class="number">1</span>), <span class="number">2</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-determining-square_root/" data-id="ckp45ihcv001teswbe3gedi5r" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-gcd_lcm" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-gcd_lcm/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-gcd_lcm/">GCD LCM / GCD LCM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">gcd를 구하는 함수를 구현하는 것은 단순함으로 그 형태를 외우거나 본인처럼 항상 접근할 수 있는 곳에 범용적인 형태로 구현해두자.</span><br><span class="line">그러면 필요할 때 lcm과 gcd 값을 얻을 수 있다.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>두 수를 입력받아 두 수의 최대공약수와 최소공배수를 반환하는 함수, solution을 완성해 보세요. 배열의 맨 앞에 최대공약수, 그다음 최소공배수를 넣어 반환하면 됩니다. 예를 들어 두 수 3, 12의 최대공약수는 3, 최소공배수는 12이므로 solution(3, 12)는 [3, 12]를 반환해야 합니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int n, int m</span><br><span class="line">output : int[] answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/12940">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>우선 gcd를 구하는 함수를 구현하게 되면 두 입력값과 gcd 값을 통해서 lcm을 얻을 수 있다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>특별한 자료구조가 필요하지 않다.</p>
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(num2!=<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> temp = num1%num2;</span><br><span class="line">		num1 = num2;</span><br><span class="line">		num2 = temp;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">return</span> num1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lcm</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 * num2 / gcd(num1, num2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-gcd_lcm/" data-id="ckp45ihcw001weswb6dd3grf7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-find-prime-number" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-find-prime-number/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-find-prime-number/">find Prime number / Prime Number</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">소수 찾기 문제는 두가지의 형태로 구분된다.</span><br><span class="line"></span><br><span class="line">Q.  어떤 숫자 범위에 소수의 개수 구하기.</span><br><span class="line">    Solution) &#39;에라토스테네스의 체&#39; 알고리즘 활용</span><br><span class="line"></span><br><span class="line">Q.  하나의 수 n이 소수인지 판별하기.</span><br><span class="line">    Solution) Math.sqrt(n)까지 까지 반복문을 돌려 나누어지는 경우가 있는지 확인</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>1부터 입력받은 숫자 n 사이에 있는 소수의 개수를 반환하는 함수, solution을 만들어 보세요. <br> 소수는 1과 자기 자신으로만 나누어지는 수를 의미합니다. <br><br> (1은 소수가 아닙니다.)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int n</span><br><span class="line">output : int answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/12921">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>숫자 n까지의 소수의 개수를 구하는 문제임으로 ‘에라토스테네스의 체’ 알고리즘을 활용하여 해결한다. <br><br> 이는 n까지의 숫자 중에 각 소수들의 배수에 해당하는 수들을 제거하고 최종적으로 남는 수들을 소수로 판단하는 방법이다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>각 수들이 소수인지 아닌지를 구분하기 위하여 boolean[]을 생성한다. 각 인덱스는 수를 의미하며 0번째 인덱스는 사용하지 않는다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Data Structure : boolean[]</span></span><br><span class="line"><span class="keyword">boolean</span>[] primeArr = <span class="keyword">new</span> <span class="keyword">boolean</span>[n+<span class="number">1</span>];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>2부터 Math.sqrt(n)까지 반복하며 각 수의 배수들은 소수가 아님으로 prime = false 해준다. 최종적으로 남은 true값들이 소수가 된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i*i&lt;prime.length; i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>; j*i&lt;prime.length; j++)</span><br><span class="line">        prime[j*i] = <span class="keyword">false</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-find-prime-number/" data-id="ckp45ihcw001xeswb23joeshk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-dividing-sequence-of-number" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-dividing-sequence-of-number/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-dividing-sequence-of-number/">Dividing Sequence Of Numbers / Modulus</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">나누어 떨어짐, 배수등을 연산하기 위해 Modulus 연산자를 사용하자.</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>array의 각 element 중 divisor로 나누어 떨어지는 값을 오름차순으로 정렬한 배열을 반환하는 함수, solution을 작성해주세요. <br><br> divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을 담아 반환하세요.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int[] arr, int divisor</span><br><span class="line">output : int[] answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42862">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>입력 파라미터로 들어온 int[] arr에 대해 반복문을 돌려서 각 값이 divisor로 나누어 진다면 answer에 추가하자. <br><br> 나누어진다는 것은 나머지 연산자를 사용했을 때 나머지가 0임을 의미한다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>간단한 문제임으로 새로운 자료구조는 사용하지 않고 입력값의 자료형 int[]을 그대로 사용한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="comment">// Data Structure : int[]</span></span><br><span class="line"><span class="keyword">int</span>[] arr;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>나누어 떨어지는 경우 answer 배열에 추가해주면 된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="number">0</span> ~ arr.length)</span><br><span class="line">	<span class="keyword">if</span>(arr[i] % divisor == <span class="number">0</span>)</span><br><span class="line">		answer.add(arr[i]);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-dividing-sequence-of-number/" data-id="ckp45ihcx0020eswb22p67zme" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-k-th-digit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-k-th-digit/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-k-th-digit/">Kth Digit / Sort</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">여러가지 정렬방법이 있지만 간단하게는 아래 두가지 방법을 활용할 수 있다.</span><br><span class="line"></span><br><span class="line">    1. Arrays.sort()</span><br><span class="line">    2. PriorityQueue</span><br><span class="line"></span><br><span class="line">여기서는 Arrays.sort() 방법을 활용한다.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하려 합니다. <br><br> 예를 들어 array가 [1, 5, 2, 6, 3, 7, 4], i = 2, j = 5, k = 3이라면 <br><br> array의 2번째부터 5번째까지 자르면 [5, 2, 6, 3]입니다. <br> 1에서 나온 배열을 정렬하면 [2, 3, 5, 6]입니다. <br> 2에서 나온 배열의 3번째 숫자는 5입니다. <br><br> 배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int[] array, int[][] commands</span><br><span class="line">output : int[] answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42748">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>주어진 array에 대해서 i부터 j까지 분할하여 새로운 배열을 만든다음 오름차순으로 정렬하고 k번째에 해당하는 값을 answer 배열에 저장한다. <br><br> 즉 primitive한 int형 배열을 사용하여 새로운 배열을 만들고 Arrays.sort()를 활용해 오름차순으로 정렬하고 k 인덱스의 값을 도출한다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>Arrays.sort() 함수는 primitive 자료형에만 적용 가능함으로 int[]을 사용한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Data Structure : int[]</span></span><br><span class="line"><span class="keyword">int</span>[] temp = array.subString(i, j);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>i부터 j까지의 값을 새로운 배열에 저장하고 정렬한다. 그리고 k번째 값을 얻어낸다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// FIRST CASE</span></span><br><span class="line"><span class="keyword">for</span>(<span class="number">0</span> ~ command.length)</span><br><span class="line">    answer[i] = Arrays.sort(temp)[k]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-k-th-digit/" data-id="ckp45ihcy0021eswbfz2h7ceh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-mock-test" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-mock-test/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-mock-test/">Mock Test / Modulus</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">반복문 안에서 일정 주기로 적용해야하는 무언가가 있다면 Modulus 연산자를 의심해보자.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>수포자는 수학을 포기한 사람의 준말입니다. 수포자 삼인방은 모의고사에 수학 문제를 전부 찍으려 합니다. 수포자는 1번 문제부터 마지막 문제까지 다음과 같이 찍습니다. <br><br><br>1번 수포자가 찍는 방식: 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, … <br><br>2번 수포자가 찍는 방식: 2, 1, 2, 3, 2, 4, 2, 5, 2, 1, 2, 3, 2, 4, 2, 5, … <br><br>3번 수포자가 찍는 방식: 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, … <br><br><br>1번 문제부터 마지막 문제까지의 정답이 순서대로 들은 배열 answers가 주어졌을 때, 가장 많은 문제를 맞힌 사람이 누구인지 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int[] answers</span><br><span class="line">output : int[] answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42840">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>1, 2, 3번 수포자들이 문제를 찍는 방식은 모두 일정 주기로 반복된다. 이러한 문제에서 유용한 코딩 방법은 %연산자를 사용하는 것이다. <br><br> 3인의 수포자들의 찍는 방식을 저장하기 위한 배열 3개를 만들고 문제 수 만큼 반복문을 돌려 맞은 개수를 확인한다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>1, 2, 3번 수포자들의 정답지를 저장하기 위한 int[] 타입의 변수 3개를 활용하자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    Data Structure : int[]</span></span><br><span class="line"><span class="comment">    세 변수는 각각 수포자 1, 2, 3의 정답지를 의미한다.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] sol1 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] sol2 = &#123;<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] sol3 = &#123;<span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><blockquote>
+<p>문제 수(answers.length) 만큼 반복문을 돌려 각 수포자들의 정답 개수를 확인한다.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   numOfAnswers;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span> ~ answers.length) &#123;</span><br><span class="line">	<span class="keyword">if</span>(answers[i] == sol1[i%<span class="number">5</span>]) numOfAnswers[<span class="number">0</span>]++;</span><br><span class="line">	<span class="keyword">if</span>(answers[i] == sol2[i%<span class="number">8</span>]) numOfAnswers[<span class="number">1</span>]++;</span><br><span class="line">	<span class="keyword">if</span>(answers[i] == sol3[i%<span class="number">10</span>]) numOfAnswers[<span class="number">2</span>]++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-mock-test/" data-id="ckp45ihd00024eswb4syqfr81" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-number-of-py" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-number-of-py/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-number-of-py/">Number of PY / String</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String의 대소문자 구분으로 인해 문제풀이가 번거로운 경우 toUpperCase(), toLowerCase() 함수로 통일하자.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>대문자와 소문자가 섞여있는 문자열 s가 주어집니다. s에 ‘p’의 개수와 ‘y’의 개수를 비교해 같으면 True, 다르면 False를 return 하는 solution를 완성하세요. ‘p’, ‘y’ 모두 하나도 없는 경우는 항상 True를 리턴합니다. 단, 개수를 비교할 때 대문자와 소문자는 구별하지 않습니다. <br><br> 예를 들어 s가 pPoooyY면 true를 return하고 Pyy라면 false를 return합니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : String s</span><br><span class="line">output : boolean answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/12916">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>입력 파라미터 s를 toUpperCase(), toLowerCase()를 활용해 대문자 혹은 소문자로 통일하고 , s의 크기만큼 반복문을 돌려 p와 y의 개수를 센다. 결과적으로 두 수가 동일하면 true, 아니면 false를 반환한다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>입력으로 들어온 String 자료형을 그대로 사용한다. 즉 특별한 자료구조가 필요하지 않으며 다만 대문자 혹은 소문자 일치시키기 위한 작업을 선처리한다. 그리고 p, y의 개수를 체크하기 위한 int형 변수 2개를 추가한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">String s = s.toLowerCase(); <span class="comment">// 입력으로 받은 값이다</span></span><br><span class="line"><span class="keyword">int</span> p, y;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Algorithms"><a href="#Algorithms" class="headerlink" title="Algorithms"></a>Algorithms</h3><p>0부터 s의 크기만큼 반복문을 돌리고 그 안에서 p, y의 개수를 카운트한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="number">0</span> ~ s.length) &#123;</span><br><span class="line">	<span class="keyword">if</span>(s.charAt(i) == <span class="string">&#x27;y&#x27;</span>) y++;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(s.charAt(i) == <span class="string">&#x27;p&#x27;</span>)p++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-number-of-py/" data-id="ckp45ihd00025eswb4t8u97z9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-sort-using-comparator" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-sort-using-comparator/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-sort-using-comparator/">Sort using Comparator / Sort</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Comparator 클래스를 활용하여 Custom Sorting을 구현해보자.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>문자열로 구성된 리스트 strings와, 정수 n이 주어졌을 때, 각 문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다. <br><br> 예를 들어 strings가 [sun, bed, car]이고 n이 1이면 각 단어의 인덱스 1의 문자 u, e, a로 strings를 정렬합니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : String[] strings, int n</span><br><span class="line">output : String[] answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/12915">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>Array.sort() 함수는 자료의 타입이 String일 때 기본적으로 사전순으로 나열한다. 그러나 이 문제처럼 특별한 기준으로 정렬하고 싶을 때에는 Comparator 클래스를 상속하거나 Comparable 인터페이스를 구현하여 문제를 해결한다. <br><br> 비교 대상이 primitive 자료형일 경우 Comparator 클래스를 상속하는게 보다 간단하며 새로운 객체를 구현해야 하는 경우는 Comparable 인터페이스를 구현한다. <br><br> Array.sort() 함수에 두번째 파라미터로 Comparator 객체를 전달하면 이 기준으로 정렬하도록 도와준다. </p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>자료구조가 필요하지 않은 문제다.</p>
+<h3 id="Algorithms"><a href="#Algorithms" class="headerlink" title="Algorithms"></a>Algorithms</h3><p>알고리즘이라기 보다는 Comparator 클래스의 사용법을 이해하자. 특히 이 문제에서 n으로 정렬시 비기는 경우가 발생하면 사전순으로 정렬하도록 요구한다. 이럴때는 Comparator 클래스에서 return 0가 나와야 하는 부분에 compareTo() 함수를 사용해 기존의 정렬방법을 사용할수 있도록 구현한다. <br><br> 추가적으로 return 1과 return -1의 부분만 변경해주면 오름차순에서 내림차순으로 혹은 그 반대로 정렬할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Arrays.sort(strings, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(o1.charAt(n) &gt; o2.charAt(n))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(o1.charAt(n) &lt; o2.charAt(n))</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> o1.compareTo(o2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-sort-using-comparator/" data-id="ckp45ihd10028eswb65uwglvr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/15/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/17/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

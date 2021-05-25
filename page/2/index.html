@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2021-03-23-spring-boot-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/23/2021-03-23-spring-boot-redis/" class="article-date">
+  <time datetime="2021-03-22T15:54:00.000Z" itemprop="datePublished">2021-03-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/23/2021-03-23-spring-boot-redis/">스프링 부트 레디스 적용</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>스프링 부트 프로젝트 생성 후 아래 의존성 추가.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>docker로 레디스를 띄운다. redis 이미지를 가져오며. 해당 컨테이너의 이름을 redis_boot 로 명명. 이 redis 컨테이너는 호스트와 6379 포트로 통신한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 --name redis_boot -d redis</span><br></pre></td></tr></table></figure>
+
+<p>레디스에 접속한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -i -t redis_boot redis-cli</span><br></pre></td></tr></table></figure>
+
+<p>Runner 클래스에 redis에 데이터 푸쉬하는 코드 작성.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisRunner</span> <span class="keyword">implements</span> <span class="title">ApplicationRunner</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    StringRedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(ApplicationArguments args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        ValueOperations&lt;String, String&gt; values = redisTemplate.opsForValue();</span><br><span class="line">        values.set(<span class="string">&quot;keesun&quot;</span>, <span class="string">&quot;whiteship&quot;</span>);</span><br><span class="line">        values.set(<span class="string">&quot;springboot&quot;</span>, <span class="string">&quot;2.0&quot;</span>);</span><br><span class="line">        values.set(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>keys * 명령어를 통해서 전체 키 목록 조회 가능.</p>
+<p>get {key} 입력하게 되면 value 값이 반환됨.</p>
+<p>remote dictionary server - 자료구조가 기본적으로 key-value 라는 이야기.</p>
+<p>spring boot 에서 redis 커스터마이징 할때에는 application.properties 에서 적용 가능.<br>포트를 변경한다던지 등등</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spring.redis.url&#x3D;</span><br><span class="line">spring.redis.port&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>repository 를 활용해서 레디스를 사용해보자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RedisHash(&quot;accounts&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Account</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getEmail</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> email;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEmail</span><span class="params">(String email)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.email = email;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AccountRepository</span> <span class="keyword">extends</span> <span class="title">CrudRepository</span>&lt;<span class="title">Account</span>, <span class="title">String</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisRunner</span> <span class="keyword">implements</span> <span class="title">ApplicationRunner</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    StringRedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    AccountRepository accountRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(ApplicationArguments args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        ValueOperations&lt;String, String&gt; values = redisTemplate.opsForValue();</span><br><span class="line">        values.set(<span class="string">&quot;keesun&quot;</span>, <span class="string">&quot;whiteship&quot;</span>);</span><br><span class="line">        values.set(<span class="string">&quot;springboot&quot;</span>, <span class="string">&quot;2.0&quot;</span>);</span><br><span class="line">        values.set(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Account account = <span class="keyword">new</span> Account();</span><br><span class="line">        account.setEmail(<span class="string">&quot;kidong@gmail.com&quot;</span>);</span><br><span class="line">        account.setUsername(<span class="string">&quot;kidong&quot;</span>);</span><br><span class="line"></span><br><span class="line">        accountRepository.save(account);</span><br><span class="line"></span><br><span class="line">        Optional&lt;Account&gt; byId = accountRepository.findById(account.getId());</span><br><span class="line">        System.out.println(byId.get().getUsername());</span><br><span class="line">        System.out.println(byId.get().getEmail());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="레디스-명령어"><a href="#레디스-명령어" class="headerlink" title="레디스 명령어"></a>레디스 명령어</h3><p>hget : hash 타입의 데이터에서 특정 필드를 가져옴.</p>
+<p>hgetall : hash 타입의 데이터 모두를 가져옴. (컬렉션을 가져옴)</p>
+<p>레디스 명령어들 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; foo 라는 키를 가진 데이터의 유효기간을 10초로 설정. 10초가 지나면 사라짐</span><br><span class="line">&#x2F;&#x2F; 캐시서버이기 때문에 유효기간 설정하는것은 중요.</span><br><span class="line">expire foo 10</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 10초 후에 temp:key1 키를 가지고 &quot;...&quot; value 를 가지는 데이터가 사라진다.</span><br><span class="line">set temp:key1 &quot;it will delete after 10 seconds&quot; ex 10</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 한번에 여러 개의 key-value 를 저장한다. 여기서는 a와 1의 묶음과, b와 2의 묶음을 저장한다.</span><br><span class="line">mset a 1 b 2</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 한번에 여러 개의 key 데이터를 조회한다. 여기서 c는 없기 때문에 nil 값이 나온당.</span><br><span class="line">mget a b c</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;레디스에서 hash 구조는 key-subkey-value 구조를 가진다. </span><br><span class="line">hset key1 subkey1 &quot;hello&quot;</span><br><span class="line">hset key1 subkey2 &quot;world&quot;</span><br><span class="line"></span><br><span class="line">hget key1 subkey1</span><br><span class="line">hkeys key1 -&gt; 이 명령어는 레디스에 락이 걸리기 때문에 주의해야 한다.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; list 구조</span><br><span class="line">&#x2F;&#x2F; 리스트의 왼쪽에 a 값을 삽입</span><br><span class="line">lpush gdhong:test &quot;a&quot;</span><br><span class="line">&#x2F;&#x2F; 리스트의 오른쪽에 b 값을 삽입.</span><br><span class="line">rpush gdhong:test &quot;b&quot;</span><br><span class="line">&#x2F;&#x2F; 리스트의 왼쪽 부터 숫자 만큼 추출</span><br><span class="line">lpop gdhong:test 2</span><br><span class="line">&#x2F;&#x2F; 리스트의 오른쪽 부터 숫자 만큼 추출</span><br><span class="line">rpop gdhong:test 2</span><br><span class="line">&#x2F;&#x2F; 리스트를 주어진 숫자 범위만큼 검색.</span><br><span class="line">lrange gdhong:test 0 4</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; set 구조</span><br><span class="line">&#x2F;&#x2F; set 구조이고 gdhong:task 키에 &quot;programming&quot; value 삽입</span><br><span class="line">sadd gdhong:task &quot;programming&quot;</span><br><span class="line">&#x2F;&#x2F; set 구조이고 gdhong:task 키에 &quot;reading&quot; value 삽입</span><br><span class="line">sadd gdhong:task &quot;reading&quot;</span><br><span class="line">&#x2F;&#x2F; 위 명령어를 한번더 수행해도 삽입이 안됨. set이 중복이 안되는 구조이기 때문.</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; set 구조의 키를 넣으면 해당 value 값들을 조회할 수 있다</span><br><span class="line">smembers gdhong:task</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 만약 존재하는 value면 1을 반환, 아니면 0을 반환.</span><br><span class="line">sismember gdhong:task reading - 1</span><br><span class="line">sismember gdhong:task writing - 0</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 두 집합의 합집합을 구함 (중복은 제거된다는 의미)</span><br><span class="line">sunion gdhong:task gdhong:task2</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 두 집합의 차집합을 구함</span><br><span class="line">sdiff gdhong:task gdhong:task2</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 두 집합의 교집합을 구함</span><br><span class="line">sinter gdhong:task gdhong:task2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; ordered set 집합이지만 오름차순으로 정렬되어 있음</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ordered set 컬렉션에 데이터를 넣음. 가중치 값이 추가로 들어간다.</span><br><span class="line">zadd users:point 1 gdhong</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 조회.</span><br><span class="line">zrange </span><br></pre></td></tr></table></figure>
+
+
+<h3 id="SpringTemplate-을-활용한-레디스-명령어-처리"><a href="#SpringTemplate-을-활용한-레디스-명령어-처리" class="headerlink" title="SpringTemplate 을 활용한 레디스 명령어 처리"></a>SpringTemplate 을 활용한 레디스 명령어 처리</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/23/2021-03-23-spring-boot-redis/" data-id="ckp45ihfb00aoeswb8ez77xta" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-03-22-woowa-cache" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/22/2021-03-22-woowa-cache/" class="article-date">
+  <time datetime="2021-03-21T15:54:00.000Z" itemprop="datePublished">2021-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/22/2021-03-22-woowa-cache/">INDEX</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>메모리 계층 구조.<br>속도와 용량이 반비례 관계이기 때문에. 용도에 따라서 나누어 쓴다. 그게 메모리 계층 구조를 가진다.</p>
+<p>파레토의 법칙.<br>원인 중 상위 20%가 전체 결과의 80%를 만든다는 법칙.</p>
+<p>이 20%만을 캐쉬로 처리할 수 있다면 보다 더 좋은 성능을 발휘할 수 있다는 의미.</p>
+<p>데이터 지역성의 원리.<br>시간 지역성, 공간 지역성. 순차지역성<br>순차 지역성 = 시간 지역성 + 공간 지역성.</p>
+<p>cache - 나중에 필요할 수도 있는 무언가를 저장하였다가 신속하게 회수할 수 있는 보관 장소.</p>
+<p>원본 데이터와는 별개로 자주 쓰이는 데이터들을 복사해둘 캐시 공간을 마련하고. 여기에서 접근하여 사용.</p>
+<p>캐쉬의 활용방법도 두가지. aside 방식인가? 아래 참고 ㅋㅋ</p>
+<ol>
+<li><p>Look aside Cache<br>메인은 DB이고 DB에서 캐쉬로 데이터를 가져와서 저장. 캐쉬에 데이터가 있으면 캐쉬 데이터를 사용하여 성능을 개선하고 없으면 디비에서 가져와서 다시 캐쉬에 저장.<br>일반적인 구조</p>
+</li>
+<li><p>Write back<br>캐쉬에 데이터를 특정기간 동안 먼저 저장하고 캐쉬에 있는 데이터들을 디비에 저장.<br>휘발할 수 있는 가능성 있다. </p>
+</li>
+</ol>
+<p>하드디스크는 주기억장치에 비해 10만 배 이상 느린 장치.</p>
+<p>데이터베이스도 일반적으로는 하드디스크에서 동작함.</p>
+<p>JPA의 Persistent Context 도 캐싱의 기능을 함.</p>
+<p>CDN (Content Delivery Network)</p>
+<p>프록시 서버 같은 것들을 두는 것.</p>
+<p>구글은 각 통신사마다 Google Global Cache를 두어 인기 있는 Youtube 동영상은 미국 서버까지 접속할 필요 없이 국내 서버에서 처리하도록 하였다.<br>…</p>
+<p>웹 캐시.</p>
+<p>브라우저 캐시 - 웹 브라우저는 웹페이지에 접속할 때 HTML, CSS, JS, IMG 등을 하드디스크나 메모리에 캐싱해 뒀다가 다음 번에 다시 접속할 때 이를 재활용,</p>
+<p>응답 캐시 - 웹 서버도 HTML 같은 정적 리소스들을 캐싱 처리해둠.</p>
+<p>프록시 캐시 - 프론트 서버에서 사용자의 요청단에 다가 캐시를 두는 것..??</p>
+<p>레디스</p>
+<p>NoSQL DBMS 의 일종.</p>
+<p>메모리에 다 올려놓고 사용.</p>
+<p>Remote Dictionary Server - 파이썬에서는 딕셔너리, Java 에서는 HashMap 구조를 말한다.</p>
+<p>자체적으로 여러 가지 자료형을 지원 - 컬렉션</p>
+<p>EHcache ?? - 이건 처음 알았다.<br>스프링 프레임워크나 Hibernate ORM에서 적용</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/22/2021-03-22-woowa-cache/" data-id="ckp45ihf800abeswbecjwc4qt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-03-22-woowa-index" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/22/2021-03-22-woowa-index/" class="article-date">
+  <time datetime="2021-03-21T15:54:00.000Z" itemprop="datePublished">2021-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/22/2021-03-22-woowa-index/">INDEX</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>INDEX - 임의의 규칙대로 부여된 임의의 대상을 가리키는 무언가.</p>
+<p>SEQ 번호 같은 개념.</p>
+<h3 id="Clusted-vs-Non-Clustered"><a href="#Clusted-vs-Non-Clustered" class="headerlink" title="Clusted vs Non-Clustered"></a>Clusted vs Non-Clustered</h3><p>Cluster : 군집</p>
+<p>Clustered : 군집화</p>
+<p>Clustered Index : 군집화된 인덱스.</p>
+<p>인덱스와 데이터가 아주 밀접하게 군집되어 있다.</p>
+<p>Clustered Index 의 특징<br>이미 정렬되어 있는 데이터들임</p>
+<p>검색할 때는 성능이 좋다.</p>
+<p>새로운 데이터들이 들어올 때에는 다른 데이터들을 다 밀거나 넣거나 하기 때문에 추가, 수정하기가 성능이 안좋다.</p>
+<p>Clustered Index 는 데이터와 친밀, 정렬되어 있음. 그로인해 발생하는 특징.</p>
+<p>Non-Clustered Index 는 인덱스 번호가 데이터를 가지고 있는게 아니고 주소번지를 가지고 있음.</p>
+<p>연결리스트 느낌이랄까..</p>
+<p>약한 참조 관계다.</p>
+<p>보통 인덱스와 실제 데이터 간 주소를 해시테이블로 해서 빠르게 찾을 수 있도록 한다.</p>
+<p>PK를 index 처리를 한다면 그것은 보통 clustered index 방식이고 그렇기 때문에 auto_increment 방식을 사용할 수 있음. 만약에 그 중간에 숫자를 넣으려고하면 헬.. PK는 계속 숫자가 증가되기 때문에 괜찮음.</p>
+<p>Cardinaltiy -&gt; 인덱스를 평가 요소. 인덱스로 쓰는 값이 중복된다면 카디널리티가 낮아지고. 유일한 값들이라면 카디널리키가 높아진다.</p>
+<p>카디널리티가 높을 수록 인덱스로 사용하는 것을 고려해봐야 한다.</p>
+<p>email을 PK로 가져갈 경우 DB 성능에 이슈가 있을수도 있다.</p>
+<p>PK는 보통 clustered index 방식.<br>정렬를 해줘야함.<br>이메일은 새로운 데이터가 들어오면 다시 다 재정렬 해야함.<br>숫자로 되어있으면 auto_increment.</p>
+<p>PK 가 아닌 값으로 검색.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/22/2021-03-22-woowa-index/" data-id="ckp45ihf900aeeswb9chybkxn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-03-22-woowah-functional-programming" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/22/2021-03-22-woowah-functional-programming/" class="article-date">
+  <time datetime="2021-03-21T15:54:00.000Z" itemprop="datePublished">2021-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/22/2021-03-22-woowah-functional-programming/">함수형 프로그래밍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>함수형 프로그래밍의 요소들.</p>
+<ol>
+<li><p>고계 함수.</p>
+</li>
+<li><p>일급 함수.</p>
+</li>
+</ol>
+<p>자기 자신만을 부르는 함수를 꼬리 재귀라고 한다.</p>
+<p>멱등성 -&gt; 같은 입력에 대해서 계속 동일한 출력이 나온다.</p>
+<p>기존의 자바 코드는 선언형보다는 명령형.<br>즉 코드를 어떻게 할거냐가 포커스고, 무엇을 할거냐가 아니다.</p>
+<p>그래서 가독성도 함수형 프로그래밍 언어가 높다. 무엇을 할거냐를 보이기 때문에.</p>
+<p>소프트웨어 트랜잭셔널 메모리 -&gt; 멀티 쓰레드 환경에서 일단 락을 거는게 기본 생각이였는데. 락을 걸지 말고 그냥 처리하다가 오류가 발생하면 롤백하자. 이런느낌</p>
+<p>패턴매칭??</p>
+<p>LISP 언어</p>
+<p>HASKELL 한번 공부해보고 싶다.</p>
+<p>지연 평가 - f(3 + 5) 라는 수식이 있을 때 자바의 경우 일반적으로 f(8) 의 결과값을 바로 들고 가지만 지연 평가라는 것은 저 수식 자체 f(3 + 5) 라는 것을 얼마나 들고 가느냐를 의미한다고 함.</p>
+<p>모나드??</p>
+<p>모노이드 - 항등원을 갖고 결합법칙을 따르는 이항연산을 갖춘 집합.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/22/2021-03-22-woowah-functional-programming/" data-id="ckp45ihf900ageswbfxoc1p8d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-03-22-woowa-jpa-jdbc" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/22/2021-03-22-woowa-jpa-jdbc/" class="article-date">
+  <time datetime="2021-03-21T15:54:00.000Z" itemprop="datePublished">2021-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/22/2021-03-22-woowa-jpa-jdbc/">DTO vs VO</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>DTO = Data Transfer Object.</p>
+<p>레이어 간 데이터를 전달하는 객체</p>
+<p>로직을 가지지 않은 순수한 데이터 객체.<br>getter/setter 메서드만을 가진다…?</p>
+<p>VO</p>
+<p>값 그 자체를 표현하는 객체.</p>
+<p>서로 다른 이름을 가진 VO의 인스턴스가 모든 속성 값이 같다면 같은 객체이다.<br>(equals(), hashcode() 오버라이딩)</p>
+<p>객체의 불변성을 보장한다.</p>
+<p>로직을 포함할 수 있다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/22/2021-03-22-woowa-jpa-jdbc/" data-id="ckp45ihfa00ajeswb4wbx48kz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-03-22-woowa-tls" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/22/2021-03-22-woowa-tls/" class="article-date">
+  <time datetime="2021-03-21T15:54:00.000Z" itemprop="datePublished">2021-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/22/2021-03-22-woowa-tls/">TLS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>TLS 기술의 탄생 배경.</p>
+<p>특정 호스트에 접근하려고 할때 거쳐야하는 곳들이 많다.</p>
+<p>즉 거쳐가는 곳들에서 내가 전송하는 데이터가 그 중간에 있는 DCE 장비들이 확인할 수 있다는 점이 문제다.</p>
+<p>예를 들면 서버에서 전달하는 데이터가 그 사이에있는 라우터나, 스위치에서 해당 데이터를 볼 수 있다.</p>
+<p>두번째는 목적지로 설정한 곳이 정말 내가 생각한 목적지가 아닐 수도 있다.</p>
+<p>네이버를 생각하고 데이터를 보냈을 때 다른 곳에서 내가 네이버다 하고 할 수도 있다.</p>
+<p>TLS - Transport Layer Security 전송 계층 보안.</p>
+<p>응용 계층의 데이터들을 하위 레이어로 내릴 때 암호화 시켜주고 반대의 경우 복호화를 해준다.</p>
+<p>SSL 기술은 회사에서 발표한 기술. 넷스케이스에서 말한 기술이다. 독점의 소지도 있기 때문에 IETF 라는 기구에서 TLS 라고 재발표를 함.</p>
+<p>TLS 1.0 = 1999<br>~<br>TLS 1.3 = 2018</p>
+<p>SSL, TLS 둘을 같게끔 생각하는 곳이 많는데 엄연히는 다르며 SSL 보다는 TLS 라고 생각하는 것이 더 표준적이다.</p>
+<p>TLS 의 기능 3가지</p>
+<ol>
+<li><p>암호화<br>정해지 피어만 메시지의 내용을 확인할 수 있도록 암/복호화 기능을 제공.</p>
+</li>
+<li><p>인증<br>메시지 발신자의 신원을 보장. how??<br>신원을 보증해주는 인증서가 존재. 특정 업체에서 보증을 해줌. 은행과 같은 개념.</p>
+</li>
+</ol>
+<p>CA 인증기관이 인증을 함.</p>
+<ol start="3">
+<li>무결성</li>
+</ol>
+<p>TLS는 응용 계층과 전송 계층 사이에서 응용 계층 데이터의 암/복호화를 책임진다.</p>
+<p>상대의 신원 보증, 메시지의 무결성을 보장한다.</p>
+<p>HTTPS의 기반 기술이다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/22/2021-03-22-woowa-tls/" data-id="ckp45ihfc00aqeswb179u6qhx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-03-21-woowah-springboot" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/21/2021-03-21-woowah-springboot/" class="article-date">
+  <time datetime="2021-03-20T15:54:00.000Z" itemprop="datePublished">2021-03-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/21/2021-03-21-woowah-springboot/">우아한 스프링 부트</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>packaging - jar, war<br>war 는 자바 웹어플리케이션 구조로 구축된 형태. WEB-INF 디렉토리를 가지고 있고 등등..</p>
+<p>jar - java archive</p>
+<p>war - web application archive</p>
+<p>jar, war 차이점 찾아보기.</p>
+<p>spring boot 가 제공하는 첫번째 기능<br>-&gt; 프로젝트를 생성하기가 간편하다. dispatcher-servlet 설정 등을 자동설정 해준다.</p>
+<p>두번째 기능<br>-&gt; 버전관리.<br>빌드툴(메이븐, 그래들) 에서 특정 프로젝트를 가져 올 때 필요한 정보는 groupId, artifactId, version 인데 스프링부트에서 의존성 관리부분을 보면 버전 정보가 없는 것들이 있다. 이거는 메이븐의 경우 parent 에서 의존성을 미리 관리해주는 의존성들이 있는데 이것들은 버전들이 이미 관리되고 있기 떄문에 버전을 명시하지 않아도 된다.</p>
+<p>가장 호환이 잘되는 버전을 찾는것 자체가 일이였음. 그걸 스프링 부트에서 관리해주기 때문에 하지 않아도 된다.</p>
+<p>mvnrepository.com - maven 중앙저장소에 있는 의존성들을 검색하고 다운받을 수 있는 사이트.</p>
+<p>스프링부트 프로젝트를 띄우는 방법.</p>
+<ol>
+<li><p>ide를 활용해서 main() 함수 실행하기.</p>
+</li>
+<li><p>mvn spring-boot:run 명령어 실행.</p>
+</li>
+</ol>
+<h4 id="mvnw-파일은"><a href="#mvnw-파일은" class="headerlink" title="./mvnw 파일은??"></a>./mvnw 파일은??</h4><p>./mvnw 이 파일이 mvn 이 설치되어있지 않아도 mvn 을 사용할 수 있도록 하는 스크립크가 작성되어 있음.</p>
+<ol start="3">
+<li>서버에서 어플리케이션을 패키징한 후 해당 파일을 실행시키는 방법.(mvn package)</li>
+</ol>
+<p>mvn package 하면 /target 디렉토리에 jar 파일로 하나로 뭉쳐진다.</p>
+<p>의존성, 라이브러리, 소스코드를 모두 포함해서 jar 파일을 패키징 한다.</p>
+<p>기본적으로 이렇게 패키징할 때 자바에서 제안하는 표준은 없고 스프링 부트가 자체적으로 만든것.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/21/2021-03-21-woowah-springboot/" data-id="ckp45ihf700a6eswbd7rshmn7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-03-18-why-use-mapper" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/18/2021-03-18-why-use-mapper/" class="article-date">
+  <time datetime="2021-03-17T15:54:00.000Z" itemprop="datePublished">2021-03-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/18/2021-03-18-why-use-mapper/">Mapper 클래스를 따로 두는 이유</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>정적  팩토리 메서드 패턴을 활용할 때 나는 일반적으로 도메인 클래스 안에 다가 넣어두었다.</p>
+<p>그렇게 하면 코드를 읽을 때 훨씬 심플하기 때문이였다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Response.from(Something something) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Something 으로 부터의 Response 객체 라고 확 읽혀진다.</p>
+<p>근데 문제점이 있었으니.</p>
+<p>기본적으로 static으로 선언해야 하기 때문에 제네릭 문법을 적용하기가 어렵다.</p>
+<p>동적타입 추론을 하는 시점은 인스턴스가 생성되고 나서일 텐데 static은 애초에 그 영역에 있지 않음으로 타입 추론이 불가능하다.</p>
+<p>그래서 mapper 클래스를 하나 만들고 이를 싱글톤으로 구현한다.</p>
+<p>그러면 한개의 인스턴스만 생성되며 method 영역에 저장되는 게아니고 인스턴스로써 heap 메모리에 저장되기 때문에 타입 추론이 가능해진다.</p>
+<p>물론 한개의 인스턴스에 하나의 타입만 생성이 가능한건 어쩔수 없겠지.</p>
+<p>여하튼 으렇게하면 정적 팩토리 메서드 패턴에 동적 타입을 적용할 수 있다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/18/2021-03-18-why-use-mapper/" data-id="ckp45ihf800a9eswb4jiwfqsv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-03-16-process-thread" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/16/2021-03-16-process-thread/" class="article-date">
+  <time datetime="2021-03-15T15:54:00.000Z" itemprop="datePublished">2021-03-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/16/2021-03-16-process-thread/">Process vs Thread</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Program.<br>명령어, 코드 및 정적인 데이터의 묶음</p>
+<p>Process<br>실행 중인 Program<br>운영체제로부터 시스템 자원을 할당 받는 작업의 단위.</p>
+<p>프로세스의 4개의 메모리 영역<br>stack -&gt; 매개변수, 지역변수<br>heap -&gt; 동적으로 할당되는 메모리<br>data -&gt; 정적 변수, 상수 (jvm에서 method 영역)<br>text -&gt; 프로그램의 코드</p>
+<p>운영체제가 Process를 관리하기 위해 PCB 라는 것을 정해뒀음.</p>
+<p>PCB (Process Control Block)<br>각 프로세스는 운영체제에서 PCB로 표현.<br>PID : 프로세스 식별자.<br>프로세스 상태 : new, ready, running, waiting, halted<br>프로그램 카운터 : 다음 실행할 명령어의 주소.<br>스케줄리 정보 : 우선순위 등.</p>
+<p>쓰레드<br>프로세스 내에서 실행되는 흐름의 단위.<br>CPU 이용의 기본 단위.</p>
+<p>쓰레드는 한 프로세스 내에서 여러개 생성 될 수 있으며<br>한 프로세스의 Text, Data, Heap 영역의 자료를 공유한다.<br>그러나 각 Thread 별로 stack 영역은 별도로 가진다.</p>
+<p>Multi Thread vs Multi Process</p>
+<p>Multi Thread<br>프로세스의 자원을 공유<br>향상된 응답성<br>Context Switching 비용이 적음.<br>자원을 공유하는 만큼 충돌을 주의 (Thread-safe하게) -&gt; 임계영역이 됨.</p>
+<p>Multi Process<br>하나의 작업을 여러 개의 프로세스가 처리<br>프로세스간 통신 (IPC : Interprocess communication)<br>Context switching 비용이 큼<br>자식 프로세스 중 하나가 문제가 생겨도 다른 프로세스에 영향이 없음.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/16/2021-03-16-process-thread/" data-id="ckp45ihf4009zeswb82z1br5t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-03-16-docker-elk-stack" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/16/2021-03-16-docker-elk-stack/" class="article-date">
+  <time datetime="2021-03-15T15:54:00.000Z" itemprop="datePublished">2021-03-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/16/2021-03-16-docker-elk-stack/">도커기반 ELK Stack 구축</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>도커 활용하여 elasticsearch 설치</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 9200:9200 -p 9300:9300 -it -h elasticsearch --name elasticsearch elasticsearch:7.9.3</span><br></pre></td></tr></table></figure>
+
+<p>버전 명시를 안하니까 docker hub 에서 이미지가 pull 이 안되었다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search elasticsearch</span><br></pre></td></tr></table></figure>
+
+<p>위 키워드로 공식 이미지 명을 찾은 다음.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;registry.hub.docker.com&#x2F;v1&#x2F;repositories&#x2F;elasticsearch&#x2F;tags</span><br></pre></td></tr></table></figure>
+<p>위 주소 접속하여 가장 최신 버전의 태그를 pull 받았다.</p>
+<p>위 주소에서 elasticsearch 부분만 원하는 이미지 명으로 변경하면 다른 이미지들도 태그 확인이 가능하다.</p>
+<hr>
+<p>elk 를 다 구축해둔 깃 저장소가 있음.<br>이거를 클론해서 설정만 좀 변경하고.<br>docker-compose 로 실행해보겠음.</p>
+<p><a target="_blank" rel="noopener" href="https://judo0179.tistory.com/60">https://judo0179.tistory.com/60</a></p>
+<p>요기 나온대로 따라서 소스 수정하고</p>
+<p>docker-compose 로 실행.</p>
+<p>그러면 해당하는 이미지들을 pull 받고 (FROM 키워드)<br>docker-compose 설정처럼 각 이미지들을 활용해 컨테이너를 띄운다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/16/2021-03-16-docker-elk-stack/" data-id="ckp45ihf600a1eswb7mtcf0uf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

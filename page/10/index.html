@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/10/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2020-09-15-java-static-factory-method" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/15/2020-09-15-java-static-factory-method/" class="article-date">
+  <time datetime="2020-09-14T23:47:54.000Z" itemprop="datePublished">2020-09-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/15/2020-09-15-java-static-factory-method/">Static Factory Method</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Static-Factory-Method"><a href="#Static-Factory-Method" class="headerlink" title="Static Factory Method"></a>Static Factory Method</h3><p>We have often used the constructor when You need to create the object. because This function is basically offered<br>a lot of the programming languages like Java, C++, JS, python and so on. But actually, It is only a basic technique not good thing.<br>We could get a lot of advantage if use the static factory method techniques not the constructor.</p>
+<h3 id="The-advantages"><a href="#The-advantages" class="headerlink" title="The advantages"></a>The advantages</h3><h4 id="1-Readability-You-could-give-the-names-for-these-functions"><a href="#1-Readability-You-could-give-the-names-for-these-functions" class="headerlink" title="1. Readability ( You could give the names for these functions. )"></a>1. Readability ( You could give the names for these functions. )</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Member</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String type;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Member</span><span class="params">(String name, String type)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.type = type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Member <span class="title">ofGold</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Member(name, <span class="string">&quot;GOLD&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Member <span class="title">ofPlatinum</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Member(name, <span class="string">&quot;PLATINUM&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/* We want to create the member object who has the each another level. */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/* The case using the constructor */</span></span><br><span class="line">        Member gold = <span class="keyword">new</span> Member(<span class="string">&quot;John&quot;</span>, <span class="string">&quot;GOLD&quot;</span>);</span><br><span class="line">        Member platinum = <span class="keyword">new</span> Member(<span class="string">&quot;John&quot;</span>, <span class="string">&quot;PLATINUM&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* The case using the static factory method */</span></span><br><span class="line">        Member gold = Member.ofGold(<span class="string">&quot;John&quot;</span>);</span><br><span class="line">        Member platinum = Member.ofPlatinum(<span class="string">&quot;John&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>If a parameters of Member are more than now, the way using constructor would be difficult to read on the source code.<br>And If the most of parameter types are number then It’s also too hard to read those.  </p>
+<h4 id="2-Immutability-You-could-create-the-java-object-on-singleton-pattern"><a href="#2-Immutability-You-could-create-the-java-object-on-singleton-pattern" class="headerlink" title="2. Immutability. ( You could create the java object on singleton pattern. )"></a>2. Immutability. ( You could create the java object on singleton pattern. )</h4><p>The constructor should create the new one whenever you use that although you don’t need it.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">God</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Member member;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Member <span class="title">valueOf</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(member == <span class="keyword">null</span>) &#123;</span><br><span class="line">            member = <span class="keyword">new</span> Member();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.member.setName(name);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.member;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Member hera = God.valueOf(<span class="string">&quot;Hera&quot;</span>);</span><br><span class="line">        Member apollo = God.valueOf(<span class="string">&quot;Apollo&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>A constructor always use with ‘new’ keyword so It’ too hard to create the object as the singleton type when you use a constructor way.<br>We could achieve the immutability attribute like the above way whenever we want to do that.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/15/2020-09-15-java-static-factory-method/" data-id="ckp45ihe00057eswb199ibkh3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-09-07-dockerfile" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/09/2020-09-07-dockerfile/" class="article-date">
+  <time datetime="2020-09-08T15:00:00.000Z" itemprop="datePublished">2020-09-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/09/2020-09-07-dockerfile/">Dockerfile</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="docker-run-oracle-example"><a href="#docker-run-oracle-example" class="headerlink" title="docker run oracle example"></a>docker run oracle example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 59160:22 -p 59161:1521 jaspeen&#x2F;oracle-xe-11g</span><br></pre></td></tr></table></figure>
+
+<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><h3 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h3><p>This keyword is used to execute some scripts when you start docker container. That is this keword related to the command ‘docker run’, ‘docker start’<br>It can use only one time in Dockerfile.</p>
+<h3 id="FROM-IMAGENAME-IMAGETAG"><a href="#FROM-IMAGENAME-IMAGETAG" class="headerlink" title="FROM [IMAGENAME:IMAGETAG]"></a>FROM [IMAGENAME:IMAGETAG]</h3><p>it could define the image name and image tag. If you use this keyword then the dockerfile would import the image written with this.<br>‘lastest’ would be default value if you don’t specify image tag. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FROM ubuntu:14.04</span><br></pre></td></tr></table></figure>
+
+<h3 id="BUILD-CONTEXT"><a href="#BUILD-CONTEXT" class="headerlink" title="BUILD CONTEXT"></a>BUILD CONTEXT</h3><p>It’s usually a directory, which have files is needed when you do docker build.</p>
+<h3 id="ENV"><a href="#ENV" class="headerlink" title="ENV"></a>ENV</h3><p>You can set the environment variables using this keyword. and you can also get this like ‘${ENV_NAME}’ or $ENV_NAME</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* SET *&#x2F;</span><br><span class="line">ENV SCOUTER_SERVER&#x3D;$scouter_ip</span><br><span class="line"></span><br><span class="line">&#x2F;* GET *&#x2F;</span><br><span class="line">#&#123;SCOUNTER_SERVER&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="VOLUME"><a href="#VOLUME" class="headerlink" title="VOLUME"></a>VOLUME</h3><p>This keyword can set the shareable directory with a host when you create container. and It could be array type.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VOLUME &#x2F;home&#x2F;volume</span><br></pre></td></tr></table></figure>
+
+<h3 id="ARG"><a href="#ARG" class="headerlink" title="ARG"></a>ARG</h3><p>It’s similar with the parameters of programming languages. You can access some value is came from outside of docker container. it should be set with ‘–build-arg’ option when you build dockerfile. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build --build-arg my_arg&#x3D;&#x2F;home</span><br></pre></td></tr></table></figure>
+
+<h3 id="USER"><a href="#USER" class="headerlink" title="USER"></a>USER</h3><h3 id="COPY"><a href="#COPY" class="headerlink" title="COPY"></a>COPY</h3><h3 id="AD"><a href="#AD" class="headerlink" title="AD"></a>AD</h3><h3 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/09/2020-09-07-dockerfile/" data-id="ckp45ihdz0052eswbaf2e3k11" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-09-09-oracle-query" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/09/2020-09-09-oracle-query/" class="article-date">
+  <time datetime="2020-09-08T15:00:00.000Z" itemprop="datePublished">2020-09-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/database/">database</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/09/2020-09-09-oracle-query/">The summary of the query on oracle</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h3><p>It would resort when your select queries are merged.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) &#x3D; 1 AND DCI_TKT_CAR &#x3D; &#39;LJ&#39;</span><br><span class="line">UNION</span><br><span class="line">SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) !&#x3D; 1 AND DCI_TKT_CAR &#x3D; &#39;LJ&#39; AND DCI_CLASS_DESC &#x3D; &#39;할인석&#39;</span><br><span class="line">UNION</span><br><span class="line">SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) !&#x3D; 1 AND DCI_TKT_CAR &#x3D; &#39;LJ&#39; AND DCI_CLASS_DESC &#x3D; &#39;특가석&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="UNION-ALL"><a href="#UNION-ALL" class="headerlink" title="UNION ALL"></a>UNION ALL</h3><p>It should keep the sorting status each the result of queries.</p>
+<p>And You should remember just one thing, which you couldn’t use the ‘order by’ keyword for each select queries when<br>you want to use the ‘union’ or ‘union all’ keyword.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) &#x3D; 1 AND DCI_TKT_CAR &#x3D; &#39;LJ&#39;</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) !&#x3D; 1 AND DCI_TKT_CAR &#x3D; &#39;LJ&#39; AND DCI_CLASS_DESC &#x3D; &#39;할인석&#39;</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) !&#x3D; 1 AND DCI_TKT_CAR &#x3D; &#39;LJ&#39; AND DCI_CLASS_DESC &#x3D; &#39;특가석&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="LENGTH-FIELD-NAME"><a href="#LENGTH-FIELD-NAME" class="headerlink" title="LENGTH([FIELD_NAME])"></a>LENGTH([FIELD_NAME])</h3><p>Having you wanted to know the length of some field, You can use this.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    LENGTH(&#39;A&#39;) &#x3D; 1         &#x2F;&#x2F; It would be true. </span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line"></span><br><span class="line">### COUNT(*) AS CNT</span><br><span class="line">&#96;&#96;&#96;java</span><br><span class="line"></span><br><span class="line">DBResultSet rset &#x3D; db.executeQuery(sql.toString(), new Object[] &#123; prId &#125;);</span><br><span class="line"></span><br><span class="line">if(rset.next())&#123;</span><br><span class="line">    return rset.getInt(&quot;CNT&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="INSTR"><a href="#INSTR" class="headerlink" title="INSTR()"></a>INSTR()</h3><p>오라클에서</p>
+<p>내가 원하는 컬럼의 값에 내가 원하는 구문이 포함되어 있는 여부를 확인할 때 사용한다.<br>그냥 포함되어 있는 여부를 확인하고 싶다면 ‘LIKE’ 함수를 사용하면 되지만,<br>만약 포함되어 있고, 포함되어 있는 위치가 어디인지 알고 싶다면?</p>
+<p>그럴때 사용하는 함수가 ‘INSTR()’ 함수이다.<br>사용하는 방법은 생각외로 아주 간단하다<br>INSTR(‘비교할 대상’, ‘비교하고자하는 값’, 비교를 시작할 위치, 검색된 결과의 순번)</p>
+<p>SELECT INSTR(‘TEST SAMPLE CODE’, ‘E’, 1, 1) AS INSTR_RS FROM DUAL</p>
+<ul>
+<li>‘TEST SAMPLE CODE’라는 구분에서 ‘E’를 찾는데 1부터 시작을 해서 1번째 찾아지는 ‘E’의 위치는 어디인가?</li>
+</ul>
+<h3 id="TO-CHAR-SYSDATE-‘D’"><a href="#TO-CHAR-SYSDATE-‘D’" class="headerlink" title="TO_CHAR(SYSDATE, ‘D’)"></a>TO_CHAR(SYSDATE, ‘D’)</h3><p>D 만 주면 요일이 번호 순으로 나온다. 일 -&gt; 1, 월 -&gt; 2 …</p>
+<h3 id="PIVOT"><a href="#PIVOT" class="headerlink" title="PIVOT"></a>PIVOT</h3><h3 id="PIVOT-XML"><a href="#PIVOT-XML" class="headerlink" title="PIVOT XML"></a>PIVOT XML</h3><h3 id="AS-“”"><a href="#AS-“”" class="headerlink" title="AS “”"></a>AS “”</h3><h3 id="WITH"><a href="#WITH" class="headerlink" title="WITH"></a>WITH</h3><h3 id="Dynamic-Query-Procedure"><a href="#Dynamic-Query-Procedure" class="headerlink" title="Dynamic Query. (Procedure)"></a>Dynamic Query. (Procedure)</h3><h3 id="PL-SQL"><a href="#PL-SQL" class="headerlink" title="PL/SQL"></a>PL/SQL</h3><p>PL/SQL (Procedural Language extension to SQL)</p>
+<ul>
+<li><p>SQL을 확장한 절차적 언어(Procedural Language)이다. </p>
+</li>
+<li><p>관계형 데이터베이스에서 사용되는 Oracle의 표준 데이터 엑세스 언어로, 프로시저 생성자를 SQL과 완벽하게 통합한다.</p>
+<p>블록 단위의 실행을 제공한다. 이를 위해 BEGIN과 END;를 사용한다. 그리고 마지막 라인에 /를 입력하면 해당 블록이 실행된다.</p>
+<ul>
+<li><p>변수, 상수 등을 선언하여 SQL과 절차형 언어에서 사용</p>
+</li>
+<li><p>변수의 선언은 DECLARE절에서만 가능하다. 그리고 BEGIN 섹션에서 새 값이 할당될 수 있다.</p>
+</li>
+<li><p>IF문을 사용하여 조건에 따라 문장들을 분기 가능</p>
+</li>
+<li><p>LOOP문을 사용하여 일련의 문장을 반복 가능</p>
+</li>
+<li><p>커서를 사용하여 여러 행을 검색 및 처리</p>
+</li>
+<li><p>[ PL/SQL에서 사용 가능한 SQL은 Query, DML, TCL이다. ]</p>
+<p>DDL (CREATE, DROP, ALTER, TRUNCATE …), DCL (GRANT, REVOKE) 명령어는 동적 SQL을 이용할 때만 사용 가능하다.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>ECLARE (선언부)</p>
+<p>PL/SQL에서 사용하는 모든 변수나 상수를 선언하는 부분으로서 DECLARE로 시작</p>
+<p>=&gt; 변수/상수/커서 등 을 선언 </p>
+<p>옵션</p>
+<p> BEGIN (실행부)<br> 절차적 형식으로 SQL문을 실행할수있도록 절차적 언어의 요소인 제어문, 반복문, 함수 정의 등 로직을 기술할수있는 부분이며 BEGIN으로 시작</p>
+<p>필수</p>
+<p> EXCEPTION (예외 처리부)</p>
+<p>PL/SQL문이 실행되는 중에 에러가 발생할수있는데 이를 예외 사항이라고 한다.</p>
+<p>이러한 예외 사항이 발생했을때 이를 해결하기 위한 문장을 기술할수있는 부분 </p>
+<p>옵션</p>
+<p> END (실행문 종료)</p>
+<p>필수</p>
+<p>– 프로시저 output 매개변수 사용하기</p>
+<pre><code>=&gt; 프로시저를 실행하여 특정결과값을 out변수에 저장하여 보냄. (프로시저에서 실행환경으로 값을 전달(반환)) </code></pre>
+<p>– out있는 프로시저 작성방법</p>
+<pre><code> CREATE PROCEDURE 프로시저이름(
+
+ 변수이름 IN 데이터타입, 변수이름 IN 데이터타입, .... --in 생략가능
+
+변수이름 OUT 데이터타입, 변수이름 OUT 데이터타입 ...----프로시저를 호출하는곳으로 값을 보낸다.
+
+
+
+ )
+
+ IS
+
+ [
+
+ 변수이름 데이터타입;  -- 프로시저내에서 사용할 변수선언
+
+ 변수이름 데이터타입;
+
+ 변수이름 데이터타입;
+
+  ..
+
+  ]
+
+  BEGIN
+
+   기능 구현;
+
+  END;</code></pre>
+<h3 id="EXEC-오류"><a href="#EXEC-오류" class="headerlink" title="EXEC 오류"></a>EXEC 오류</h3><p>SQL PLUS에서는 EXEC SCOTT.PROC_TEST;</p>
+<p>를 수행할 시 에러가 뜨지 않고 정상적으로 수행된다</p>
+<p>이게 왜 이러냐면 </p>
+<p>EXEC는 SQL PLUS에서만 사용 가능한 명령어이기 때문에</p>
+<p>DBeaver 같은 툴에서 쓰려고 하면 에러가 뜨는 것이다</p>
+<h3 id="DBMS-OUTPUT-Put-line"><a href="#DBMS-OUTPUT-Put-line" class="headerlink" title="DBMS_OUTPUT.Put_line"></a>DBMS_OUTPUT.Put_line</h3><h3 id="ALTER-TABLE-테이블-명-MODIFY-필드명-VARCHAR2-4000"><a href="#ALTER-TABLE-테이블-명-MODIFY-필드명-VARCHAR2-4000" class="headerlink" title="ALTER TABLE 테이블 명 MODIFY(필드명 VARCHAR2(4000));"></a>ALTER TABLE 테이블 명 MODIFY(필드명 VARCHAR2(4000));</h3><h3 id="CONCAT-SUBSTR-DCI-CLASS-1-1-LPAD-SUBSTR-DCI-CLASS-2-2-‘0’"><a href="#CONCAT-SUBSTR-DCI-CLASS-1-1-LPAD-SUBSTR-DCI-CLASS-2-2-‘0’" class="headerlink" title="CONCAT(SUBSTR(DCI_CLASS, 1, 1), LPAD(SUBSTR(DCI_CLASS, 2), 2, ‘0’))"></a>CONCAT(SUBSTR(DCI_CLASS, 1, 1), LPAD(SUBSTR(DCI_CLASS, 2), 2, ‘0’))</h3><h3 id="SIGN-A-B"><a href="#SIGN-A-B" class="headerlink" title="SIGN(A - B)"></a>SIGN(A - B)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-1 (A가 B보다 작은 경우) -&gt; </span><br><span class="line">0  (A와 B가 같은 경우) -&gt;</span><br><span class="line">1  (A가 B보다 큰 경우) -&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT</span><br><span class="line">    F.PF_LAST_NAME,</span><br><span class="line">    F.PF_FIRST_NAME,</span><br><span class="line">    DECODE(F.PF_PAX_TYPE, &#39;ADT&#39;, &#39;성인&#39;, &#39;CHD&#39;, &#39;소아&#39;, &#39;INF&#39;, &#39;유아&#39;, &#39;&#39;) PF_PAX_TYPE,</span><br><span class="line">    TO_CHAR(F.PF_FARE, &#39;FM9,999,999&#39;) PF_FARE,</span><br><span class="line">    TO_CHAR(F.PF_TAX, &#39;FM9,999,999&#39;) PF_TAX,</span><br><span class="line">    TO_CHAR(F.PF_TASF, &#39;FM9,999,999&#39;) PF_TASF,</span><br><span class="line">    TO_CHAR(F.PF_AMOUNT, &#39;FM9,999,999&#39;) PF_AMOUNT,</span><br><span class="line">    DECODE(TO_CHAR(R.PR_TKT_DLVRY_TIME, &#39;yyyymmdd&#39;), TO_CHAR(SYSDATE, &#39;yyyymmdd&#39;), &#39;0&#39;, DECODE(SIGN(F.PF_FARE - 1000), -1, &#39;0&#39;, 0, &#39;1,000&#39;, 1, &#39;1,000&#39;)) TASF_FEE</span><br><span class="line">FROM</span><br><span class="line">    PASSENGER_FARE_RECORD F, PASSENGER_RECORD R</span><br><span class="line">WHERE</span><br><span class="line">    F.PF_PR_ID &#x3D; &#39;500020783&#39; AND</span><br><span class="line">    F.PF_PR_ID &#x3D; R.PR_ID</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="SYSDATE-1"><a href="#SYSDATE-1" class="headerlink" title="SYSDATE - 1"></a>SYSDATE - 1</h3><p>어제를 의미한다</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/09/2020-09-09-oracle-query/" data-id="ckp45ihe1005aeswb99pk87bg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-09-03-java-argument" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/03/2020-09-03-java-argument/" class="article-date">
+  <time datetime="2020-09-03T01:00:00.000Z" itemprop="datePublished">2020-09-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/03/2020-09-03-java-argument/">Jvm options</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h2><h3 id="Jvm-argument"><a href="#Jvm-argument" class="headerlink" title="Jvm argument"></a>Jvm argument</h3><p>Jvm arguments are begun with ‘-D’.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar -Dfoo heumsi-springboot.jar</span><br></pre></td></tr></table></figure>
+
+<h3 id="Application-argument"><a href="#Application-argument" class="headerlink" title="Application argument"></a>Application argument</h3><p>Application arguments are begun with ‘–’.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar --bar heumsi-sprinboot.jar</span><br></pre></td></tr></table></figure>
+
+<h2 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h2><h3 id="application-properties"><a href="#application-properties" class="headerlink" title="application.properties"></a>application.properties</h3><p>the arguments can be stored at ‘application.properties’ file as key-value type. and It can is approached using @Value in Java code.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// set value in application.properties</span></span><br><span class="line">heumsi.name = heumsi</span><br><span class="line"></span><br><span class="line"><span class="comment">// get value in *.java</span></span><br><span class="line">@Value(&quot;$&#123;heumsi.name&#125;&quot;)</span><br><span class="line">private String name;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h3><p>You can approach the arguments without ‘.properties’ file using Environment object.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">Environment environment;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> String name = environment.getProperty(<span class="string">&quot;heumsi.name&quot;</span>); </span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/03/2020-09-03-java-argument/" data-id="ckp45ihe00055eswb3vb5eeqp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-08-26-css-transition" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/26/2020-08-26-css-transition/" class="article-date">
+  <time datetime="2020-08-26T01:00:00.000Z" itemprop="datePublished">2020-08-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/css/">css</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/26/2020-08-26-css-transition/">CSS Transition attribute</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-the-properties-of-the-transition-attribute"><a href="#1-the-properties-of-the-transition-attribute" class="headerlink" title="1. the properties of the transition attribute."></a>1. the properties of the transition attribute.</h3><h4 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h4><p>whenever you put down your cursor on this object, It would be larger 3 times than now.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-class">.keyboard</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">-webkit-transition</span>: width <span class="number">1s</span>;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-class">.keyboard</span><span class="selector-pseudo">:hover</span> &#123; </span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>We can control multiple attributes of the transition at a once. It’s width and height in this example.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-id">#resize</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">-webkit-transition</span>: width <span class="number">1s</span>, height <span class="number">3s</span>;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">1s</span>, height <span class="number">3s</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#resize</span><span class="selector-pseudo">:hover</span> &#123; </span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>; </span><br><span class="line">    <span class="attribute">height</span>: <span class="number">500px</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="transition-timing-function"><a href="#transition-timing-function" class="headerlink" title="transition-timing-function"></a>transition-timing-function</h4><p>It’s for controling the velocity per times when it’s strated or finished.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. linear : 전환(transition) 효과가 처음부터 끝까지 일정한 속도로 진행됩니다.</span><br><span class="line">2. ease : 기본값으로, 전환(transition) 효과가 천천히 시작되어, 그다음에는 빨라지고, 마지막에는 다시 느려집니다.</span><br><span class="line">3. ease-in : 전환(transition) 효과가 천천히 시작됩니다.</span><br><span class="line">4. ease-out : 전환(transition) 효과가 천천히 끝납니다.</span><br><span class="line">5. ease-in-out : 전환(transition) 효과가 천천히 시작되어, 천천히 끝납니다.</span><br><span class="line">6. cubic-bezier(n,n,n,n) : 전환(transition) 효과가 사용자가 정의한 cubic-bezier 함수에 따라 진행됩니다.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">-webkit-transition</span>: width <span class="number">1s</span>;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">1s</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#div_01</span> &#123;</span><br><span class="line">    <span class="attribute">-webkit-transition-timing-function</span>: linear;</span><br><span class="line">    <span class="attribute">transition-timing-function</span>: linear;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#div_05</span> &#123;</span><br><span class="line">    <span class="attribute">-webkit-transition-timing-function</span>: ease-in-out;</span><br><span class="line">    <span class="attribute">transition-timing-function</span>: ease-in-out;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123; </span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="transition-delay"><a href="#transition-delay" class="headerlink" title="transition-delay"></a>transition-delay</h4><p>Having you set this attribute, It should be started after this delay time.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#resize</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">-webkit-transition</span>: width <span class="number">1s</span>, height <span class="number">2s</span>;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">1s</span>, height <span class="number">2s</span>;</span><br><span class="line">    <span class="attribute">-webkit-transition-delay</span>: <span class="number">1s</span>;</span><br><span class="line">    <span class="attribute">transition-delay</span>: <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#resize</span><span class="selector-pseudo">:hover</span> &#123; </span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>; </span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="transition-duration"><a href="#transition-duration" class="headerlink" title="transition-duration"></a>transition-duration</h4><h4 id="transition-property"><a href="#transition-property" class="headerlink" title="transition-property"></a>transition-property</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/08/26/2020-08-26-css-transition/" data-id="ckp45ihdy0051eswb6iif19r4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-08-25-react-redux-with-hook" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/25/2020-08-25-react-redux-with-hook/" class="article-date">
+  <time datetime="2020-08-25T06:00:00.000Z" itemprop="datePublished">2020-08-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/script/">script</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/25/2020-08-25-react-redux-with-hook/">How to use the Redux with Hook technique.</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> CellType <span class="keyword">from</span> <span class="string">&#x27;../model/CellType&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> DELETE_CELL = <span class="string">&#x27;cell/DELETE&#x27;</span> <span class="keyword">as</span> <span class="keyword">const</span></span><br><span class="line"><span class="keyword">const</span> OPEN_CELL = <span class="string">&#x27;cell/OPEN&#x27;</span> <span class="keyword">as</span> <span class="keyword">const</span></span><br><span class="line"><span class="keyword">const</span> UPDATE_CELL = <span class="string">&#x27;cell/UPDATE&#x27;</span> <span class="keyword">as</span> <span class="keyword">const</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> deleteCell = <span class="function">(<span class="params">cell: CellType</span>) =&gt;</span> (&#123; <span class="keyword">type</span>: DELETE_CELL, payload: cell &#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> openCell = <span class="function">(<span class="params">cell: CellType</span>) =&gt;</span> (&#123; <span class="keyword">type</span>: OPEN_CELL, payload: cell &#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> updateCell = <span class="function">(<span class="params">cell: CellType</span>) =&gt;</span> (&#123; <span class="keyword">type</span>: UPDATE_CELL, payload: cell &#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ApiAction =</span><br><span class="line">    | ReturnType&lt;<span class="keyword">typeof</span> deleteCell&gt;</span><br><span class="line">    | ReturnType&lt;<span class="keyword">typeof</span> openCell&gt;</span><br><span class="line">    | ReturnType&lt;<span class="keyword">typeof</span> updateCell&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ApiState = &#123;</span><br><span class="line">    deletedCell: CellType</span><br><span class="line">    openedCell: CellType</span><br><span class="line">    updatedCell: CellType</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initialState = &#123;</span><br><span class="line">    deletedCell: &#123; id: <span class="number">-1</span>, <span class="keyword">type</span>: <span class="string">&quot;CELL&quot;</span> &#125;,</span><br><span class="line">    openedCell: &#123; id: <span class="number">-1</span>, <span class="keyword">type</span>: <span class="string">&quot;CELL&quot;</span> &#125;,</span><br><span class="line">    updatedCell: &#123; id: <span class="number">-1</span>, <span class="keyword">type</span>: <span class="string">&quot;CELL&quot;</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">api</span>(<span class="params">state: ApiState = initialState, action: ApiAction</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> DELETE_CELL :</span><br><span class="line">            <span class="keyword">return</span> &#123; deletedCell: action.payload, openedCell: state.openedCell, updatedCell: state.updatedCell &#125;</span><br><span class="line">        <span class="keyword">case</span> OPEN_CELL :</span><br><span class="line">            <span class="keyword">return</span> &#123; deletedCell: state.deletedCell, openedCell: action.payload, updatedCell: state.updatedCell &#125;</span><br><span class="line">        <span class="keyword">case</span> UPDATE_CELL :</span><br><span class="line">            <span class="keyword">return</span> &#123; deletedCell: state.deletedCell, openedCell: state.openedCell, updatedCell: action.payload &#125;</span><br><span class="line">        <span class="keyword">default</span> :</span><br><span class="line">            <span class="keyword">return</span> state</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> api;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; useSelector, useDispatch &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; RootState &#125; <span class="keyword">from</span> <span class="string">&#x27;../modules&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useCallback &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; deleteCell, openCell, updateCell &#125; <span class="keyword">from</span> <span class="string">&#x27;../modules/cell&#x27;</span></span><br><span class="line"><span class="keyword">import</span> CellType <span class="keyword">from</span> <span class="string">&#x27;../model/CellType&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">useApi</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> deletedCell = useSelector(<span class="function">(<span class="params">state: RootState</span>) =&gt;</span> state.cell.deletedCell );</span><br><span class="line">    <span class="keyword">const</span> openedCell = useSelector(<span class="function">(<span class="params">state: RootState</span>) =&gt;</span> state.cell.openedCell );</span><br><span class="line">    <span class="keyword">const</span> updatedCell = useSelector(<span class="function">(<span class="params">state: RootState</span>) =&gt;</span> state.cell.updatedCell );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> dispatch = useDispatch();</span><br><span class="line">    <span class="keyword">const</span> onDeleteCell = useCallback(<span class="function">(<span class="params">cell: CellType</span>) =&gt;</span> dispatch(deleteCell(cell)), [dispatch]);</span><br><span class="line">    <span class="keyword">const</span> onOpenCell = useCallback(<span class="function">(<span class="params">cell: CellType</span>) =&gt;</span> dispatch(openCell(cell)), [dispatch]);</span><br><span class="line">    <span class="keyword">const</span> onUpdateCell = useCallback(<span class="function">(<span class="params">cell: CellType</span>) =&gt;</span> dispatch(updateCell(cell)), [dispatch]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        deletedCell,</span><br><span class="line">        openedCell,</span><br><span class="line">        updatedCell,</span><br><span class="line">        onDeleteCell,</span><br><span class="line">        onOpenCell,</span><br><span class="line">        onUpdateCell</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; combineReducers &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> stage <span class="keyword">from</span> <span class="string">&#x27;./stage&#x27;</span></span><br><span class="line"><span class="keyword">import</span> noti <span class="keyword">from</span> <span class="string">&#x27;./noti&#x27;</span></span><br><span class="line"><span class="keyword">import</span> modal <span class="keyword">from</span> <span class="string">&#x27;./modal&#x27;</span></span><br><span class="line"><span class="keyword">import</span> data <span class="keyword">from</span> <span class="string">&#x27;./data&#x27;</span></span><br><span class="line"><span class="keyword">import</span> cell <span class="keyword">from</span> <span class="string">&#x27;./cell&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootReducer = combineReducers(&#123;</span><br><span class="line">    stage,</span><br><span class="line">    noti,</span><br><span class="line">    modal,</span><br><span class="line">    data,</span><br><span class="line">    cell</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> rootReducer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> RootState = ReturnType&lt;<span class="keyword">typeof</span> rootReducer&gt;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">  &quot;@testing-library/jest-dom&quot;: &quot;^4.2.4&quot;,</span><br><span class="line">  &quot;@testing-library/react&quot;: &quot;^9.3.2&quot;,</span><br><span class="line">  &quot;@testing-library/user-event&quot;: &quot;^7.1.2&quot;,</span><br><span class="line">  &quot;@types/jest&quot;: &quot;^24.0.0&quot;,</span><br><span class="line">  &quot;@types/node&quot;: &quot;^12.0.0&quot;,</span><br><span class="line">  &quot;@types/react&quot;: &quot;^16.9.0&quot;,</span><br><span class="line">  &quot;@types/react-bootstrap&quot;: &quot;^1.0.1&quot;,</span><br><span class="line">  &quot;@types/react-dom&quot;: &quot;^16.9.0&quot;,</span><br><span class="line">  &quot;@types/react-redux&quot;: &quot;^7.1.9&quot;,</span><br><span class="line">  &quot;@types/styled-components&quot;: &quot;^5.1.0&quot;,</span><br><span class="line">  &quot;axios&quot;: &quot;^0.19.2&quot;,</span><br><span class="line">  &quot;bootstrap&quot;: &quot;^4.4.1&quot;,</span><br><span class="line">  &quot;class-transformer&quot;: &quot;^0.2.3&quot;,</span><br><span class="line">  &quot;react&quot;: &quot;^16.13.1&quot;,</span><br><span class="line">  &quot;react-bootstrap&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">  &quot;react-dom&quot;: &quot;^16.13.1&quot;,</span><br><span class="line">  &quot;react-redux&quot;: &quot;^7.2.0&quot;,</span><br><span class="line">  &quot;react-scripts&quot;: &quot;3.4.1&quot;,</span><br><span class="line">  &quot;redux&quot;: &quot;^4.0.5&quot;,</span><br><span class="line">  &quot;styled-components&quot;: &quot;^5.1.0&quot;,</span><br><span class="line">  &quot;typescript&quot;: &quot;~3.7.2&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/08/25/2020-08-25-react-redux-with-hook/" data-id="ckp45ihdx004yeswbe2ss3pfn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-08-24-spring-validation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/24/2020-08-24-spring-validation/" class="article-date">
+  <time datetime="2020-08-24T01:00:00.000Z" itemprop="datePublished">2020-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/24/2020-08-24-spring-validation/">Spring validation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Dependency"><a href="#Dependency" class="headerlink" title="Dependency"></a>Dependency</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/08/24/2020-08-24-spring-validation/" data-id="ckp45ihdx004xeswbex798j0w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-09-28-swagger" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/24/2020-09-28-swagger/" class="article-date">
+  <time datetime="2020-08-24T01:00:00.000Z" itemprop="datePublished">2020-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/24/2020-09-28-swagger/">Swagger</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Add-Dependencies"><a href="#Add-Dependencies" class="headerlink" title="Add Dependencies"></a>Add Dependencies</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">compile group: &#39;io.springfox&#39;, name: &#39;springfox-swagger2&#39;, version: &#39;2.9.2&#39;</span><br><span class="line">compile group: &#39;io.springfox&#39;, name: &#39;springfox-swagger-ui&#39;, version: &#39;2.9.2&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Create-SwaggerConfig-java-and-Register-the-Bean"><a href="#Create-SwaggerConfig-java-and-Register-the-Bean" class="headerlink" title="Create SwaggerConfig.java and Register the Bean"></a>Create SwaggerConfig.java and Register the Bean</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger2</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwaggerConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">api</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .select()</span><br><span class="line">                .apis(RequestHandlerSelectors.any()) <span class="comment">// 현재 RequestMapping으로 할당된 모든 URL 리스트를 추출</span></span><br><span class="line">                .paths(PathSelectors.ant(<span class="string">&quot;/api/**&quot;</span>)) <span class="comment">// 그중 /api/** 인 URL들만 필터링</span></span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>@EnableSwagger2<br>Swagger2 버전을 활성화 하겠다는 어노테이션입니다.</p>
+<p>Docket<br>Swagger 설정의 핵심이 되는 Bean입니다.<br>API 자체에 대한 스펙은 컨트롤러에서 작성합니다.<br>설정 정보<br>useDefaultResponseMessages()<br>false로 설정하면, swagger에서 제공해주는 응답코드 ( 200,401,403,404 )에 대한 기본 메시지를 제거합니다.<br>불필요한 응답코드와 메시지를 제거하기 위함이며, 컨트롤러에서 명시해줄 것입니다.<br>groupName()<br>Docket Bean이 한 개일 경우<br>기본 값은 default이므로, 생략가능<br>여러 Docket Bean을 생성했을 경우<br>groupName이 충돌하지 않아야 하므로, 여기서는 각 Docket Bean의 버전을 명시해줬습니다.<br>select()<br>ApiSelectorBuilder를 생성합니다.<br>apis()<br>api 스펙이 작성되어 있는 패키지를 지정합니다.<br>즉, 컨트롤러가 존재하는 패키지를 basepackage로 지정하여, RequestMapping( GetMapping, PostMapping … )이 선언된 API를 문서화합니다.<br>paths()<br>apis()로 선택되어진 API중 특정 path 조건에 맞는 API들을 다시 필터링하여 문서화합니다.<br>apiInfo()<br>제목, 설명 등 문서에 대한 정보들을 보여주기 위해 호출합니다.<br>파라미터 정보는 다음과 같습니다.<br>public ApiInfo( title, description, version, termsOfServiceUrl, contact, license, licenseUrl, vendorExtensions )</p>
+<blockquote>
+<p>PathSelectors.ant(“/api/**”) 의 경우 /api/ path를 가진 url들만 공개하겠다는 얘기인데, 모든 url들을 화면에 노출시키고 싶다면 /api를 지우면 된다. </p>
+</blockquote>
+<h3 id="Check-the-Swagger-ui"><a href="#Check-the-Swagger-ui" class="headerlink" title="Check the Swagger-ui"></a>Check the Swagger-ui</h3><p><a target="_blank" rel="noopener" href="http://127.0.0.1:38080/swagger-ui.html">http://127.0.0.1:38080/swagger-ui.html</a></p>
+<blockquote>
+<p>포트는 WAS가 돌아가는 포트와 동일</p>
+</blockquote>
+<h3 id="Api"><a href="#Api" class="headerlink" title="@Api"></a>@Api</h3><p>@Api - Controller 단위로 API 메타데이터 명시<br>@ApiOperation - 하나의 REST API 요청 URL에 메핑되며, 문서화 대상을 처리 됨<br>@ApiParam, @ApiImplicitParam - REST API 호출 시 전달되는 파라미터에 대한 설명<br>@ApiModelProperty - Model Class 필드에 대한 설명</p>
+<pre><code>@ApiImplicitParam(
+        name = &quot;requestBody&quot;,
+        dataTypeClass = String.class,
+        examples = @io.swagger.annotations.Example(
+                value = @ExampleProperty(value = &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot; ?&gt;&lt;AirApiRequestInfo Version=\&quot;1.1\&quot;&gt;&lt;Config service=\&quot;cancelPnr\&quot; validationModule=\&quot;VALIDATION_DOM_RS\&quot; format=\&quot;airseoul\&quot;/&gt;&lt;Response type=\&quot;pc\&quot; format=\&quot;xml\&quot;/&gt;&lt;PnrService pnrKey=\&quot;500017442\&quot; pnrAddr=\&quot;JGBVE\&quot;&gt;&lt;AirlineCode&gt;RS&lt;/AirlineCode&gt;&lt;/PnrService&gt;&lt;/AirApiRequestInfo&gt;&quot;, mediaType = &quot;application/xml&quot;)
+        )
+)</code></pre>
+<p>paramType<br>    -&gt; @RequestParam : “query”<br>    -&gt; @PathVariable : “path”<br>    -&gt; @RequestBody : “body”</p>
+<h3 id="Default-value"><a href="#Default-value" class="headerlink" title="Default value"></a>Default value</h3><h3 id="ResponseEntity"><a href="#ResponseEntity" class="headerlink" title="ResponseEntity"></a>ResponseEntity</h3><p>dto를 innerclass 스타일로 작성할 경우 이름이 겹치는 경우가 생기는 데 이럴 때 Swagger는 getSimpleName()함수를 활용해서 모델을 만들어내기 떄문에 구분이 되지 않는다. 이러한 방식을 사용하려면 모델 생성시 이름을 적용하는 방법을 변경하여야 한다. 아래는 그 코드이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger2</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwaggerConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">api</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .select()</span><br><span class="line">                .apis(RequestHandlerSelectors.any())</span><br><span class="line">                .paths(PathSelectors.ant(<span class="string">&quot;/api/**&quot;</span>))</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Component</span></span><br><span class="line">    <span class="meta">@Order(SwaggerPluginSupport.SWAGGER_PLUGIN_ORDER)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomTypeNameProvider</span> <span class="keyword">implements</span> <span class="title">TypeNameProviderPlugin</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">nameFor</span><span class="params">(Class&lt;?&gt; type)</span> </span>&#123;</span><br><span class="line">            String fullName = type.getName();</span><br><span class="line">            <span class="keyword">return</span> fullName.substring(fullName.lastIndexOf(<span class="string">&quot;.&quot;</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(DocumentationType documentationType)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/08/24/2020-09-28-swagger/" data-id="ckp45ihe3005keswba47g83gq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-08-24-docker-command" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/24/2020-08-24-docker-command/" class="article-date">
+  <time datetime="2020-08-23T15:00:00.000Z" itemprop="datePublished">2020-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/24/2020-08-24-docker-command/">Docker Commands</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Dockerfile-vs-Image-vs-Container"><a href="#Dockerfile-vs-Image-vs-Container" class="headerlink" title="Dockerfile vs Image vs Container"></a>Dockerfile vs Image vs Container</h3><p>I thought that they are really different things before, but It’s not true. Actually they are like the concept of the program and process</p>
+<p>It’s the summaries about the docker, which are gotten when i’ve struggled for getting the jvm option the java on the docker. </p>
+<h3 id="The-useful-command-of-Docker"><a href="#The-useful-command-of-Docker" class="headerlink" title="The useful command of Docker."></a>The useful command of Docker.</h3><h4 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h4><p>This command is usually used when you want to create the docker image and runs it. It’s a lot of the options so<br>It’s important to know about these options for using this command well.</p>
+<p>‘-d’ option is for executing your docker image on the background. ‘d’ spelling might means ‘daemon’.<br>Having you done this, You could see the process of the launching your image.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker run -d</span><br></pre></td></tr></table></figure>
+
+<p>‘-p’ option is for setting the port of your docker container and host system. It is usually used like the below command<br>and first one is for the host system and the later is for the your container. they are connected each other.<br>so The data are shoot to the host port would be transferred to the container port was connected.<br>38080 is for the host system and 38081 is for the container on the view of the below command.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker run -p 38080:38081</span><br></pre></td></tr></table></figure>
+
+<p>‘-e’ option is for setting ‘env’ values. this values are often needed when you would like to get some data of outside of the container.<br>for example host’s ip, host’s name or the thing that we could not get in the container easily. and This spelling might means the ‘environment variable’.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker run -e host.ip&#x3D;123.123.123.123</span><br></pre></td></tr></table></figure>
+
+<p>You can set the image name using ‘–name’ option when you use the ‘docker run’ command. It will give the alias for your container<br>It might be needed well because the CONTAINER_ID are too difficult to remember. so Whenever you write your command on the docker CLI,<br>you could see yourself who would use the alias of the docker image. If you don’t use this option, then your image alias will create automatically using the name pool.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker run -name kidongyun</span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line"></span><br><span class="line">&#39;-h&#39; option is for giving the host name value to your container. Actually I don&#39;t know the default value but</span><br><span class="line">I recommend use this option if you need to get the hostname of your host system in the docker container.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>docker run -h kidongyun</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#39;-v&#39; option can connect the some files from host to the containers. in other words, You can mount the files. If you done this,</span><br><span class="line">Your container could get the host directories not the directories are copied from the host. That is you can access the modified things</span><br><span class="line">when you change your source code in host.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>docker run -v /home/docker/kidong/identidock/app:/app kidongyun</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>docker inspect kidongyun<br>        “Mounts”: [<br>            {<br>                “Type”: “bind”,<br>                “Source”: “/home/docker/kidong/identidock/app”,<br>                “Destination”: “/app”,<br>                “Mode”: “”,<br>                “RW”: true,<br>                “Propagation”: “rprivate”<br>            }<br>        ],</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### docker ps</span><br><span class="line"></span><br><span class="line">This command would be used a lot of the time, This command give to use the information related to the docker container.</span><br><span class="line">for example the container name, id, the time when it&#39;s started, the execution status of the container and so on.</span><br><span class="line">They are usually useful information to us. so Don&#39;t forget this command.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>docker ps</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Having you used &#39;-a&#39; option, It will give the all information about the containers included are not worked.</span><br><span class="line">I&#39;ve used this option when i need to remove the containers are not operated in my case.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>docker ps -a</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### docker stop</span><br><span class="line"></span><br><span class="line">You can stop your docker container using this command. after this, you might not be able to see this container on &#39;docker ps&#39; command</span><br><span class="line">for seeing this, you should attach the option &#39;-a&#39; when you use the &#39;docker ps&#39; command.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>docker stop kidong yun</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### docker rm &#x2F; docker rmi</span><br><span class="line"></span><br><span class="line">If you want to eliminate the docker container, then use this command. It&#39;s do similar with the linux command so You could get this easily.</span><br><span class="line">and The second command is for removing the docker image not container.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>docker rm kidongyun<br>docker rmi kidongyun</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### docker inspect [CONTAINER_ID] or [CONTAINER_NAME]</span><br><span class="line"></span><br><span class="line">Having you wanted to know about the detail of your docker container, This command will give them you want.</span><br><span class="line">It has really a lot of the information like the status of network, environment variables, the information associated with host system</span><br><span class="line">and the everything, which i think. </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>docker inspect kidongyun</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### docker exec -it [CONTAINER_ID] &#x2F;bin&#x2F;bash</span><br><span class="line"></span><br><span class="line">We can open the shell of the docker container using this command. &#39;-it&#39; options actually could be separated with &#39;-i&#39; and &#39;-t&#39;</span><br><span class="line">but We usually use this like that. This options mean that I would like to interact with the my container and please open the tty</span><br><span class="line">between host and the container. and We execute the &#x2F;bin&#x2F;bash program on the container and we could communicate using this shell named &#39;bash&#39;</span><br><span class="line"></span><br><span class="line">#### docker build --tag [IMAGE_ID]:[IMAGE_TAG] [DIRECTORY_PATH]</span><br><span class="line"></span><br><span class="line">You can create the images using this command. This command is needed the directory path included the DockerFile with the information </span><br><span class="line">related to the setting about the image. and You could also create the images differently as the tag name if you want.</span><br><span class="line">in my company, This tag use as the release number of some business.</span><br><span class="line"></span><br><span class="line">#### docker network ls</span><br><span class="line"></span><br><span class="line">Having you wanted to see the specification of your docker network information, Let follow the below command.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>&gt; docker network ls</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### The sort of network type.</span><br><span class="line"></span><br><span class="line">The communication way between host system and the containers is do similar with the concept of real network thing.</span><br><span class="line">when you install the docker program, Your system would be installed new NIC(Network Interface Card might be virtual thing).</span><br><span class="line">This NIC is called docker0 and you can see about these information at the below command.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>&gt; route</code></pre>
+<p>Kernel IP routing table<br>Destination     Gateway         Genmask         Flags Metric Ref    Use Iface<br>default         gateway         0.0.0.0         UG    0      0        0 eth0<br>link-local      0.0.0.0         255.255.0.0     U     1002   0        0 eth0<br>172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 docker0<br>180.70.96.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### bridge</span><br><span class="line"></span><br><span class="line">It&#39;s the default way of the docker network. This way always use the docker0 interface. It&#39;s the new virtual network area.</span><br><span class="line">So They&#39;ve been in the independent place. It means you cannot access them at anywhere, anytime. the docker0 network usually </span><br><span class="line">has the 172.17.0.0&#x2F;16 network. and whenever you add the new host, their ip is increase from the 172.17.0.1. Every container has</span><br><span class="line">the their own network area. so It&#39;s also impossible to communicate with each containers. in other words, The bridge network type is</span><br><span class="line">that give to each containers independent network area.</span><br><span class="line"></span><br><span class="line">The below command could get the detail of the bridge network setting specification.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>&gt; docker network inspect bridge</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### host</span><br><span class="line"></span><br><span class="line">This way share the network area the host and each containers are used this type. You have to use the option &#39;--net&#x3D;host&#39;</span><br><span class="line">like the below.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>&gt; docker run --net=host httpd web01</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">You can check using the below command whether your starting is right or not.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>&gt; docker exec web01 ip addr show</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 3. container</span><br><span class="line"></span><br><span class="line">This way share the network area with another container.</span><br><span class="line"></span><br><span class="line">#### 4. none</span><br><span class="line"></span><br><span class="line">Having you picked this option, This container would have the isolated network, which is not with interface.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>docker run –name web04 –net=none -d httpd</p>
+</blockquote>
+<p>```</p>
+<p>[docker@tourDNDCvm71 ~]$ route</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/08/24/2020-08-24-docker-command/" data-id="ckp45ihdw004ueswbgryghkvl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2020-08-20-dto" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/20/2020-08-20-dto/" class="article-date">
+  <time datetime="2020-08-20T01:00:00.000Z" itemprop="datePublished">2020-08-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/20/2020-08-20-dto/">The concepts of DTO</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="The-concept-of-DTO-and-VO"><a href="#The-concept-of-DTO-and-VO" class="headerlink" title="The concept of DTO and VO."></a>The concept of DTO and VO.</h3><p>A data transfer object’s purpose is to represent the data to be transferred to another process, e.g. from your backend to a web frontend. If the information you are transferring has a nested structure, also using a nested type for the DTO does make sense. However, the DTO must not include unnecessary data you aren’t actually using – that’s just misleading.</p>
+<p>A DTO is absolutely not the same as your domain model. Your model describes entities like a Customer or an Order with all properties that are relevant for your problem domain. This includes properly modelling the relationship between an Order and a Customer. It is not unusual to end up with a complex object graph describing all of these relationships (and equivalently: many foreign keys in a relational database).</p>
+<p>VO is usually known as the represent for expressing the objective attributes. so It is used by the business part of the system. Whenever you should to get the structure of some object then It’s the good choice to check the VO file, which will help you understand their business.</p>
+<h3 id="Why-do-we-separate-DTO-and-VO"><a href="#Why-do-we-separate-DTO-and-VO" class="headerlink" title="Why do we separate DTO and VO?"></a>Why do we separate DTO and VO?</h3><p>First of all, We couldn’t treat the source code in only one file. Having you used just the VO without DTO, this VO should include a lot of information like the validation code, for connecting jpa, the jaxb options and so on. These many information would gave us the big confusion. </p>
+<p>Secondly, The parameters of the client request could be different as the thing is required. So the thinking to use only one domain model for taking the request is do not well. It always has the posibility be changed.</p>
+<p>Thirdly, We should be certainly the purpose when you create some sourece code. To separate DTO and VO is the good way to make sure the purpose.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DTO - Data Transfer Object.</span><br><span class="line">VO - Value Object.</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/08/20/2020-08-20-dto/" data-id="ckp45ihdt004leswb3dxnhd4r" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>로깅을 활용한 Proxy, AOP 에 대한 고찰 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="실무에서 코드를 작성하게 되면 로그를 남기는 행위는 굉장히 범용적으로 필요한 일이다. 어느 특정 비지니스에 해당하지 않고 모든 곳에 사용이 되기 때문이다. 가독성의 관점이나 중복제거의 관점이나 이 로깅을 하는 코드들은 비지니스 코드에 의존에 의존되지 않도록 작성하는 것이 중요하다. 이 글에서 이를 해결하기 위한 고민해보록 하자. 가장 간편한 로깅 방법123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="로깅을 활용한 Proxy, AOP 에 대한 고찰">
+<meta property="og:url" content="http://example.com/2020/12/04/2020-12-04-aop-proxy-with-logging/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="실무에서 코드를 작성하게 되면 로그를 남기는 행위는 굉장히 범용적으로 필요한 일이다. 어느 특정 비지니스에 해당하지 않고 모든 곳에 사용이 되기 때문이다. 가독성의 관점이나 중복제거의 관점이나 이 로깅을 하는 코드들은 비지니스 코드에 의존에 의존되지 않도록 작성하는 것이 중요하다. 이 글에서 이를 해결하기 위한 고민해보록 하자. 가장 간편한 로깅 방법123">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-04T02:38:54.000Z">
+<meta property="article:modified_time" content="2021-05-25T14:42:09.029Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-12-04-aop-proxy-with-logging" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/04/2020-12-04-aop-proxy-with-logging/" class="article-date">
+  <time datetime="2020-12-04T02:38:54.000Z" itemprop="datePublished">2020-12-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      로깅을 활용한 Proxy, AOP 에 대한 고찰
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>실무에서 코드를 작성하게 되면 로그를 남기는 행위는 굉장히 범용적으로 필요한 일이다. 어느 특정 비지니스에 해당하지 않고 모든 곳에 사용이 되기 때문이다. 가독성의 관점이나 중복제거의 관점이나 이 로깅을 하는 코드들은 비지니스 코드에 의존에 의존되지 않도록 작성하는 것이 중요하다. 이 글에서 이를 해결하기 위한 고민해보록 하자.</p>
+<h3 id="가장-간편한-로깅-방법"><a href="#가장-간편한-로깅-방법" class="headerlink" title="가장 간편한 로깅 방법"></a>가장 간편한 로깅 방법</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">int</span> result = value1 + value2;</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        log.info(<span class="string">&quot;value1 : &quot;</span> + value1 + <span class="string">&quot;, value2 : &quot;</span> + value2);</span><br><span class="line">        log.info(<span class="string">&quot;result : &quot;</span> + result);</span><br><span class="line">        log.info(<span class="string">&quot;execute time : &quot;</span> + (endTime - startTime) + <span class="string">&quot; ms&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>이 글에서 구현하려고하는 로깅의 기능은 한 함수의 범위에서 들어오는 입력 파라미터의 값들과, 리턴되는 결과 값을 보여주고 해당 함수의 실행시간을 보여주는 기능이다. 위에서 제시한 로깅 방법은 이를 가장 간단하게 구현한 방법이다. 이번에는 덧셈의 기능을 하는 add() 뿐만 아니라 뺄셈과 곱셈의 기능을 하는 sub(), mul() 도 구현하고, 로깅 기능도 넣어보도록 하자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">int</span> result = value1 + value2;</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        log.info(<span class="string">&quot;value1 : &quot;</span> + value1 + <span class="string">&quot;, value2 : &quot;</span> + value2);</span><br><span class="line">        log.info(<span class="string">&quot;result : &quot;</span> + result);</span><br><span class="line">        log.info(<span class="string">&quot;execute time : &quot;</span> + (endTime - startTime) + <span class="string">&quot; ms&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">int</span> result = value1 + value2;</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        log.info(<span class="string">&quot;value1 : &quot;</span> + value1 + <span class="string">&quot;, value2 : &quot;</span> + value2);</span><br><span class="line">        log.info(<span class="string">&quot;result : &quot;</span> + result);</span><br><span class="line">        log.info(<span class="string">&quot;execute time : &quot;</span> + (endTime - startTime) + <span class="string">&quot; ms&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">int</span> result = value1 * value2;</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        log.info(<span class="string">&quot;value1 : &quot;</span> + value1 + <span class="string">&quot;, value2 : &quot;</span> + value2);</span><br><span class="line">        log.info(<span class="string">&quot;result : &quot;</span> + result);</span><br><span class="line">        log.info(<span class="string">&quot;execute time : &quot;</span> + (endTime - startTime) + <span class="string">&quot; ms&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="로깅을-전담해서-하는-객체-생성"><a href="#로깅을-전담해서-하는-객체-생성" class="headerlink" title="로깅을 전담해서 하는 객체 생성"></a>로깅을 전담해서 하는 객체 생성</h3><p>함수가 여러 개가 되니까 간편하게 구현한 로깅기능에 문제점 하나가 보이는 것 같다. 모두 동일하게 입력되는 파라미터와, 반환되는 결과 값을 보여주는 로그인데 같은 기능을 함에도 소스가 중복이 되고 있다. 이를 개선하기 위해 첫번째로 생각해 볼수 있는 방법은 로깅을 위한 객체를 별도로 두고 이 객체를 호출하도록 하는 것이다. 여기서 로깅 작업의 목표는 파라미터, 리턴값, 실행시간을 보여주는 것이기 때문에 이를 위한 값들을 파라미터로 받는다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Logger</span>&lt;<span class="title">T</span>, <span class="title">U</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(T params, U returnValue, <span class="keyword">long</span> startTime, <span class="keyword">long</span> endTime, String methodName)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;Params : &quot;</span> + params.toString());</span><br><span class="line">        log.info(<span class="string">&quot;Method Name : &quot;</span> + methodName);</span><br><span class="line">        log.info(<span class="string">&quot;Return Value : &quot;</span> + returnValue.toString());</span><br><span class="line">        log.info(<span class="string">&quot;Execute Time : &quot;</span> + (endTime - startTime) + <span class="string">&quot; ms&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Logger&lt;List&lt;Integer&gt;, Integer&gt; logger;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Calculator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        logger = <span class="keyword">new</span> Logger&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">int</span> result = value1 + value2;</span><br><span class="line"></span><br><span class="line">        logger.execute(List.of(value1, value2), result, startTime,</span><br><span class="line">                System.currentTimeMillis(), Thread.currentThread().getStackTrace()[<span class="number">1</span>].getMethodName());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">int</span> result = value1 + value2;</span><br><span class="line"></span><br><span class="line">        logger.execute(List.of(value1, value2), result, startTime,</span><br><span class="line">                System.currentTimeMillis(), Thread.currentThread().getStackTrace()[<span class="number">1</span>].getMethodName());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">int</span> result = value1 * value2;</span><br><span class="line"></span><br><span class="line">        logger.execute(List.of(value1, value2), result, startTime,</span><br><span class="line">                System.currentTimeMillis(), Thread.currentThread().getStackTrace()[<span class="number">1</span>].getMethodName());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>로깅을 위해서 Logger라는 객체를 생성했고 파라미터, 리턴값, 시작시간, 종료시간, 메소드명을 받도록 했다. Logger 객체를 활용해서 로깅을 어떤 객체에서 이 로깅을 하는 것인지 알 수 없기 때문에 메서드 명 항목을 추가했다.</p>
+<p>위 소스를 보면서도 느끼지만 로깅을 비지니스 영역과 구분하기 위해서 굉장히 난잡해진 코드를 작성했다. 소스의 중복은 사라졌다고 하지만 비즈니스 영역에서 로깅 작업을 제외하는 이유는 가독성을 향상시키기 위함이 큰데, 사실 가독성이 그렇게 증가한 것 같지도 않다. 또 보시면 알겠지만 startTime 값은 비즈니스 영역의 함수를 호출하기 전 생성이 되어야 하기 때문에 logger 객체에 바로 넣지 못하고 결국 변수를 하나 생성했다.</p>
+<p>로깅을 전담하는 객체를 만들어서 이 객체를 활용해 로깅을 하는 위와같은 방식은 근본적으로 비즈니스 소스에서 로깅 객체를 호출하는 구조를 가지고 있다. 즉 로깅 작업을 없애려고 노력했지만 결국 한줄이라도 이 로깅 객체를 호출하는 부분이 남아 있다. 우리는 비즈니스 영역의 코드와 로깅을 위한 코드의 완벽한 분리를 원한다. 이러려먼 어떻게 해야할까?</p>
+<h3 id="프록시-패턴의-활용"><a href="#프록시-패턴의-활용" class="headerlink" title="프록시 패턴의 활용"></a>프록시 패턴의 활용</h3><p>이번에 도전해볼 방법은 프로그래밍 디자인 패턴 중 프록시 패턴을 활용할 것이다. 이 패턴은 우리가 원하는 작업처럼 비즈니스 소스와 그 외의 소스를 구분시킬 때 사용한다. Calculator 객체를 감싸는 새로운 객체를 하나 더 만들고, 그 객체에서 Calculator 객체의 비즈니스 코드를 호출하는 것이다. 이렇게 하였을 때, 다른 클라이언트 소스에서 Calculator 객체를 직접 호출하지 않고 이 프록시 객체를 호출하게 되면 로깅 작업도 정상 작동할 것이다.</p>
+<p>위에서 적용한 Logger 객체를 만드는 방법과 프록시 객체를 생성하는 방법은 서로 겹치는 작업이 아니다. Logger 객체를 만드는 방법의 호출 관계는 비즈니스 코드가 더 범위가 넓고 이 안에서 로깅 코드를 호출하는 것이였다면, 프록시 객체를 만드는 방법은 반대로 비즈니스 코드를 감쌀 수 있는 더 넓은 범위의 객체를 생성하는 것이다. 이 관점에서 로깅 객체를 만드는 것과는 다른 관점에서의 해결 방법이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Logger</span>&lt;<span class="title">T</span>, <span class="title">U</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(T params, U returnValue, <span class="keyword">long</span> startTime, <span class="keyword">long</span> endTime, String methodName)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;Params : &quot;</span> + params.toString());</span><br><span class="line">        log.info(<span class="string">&quot;Method Name : &quot;</span> + methodName);</span><br><span class="line">        log.info(<span class="string">&quot;Return Value : &quot;</span> + returnValue.toString());</span><br><span class="line">        log.info(<span class="string">&quot;Execute Time : &quot;</span> + (endTime - startTime) + <span class="string">&quot; ms&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Logger&lt;List&lt;Integer&gt;, Integer&gt; logger;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Calculator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        logger = <span class="keyword">new</span> Logger&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value1 + value2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value1 + value2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value1 * value2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CalculatorProxy</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Calculator calculator;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Logger&lt;List&lt;Integer&gt;, Integer&gt; logger;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CalculatorProxy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.calculator = <span class="keyword">new</span> Calculator();</span><br><span class="line">        <span class="keyword">this</span>.logger = <span class="keyword">new</span> Logger&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">int</span> result = calculator.add(value1, value2);</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        logger.execute(List.of(value1, value2), result, startTime, endTime,</span><br><span class="line">                Thread.currentThread().getStackTrace()[<span class="number">1</span>].getMethodName());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">int</span> result = calculator.sub(value1, value2);</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        logger.execute(List.of(value1, value2), result, startTime, endTime,</span><br><span class="line">                Thread.currentThread().getStackTrace()[<span class="number">1</span>].getMethodName());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">int</span> result = calculator.mul(value1, value2);</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        logger.execute(List.of(value1, value2), result, startTime, endTime,</span><br><span class="line">                Thread.currentThread().getStackTrace()[<span class="number">1</span>].getMethodName());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Calculator 객체 괸점에서는 비즈니스 영역의 코드만 남았고, CalculatorProxy 객체에서 로그를 남기는 코드를 작성하고 있다. 우리가 원하는 목표는 이루었지만 무언가 깔끔하지 않다. 바로 CalculatorProxy 객체의 문제이다. 이 객체는 Calculator 객체에 다른 함수가 생길 때 마다 CalculatorProxy 객체에도 그 함수를 위한 함수를 생성해줘야하는 문제가 발생한다. 보일러플레이트 코드가 많아진 것 같다.</p>
+<h3 id="AOP-개념의-필요성-대두"><a href="#AOP-개념의-필요성-대두" class="headerlink" title="AOP 개념의 필요성 대두"></a>AOP 개념의 필요성 대두</h3><p>AOP와 OOP 개념은 서로 적대적인 개념이 아니며 상호 보완적인 개념이다. 현재 위 소스들은 Calculator 라는 객체 중심의 사고를 하면서 만들어지고 있다. add(), sub(), mul() 이러한 함수들도 Calculator 객체가 가지는 동작들 중 일원이며, 함수들의 정의가 Calculator 객체 중심으로 이루어지고 있다. 객체를 중심으로 코드를 작성하게 되면 공통 기능들은 위처럼 중복으로 구현되어진다.</p>
+<p>로깅 작업은 실무에서 대부분의 동작에 필연적으로 들어가야하는 공통 기능이다. 그렇기 때문에 이를 OOP 방식으로 소화하려고 하면 모든 함수들이 이 기능을 가져야 하기 때문에 로깅 관련 소스의 중복이 생겨난다. 여기서 AOP 방식을 활용하면 이를 보다 심플하게 개선할 수 있다. AOP는 이런 로깅 작업처럼 객체 관점의 코딩으로 보았을 때 중복이 많아지거나 하는 문제점이 생기는 코드들을 해결하기 위한 방법이다.</p>
+<p>AOP 방식은 위에서 우리가 만들었던 Proxy 객체와 유사하게 동작한다. 객체들의 비즈니스 코드가 동작되기 이전, 이후에 호출되어 로깅등과 같은 작업을 한다. 하지만 좀 더 부가적인 것은 위처럼 우리가 직접 Proxy 객체들을 만드는 것이 아니고 AOP 기능을 제공해주는 라이브러리에서 이런 Proxy 객체들을 자동으로 구현해준다. 또 위에서 우리가 예제로 만든 것처럼 Calculator.add() - CalculatorProxy.add() 이런 1:1 관계가 아니고 1:N 관계 매핑이 가능하도록 구현이 되어있다. (내부적으로 리플렉션을 활용하는 것 같다.) </p>
+<p>실제 내부적으로 어떻게 돌아가는지는 사실 나도 잘 모르겠다, 하지만 스프링 AOP를 사용하면 런타임시에 프록시 객체를 만들어내는데 그 구조는 위에서 우리가 만든 프록시 패턴과 유사할 것이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Target(ElementType.METHOD)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> ExecuteLog &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExecuteLogAspect</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Around(value = &quot;@annotation(ExecuteLog)&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">log</span><span class="params">(ProceedingJoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line">        Object result = joinPoint.proceed();</span><br><span class="line">        <span class="keyword">long</span> end = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        MethodSignature signature = (MethodSignature) joinPoint.getSignature();</span><br><span class="line">        Method method = signature.getMethod();</span><br><span class="line"></span><br><span class="line">        log.info(<span class="string">&quot;Method Name : &quot;</span> + method.getName());</span><br><span class="line">        log.info(<span class="string">&quot;Input : &quot;</span> + Arrays.toString(signature.getParameterNames()));</span><br><span class="line">        log.info(<span class="string">&quot;Output : &quot;</span> + result.toString());</span><br><span class="line">        log.info(<span class="string">&quot;Execute Time : &quot;</span> + (end - start) + <span class="string">&quot; ms&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>이 코드는 Spring 에서 제공하는 AOP 구현 방식이다. 위와 같이 코드를 작성하면 @ExecuteLog 어노테이션을 붙인 함수들이 동작하기 전, 후에 위에 작성한 함수가 실행이 된다.</p>
+<p>AOP 방식을 사용할 떄 주의할 점은. 비지니스 코드 외부에서 공통 소스 작업을 하는 것이기 때문에. 비지니스 코드가 돌아하는 함수의 범위에서 만약 지역변수로 생성되고 없어지는 변수가 있다면, 이러한 변수는 AOP 방식으로는 접근할 수 없다는점을 인지해야 한다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/04/2020-12-04-aop-proxy-with-logging/" data-id="ckp45ihef006xeswb1a9a59il" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/12/04/2020-12-29-redux-async-action/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Redux 비동기 액션에 대한 고찰
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/12/04/2020-12-04-dto-vo-domain/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DTO VO DAO DOMAIN ENTITY</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

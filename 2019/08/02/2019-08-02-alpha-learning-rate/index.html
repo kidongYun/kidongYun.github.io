@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Alpha. Learning Rate | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Learning rate 란?$$ w_{n+1} &#x3D; w_n - \alpha { \partial \over \partial w} Cost Function $$    위 수식과 그래프는 Gradient Descent 알고리즘을 표현한다. 그래프에서 빨간 점은 반복됨에 따라서 점점 최소값을 향해 가고 있다. 위 수식에서 alpha는 learning rate라고">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Alpha. Learning Rate">
+<meta property="og:url" content="http://example.com/2019/08/02/2019-08-02-alpha-learning-rate/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Learning rate 란?$$ w_{n+1} &#x3D; w_n - \alpha { \partial \over \partial w} Cost Function $$    위 수식과 그래프는 Gradient Descent 알고리즘을 표현한다. 그래프에서 빨간 점은 반복됨에 따라서 점점 최소값을 향해 가고 있다. 위 수식에서 alpha는 learning rate라고">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/res/2019-08-02-alpha-learning-rate/1.png">
+<meta property="og:image" content="http://example.com/res/2019-08-02-alpha-learning-rate/2.png">
+<meta property="og:image" content="http://example.com/res/2019-08-02-alpha-learning-rate/learningRate.jpeg">
+<meta property="article:published_time" content="2019-08-02T02:21:54.000Z">
+<meta property="article:modified_time" content="2021-05-25T14:42:08.972Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/res/2019-08-02-alpha-learning-rate/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2019-08-02-alpha-learning-rate" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/02/2019-08-02-alpha-learning-rate/" class="article-date">
+  <time datetime="2019-08-02T02:21:54.000Z" itemprop="datePublished">2019-08-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ai/">ai</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Alpha. Learning Rate
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Learning-rate-란"><a href="#Learning-rate-란" class="headerlink" title="Learning rate 란?"></a>Learning rate 란?</h3><p>$$ w_{n+1} = w_n - \alpha { \partial \over \partial w} Cost Function $$</p>
+<br/>
+
+<p><img src="/res/2019-08-02-alpha-learning-rate/1.png"></p>
+<p>위 수식과 그래프는 Gradient Descent 알고리즘을 표현한다. 그래프에서 빨간 점은 반복됨에 따라서 점점 최소값을 향해 가고 있다. 위 수식에서 alpha는 learning rate라고 불리며 학습을 진행할 때 Step size를 조절하는 하이퍼 파라미터이다. 즉 alpha 값이 크다면 빨간점이 한 반복에서 크게 변화하고 작다면 반대로 조금씩 변화하게 된다.</p>
+<h3 id="너무-작은-Learning-Rate-너무-큰-Learning-Rate"><a href="#너무-작은-Learning-Rate-너무-큰-Learning-Rate" class="headerlink" title="너무 작은 Learning Rate, 너무 큰 Learning Rate."></a>너무 작은 Learning Rate, 너무 큰 Learning Rate.</h3><p>Learning rate가 작으면 좋을까, 크면 좋을까 이는 한쪽으로 치중될 수 없으며 적절한 수치를 찾아야 한다.<br>너무 작았을 때에 일어날 수 있는 문제점과 마찬가지로 너무 클 경우에 발생할 수 있는 문제점에 대해서 알아보자.</p>
+<p><img src="/res/2019-08-02-alpha-learning-rate/2.png"></p>
+<p>Learning Rate가 너무 작을 경우 반복을 충분히 했음에도 불구하고 최소값에 다다르지 못하고 중단되는 현상이 발생할 수 있다. 이를 개선하기 위해 Learning Rate 값을 작게 그대로 두고 반복을 더욱 많이 한다면 이는 Computing Resource를 더욱 많이 사용하게 됨으로 시스템에 부하가 걸릴 수 있다. 또 Cost Function이 완전한 Convex Function이 아닐경우 작은 언덕 하나 넘지 못하고 Local minimum에 빠질 수 있다. 아래에 그래프 중 가장 왼쪽의 Too low 그래프를 참조하자.</p>
+<p>반대로 Learning Rate가 너무 클 경우 값이 최소값에 다다르지 못하고 오히려 더 커질 수가 있다. 즉 수렴하지 못하고 발산하려 한다.</p>
+<p><img src="/res/2019-08-02-alpha-learning-rate/learningRate.jpeg"></p>
+<p>위 그래프는 learning rate가 반복되면서 loss (= error) 가 어떻게 변하는지를 보여주는 그래프이다. <br/><br/> <strong>Very high learning rate</strong> <br/> 위에서 언급한대로 최소값에 수렴하지 못하고 오히려 발산하는 현상이다. 보면 반복됨에 따라 loss 값이 반대로 올라가고 있다. <br/><br/> <strong>Low learning rate</strong> <br/> 마찬가지로 위에서 언급한 형태이다. Good learning rate와 비교해서 보면 너무 작은 Step size로 최종적으로 최소값에 도달하지 못했다. <br/><br/> <strong>Hight learning rate</strong> <br/> High learning rate는 Very High learning rate와는 다르게 수렴은 하고있다. 그러나 보면 최소점에 다다르지 못하고 일정 Loss 값을 유지하고 있다. 이는 Step size가 커서 저 작은 값들로 내려가지 못하는 현상이다. 최소값을 두고 빙글빙글 돌고 있는 형태로 보면 되겠다. </p>
+<h3 id="Gradient-descent-알고리즘은-최저점에-다다를수록-보다-더-섬세하게-다가간다"><a href="#Gradient-descent-알고리즘은-최저점에-다다를수록-보다-더-섬세하게-다가간다" class="headerlink" title="Gradient descent 알고리즘은 최저점에 다다를수록 보다 더 섬세하게 다가간다."></a>Gradient descent 알고리즘은 최저점에 다다를수록 보다 더 섬세하게 다가간다.</h3><p>처음에 하나의 Learning rate를 정하게 되면 그 Step size로 계속 최소값에 다다르는 줄 알았었다. 하지만 Gradient Descent 알고리즘을 면밀히 살펴보니 그렇지 않음을 알았다.</p>
+<p>$$ w_{n+1} = w_n - \alpha { \partial \over \partial w} Cost Function $$</p>
+<p>위의 Gradient Descent 수식을 보면 다음 w값은 이번 w값에 Learning rate와 Cost의 미분한 값을 곱하여 차감한다. 비록 Learning rate값은 지속 동일하여도 cost의 값이 최저점에 다다를수록 점점 작아지기 때문에 Gradient Descent 알고리즘의 관점에서 보면 Step size는 점점 작아진다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/02/2019-08-02-alpha-learning-rate/" data-id="ckp45ihco0016eswb1l60a138" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/08/02/2019-08-02-linear-regression-with-one-variable/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Linear Regression with One Variable
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/01/2019-08-01-conventional-programming-vs-machine-learning-programming/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Conventional programming vs Machine Learning programming</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

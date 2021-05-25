@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>어노테이션에 값 넘겨받는 방법에 대한 고찰 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Aspect 객체에 동적으로 들어오는 데이터를 넘겨야하는 경우가 생길 때가 있다. 보통 이럴 때에 나는 커스텀 어노테이션을 만들고 이 어노테이션 값에 SpEL 문법을 활용하여 동적으로 들어온 데이터를 넘겨주는데 이 방법을 남겨둔다. Aspect 쪽에서 동적 데이터가 필요한 배경로깅 작업이 서버에 단순히 로그를 남겨둘 때에도 있지만 만약 좀 더 중요한 로그라">
+<meta property="og:type" content="article">
+<meta property="og:title" content="어노테이션에 값 넘겨받는 방법에 대한 고찰">
+<meta property="og:url" content="http://example.com/2021/01/06/2021-01-06-aop-annotation-spel/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Aspect 객체에 동적으로 들어오는 데이터를 넘겨야하는 경우가 생길 때가 있다. 보통 이럴 때에 나는 커스텀 어노테이션을 만들고 이 어노테이션 값에 SpEL 문법을 활용하여 동적으로 들어온 데이터를 넘겨주는데 이 방법을 남겨둔다. Aspect 쪽에서 동적 데이터가 필요한 배경로깅 작업이 서버에 단순히 로그를 남겨둘 때에도 있지만 만약 좀 더 중요한 로그라">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-06T11:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-25T14:42:09.038Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2021-01-06-aop-annotation-spel" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/06/2021-01-06-aop-annotation-spel/" class="article-date">
+  <time datetime="2021-01-06T11:00:00.000Z" itemprop="datePublished">2021-01-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      어노테이션에 값 넘겨받는 방법에 대한 고찰
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Aspect 객체에 동적으로 들어오는 데이터를 넘겨야하는 경우가 생길 때가 있다. 보통 이럴 때에 나는 커스텀 어노테이션을 만들고 이 어노테이션 값에 SpEL 문법을 활용하여 동적으로 들어온 데이터를 넘겨주는데 이 방법을 남겨둔다.</p>
+<h3 id="Aspect-쪽에서-동적-데이터가-필요한-배경"><a href="#Aspect-쪽에서-동적-데이터가-필요한-배경" class="headerlink" title="Aspect 쪽에서 동적 데이터가 필요한 배경"></a>Aspect 쪽에서 동적 데이터가 필요한 배경</h3><p>로깅 작업이 서버에 단순히 로그를 남겨둘 때에도 있지만 만약 좀 더 중요한 로그라면 별도의 데이터베이스 테이블을 구성하고 이 곳에 보통 저장해둔다. 이런 로그들은 비지니스 관련하여 중요도가 높은 로그일 경우가 많은데 보통 이런 로그는 후에 로그를 찾을 때 질의를 쉽게 하기 위해서 ID 값을 함께 넣어둔다.</p>
+<p>이런 로깅을 AOP로 처리하기 위해서는 ID 값을 파라미터에서 가져와야 하는데 파라미터의 구조는 함수마다 다르기 떄문에 어떤 값이 ID에 해당하는지 Aspect 객체는 알 수가 없다. 그렇기 떄문에 이를 함수쪽에서 어떤 값이 ID인지를 매핑해주어야 하는데 이 때 SpEL 문법을 활용한다.</p>
+<h3 id="구현"><a href="#구현" class="headerlink" title="구현"></a>구현</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Target(ElementType.METHOD)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> ExampleLog &#123;</span><br><span class="line">    <span class="function">String <span class="title">id</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>우선 어노테이션을 만든다. 이 어노테이션을 id 값을 가지고 있으며, 여기를 통해서 동적으로 데이터를 넘겨줄 것이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@ExampleLog(id = &quot;#id&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">example1</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ExampleLog(id = &quot;#value&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">example2</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>이 어노테이션을 활용해서 데이터를 넘겨주는 함수부분이다. 보면은 파라미터가 어떤 이름으로, 어떤 구조로 들어오는지 알 수 없기 때문에 위와 같이 SpEL 문법으로 매핑을 시켜주고 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExampleLogAspect</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Around(value = &quot;@annotation(ExampleLog)&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">log</span><span class="params">(ProceedingJoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        MethodSignature signature = (MethodSignature) joinPoint.getSignature();</span><br><span class="line">        Method method = signature.getMethod();</span><br><span class="line">        ExampleLog annotation = method.getAnnotation(ExampleLog.class);</span><br><span class="line"></span><br><span class="line">        Object id = getDynamicValue(signature.getParameterNames(), joinPoint.getArgs(), annotation.id());</span><br><span class="line"></span><br><span class="line">        log.info(<span class="string">&quot;ID : &quot;</span> + id);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 로그 테이블에 추가</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> joinPoint.proceed();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getDynamicValue</span><span class="params">(String[] parameterNames, Object[] args, String key)</span> </span>&#123;</span><br><span class="line">        ExpressionParser parser = <span class="keyword">new</span> SpelExpressionParser();</span><br><span class="line">        StandardEvaluationContext context = <span class="keyword">new</span> StandardEvaluationContext();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i$ = <span class="number">0</span>; i$ &lt; parameterNames.length; i$++) &#123;</span><br><span class="line">            context.setVariable(parameterNames[i$], args[i$]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> parser.parseExpression(key).getValue(context, Object.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Aspect 쪽 코드이다. Around 에 ExampleLog 어노테이션을 주어서 해당 어노테이션이 설정되어 있는 함수들은 이 AOP 가 적용되도록 하였다, 후에는 리플렉션과 SpEL Parser 를 활용하여 ID에 해당하는 값을 찾아낸다. 그 다음엔 로깅 목적으로 사용하는 테이블에 데이터를 추가하면 된다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/06/2021-01-06-aop-annotation-spel/" data-id="ckp45ihen007weswbfziddo4a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/12/2021-01-12-domain-api-business-api/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          비즈니스 중심 API vs 도메인 중심 API 설계에 대한 고찰
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/06/2021-01-06-aop-basic-concept/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">AOP 개념에 대한 고찰</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

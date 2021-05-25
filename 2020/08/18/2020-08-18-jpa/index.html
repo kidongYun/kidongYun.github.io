@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>The basic of Spring Data JPA | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="The concepts of JPA, Spring Data JPA, HibernateFirst time to study this, I just think they are same techniques but as you know, They aren’t same so I would like to explain about them briefly in here.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The basic of Spring Data JPA">
+<meta property="og:url" content="http://example.com/2020/08/18/2020-08-18-jpa/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="The concepts of JPA, Spring Data JPA, HibernateFirst time to study this, I just think they are same techniques but as you know, They aren’t same so I would like to explain about them briefly in here.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-17T23:47:54.000Z">
+<meta property="article:modified_time" content="2021-05-25T14:42:09.005Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-08-18-jpa" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/18/2020-08-18-jpa/" class="article-date">
+  <time datetime="2020-08-17T23:47:54.000Z" itemprop="datePublished">2020-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      The basic of Spring Data JPA
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="The-concepts-of-JPA-Spring-Data-JPA-Hibernate"><a href="#The-concepts-of-JPA-Spring-Data-JPA-Hibernate" class="headerlink" title="The concepts of JPA, Spring Data JPA, Hibernate"></a>The concepts of JPA, Spring Data JPA, Hibernate</h3><p>First time to study this, I just think they are same techniques but as you know, They aren’t same so I would like to explain about them briefly in here.</p>
+<p>JPA is the interface for expressing the query, which we always used at the DBMS. You can apply this using Java language, Query DSL or JPDL. We should remember the one thing that It’s not the library but only just interface so You want to use these then should implement everything follow the JPA interface.</p>
+<p>Spring Data JPA has the advantage about creating the beans. JPA is not only for the Spring Framework, so We could suffer the difficulty when we connect between two things. It’s offered to us these basic function for connecting like <em>‘repository’</em></p>
+<p>Hibernate is the real object not interface.</p>
+<h3 id="1-build-gradle"><a href="#1-build-gradle" class="headerlink" title="1. build.gradle"></a>1. build.gradle</h3><p>For using the JPA techniques, We should import the dependecies in build.gradle.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    implementation(&#39;org.springframework.boot:spring-boot-starter-data-jpa&#39;)</span><br><span class="line">    compile group: &#39;com.zaxxer&#39;, name: &#39;HikariCP&#39;, version: &#39;3.3.1&#39;</span><br><span class="line">    compile group: &#39;oracle&#39;, name: &#39;ojdbc6&#39;, version: &#39;11.2.0.3&#39;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>And we gotta remember the one thing more, which is you should choose what you want to use the Database in your system. i’ve used the Oracle in my system so as you can see the above, I added the dependency named <em>‘ojdbc6’</em>, which is always needed the another maven repository introduced the below code. If you don’t add that, then It might be work incorrectly.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    &#x2F;&#x2F; It&#39;s basic.</span><br><span class="line">    mavenCentral() </span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; We should add this.</span><br><span class="line">    maven &#123; url &quot;http:&#x2F;&#x2F;www.datanucleus.org&#x2F;downloads&#x2F;maven2&#x2F;&quot; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>It’s my exeperience that I suffered the Jpa and OJDBC are not work correctly, but I didn’t know the the reason why they aren’t concretely. The reason is the local OJDBC library. This problem was occured by the launching of the Spring boot system without OJDBC library. So please keep this.</p>
+<h3 id="2-set-the-OJDBC-in-application-yml"><a href="#2-set-the-OJDBC-in-application-yml" class="headerlink" title="2. set the OJDBC in application.yml"></a>2. set the OJDBC in application.yml</h3><p>For using OJDBC, It’s needed the information basically like host, port and database name and so on. Let’s follow like the below code in your <em>application.yml</em></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">oracle.jdbc.driver.OracleDriver</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:oracle:thin:@localhost:59161:XE</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">system</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">oracle</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>The port number might be different between you and me cause the docker system. My oracle database is on the docker. because it’s not supported the mac system. and I am running my oracle through that port. but it always be able to change as you want.</p>
+<h3 id="3-Entity"><a href="#3-Entity" class="headerlink" title="3. Entity"></a>3. Entity</h3><p>It’s the bridge for connecting between the VO in java and Table in database. We have to specify the feature of them like primary key, cardinality, column name and column types and so on.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table(name = &quot;OBJECTIVE&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Objective</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue(strategy = GenerationType.IDENTITY)</span></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_ID&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> objectiveId;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_TITLE&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_DESCRIPTION&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_DEADLINE&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDate deadline;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_PRIORITY&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> priority;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_STATUS&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> status;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>@Id annotation means that it’s the primary key.</p>
+<p>We can use the @Table annotation when your table’s name in VO is different with the table’s name in database. and This annotation is not required.</p>
+<p>@Column is also not required, but It’s same with the @Table annotation. If you need to connect with the fields in VO and the columns in database, It’s needed.</p>
+<h3 id="4-Repository"><a href="#4-Repository" class="headerlink" title="4. Repository"></a>4. Repository</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.kidongyun.bridge.api.repository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.kidongyun.bridge.api.vo.Objective;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.repository.CrudRepository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Optional;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ObjectiveRepository</span> <span class="keyword">extends</span> <span class="title">CrudRepository</span>&lt;<span class="title">Objective</span>, <span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function">Optional&lt;Objective&gt; <span class="title">findById</span><span class="params">(Long aLong)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>It’s the repository of your queries. you can create a lot of the queries using the real query, QueryDSL or just method name. if you’ve completed to build this file, you just use this methods without any thinking.   </p>
+<h3 id="5-The-sort-of-GenerationType"><a href="#5-The-sort-of-GenerationType" class="headerlink" title="5. The sort of GenerationType"></a>5. The sort of GenerationType</h3><p>If you want to allocate the id value yourself then, you don’t need to use the @GeneratedValue annotation. Just use the @Id annotation. This technique is usually named directly allocation and It have to process this part yourself.</p>
+<p>GenerationType.IDENTITY</p>
+<p>GenerationType.SEQUENCE</p>
+<p>Sequence jpa로 직접 생성하고 직접 연결하는 방식</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@Id</span><br><span class="line">@GeneratedValue(strategy&#x3D; GenerationType.SEQUENCE, generator &#x3D; &quot;OBJ_SEQ_GEN&quot;)</span><br><span class="line">@SequenceGenerator(name &#x3D; &quot;OBJ_SEQ_GEN&quot;, sequenceName &#x3D; &quot;OBJ_ID_SEQ&quot;)</span><br><span class="line">@Column(name &#x3D; &quot;OBJ_ID&quot;)</span><br><span class="line">private long id;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>GenerationType.AUTO</p>
+<h3 id="6-MappedSuperclass"><a href="#6-MappedSuperclass" class="headerlink" title="6. @MappedSuperclass"></a>6. @MappedSuperclass</h3><p>Having you wanted to create the inheritance relationship between your java objects, You gotta know the one thing, which most of all RDB are not supported to make the inheritance. So It’s little different to build something between them. if you want to create the inheritance at only each java objects not tables, then follow the below coding styles.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// It&#x27;s super class.</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@MappedSuperclass</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cell</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="meta">@Transient</span></span><br><span class="line">    <span class="keyword">protected</span> String type;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>the ‘Cell’ class isn’t a table. It’s only existed on the java. and the belows are sub classes.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table(name = &quot;OBJECTIVE&quot;)</span></span><br><span class="line"><span class="meta">@AttributeOverride(name = &quot;id&quot;, column = @Column(name = &quot;OBJ_ID&quot;))</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Objective</span> <span class="keyword">extends</span> <span class="title">Cell</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_TITLE&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_DESCRIPTION&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_DEADLINE&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDate deadline;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_PRIORITY&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> priority;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_STATUS&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> status;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table(name = &quot;PLAN&quot;)</span></span><br><span class="line"><span class="meta">@AttributeOverride(name = &quot;id&quot;, column = @Column(name = &quot;PLAN_ID&quot;))</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Plan</span> <span class="keyword">extends</span> <span class="title">Cell</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Column(name = &quot;PLAN_CONTENT&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String content;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;PLAN_START_DATE&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDate startDate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;PLAN_END_DATE&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDate endDate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;PLAN_STATUS&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String status;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>We can create the id attribute on each sub-classes as the thing named differently</p>
+<h3 id="7-Inheritance"><a href="#7-Inheritance" class="headerlink" title="7. @Inheritance"></a>7. @Inheritance</h3><p>super-class</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Inheritance(strategy = InheritanceType.JOINED)</span></span><br><span class="line"><span class="meta">@DiscriminatorColumn</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cell</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue(strategy= GenerationType.SEQUENCE, generator = &quot;CELL_SEQ_GEN&quot;)</span></span><br><span class="line">    <span class="meta">@SequenceGenerator(name = &quot;CELL_SEQ_GEN&quot;, sequenceName = &quot;CELL_ID_SEQ&quot;)</span></span><br><span class="line">    <span class="meta">@Column(name = &quot;CELL_ID&quot;)</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;CELL_TYPE&quot;)</span></span><br><span class="line">    <span class="keyword">protected</span> String type;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>sub-classes</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table(name = &quot;OBJECTIVE&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Objective</span> <span class="keyword">extends</span> <span class="title">Cell</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_TITLE&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_DESCRIPTION&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_DEADLINE&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDate deadline;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_PRIORITY&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> priority;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;OBJ_STATUS&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> status;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table(name = &quot;PLAN&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Plan</span> <span class="keyword">extends</span> <span class="title">Cell</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Column(name = &quot;PLAN_CONTENT&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String content;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;PLAN_START_DATE&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDate startDate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;PLAN_END_DATE&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDate endDate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(name = &quot;PLAN_STATUS&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String status;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>@Inheritance(strategy=InheritanceType.XXX)의 stategy를 설정해주면 된다.</p>
+<p>default 전략은 SINGLE_TABLE(단일 테이블 전략)이다.</p>
+<p>InheritanceType 종류</p>
+<p>JOINED</p>
+<p>SINGLE_TABLE</p>
+<p>TABLE_PER_CLASS</p>
+<p>@DiscriminatorColumn(name=”DTYPE”)</p>
+<p>부모 클래스에 선언한다. 하위 클래스를 구분하는 용도의 컬럼이다. 관례는 default = DTYPE</p>
+<p>@DiscriminatorValue(“XXX”)</p>
+<p>하위 클래스에 선언한다. 엔티티를 저장할 때 슈퍼타입의 구분 컬럼에 저장할 값을 지정한다.</p>
+<p>어노테이션을 선언하지 않을 경우 기본값으로 클래스 이름이 들어간다.</p>
+<p>JPA의 영속 컨텍스트는 자신이 관리하는 객체의 값이 변경하는것을 감지하여 값이 변한다면 DB에 UPDATE문을 통해 값을 같이 변경시킵니다.</p>
+<h3 id="8-DDL-setting"><a href="#8-DDL-setting" class="headerlink" title="8. DDL setting"></a>8. DDL setting</h3><p>직접 할당<br>@Id 만 사용<br>자동 생성<br>@Id와 @GeneratedValue를 같이 사용<br>네 가지 전략이 있다.</p>
+<p>@GeneratedValue(strategy = GenerationType.IDENTITY)<br>기본 키 생성을 데이터베이스에 위임<br>즉, id 값을 null로 하면 DB가 알아서 AUTO_INCREMENT 해준다.<br>Ex) MySQL, PostgreSQL, SQL Server DB2 등</p>
+<p>@GeneratedValue(strategy = GenerationType.SEQUNCE)<br>데이터베이스 Sequence Object를 사용<br>DB Sequence는 유일한 값을 순서대로 생성하는 특별한 데이터베이스 오브젝트<br>테이블 마다 시퀀스 오브젝트를 따로 관리하고 싶으면 @SequenceGenerator에 sequenceName 속성을 추가한다.<br>즉, DB가 자동으로 숫자를 generate 해준다.<br>Ex) Oracle, PostgreSQL, DB2, H2 등<br>@SequenceGenerator 필요<br><a target="_blank" rel="noopener" href="https://gmlwjd9405.github.io/2019/08/12/primary-key-mapping.html">https://gmlwjd9405.github.io/2019/08/12/primary-key-mapping.html</a></p>
+<p>상속받는 구조일때 자식객체가 PK를 가지면 안된다.</p>
+<p>@MappedSuperclass 에서 @Id 를 적용할 때에는 자식클래스에 Id를 적용하는게 아니고. 부모클래스에 적용한다음 이름을 다르게 하고 싶다면<br>@AttributeOverride 를 사용해서 컬럼명을 변경해주어야 함.</p>
+<p>@Embeddable 과 @Embedded<br>엔티티를 구현하다보면 공통적인 부분을 제거하기 위해 객체를 따로 분리하고 싶은 경우가 있다. 분리한 객체의 필드 정보를 테이블에 매핑하고 싶을 때 사용하는 어노테이션이다.</p>
+<p>@Embeddable: 분리한 클래스 위에 선언한다.<br>@Embedded: 분리한 클래스를 사용하는 엔티티 필드 위에 선언한다.<br>@Embeddable<br>public class Name {<br>  private final String firstName;<br>  private final String lastName;<br>  // …<br>}<br>@Entity<br>public class User {</p>
+<p>  @Embedded<br>  private final Name userName;<br>  // …<br>}</p>
+<p>Tip.<br>기본키는 변경되면 안되기 때문에,<br>직접할당 전략이 아니라면 엔티티에서 setId() 메소드를 비공개(private)하는 것이 좋다</p>
+<p>객체 는 다른 객체와 참조(reference) 를 통해 관계를 맺고,<br>테이블 은 외래키(foreign key) 를 통해서 관계를 맺는다.</p>
+<p>방향(Direction): 객체가 다른 객체를 참조하는 방향. 단방향/양방향<br>테이블은 외래키를 기반으로 테이블간 양방향으로 JOIN이 가능하다. 하지만, 객체의 참조는 항상 단방향이다.<br>다중성(Multiplicity): 객체의 관계(Relationships) 표현. 다대일(N:1), 일대다(1:N), 일대일(1:1), 다대다(N:M)<br>연관관계의 주인(Owner): 객체간 양방향 으로 방향성을 가질때 연관관계에 있어 누가 주인 인가를 정해야 된다.<br>테이블로 보면 누가 FK를 가져야 하는가의 문제이다. 연관관계의 주인인 엔티티가 FK를 업데이트 한다.</p>
+<p>객체는 상속관계가 존재하지만, 관계형 데이터베이스는 상속 관계가 없다.(대부분)</p>
+<p>그나마 슈퍼타입 서브타입 관계라는 모델링 기법이 객체 상속과 유사하다.</p>
+<p>상속관계 매핑이라는 것은 객체의 상속 구조와 DB의 슈퍼타입 서브타입 관계를 매핑하는 것이다.</p>
+<p>@MappedSuperclass 에 관하여<br> 일반적으로, 상속 관계 매핑 전략에서 부모 클래스와 자식 클래스 모두 데이타베이스 테이블과 매핑을 한다. 이와 달리, 부모 클래스를 상속받는 자식클래스에게 매핑 정보만 제공하고 싶을때 이 어노테이션을 사용하면 된다.</p>
+<p> 엔티티 종류에 상관없이 공통으로 가지고 있어야 하는 정보가 있다면 ( ex. 데이타 생성시간, 수정시간 등 ) 공통 클래스로 추출하고 이를 상속받는 방식으로 구현할 때 사용 한다. 그러나 엔티티는 엔티티만 상속받을 수 있기 때문에 엔티티가 아닌 클래스를 상속받기 위해서 @MappedSuperclass 를 사용한다.</p>
+<p>@AttributeOverride</p>
+<p>none: 아무것도 실행하지 않는다 (대부분의 DB에서 기본값이다)<br>create-drop: SessionFactory가 시작될 때 drop및 생성을 실행하고, SessionFactory가 종료될 때 drop을 실행한다 (in-memory DB의 경우 기본값이다)<br>create: SessionFactory가 시작될 때 데이터베이스 drop을 실행하고 생성된 DDL을 실행한다<br>update: 변경된 스키마를 적용한다<br>validate: 변경된 스키마가 있다면 변경점을 출력하고 애플리케이션을 종료한다</p>
+<p> 만약 book 테이블의 생성일시만 createdAt이 아닌 publishedAt 으로 바꾸고 싶으면 Book만 BaseEntity를 상속받지 않고 따로 만들어야할까 ?</p>
+<p>그럴 필요는 없고, 아래와 같이 @AttributedOverride 어노테이션으로 필요한 매핑정보만 재정의가 가능하다.</p>
+<p>Spring Data JPA는 Spring에서 제공하는 모듈 중 하나로, 개발자가 JPA를 더 쉽고 편하게 사용할 수 있도록 도와준다. 이는 JPA를 한 단계 추상화시킨 Repository라는 인터페이스를 제공함으로써 이루어진다. 사용자가 Repository 인터페이스에 정해진 규칙대로 메소드를 입력하면, Spring이 알아서 해당 메소드 이름에 적합한 쿼리를 날리는 구현체를 만들어서 Bean으로 등록해준다.</p>
+<p>DDL(테이블 생성하거나 지우는거) 도 hibernate를 쓰는가. 어떻게해야하는가</p>
+<p>여러 개의 정보를 바꾸고 싶을 때 방법은 아래와 같다.</p>
+<p>@Entity<br>@AttributeOverrides({<br>  @AttributeOverride(name = “id”, column = @Column(name = “article_id”)),<br>  @AttributeOverride(name = “createTime” column = @Column(name = “article_create_time”))<br>})<br>public class Article extends BaseEntity {<br>  // …<br>}</p>
+<p>DB TABLE 에는 상속관계가 없고 Java Class들 끼리만 상속관계를 가지게 하고싶을때 아래처럼 구현. 애초에 DB TABLE은 상속관계를 구현할 수 없다.</p>
+<p>Repository 에서는 Entity 아닌 VO 객체를 사용할수 없다. 그리고 추가적으로 Java의 가장 기본이되는 객체인 Object도 사용이 불가능하다. 상속관계를 맺을때 알게된 내용인데. 중요한것 같다.</p>
+<p>공통이되는 부분을 부모클래스로 잡고 싶지만 이를 테이블화 시키기 싫을때에 @MappedSuperClass를 사용하려고 고군분투 하였으나 결과적으로 이 어노테이션을 사용한 vo 객체는 Entity가 아니기 때문에 이 객체를 Repository 클래스에 적용시킬수 없다.</p>
+<p>만약 Repository 에서도 이 부모클래스를 사용해야한다면 @Inheritance에서 타입을 TABLE_PER_CLASS 를 사용해보자.<br>근데 이방법은 쿼리 속도가 안나온다고함. JPA에서도 Optional로 제공하다보니 환경에따라서 모두 적용될수있다가 보장되지 않기때문에<br>커뮤니티에서 다들 이 타입을 쓰는걸 권장하지 않아하네..</p>
+<p>그냥 @MappedSuperClass 이걸 써서 JPA를 위한 하나의 Base class를 만들자.</p>
+<p>@MappedSuperClass 이 필요할떄<br>위에서 말한 상속 관계 매핑에서 테이블까지 고민하기 싫음.<br>DB는 따로 쓰되, 객체입장에서 속성만 상속 받아서 쓰고 싶을때!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/08/18/2020-08-18-jpa/" data-id="ckp45ihdu004peswb6tox64fy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/18/2020-08-18-java-rest-api-client/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          The sort of Rest Api Clients in Java
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/18/2020-09-18-java-singleton/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Singleton Pattern</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

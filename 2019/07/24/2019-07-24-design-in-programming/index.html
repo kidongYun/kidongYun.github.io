@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>DIP | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. Background웹 디자이너, 웹 퍼블리셔가 만드는 웹사이트는 소비되는 시간에 비해 생산시간이 너무 오래 걸린다라고 생각했습니다.Android Studio나 Xcode의 Storyboard처럼 Drag and Drop 형태로 모든 걸 구현할 수 있다면 어떨까? 라는 생각에 이 프로젝트를 시작하게 되었습니다.  총 4명이 진행한 프로젝트입니다.  서버">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DIP">
+<meta property="og:url" content="http://example.com/2019/07/24/2019-07-24-design-in-programming/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. Background웹 디자이너, 웹 퍼블리셔가 만드는 웹사이트는 소비되는 시간에 비해 생산시간이 너무 오래 걸린다라고 생각했습니다.Android Studio나 Xcode의 Storyboard처럼 Drag and Drop 형태로 모든 걸 구현할 수 있다면 어떨까? 라는 생각에 이 프로젝트를 시작하게 되었습니다.  총 4명이 진행한 프로젝트입니다.  서버">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/res/2019-07-24-design-in-programming/index.png">
+<meta property="og:image" content="http://example.com/res/2019-07-24-design-in-programming/list.png">
+<meta property="og:image" content="http://example.com/res/2019-07-24-design-in-programming/workspace.png">
+<meta property="article:published_time" content="2019-07-24T02:21:54.000Z">
+<meta property="article:modified_time" content="2021-05-25T14:42:08.969Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/res/2019-07-24-design-in-programming/index.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2019-07-24-design-in-programming" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/24/2019-07-24-design-in-programming/" class="article-date">
+  <time datetime="2019-07-24T02:21:54.000Z" itemprop="datePublished">2019-07-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/project/">project</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DIP
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-Background"><a href="#1-Background" class="headerlink" title="1. Background"></a>1. Background</h3><p>웹 디자이너, 웹 퍼블리셔가 만드는 웹사이트는 소비되는 시간에 비해 생산시간이 너무 오래 걸린다라고 생각했습니다.<br>Android Studio나 Xcode의 Storyboard처럼 Drag and Drop 형태로 모든 걸 구현할 수 있다면 어떨까? 라는 생각에 이 프로젝트를 시작하게 되었습니다. <br><br> 총 4명이 진행한 프로젝트입니다. <br> <em>서버 사이드 기능 구현 - 1명</em> <br> <em>웹 디자인 - 1명</em> <br> <em>JS를 활용한 핵심기능 구현 - 2명</em> <br><br> <strong>저는 프로젝트 관리와 함께 JS를 활용하여 Drag and Drop 형태로 html소스를 만들어내는 핵심기능 구현 업무를 담당했습니다.</strong></p>
+<p><img src="/res/2019-07-24-design-in-programming/index.png"></p>
+<p><img src="/res/2019-07-24-design-in-programming/list.png"></p>
+<p><img src="/res/2019-07-24-design-in-programming/workspace.png"></p>
+<h3 id="2-Environment"><a href="#2-Environment" class="headerlink" title="2. Environment"></a>2. Environment</h3><p><em>Server : Linux + Apache + Mysql + PHP</em> <br> <em>Language : HTML+CSS, ESMA6 Javascript</em> <br> <em>Library : JQuery, VanilaJS</em></p>
+<h3 id="3-Technical-Detail"><a href="#3-Technical-Detail" class="headerlink" title="3. Technical Detail"></a>3. Technical Detail</h3><p><strong>1. 객체지향 스타일의 Javascript 코딩을 하였습니다.</strong> <br> 다른 웹페이지들을 만들 때에는 Js의 기능이 부수적인 역할에 가까웠는데 이번 프로젝트에서는 JS로 다루는 작업이 방대해 Java처럼 객체를 다루는 형태로 코드를 구성했습니다. 그러면서 ECMA6 문법을 자주 사용했는데 function으로 class와 변수들을 정의하고, prototype으로 methods를 정의하는 것처럼 문법만 약간 다르지<br>Java와 굉장히 유사해졌다는 것을 느꼈습니다. <br><br> <strong>2. DIP Library를 제작하였습니다.</strong> <br> 만들기 시작해보니 Drag and Drop의 형태로 구현하려면 각 Component들이 DOM Attribute를 대부분 가져야 함을 느꼈습니다. 이를 위해 객체 모델링을 한 구조를 아예 라이브러리화 시켜서 보다 보편적으로 사용할 수 있도록 구현했습니다. 아마도 React.js와 같은 SPA 라이브러리도 이런식으로 시작하지 않았을까 생각했습니다. <br><br> <strong>3. 전 보다 확실히 DOM 객체구조에 대한 이해도가 깊어졌습니다.</strong> <br> 이 프로젝트를 구현하기 위해서 가장 많이 사용한 함수들이 DOM객체에 대한 기본 함수들입니다. <em>getElementById()</em>, <em>previousSibling</em>, <em>offSet()</em>, <em>innerHTML</em>, <em>className</em> … 평소에는 잘 쓰지 않았던 많은 함수들을 사용하면서 <em>html</em>, <em>dom</em> 에 대해서 좀 더 알 수 있었습니다. <br><br> <strong>4. SPA 라이브러리 장점에 대해 보다 이해할 수 있었습니다.</strong> <br> 객체가 데이터를 가지고 있는 것과 그것을 렌더링하는 것이 별개로 동작했던 저의 코드에서는 그것이 불편할때가 많았고 또 서버와 통신이 잦았는데 이를 언제해야 효율적일지 고민하는 시간이 많았습니다. React.js<br>와 같은 SPA 라이브러리를 사용한다면 보다 쉽게 구현할 수 있음을 알았습니다.</p>
+<h3 id="4-Impression"><a href="#4-Impression" class="headerlink" title="4. Impression"></a>4. Impression</h3><p><strong>1. 때에 따라서 라이브러리를 쓰지 않는 것이 이로울 때도 있다</strong> <br> 프로젝트를 계속 진행하면서 스스로 만들어 보자는 생각에 처음부터 모든 작업을 진행하니 SPA라이브러리를 활용해서 만들면 보다 편하지 않았을까 라는 생각이 들었었습니다. 그러나 명확히 이해하지 못했던 SPA라이브러리의 중요성들을 이런 노력에 의해 조금은 더 알 수 있었습니다. 비록 미흡했지만 충분히 좋은 공부가 된 프로젝트였습니다. <br><br> <strong>2. 프로젝트 계획시 시간을 고려하는 것은 중요하다</strong> <br> 이 프로젝트의 가장 큰 문제점은 바로 시간 안배가 잘못 되었다고 생각합니다. 너무 짧은 시간내에 큰 프로젝트를 준비했고, 애초에 가능하지 않은 사이즈의 설계였습니다. 처음에 시간을 확실히 알고 이를 기반으로 프로젝트를 계획해야 한다는 걸 몸소 체험했습니다.</p>
+<p><br><br></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/embed/xnzGSJTywdI">Sample Video</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kidongyun/dip">Github Source code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/24/2019-07-24-design-in-programming/" data-id="ckp45ihcg000neswb4juu42gi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/28/2019-07-28-social-service-based-location/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          LOCAT
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/24/2019-07-24-knights-landing-study/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Knights Landing Processor</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

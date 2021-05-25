@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Knights Landing Processor | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. BackgroundKISTI 와 원광대학교 의 산학협력으로 진행하는 슈퍼 컴퓨팅 연구로 Knight Landing Processor 환경에서 Data Migration 와 Roofline 성능분석 모델을 활용해 Computing Performance를 향상시키는 연구를 했습니다.  2분의 교수님 지휘 아래에서 2팀으로 나뉘어 서로 다른 소주제를 가지고">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Knights Landing Processor">
+<meta property="og:url" content="http://example.com/2019/07/24/2019-07-24-knights-landing-study/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. BackgroundKISTI 와 원광대학교 의 산학협력으로 진행하는 슈퍼 컴퓨팅 연구로 Knight Landing Processor 환경에서 Data Migration 와 Roofline 성능분석 모델을 활용해 Computing Performance를 향상시키는 연구를 했습니다.  2분의 교수님 지휘 아래에서 2팀으로 나뉘어 서로 다른 소주제를 가지고">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/res/2019-07-24-knights-landing-study/paper.png">
+<meta property="article:published_time" content="2019-07-24T02:21:54.000Z">
+<meta property="article:modified_time" content="2021-05-25T14:42:08.970Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/res/2019-07-24-knights-landing-study/paper.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2019-07-24-knights-landing-study" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/24/2019-07-24-knights-landing-study/" class="article-date">
+  <time datetime="2019-07-24T02:21:54.000Z" itemprop="datePublished">2019-07-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/project/">project</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Knights Landing Processor
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-Background"><a href="#1-Background" class="headerlink" title="1. Background"></a>1. Background</h3><p>KISTI 와 원광대학교 의 산학협력으로 진행하는 슈퍼 컴퓨팅 연구로 Knight Landing Processor 환경에서 Data Migration 와 Roofline 성능분석 모델을 활용해 Computing Performance를 향상시키는 연구를 했습니다. <br><br> 2분의 교수님 지휘 아래에서 2팀으로 나뉘어 서로 다른 소주제를 가지고 연구를 진행했습니다. ‘슈퍼컴퓨팅 시스템 기술 개발’라는 소주제를 받은 저는 교수님을 포함한 총 3인 1팀이 되어 MCDRAM(HBM)과 DRAM 사이에서 Data Migration을 활용한 성능 향상 방법을 모색했습니다. <br><br> <strong>특히 이 연구에서 저는 Performance 향상을 위한 Data Migration Algorithm을 설계하는 것이 주된 과제였습니다.</strong></p>
+<p><img src="/res/2019-07-24-knights-landing-study/paper.png"></p>
+<h3 id="2-Environment"><a href="#2-Environment" class="headerlink" title="2. Environment"></a>2. Environment</h3><p><em>System : Linux based Knight Landing Processor</em> <br> <em>Language : Python, Bash Shell Script</em> <br> <em>Framework &amp; Library : numactl, Intel Advisor</em></p>
+<h3 id="3-Technical-Detail"><a href="#3-Technical-Detail" class="headerlink" title="3. Technical Detail"></a>3. Technical Detail</h3><p><strong>1. Cache Coherence에 대한 이해</strong> <br> 초기에는 Cache Coherence 위한 방법 중 Snoopy Protocol에 대해 연구하였습니다. 그러나 일반 PC에서 사용하는 Snoopy Protocol방식은 Knight Landing와 같이 노드가 많은 슈퍼컴퓨터에서는 병목현상이 생겨나 성능이 급격히 감소하여 사용할 수가 없습니다. 그래서 Directory based Protocol를 집중 연구하였습니다. <br><br> <strong>2. Knights Landing의 메모리 구조</strong> <br> Knights Landing Processor는 일반 범용 개인 컴퓨터들 과는 다르게 메모리가 DRAM과 MCDRAM(HBM) 두 종류로 나뉘어 있었습니다. 또 메모리와 프로세서가 독립적으로 구분된 UMA구조가 아니고 NUMA(Non-Uniform Memory Access)구조로서 노드별로 메모리와 프로세서가 종속적입니다. <br><br> <strong>3. numactl, Intel advisor를 활용한 Data Migration</strong> <br> 메모리 수준에서의 Data Migration을 위해서 Low programming이 가능한 도구가 필요했습니다. 이를 위해 <em>numactl</em>, <em>Intel Advisor</em> 등의 프로그램을 사용했습니다. Migration policy는 해당 데이터의 이용률이 높을수록 MCDRAM으로 올리고 그렇지 않을수록 DRAM으로 내립니다. <br><br> <strong>4. Linear Regression Model을 통한 데이터 이용률 예측</strong> <br> 데이터 이용에 대한 과거 데이터를 가지고 가까운 미래에 대해서 높을지 아닐지를 예측합니다. 이를 위해 선형회귀 모델을 활용하였습니다. 이를 계속 반복하여 이 정책이 적용된 머신과 그렇지 않은 머신에 대해 성능차이를 분석합니다.</p>
+<h3 id="4-Impression"><a href="#4-Impression" class="headerlink" title="4. Impression"></a>4. Impression</h3><p>좋은 연구결과를 얻어 2018년도 타이페이에서 개최된 CICET 주관 컨퍼런스에서 Best Paper Award를 수상하였습니다. <br><br> 항상 접하기 쉬운 Application Layer에서 서비스를 위한 프로그램을 만들다가 메모리 레벨에서 무언가를 연구한 것은 정말 많은 것을 느낀 경험이었습니다. </p>
+<p><br><br></p>
+<p><a href="/res/2019-07-24-knights-landing-study/knl_paper.pdf">[논문] HyDM: Data Migration Methodology for Hybrid Memories.pdf</a></p>
+<p><a href="/res/2019-07-24-knights-landing-study/Cache_Coherence_Protocols.pptx">[연구자료] Cache Coherence Protocols.pptx</a></p>
+<p><a href="/res/2019-07-24-knights-landing-study/Roofline_Model.pptx">[연구자료] Roofline Model.pptx</a></p>
+<p><a href="/res/2019-07-24-knights-landing-study/Applying_Roofline_Model_to_KNL.pptx">[연구자료] Applying Roofline Model to KNL.pptx</a></p>
+<p><a href="/res/2019-07-24-knights-landing-study/Optimization.pptx">[연구자료] Optimization.pptx</a></p>
+<p><a href="/res/2019-07-24-knights-landing-study/Data_Migration_Algorithm.pptx">[연구자료] Data Migration Algorithm.pptx</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/24/2019-07-24-knights-landing-study/" data-id="ckp45ihch000peswb1fw387jx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/24/2019-07-24-design-in-programming/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DIP
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/24/2019-07-24-guide-system-for-engineering-college/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Ecguide</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

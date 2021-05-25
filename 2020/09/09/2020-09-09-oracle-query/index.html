@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>The summary of the query on oracle | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="UNIONIt would resort when your select queries are merged. 1234567SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) &#x3D; 1 AND DCI_TKT_CAR &#x3D; &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The summary of the query on oracle">
+<meta property="og:url" content="http://example.com/2020/09/09/2020-09-09-oracle-query/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="UNIONIt would resort when your select queries are merged. 1234567SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) &#x3D; 1 AND DCI_TKT_CAR &#x3D; &amp;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-08T15:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-25T14:42:09.011Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-09-09-oracle-query" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/09/2020-09-09-oracle-query/" class="article-date">
+  <time datetime="2020-09-08T15:00:00.000Z" itemprop="datePublished">2020-09-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/database/">database</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      The summary of the query on oracle
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h3><p>It would resort when your select queries are merged.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) &#x3D; 1 AND DCI_TKT_CAR &#x3D; &#39;LJ&#39;</span><br><span class="line">UNION</span><br><span class="line">SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) !&#x3D; 1 AND DCI_TKT_CAR &#x3D; &#39;LJ&#39; AND DCI_CLASS_DESC &#x3D; &#39;할인석&#39;</span><br><span class="line">UNION</span><br><span class="line">SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) !&#x3D; 1 AND DCI_TKT_CAR &#x3D; &#39;LJ&#39; AND DCI_CLASS_DESC &#x3D; &#39;특가석&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="UNION-ALL"><a href="#UNION-ALL" class="headerlink" title="UNION ALL"></a>UNION ALL</h3><p>It should keep the sorting status each the result of queries.</p>
+<p>And You should remember just one thing, which you couldn’t use the ‘order by’ keyword for each select queries when<br>you want to use the ‘union’ or ‘union all’ keyword.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) &#x3D; 1 AND DCI_TKT_CAR &#x3D; &#39;LJ&#39;</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) !&#x3D; 1 AND DCI_TKT_CAR &#x3D; &#39;LJ&#39; AND DCI_CLASS_DESC &#x3D; &#39;할인석&#39;</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT DCI_TKT_CAR, DCI_USE_YN, DCI_CLASS, DCI_CLASS_DESC FROM DOM_CLASS_INFO WHERE LENGTH(DCI_CLASS) !&#x3D; 1 AND DCI_TKT_CAR &#x3D; &#39;LJ&#39; AND DCI_CLASS_DESC &#x3D; &#39;특가석&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="LENGTH-FIELD-NAME"><a href="#LENGTH-FIELD-NAME" class="headerlink" title="LENGTH([FIELD_NAME])"></a>LENGTH([FIELD_NAME])</h3><p>Having you wanted to know the length of some field, You can use this.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    LENGTH(&#39;A&#39;) &#x3D; 1         &#x2F;&#x2F; It would be true. </span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line"></span><br><span class="line">### COUNT(*) AS CNT</span><br><span class="line">&#96;&#96;&#96;java</span><br><span class="line"></span><br><span class="line">DBResultSet rset &#x3D; db.executeQuery(sql.toString(), new Object[] &#123; prId &#125;);</span><br><span class="line"></span><br><span class="line">if(rset.next())&#123;</span><br><span class="line">    return rset.getInt(&quot;CNT&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="INSTR"><a href="#INSTR" class="headerlink" title="INSTR()"></a>INSTR()</h3><p>오라클에서</p>
+<p>내가 원하는 컬럼의 값에 내가 원하는 구문이 포함되어 있는 여부를 확인할 때 사용한다.<br>그냥 포함되어 있는 여부를 확인하고 싶다면 ‘LIKE’ 함수를 사용하면 되지만,<br>만약 포함되어 있고, 포함되어 있는 위치가 어디인지 알고 싶다면?</p>
+<p>그럴때 사용하는 함수가 ‘INSTR()’ 함수이다.<br>사용하는 방법은 생각외로 아주 간단하다<br>INSTR(‘비교할 대상’, ‘비교하고자하는 값’, 비교를 시작할 위치, 검색된 결과의 순번)</p>
+<p>SELECT INSTR(‘TEST SAMPLE CODE’, ‘E’, 1, 1) AS INSTR_RS FROM DUAL</p>
+<ul>
+<li>‘TEST SAMPLE CODE’라는 구분에서 ‘E’를 찾는데 1부터 시작을 해서 1번째 찾아지는 ‘E’의 위치는 어디인가?</li>
+</ul>
+<h3 id="TO-CHAR-SYSDATE-‘D’"><a href="#TO-CHAR-SYSDATE-‘D’" class="headerlink" title="TO_CHAR(SYSDATE, ‘D’)"></a>TO_CHAR(SYSDATE, ‘D’)</h3><p>D 만 주면 요일이 번호 순으로 나온다. 일 -&gt; 1, 월 -&gt; 2 …</p>
+<h3 id="PIVOT"><a href="#PIVOT" class="headerlink" title="PIVOT"></a>PIVOT</h3><h3 id="PIVOT-XML"><a href="#PIVOT-XML" class="headerlink" title="PIVOT XML"></a>PIVOT XML</h3><h3 id="AS-“”"><a href="#AS-“”" class="headerlink" title="AS “”"></a>AS “”</h3><h3 id="WITH"><a href="#WITH" class="headerlink" title="WITH"></a>WITH</h3><h3 id="Dynamic-Query-Procedure"><a href="#Dynamic-Query-Procedure" class="headerlink" title="Dynamic Query. (Procedure)"></a>Dynamic Query. (Procedure)</h3><h3 id="PL-SQL"><a href="#PL-SQL" class="headerlink" title="PL/SQL"></a>PL/SQL</h3><p>PL/SQL (Procedural Language extension to SQL)</p>
+<ul>
+<li><p>SQL을 확장한 절차적 언어(Procedural Language)이다. </p>
+</li>
+<li><p>관계형 데이터베이스에서 사용되는 Oracle의 표준 데이터 엑세스 언어로, 프로시저 생성자를 SQL과 완벽하게 통합한다.</p>
+<p>블록 단위의 실행을 제공한다. 이를 위해 BEGIN과 END;를 사용한다. 그리고 마지막 라인에 /를 입력하면 해당 블록이 실행된다.</p>
+<ul>
+<li><p>변수, 상수 등을 선언하여 SQL과 절차형 언어에서 사용</p>
+</li>
+<li><p>변수의 선언은 DECLARE절에서만 가능하다. 그리고 BEGIN 섹션에서 새 값이 할당될 수 있다.</p>
+</li>
+<li><p>IF문을 사용하여 조건에 따라 문장들을 분기 가능</p>
+</li>
+<li><p>LOOP문을 사용하여 일련의 문장을 반복 가능</p>
+</li>
+<li><p>커서를 사용하여 여러 행을 검색 및 처리</p>
+</li>
+<li><p>[ PL/SQL에서 사용 가능한 SQL은 Query, DML, TCL이다. ]</p>
+<p>DDL (CREATE, DROP, ALTER, TRUNCATE …), DCL (GRANT, REVOKE) 명령어는 동적 SQL을 이용할 때만 사용 가능하다.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>ECLARE (선언부)</p>
+<p>PL/SQL에서 사용하는 모든 변수나 상수를 선언하는 부분으로서 DECLARE로 시작</p>
+<p>=&gt; 변수/상수/커서 등 을 선언 </p>
+<p>옵션</p>
+<p> BEGIN (실행부)<br> 절차적 형식으로 SQL문을 실행할수있도록 절차적 언어의 요소인 제어문, 반복문, 함수 정의 등 로직을 기술할수있는 부분이며 BEGIN으로 시작</p>
+<p>필수</p>
+<p> EXCEPTION (예외 처리부)</p>
+<p>PL/SQL문이 실행되는 중에 에러가 발생할수있는데 이를 예외 사항이라고 한다.</p>
+<p>이러한 예외 사항이 발생했을때 이를 해결하기 위한 문장을 기술할수있는 부분 </p>
+<p>옵션</p>
+<p> END (실행문 종료)</p>
+<p>필수</p>
+<p>– 프로시저 output 매개변수 사용하기</p>
+<pre><code>=&gt; 프로시저를 실행하여 특정결과값을 out변수에 저장하여 보냄. (프로시저에서 실행환경으로 값을 전달(반환)) </code></pre>
+<p>– out있는 프로시저 작성방법</p>
+<pre><code> CREATE PROCEDURE 프로시저이름(
+
+ 변수이름 IN 데이터타입, 변수이름 IN 데이터타입, .... --in 생략가능
+
+변수이름 OUT 데이터타입, 변수이름 OUT 데이터타입 ...----프로시저를 호출하는곳으로 값을 보낸다.
+
+
+
+ )
+
+ IS
+
+ [
+
+ 변수이름 데이터타입;  -- 프로시저내에서 사용할 변수선언
+
+ 변수이름 데이터타입;
+
+ 변수이름 데이터타입;
+
+  ..
+
+  ]
+
+  BEGIN
+
+   기능 구현;
+
+  END;</code></pre>
+<h3 id="EXEC-오류"><a href="#EXEC-오류" class="headerlink" title="EXEC 오류"></a>EXEC 오류</h3><p>SQL PLUS에서는 EXEC SCOTT.PROC_TEST;</p>
+<p>를 수행할 시 에러가 뜨지 않고 정상적으로 수행된다</p>
+<p>이게 왜 이러냐면 </p>
+<p>EXEC는 SQL PLUS에서만 사용 가능한 명령어이기 때문에</p>
+<p>DBeaver 같은 툴에서 쓰려고 하면 에러가 뜨는 것이다</p>
+<h3 id="DBMS-OUTPUT-Put-line"><a href="#DBMS-OUTPUT-Put-line" class="headerlink" title="DBMS_OUTPUT.Put_line"></a>DBMS_OUTPUT.Put_line</h3><h3 id="ALTER-TABLE-테이블-명-MODIFY-필드명-VARCHAR2-4000"><a href="#ALTER-TABLE-테이블-명-MODIFY-필드명-VARCHAR2-4000" class="headerlink" title="ALTER TABLE 테이블 명 MODIFY(필드명 VARCHAR2(4000));"></a>ALTER TABLE 테이블 명 MODIFY(필드명 VARCHAR2(4000));</h3><h3 id="CONCAT-SUBSTR-DCI-CLASS-1-1-LPAD-SUBSTR-DCI-CLASS-2-2-‘0’"><a href="#CONCAT-SUBSTR-DCI-CLASS-1-1-LPAD-SUBSTR-DCI-CLASS-2-2-‘0’" class="headerlink" title="CONCAT(SUBSTR(DCI_CLASS, 1, 1), LPAD(SUBSTR(DCI_CLASS, 2), 2, ‘0’))"></a>CONCAT(SUBSTR(DCI_CLASS, 1, 1), LPAD(SUBSTR(DCI_CLASS, 2), 2, ‘0’))</h3><h3 id="SIGN-A-B"><a href="#SIGN-A-B" class="headerlink" title="SIGN(A - B)"></a>SIGN(A - B)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-1 (A가 B보다 작은 경우) -&gt; </span><br><span class="line">0  (A와 B가 같은 경우) -&gt;</span><br><span class="line">1  (A가 B보다 큰 경우) -&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT</span><br><span class="line">    F.PF_LAST_NAME,</span><br><span class="line">    F.PF_FIRST_NAME,</span><br><span class="line">    DECODE(F.PF_PAX_TYPE, &#39;ADT&#39;, &#39;성인&#39;, &#39;CHD&#39;, &#39;소아&#39;, &#39;INF&#39;, &#39;유아&#39;, &#39;&#39;) PF_PAX_TYPE,</span><br><span class="line">    TO_CHAR(F.PF_FARE, &#39;FM9,999,999&#39;) PF_FARE,</span><br><span class="line">    TO_CHAR(F.PF_TAX, &#39;FM9,999,999&#39;) PF_TAX,</span><br><span class="line">    TO_CHAR(F.PF_TASF, &#39;FM9,999,999&#39;) PF_TASF,</span><br><span class="line">    TO_CHAR(F.PF_AMOUNT, &#39;FM9,999,999&#39;) PF_AMOUNT,</span><br><span class="line">    DECODE(TO_CHAR(R.PR_TKT_DLVRY_TIME, &#39;yyyymmdd&#39;), TO_CHAR(SYSDATE, &#39;yyyymmdd&#39;), &#39;0&#39;, DECODE(SIGN(F.PF_FARE - 1000), -1, &#39;0&#39;, 0, &#39;1,000&#39;, 1, &#39;1,000&#39;)) TASF_FEE</span><br><span class="line">FROM</span><br><span class="line">    PASSENGER_FARE_RECORD F, PASSENGER_RECORD R</span><br><span class="line">WHERE</span><br><span class="line">    F.PF_PR_ID &#x3D; &#39;500020783&#39; AND</span><br><span class="line">    F.PF_PR_ID &#x3D; R.PR_ID</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="SYSDATE-1"><a href="#SYSDATE-1" class="headerlink" title="SYSDATE - 1"></a>SYSDATE - 1</h3><p>어제를 의미한다</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/09/09/2020-09-09-oracle-query/" data-id="ckp45ihe1005aeswb99pk87bg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/09/2020-09-07-dockerfile/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Dockerfile
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/03/2020-09-03-java-argument/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Jvm options</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
