@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Spring Environment | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Spring Environment스프링의 환경이자 설정과 관련된 인터페이스.Proiles 설정과 Property 설정에 접근할 수 있다.ApplicationContext 안에 해당 객체가 포함되어 있어서 ApplicationContext 로도 접근이 가능하다. Profiles스프링 웹 애플리케이션을 개발할 때, 애플리케이션 환경에 따라 약간씩 변경이 되어야">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Environment">
+<meta property="og:url" content="http://example.com/2021/05/28/2021-05-28-spring-environment/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Spring Environment스프링의 환경이자 설정과 관련된 인터페이스.Proiles 설정과 Property 설정에 접근할 수 있다.ApplicationContext 안에 해당 객체가 포함되어 있어서 ApplicationContext 로도 접근이 가능하다. Profiles스프링 웹 애플리케이션을 개발할 때, 애플리케이션 환경에 따라 약간씩 변경이 되어야">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-27T15:54:00.000Z">
+<meta property="article:modified_time" content="2021-06-07T14:21:25.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2021-05-28-spring-environment" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/28/2021-05-28-spring-environment/" class="article-date">
+  <time datetime="2021-05-27T15:54:00.000Z" itemprop="datePublished">2021-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring Environment
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Spring-Environment"><a href="#Spring-Environment" class="headerlink" title="Spring Environment"></a>Spring Environment</h1><p>스프링의 환경이자 설정과 관련된 인터페이스.<br>Proiles 설정과 Property 설정에 접근할 수 있다.<br>ApplicationContext 안에 해당 객체가 포함되어 있어서 ApplicationContext 로도 접근이 가능하다.</p>
+<p>Profiles<br>스프링 웹 애플리케이션을 개발할 때, 애플리케이션 환경에 따라 약간씩 변경이 되어야할 설정 값들을 코드의 변경 없이 설정만으로 편리하게 변경할 수 있도록 제공하는 인터페이스이자 분리의 기준.</p>
+<p>application.properties<br>application-local.properties<br>application-test.properties<br>위와 같이 설정 파일을 만들고. 이 파일에 각 환경에 맞는 값들을 넣는다.</p>
+<p>VM-option 이나 다양한 방법으로 어떤 properties 파일을 접근할지를 어플리케이션 구동시에 선택할 수 있다.<br>@Profile(“test”) 어노테이션으로도 접근 가능.</p>
+<h1 id="UtilityClass"><a href="#UtilityClass" class="headerlink" title="UtilityClass"></a>UtilityClass</h1><p>@UtilityClass<br>유틸리티 클래스에 적용하면 되는 어노테이션이다. 만약 이 어노테이션을 작성하면 기본생성자가 private 생성되며 만약 리플렉션 혹은 내부에서 생성자를 호출할 경우에는 UnsupportedOperationException이 발생한다.</p>
+<h2 id="acceptsProfiles-String…-profiles"><a href="#acceptsProfiles-String…-profiles" class="headerlink" title="acceptsProfiles(String… profiles)"></a>acceptsProfiles(String… profiles)</h2><p>실행되는 프로파일이 profiles 파라미터에 있는 프로파일이라면 true 를 반환하고 그렇지 않으면 false 를 반환한다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/28/2021-05-28-spring-environment/" data-id="ckq4jx10m00014f8j17yf18fy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/05/28/2021-05-28-gradle-basic/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Basic Gradle
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/05/25/2021-05-25-jpa-study/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JPA 공부</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/gradle/">gradle</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/20/2021-06-20-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/15/2021-06-15-kabang/">Kabang</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/15/2021-06-15-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/14/2021-06-14-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/14/2021-06-14-kabang/">Jpa</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

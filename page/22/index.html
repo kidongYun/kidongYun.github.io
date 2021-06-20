@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/22/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2019-04-27-using-css-react" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/27/2019-04-27-using-css-react/" class="article-date">
+  <time datetime="2019-04-26T18:23:00.000Z" itemprop="datePublished">2019-04-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/script/">script</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/27/2019-04-27-using-css-react/">The way how to using CSS format in React</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Let’s find out the way how to modify your <strong>React</strong> project when you want to operate <strong>CSS</strong> format files in yours</p>
+<p>If it doesn’t work with showing message like below. the reason doesn’t operate is because you did’t install the things relate to <strong>CSS Styling</strong></p>
+<p><img src="/res/2019-04-27-using-css-react/1.png"></p>
+<p>so now, we will install 2 packages using <strong>npm</strong>.</p>
+<p>they are <strong>css-loader</strong> and <strong>style-loader</strong>.</p>
+<h3 id="1-Let’s-install-css-loader-style-loader-via-npm"><a href="#1-Let’s-install-css-loader-style-loader-via-npm" class="headerlink" title="1. Let’s install css-loader, style-loader via npm"></a>1. Let’s install <strong>css-loader</strong>, <strong>style-loader</strong> via <strong>npm</strong></h3><p>follow command below at your <em>React</em> project folder</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; npm install --save-dev css-loader style-loader</span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-04-27-using-css-react/2.png"></p>
+<h3 id="2-Update-your-webpack-config-js-file"><a href="#2-Update-your-webpack-config-js-file" class="headerlink" title="2. Update your webpack.config.js file"></a>2. Update your webpack.config.js file</h3><p>add code below in your webpack.config.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">    use: [<span class="string">&#x27;css-loader&#x27;</span>, <span class="string">&#x27;style-loader&#x27;</span>]</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>Originally, your <strong>webpack.config.js</strong> maybe is like below.</p>
+<h4 id="Before"><a href="#Before" class="headerlink" title="Before"></a><em>Before</em></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: [</span><br><span class="line">        <span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.(js|jsx)$/</span>,</span><br><span class="line">                exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">                use: [<span class="string">&#x27;babel-loader&#x27;</span>]</span><br><span class="line">            &#125; </span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [<span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>, <span class="string">&#x27;.jsx&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    output: &#123;</span><br><span class="line">        path: __dirname + <span class="string">&#x27;/public&#x27;</span>,</span><br><span class="line">        filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Let’s modify it like below.</p>
+<h4 id="After"><a href="#After" class="headerlink" title="After"></a><em>After</em></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: [</span><br><span class="line">        <span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.(js|jsx)$/</span>,</span><br><span class="line">                exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">                use: [<span class="string">&#x27;babel-loader&#x27;</span>]</span><br><span class="line">            &#125;, </span><br><span class="line">            <span class="comment">/////////////////////////////////////////////////////// START NEW CODE</span></span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">                use: [<span class="string">&#x27;css-loader&#x27;</span>, <span class="string">&#x27;style-loader&#x27;</span>]</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="comment">/////////////////////////////////////////////////////// END NEW CODE</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [<span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>, <span class="string">&#x27;.jsx&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    output: &#123;</span><br><span class="line">        path: __dirname + <span class="string">&#x27;/public&#x27;</span>,</span><br><span class="line">        filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Don’t miss the <strong>comma</strong> ‘,’ between the code associated with <em>babel-loader</em> and <em>css-loader</em> when you modify your <strong>webpack.config.js</strong></p>
+<p>If you do the above successfully, then your React system will understand <strong>.css</strong> files  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/27/2019-04-27-using-css-react/" data-id="ckp45ihca000aeswb3hr9c27q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-04-26-build-react-express" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/26/2019-04-26-build-react-express/" class="article-date">
+  <time datetime="2019-04-25T17:58:54.000Z" itemprop="datePublished">2019-04-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/script/">script</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/26/2019-04-26-build-react-express/">Let&#39;s build React with Express Server</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>If you are the first <strong>React</strong>, please search <strong>create-react-app</strong>, see other posts.</p>
+<p>Building React Service manually without <strong>create-react-app</strong> is somewhat difficult for beginners.</p>
+<p>I will build <strong>React</strong> via <strong>npm</strong> package manager. It needs <strong>node</strong> so if you don’t have then please download in <a target="_blank" rel="noopener" href="https://nodejs.org/ko/download/">here</a>.</p>
+<h3 id="1-To-create-node-project"><a href="#1-To-create-node-project" class="headerlink" title="1. To create node project"></a>1. To create <strong>node</strong> project</h3><p>First of all, you should make the directory for using your react project. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">... &gt; mkdir my_react_express</span><br><span class="line">... &gt; cd my_react_express</span><br><span class="line">...&#x2F;my_react_express &gt; </span><br></pre></td></tr></table></figure>
+
+<p>when you want to make <strong>node</strong> project, you just use command below.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; npm init -y</span><br></pre></td></tr></table></figure>
+<p>if you don’t use the option ‘-y’ then you should treat the detail of your new node project.</p>
+<p><img src="/res/2019-04-26-build-react-express/1.png"></p>
+<p>and you can check <strong>package.json</strong> file in your project directory.</p>
+<p><img src="/res/2019-04-26-build-react-express/2.png"></p>
+<p><img src="/res/2019-04-26-build-react-express/3.png"></p>
+<h3 id="2-To-install-express-react-react-dom-at-dependecies"><a href="#2-To-install-express-react-react-dom-at-dependecies" class="headerlink" title="2. To install express, react, react-dom at dependecies"></a>2. To install <strong>express</strong>, <strong>react</strong>, <strong>react-dom</strong> at dependecies</h3><p>follow below command at your folder</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; npm install -save express react react-dom</span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-04-26-build-react-express/4.png"></p>
+<p>You can see __node_modules__ folder in your react directory.<br>and you can also check the new addition, associated with <strong>express</strong>, <strong>react</strong>, <strong>react-dom</strong> at <strong>dependencies</strong> of package.json</p>
+<p><img src="/res/2019-04-26-build-react-express/5.png"></p>
+<p><img src="/res/2019-04-26-build-react-express/6.png"></p>
+<h3 id="3-To-install-babel-core-babel-preset-env-babel-preset-react-babel-loader-webpack-webpack-cli-at-devDependecies"><a href="#3-To-install-babel-core-babel-preset-env-babel-preset-react-babel-loader-webpack-webpack-cli-at-devDependecies" class="headerlink" title="3. To install @babel/core, @babel/preset-env, @babel/preset-react, babel-loader, webpack, webpack-cli at devDependecies"></a>3. To install <strong>@babel/core</strong>, <strong>@babel/preset-env</strong>, <strong>@babel/preset-react</strong>, <strong>babel-loader</strong>, <strong>webpack</strong>, <strong>webpack-cli</strong> at devDependecies</h3><p>follow command below at your folder</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; npm install --save-dev @babel&#x2F;core @babel&#x2F;preset-env @babel&#x2F;preset-react babel-loader webpack webpack-cli</span><br></pre></td></tr></table></figure>
+
+<p>and then Let’s check your <strong>package.json</strong> file one more.</p>
+<p><img src="/res/2019-04-26-build-react-express/8.png"></p>
+<p><strong>devDependencies</strong> entry has been added to <strong>package.json</strong> file, and what is installed in it.</p>
+<h3 id="4-Let’s-consist-all-files-folders-properly-to-your-React-directory"><a href="#4-Let’s-consist-all-files-folders-properly-to-your-React-directory" class="headerlink" title="4. Let’s consist all files, folders properly to your React directory."></a>4. Let’s consist all files, folders properly to your React directory.</h3><h4 id="First-Let’s-make-3-folders-in-your-React-directory"><a href="#First-Let’s-make-3-folders-in-your-React-directory" class="headerlink" title="First, Let’s make 3 folders in your React directory."></a>First, Let’s make 3 folders in your React directory.</h4><p><img src="/res/2019-04-26-build-react-express/9.png"></p>
+<p>follow command below.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; mkdir public</span><br><span class="line">...&#x2F;my_react_express &gt; mkdir server</span><br><span class="line">...&#x2F;my_react_express &gt; mkdir src</span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-04-26-build-react-express/10.png"></p>
+<p><img src="/res/2019-04-26-build-react-express/11.png"></p>
+<h4 id="next-step-make-6-files-in-your-React-directory"><a href="#next-step-make-6-files-in-your-React-directory" class="headerlink" title="next step, make 6 files in your React directory."></a>next step, make 6 files in your React directory.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express&#x2F;webpack.config.js</span><br><span class="line">...&#x2F;my_react_express&#x2F;.babelrc</span><br><span class="line">...&#x2F;my_react_express&#x2F;public&#x2F;index.html</span><br><span class="line">...&#x2F;my_react_express&#x2F;src&#x2F;App.js</span><br><span class="line">...&#x2F;my_react_express&#x2F;src&#x2F;index.js</span><br><span class="line">...&#x2F;my_react_express&#x2F;server&#x2F;main.js</span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-04-26-build-react-express/12.png"></p>
+<h3 id="5-Let’s-fill-in-your-new-files"><a href="#5-Let’s-fill-in-your-new-files" class="headerlink" title="5. Let’s fill in your new files."></a>5. Let’s fill in your new files.</h3><h4 id="…-my-react-express-webpack-config-js"><a href="#…-my-react-express-webpack-config-js" class="headerlink" title="…/my_react_express/webpack.config.js"></a>…/my_react_express/webpack.config.js</h4><p>typing code below in your <strong>webpack.config.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: [</span><br><span class="line">        <span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.(js|jsx)$/</span>,</span><br><span class="line">                exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">                use: [<span class="string">&#x27;babel-loader&#x27;</span>]</span><br><span class="line">            &#125; </span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [<span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>, <span class="string">&#x27;.jsx&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    output: &#123;</span><br><span class="line">        path: __dirname + <span class="string">&#x27;/public&#x27;</span>,</span><br><span class="line">        filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>One of the important features of <strong>webpack</strong> is gathering static files and resources together and then extract what to <strong>bundle.js</strong></p>
+<h4 id="…-my-react-express-babelrc"><a href="#…-my-react-express-babelrc" class="headerlink" title="…/my_react_express/.babelrc"></a>…/my_react_express/.babelrc</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;presets&quot;</span>: [<span class="string">&quot;@babel/preset-env&quot;</span>, <span class="string">&quot;@babel/preset-react&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="…-my-react-express-public-index-html"><a href="#…-my-react-express-public-index-html" class="headerlink" title="…/my_react_express/public/index.html"></a>…/my_react_express/public/index.html</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>React App<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/bundle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="…-my-react-express-src-App-js"><a href="#…-my-react-express-src-App-js" class="headerlink" title="…/my_react_express/src/App.js"></a>…/my_react_express/src/App.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render()&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;h1&gt;Hello React Skeleton&lt;/h1&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<h4 id="…-my-react-express-src-index-js"><a href="#…-my-react-express-src-index-js" class="headerlink" title="…/my_react_express/src/index.js"></a>…/my_react_express/src/index.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> rootElement = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>);</span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, rootElement);</span><br></pre></td></tr></table></figure>
+
+<h4 id="…-my-react-express-server-main-js"><a href="#…-my-react-express-server-main-js" class="headerlink" title="…/my_react_express/server/main.js"></a>…/my_react_express/server/main.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"></span><br><span class="line">app.use(express.static(<span class="string">&#x27;public&#x27;</span>))</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;start! express server on port 3000&quot;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.sendFile(path.join(__dirname, <span class="string">&quot;../public/index.html&quot;</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-Update-new-code-your-package-json-file"><a href="#6-Update-new-code-your-package-json-file" class="headerlink" title="6. Update new code your package.json file"></a>6. Update new code your <strong>package.json</strong> file</h3><p>please add new code below in your <strong>scripts</strong> of <strong>package.json</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;start&quot;</span>: <span class="string">&quot;nodemon ./server/main.js&quot;</span>,</span><br><span class="line"><span class="string">&quot;build&quot;</span>: <span class="string">&quot;webpack -p&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>The below is all the code in <strong>package.json</strong> </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;my_react_express&quot;</span>,</span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>,</span><br><span class="line">        <span class="comment">/////////////////////////////////////////////////////// START NEW CODE</span></span><br><span class="line">        <span class="string">&quot;start&quot;</span>: <span class="string">&quot;nodemon ./server/main.js&quot;</span>,</span><br><span class="line">        <span class="string">&quot;build&quot;</span>: <span class="string">&quot;webpack -p&quot;</span></span><br><span class="line">        <span class="comment">/////////////////////////////////////////////////////// END NEW CODE</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;keywords&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">    <span class="string">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;express&quot;</span>: <span class="string">&quot;^4.16.4&quot;</span>,</span><br><span class="line">        <span class="string">&quot;react&quot;</span>: <span class="string">&quot;^16.8.6&quot;</span>,</span><br><span class="line">        <span class="string">&quot;react-dom&quot;</span>: <span class="string">&quot;^16.8.6&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;@babel/core&quot;</span>: <span class="string">&quot;^7.4.3&quot;</span>,</span><br><span class="line">        <span class="string">&quot;@babel/preset-env&quot;</span>: <span class="string">&quot;^7.4.3&quot;</span>,</span><br><span class="line">        <span class="string">&quot;@babel/preset-react&quot;</span>: <span class="string">&quot;^7.0.0&quot;</span>,</span><br><span class="line">        <span class="string">&quot;webpack&quot;</span>: <span class="string">&quot;^4.30.0&quot;</span>,</span><br><span class="line">        <span class="string">&quot;webpack-cli&quot;</span>: <span class="string">&quot;^3.3.1&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>if you don’t do thing above, you can’t execute your <strong>React</strong>  </p>
+<h3 id="7-Run-your-React-using-npm-script"><a href="#7-Run-your-React-using-npm-script" class="headerlink" title="7. Run your React using npm script"></a>7. Run your React using npm script</h3><p>follow code below</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; npm run build</span><br></pre></td></tr></table></figure>
+<p>as I mentioned before, if you finished, you can get a <strong>bundle.js</strong> file.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; npm start</span><br></pre></td></tr></table></figure>
+
+<p>Finally, Let’s go to <a target="_blank" rel="noopener" href="http://localhost:3000/">localhost:3000</a></p>
+<p><img src="/res/2019-04-26-build-react-express/13.png"></p>
+<p>Thank you for reading so far.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/26/2019-04-26-build-react-express/" data-id="ckp45ihc70008eswb29aoc4s2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-04-25-how-post-jekyll" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/25/2019-04-25-how-post-jekyll/" class="article-date">
+  <time datetime="2019-04-24T18:23:00.000Z" itemprop="datePublished">2019-04-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/25/2019-04-25-how-post-jekyll/">How to post The Jekyll page via Markdown</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-Make-a-md-file-in-…-posts"><a href="#1-Make-a-md-file-in-…-posts" class="headerlink" title="1. Make a .md file in …/_posts/"></a>1. Make a <strong>.md</strong> file in …/_posts/</h3><p>__/_posts__ folder is for holding your Jekyll posts. </p>
+<p>and I recommend you to use the editor(<strong>Atom</strong>, <strong>VSCode</strong>, <strong>Editplus</strong>) for typing this.</p>
+<p>I commonly use <strong>VSCode</strong>. if you want, you can download <strong>VSCode</strong> in <a target="_blank" rel="noopener" href="https://code.visualstudio.com/download">here</a></p>
+<p><img src="/res/2019-04-25-how-post-jekyll/1.png"></p>
+<p>then please open your Jekyll Project folder in <strong>File &gt; Open Folder</strong></p>
+<p>and make a <strong>.md</strong> file in /_posts folder.</p>
+<p><img src="/res/2019-04-25-how-post-jekyll/2.png"></p>
+<p><img src="/res/2019-04-25-how-post-jekyll/3.png"></p>
+<p>you should keep the shape of your file name like below when you making Jekyll posts.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date-title.md</span><br><span class="line"></span><br><span class="line">example) 2019-04-25-jekyll-test.md</span><br></pre></td></tr></table></figure>
+
+<p>then you can check your updates at locally</p>
+<h3 id="2-Let’s-fill-the-content-in-your-post"><a href="#2-Let’s-fill-the-content-in-your-post" class="headerlink" title="2. Let’s fill the content in your post"></a>2. Let’s fill the content in your post</h3><p><img src="/res/2019-04-25-how-post-jekyll/4.png"></p>
+<p>please type what you want in your post as shown below.</p>
+<h3 id="3-Push-your-updates-to-Github-Repository"><a href="#3-Push-your-updates-to-Github-Repository" class="headerlink" title="3. Push your updates to Github Repository."></a>3. Push your updates to Github Repository.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;anything&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<p>and also you can check your updates at your github pages.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/25/2019-04-25-how-post-jekyll/" data-id="ckp45ihc60006eswbas9udlyw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-04-24-apply-jekyll-theme" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/24/2019-04-24-apply-jekyll-theme/" class="article-date">
+  <time datetime="2019-04-23T19:21:00.000Z" itemprop="datePublished">2019-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/24/2019-04-24-apply-jekyll-theme/">Let&#39;s apply Jekyll Theme</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-Download-the-zip-file-of-the-desired-Jekyll-Theme"><a href="#1-Download-the-zip-file-of-the-desired-Jekyll-Theme" class="headerlink" title="1. Download the zip file of the desired Jekyll Theme."></a>1. Download the zip file of the desired <strong>Jekyll Theme</strong>.</h3><p>Let’s get the Jekyll Theme you want on <a target="_blank" rel="noopener" href="http://jekyllthemes.org/">this page</a> first.</p>
+<p>and please download the <strong>zip</strong> files of the desired <strong>Jekyll Theme</strong>.</p>
+<p><img src="/res/2019-04-24-apply-jekyll-theme/1.png"></p>
+<p>I downloaded the <strong>hydejack</strong> theme in my case.</p>
+<h3 id="2-Copy-and-Paste-zip-files-of-Jekyll-Theme-to-your-Jekyll-Proejct-directory"><a href="#2-Copy-and-Paste-zip-files-of-Jekyll-Theme-to-your-Jekyll-Proejct-directory" class="headerlink" title="2. Copy and Paste zip files of Jekyll Theme to your Jekyll Proejct directory."></a>2. Copy and Paste zip files of Jekyll Theme to your Jekyll Proejct directory.</h3><p>When you’re done, please <strong>unzip</strong> your theme file. then copy and paste these all files to your jekyll project folder.</p>
+<p><img src="/res/2019-04-24-apply-jekyll-theme/2.png"></p>
+<p>and when you received above message, you should surely press the skip button.</p>
+<p><strong>Don’t overwrite the file. Never!</strong> otherwise your Jekyll service is not operating.</p>
+<h3 id="3-Serve-Your-Jekyll-Page-locally"><a href="#3-Serve-Your-Jekyll-Page-locally" class="headerlink" title="3. Serve Your Jekyll Page locally"></a>3. Serve Your Jekyll Page locally</h3><p>please you operate your Jekyll Server using below command at your Jekyll directory.</p>
+<p>actually, we already seen this command at  <a href="/workspace/devlog/jekyll/build_local_jekyll/2019/04/19/build-jekyll-page-locally.html">Jekyll-1 Let’s build the jekyll page in local</a></p>
+<p>if you can’t understand this, I recommend you looking at the above post.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_jekyll &gt; jekyll serve</span><br></pre></td></tr></table></figure>
+
+<p>you can see below image as a result.</p>
+<p><img src="/res/2019-04-24-apply-jekyll-theme/3.png"></p>
+<p>I think it is more awesome then default theme.</p>
+<h3 id="4-update-Jekyll-Theme-to-Github"><a href="#4-update-Jekyll-Theme-to-Github" class="headerlink" title="4. update Jekyll Theme to Github."></a>4. update Jekyll Theme to Github.</h3><p>it is also so simple just you do to upload your updated to github.</p>
+<h4 id="following-these-commands-at-your-Jekyll-project-folder"><a href="#following-these-commands-at-your-Jekyll-project-folder" class="headerlink" title="following these commands at your Jekyll project folder."></a>following these commands at your Jekyll project folder.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_jekyll &gt; git add .</span><br><span class="line">...&#x2F;my_jekyll &gt; git commit -m &quot;first&quot;</span><br><span class="line">...&#x2F;my_jekyll &gt; git push -u origin master </span><br></pre></td></tr></table></figure>
+
+<p>then you can also see the same with above picture.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/24/2019-04-24-apply-jekyll-theme/" data-id="ckp45ihc60007eswbfeh5brs8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-04-21-upload-jekyll-github-page" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/21/2019-04-21-upload-jekyll-github-page/" class="article-date">
+  <time datetime="2019-04-20T18:56:54.000Z" itemprop="datePublished">2019-04-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/21/2019-04-21-upload-jekyll-github-page/">Let&#39;s upload the your jekyll to github page</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>First of all, your system should be installed <strong>Git</strong> program before following this post. if you don’t, you can get <strong>Git</strong> at <a target="_blank" rel="noopener" href="http://git-scm.com/">this page</a></p>
+<h3 id="1-Make-a-new-repository-of-github-for-Jekyll-page"><a href="#1-Make-a-new-repository-of-github-for-Jekyll-page" class="headerlink" title="1. Make a new repository of github for Jekyll page."></a>1. Make a new repository of github for Jekyll page.</h3><p>Let’s go to <a target="_blank" rel="noopener" href="https://github.com/">github site</a> and please login your account.</p>
+<p>If you don’t have, please sign in.</p>
+<p><img src="/res/2019-04-21-upload-jekyll-github-page/1.png"></p>
+<p>and then please press <strong>new</strong> button located on left of this above site</p>
+<h4 id="you-should-type-your-repository-name-like-below-at-next-page"><a href="#you-should-type-your-repository-name-like-below-at-next-page" class="headerlink" title="you should type your repository name like below at next page."></a>you should type your repository name like below at next page.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[username].github.io</span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-04-21-upload-jekyll-github-page/2.png"></p>
+<p>you should type your own name at the part of <strong>username</strong>. </p>
+<p>in my case, i wrote ‘kidongYun’ as you see.</p>
+<h3 id="2-Let’s-link-between-github-repository-and-your-local-jekyll-directory-using-Git"><a href="#2-Let’s-link-between-github-repository-and-your-local-jekyll-directory-using-Git" class="headerlink" title="2. Let’s link between github repository and your local jekyll directory using Git"></a>2. Let’s link between github repository and your local jekyll directory using <strong>Git</strong></h3><p>execute <strong>git bash</strong> and change the directory to your jekyll workspace.</p>
+<p><img src="/res/2019-04-21-upload-jekyll-github-page/3.png"></p>
+<p>I have changed my directory to ‘…/my_jekyll’ as you can see at above picture.</p>
+<h4 id="following-below’s-code-in-git-bash"><a href="#following-below’s-code-in-git-bash" class="headerlink" title="following below’s code in git bash"></a>following below’s code in git bash</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_jekyll &gt; git init</span><br><span class="line">...&#x2F;my_jekyll &gt; git add .</span><br><span class="line">...&#x2F;my_jekyll &gt; git commit -m &quot;first&quot;</span><br><span class="line">...&#x2F;my_jekyll &gt; git remote origin add [your git repository]</span><br><span class="line">...&#x2F;my_jekyll &gt; git push -u origin master </span><br></pre></td></tr></table></figure>
+
+<p>you can confirm <strong>[your git repository]</strong> at your github repository.</p>
+<p>When you completed all of the aboves, you can see the your jekyll page loaded in github repository via your officially github page url.</p>
+<p>maybe your url look like this <strong>https://[username].github.io</strong></p>
+<p><img src="/res/2019-04-21-upload-jekyll-github-page/4.png"></p>
+<p>My page is a bit different from the default pages which already saw at previous post because of <strong>Jekyll Theme</strong></p>
+<p>We will take a look at the <strong>Jekyll Theme</strong> in following posts.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/21/2019-04-21-upload-jekyll-github-page/" data-id="ckp45ihbu0001eswb0pem1l3g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-04-20-build-jekyll-page-locally" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/20/2019-04-20-build-jekyll-page-locally/" class="article-date">
+  <time datetime="2019-04-19T17:24:54.000Z" itemprop="datePublished">2019-04-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/20/2019-04-20-build-jekyll-page-locally/">Let&#39;s build the jekyll page in local</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>when I was building this jekyll page, I have been through a lot of trials and errors. so I felt at that time I should write some posts associated with <strong>Jekyll</strong> to record my working and to share to the others.</p>
+<p>this post is to know the way how to build the jekyll page in local system.</p>
+<p>Specially, you should install <strong>Ruby</strong> in your system before following below process.</p>
+<p>if you don’t have <strong>Ruby</strong> in your system, you can download it in <a target="_blank" rel="noopener" href="https://rubyinstaller.org/downloads/">this page</a>.</p>
+<h3 id="1-To-install-Jekyll-via-gem-of-Ruby"><a href="#1-To-install-Jekyll-via-gem-of-Ruby" class="headerlink" title="1. To install Jekyll via gem of Ruby"></a>1. To install Jekyll via gem of Ruby</h3><h4 id="Execute-‘cmd’"><a href="#Execute-‘cmd’" class="headerlink" title="Execute ‘cmd’"></a>Execute <strong>‘cmd’</strong></h4><p><img src="/res/2019-04-20-build-jekyll-page-locally/1.png"></p>
+<p>Please press <strong>Windows + R</strong> buttons simultaneously then you can see the window like above.</p>
+<p>then press the confirm button.</p>
+<h4 id="Typing-these-in-Command"><a href="#Typing-these-in-Command" class="headerlink" title="Typing these in Command"></a>Typing these in Command</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;&gt; mkdir my_jekyll</span><br><span class="line">...&#x2F;&gt; cd my_jekyll</span><br><span class="line">...&#x2F;my_jekyll&gt; gem install jekyll</span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-04-20-build-jekyll-page-locally/2.png"></p>
+<p>Let’s change directory using <strong>‘cd’</strong>, <strong>‘mkdir’</strong> to your workspace where you want. you can install <strong>Jekyll</strong> through gem of Ruby. Let’s follow the above command line.</p>
+<h3 id="2-Let’s-make-a-new-jekyll-project-in-workspace"><a href="#2-Let’s-make-a-new-jekyll-project-in-workspace" class="headerlink" title="2. Let’s make a new jekyll project in workspace"></a>2. Let’s make a new jekyll project in workspace</h3><h4 id="Typing-below’s-code-in-Command"><a href="#Typing-below’s-code-in-Command" class="headerlink" title="Typing below’s code in Command"></a>Typing below’s code in Command</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_jekyll &gt; jekyll new .</span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-04-20-build-jekyll-page-locally/3.png"></p>
+<p><img src="/res/2019-04-20-build-jekyll-page-locally/4.png"></p>
+<p>you can see the new files made by the above command in your workspace.<br>these files are the things for building your static web page used Jekyll</p>
+<h3 id="3-Let’s-execute-your-jekyll-page-service-locally"><a href="#3-Let’s-execute-your-jekyll-page-service-locally" class="headerlink" title="3. Let’s execute your jekyll page service locally."></a>3. Let’s execute your jekyll page service locally.</h3><h4 id="Typing-below’s-code-in-Command-1"><a href="#Typing-below’s-code-in-Command-1" class="headerlink" title="Typing below’s code in Command"></a>Typing below’s code in Command</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_jekyll &gt; jekyll serve</span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-04-20-build-jekyll-page-locally/5.png"></p>
+<p>if you saw the same texts like my in your command, your jekyll service work successfully.</p>
+<p><img src="/res/2019-04-20-build-jekyll-page-locally/6.png"></p>
+<p>Let’s enter the jekyll page via <a target="_blank" rel="noopener" href="http://localhost:4000/">localhost:4000</a></p>
+<p>if you saw the page same with me, it works well.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/20/2019-04-20-build-jekyll-page-locally/" data-id="ckp45ihc10003eswb4ww4484w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/21/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/gradle/">gradle</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/20/2021-06-20-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/15/2021-06-15-kabang/">Kabang</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/15/2021-06-15-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/14/2021-06-14-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/14/2021-06-14-kabang/">Jpa</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

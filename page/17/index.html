@@ -64,10 +64,461 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2019-09-23-string-in-descending-order" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2019-10-24-build-spring-mvc" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/09/23/2019-09-23-string-in-descending-order/" class="article-date">
-  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+    <a href="/2019/10/24/2019-10-24-build-spring-mvc/" class="article-date">
+  <time datetime="2019-10-23T23:47:54.000Z" itemprop="datePublished">2019-10-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/24/2019-10-24-build-spring-mvc/">Building Spring MVC via Intellij IDEA</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This article is the Summary of building Spring MVC Project via Intellij IDEA IDE.</p>
+<h3 id="1-To-make-the-new-project"><a href="#1-To-make-the-new-project" class="headerlink" title="1. To make the new project"></a>1. To make the new project</h3><p>please click like below process.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File &gt; New &gt; Project</span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-10-24-build-spring-mvc/1.png"></p>
+<p>then You can see the new window for building the project like below.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Select below Two Options</span><br><span class="line"></span><br><span class="line">- Java</span><br><span class="line"></span><br><span class="line">- Web</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>If you finished, please press the next button located bottom of the window</p>
+<p><img src="/res/2019-10-24-build-spring-mvc/2.png"></p>
+<p>input the contents </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">GroupId - com.kidongyun</span><br><span class="line"></span><br><span class="line">ArtifactId - SpringMVC</span><br><span class="line"></span><br><span class="line">Version - 1.0-SNAPSHOT</span><br><span class="line">&#x2F;&#x2F; keep the default value.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>If you finished, please press the next button</p>
+<p><img src="/res/2019-10-24-build-spring-mvc/3.png"></p>
+<p>input the contents</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Project name - SpringMVC</span><br><span class="line"></span><br><span class="line">Project location - random</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>please press the finish button then you can see the process of building the new project.</p>
+<p><img src="/res/2019-10-24-build-spring-mvc/4.png"></p>
+<p>Below is the file structure of your new project.</p>
+<p><img src="/res/2019-10-24-build-spring-mvc/5.png"></p>
+<h3 id="2-To-modify-build-gradle-file"><a href="#2-To-modify-build-gradle-file" class="headerlink" title="2. To modify build.gradle file"></a>2. To modify <em>build.gradle</em> file</h3><p>Let’s copy the below code to your <em>build.gradle</em> file in project.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">&#x27;java&#x27;</span></span><br><span class="line">    id <span class="string">&#x27;war&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">apply plugin: <span class="string">&#x27;war&#x27;</span></span><br><span class="line"></span><br><span class="line">group <span class="string">&#x27;com.kidongyun&#x27;</span></span><br><span class="line">version <span class="string">&#x27;1.0-SNAPSHOT&#x27;</span></span><br><span class="line"></span><br><span class="line">sourceCompatibility = <span class="number">1.8</span></span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    testCompile group: <span class="string">&#x27;junit&#x27;</span>, name: <span class="string">&#x27;junit&#x27;</span>, version: <span class="string">&#x27;4.11&#x27;</span></span><br><span class="line">    testCompile group: <span class="string">&#x27;junit&#x27;</span>, name: <span class="string">&#x27;junit&#x27;</span>, version: <span class="string">&#x27;4.12&#x27;</span></span><br><span class="line">    providedCompile group: <span class="string">&#x27;javax.servlet&#x27;</span>, name: <span class="string">&#x27;javax.servlet-api&#x27;</span>, version: <span class="string">&#x27;3.1.0&#x27;</span></span><br><span class="line">    compile <span class="string">&#x27;org.springframework:spring-webmvc:4.3.18.RELEASE&#x27;</span></span><br><span class="line">    runtime <span class="string">&#x27;javax.servlet:jstl:1.1.2&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-10-24-build-spring-mvc/6.png"></p>
+<h3 id="3-To-delete-root-src-main-webapp-index-jsp-file"><a href="#3-To-delete-root-src-main-webapp-index-jsp-file" class="headerlink" title="3. To delete root/src/main/webapp/index.jsp file"></a>3. To delete <em>root/src/main/webapp/index.jsp</em> file</h3><blockquote>
+<p>You have to delete <em>root/src/main/webapp/index.jsp</em> file like below picture.</p>
+</blockquote>
+<p><img src="/res/2019-10-24-build-spring-mvc/7.png"></p>
+<h3 id="4-To-make-the-new-directories-and-files"><a href="#4-To-make-the-new-directories-and-files" class="headerlink" title="4. To make the new directories and files"></a>4. To make the new directories and files</h3><p>Let’s make new directories and files</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mkdir root&#x2F;src&#x2F;main&#x2F;webapp&#x2F;WEB-INF</span><br><span class="line">touch root&#x2F;src&#x2F;main&#x2F;webapp&#x2F;WEB-INF&#x2F;web.xml</span><br><span class="line">touch root&#x2F;src&#x2F;main&#x2F;webapp&#x2F;WEB-INF&#x2F;dispatcher-servlet.xml</span><br><span class="line">touch root&#x2F;src&#x2F;main&#x2F;webapp&#x2F;WEB-INF&#x2F;applicationContext.xml</span><br><span class="line"></span><br><span class="line">mkdir root&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;kidongyun&#x2F;controller&#x2F;</span><br><span class="line">touch root&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;kidongyun&#x2F;controller&#x2F;HomeController.java</span><br><span class="line"></span><br><span class="line">mkdir root&#x2F;src&#x2F;main&#x2F;webapp&#x2F;WEB-INF&#x2F;view</span><br><span class="line">touch root&#x2F;src&#x2F;main&#x2F;webapp&#x2F;WEB-INF&#x2F;view&#x2F;index.jsp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-to-fullfill-the-below-codes-at-proper-files"><a href="#5-to-fullfill-the-below-codes-at-proper-files" class="headerlink" title="5. to fullfill the below codes at proper files."></a>5. to fullfill the below codes at proper files.</h3><p>web.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">version</span>=<span class="string">&quot;4.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatcher<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/dispatcher-servlet.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatcher<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>dispatcher-servlet.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">&quot;http://www.springframework.org/schema/context&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:mvc</span>=<span class="string">&quot;http://www.springframework.org/schema/mvc&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:annotation-driven</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.kidongyun.controller&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;prefix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/WEB-INF/view/&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suffix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;.jsp&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>applicationContext.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>HomeController.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.kidongyun.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HomeController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>index.jsp</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;Hello&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    $&#123;msg&#125;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-To-set-the-Tomcat"><a href="#6-To-set-the-Tomcat" class="headerlink" title="6. To set the Tomcat"></a>6. To set the Tomcat</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Run &gt; Edit Configurations</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Let’s open ‘Edit configurations’ window.</p>
+<p><img src="/res/2019-10-24-build-spring-mvc/8.png"></p>
+<p>To add new Tomcat Server</p>
+<p><img src="/res/2019-10-24-build-spring-mvc/9.png"></p>
+<p>To select the Tomcat server at <em>Application server</em> part and To press the <em>fix</em> button located bottom of window. and then finally, Let’s add the artifact for making war file and building.</p>
+<p><img src="/res/2019-10-24-build-spring-mvc/10.png"></p>
+<h3 id="7-Annotation-Enable"><a href="#7-Annotation-Enable" class="headerlink" title="7. Annotation Enable"></a>7. Annotation Enable</h3><p>Let’s get in those tabs.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">File &gt; Settings &gt; Build, Execution, Deployment &gt; Compiler &gt; Annotation Processors</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>then you can see below window.</p>
+<p><img src="/res/2019-10-24-build-spring-mvc/11.png"></p>
+<p>Let’s check the Enable annotation processing for annotation syntax.</p>
+<h3 id="8-Tomcat-Running"><a href="#8-Tomcat-Running" class="headerlink" title="8. Tomcat Running"></a>8. Tomcat Running</h3><p>Let’s run your new project, then you can see this browser content</p>
+<p><img src="/res/2019-10-24-build-spring-mvc/12.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/24/2019-10-24-build-spring-mvc/" data-id="ckp45ihdj003qeswbadme4z6o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-10-13-bem-methodology" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/13/2019-10-13-bem-methodology/" class="article-date">
+  <time datetime="2019-10-12T23:47:54.000Z" itemprop="datePublished">2019-10-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/css/">css</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/13/2019-10-13-bem-methodology/">BEM Methodology</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Block-블록"><a href="#Block-블록" class="headerlink" title="Block(블록)"></a>Block(블록)</h2><blockquote>
+<p>재사용 할 수 있는 기능적으로 독립적인 페이지 구성 요소. HTML에서 블록은 class속성으로 표시된다. <br><br> 형태(red, big)가 아닌 목적(menu, button)에 맞게 결정해야 한다. <br><br> 블록은 환경에 영향을 받지 않아야 한다. 즉 여백이나 위치를 설정하면 안된다. <br><br> 태그, id 선택자를 사용하면 안된다. <br><br> 블록은 서로 중첩해서 작성할 수 있다. </p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">header &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">menu &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">search-form &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Element-요소"><a href="#Element-요소" class="headerlink" title="Element(요소)"></a>Element(요소)</h2><blockquote>
+<p>블록안에서 특정 기능을 담당하는 부분. <br><br> block__element 형태로 사용 (Double Under Bar) <br><br> 형태(red, big)가 아닌 목적(item, text, title)에 맞게 결정해야 한다. <br><br> 요소는 중첩해서 작성할 수 있다. <br><br> 요소는 블록의 부분으로만 사용할 수 있고 다른 요소의 부분으로 사용할 수 없다. <br><br> 모든 블록에서 요소는 필수가 아닌 선택적으로 사용한다. 즉 블록안에 요소가 없을 수도 있다.</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">menu__item &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">header__title &#123; ... &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Modifier-수식어"><a href="#Modifier-수식어" class="headerlink" title="Modifier(수식어)"></a>Modifier(수식어)</h2><blockquote>
+<p>블록이나 요소의 모양(color, size..), 상태(disabled, checked)를 정의한다. <br><br> block__element–modifier, block–modifier 형태로 사용(Double hyphen) <br><br> 수식어는 단독으로 사용할 수 없다. 즉 기본 블록과 요소에 추가하여 사용해야 한다. <br><br> 수식어의 boolean 타입과 key-value 타입이 있다.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">boolean type : 수식어가 있으면 true라고 가정한다. ex) form-button--disabled</span><br><span class="line"></span><br><span class="line">key-value type : key, value를 hyphen으로 연결하여 표시한다. ex) color-red, theme-ocean</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/13/2019-10-13-bem-methodology/" data-id="ckp45ihdc0031eswb9soi3lm9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-10-13-css-preprocessor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/13/2019-10-13-css-preprocessor/" class="article-date">
+  <time datetime="2019-10-12T23:47:54.000Z" itemprop="datePublished">2019-10-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/css/">css</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/13/2019-10-13-css-preprocessor/">CSS Preprocessor</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h2 id="CSS-Preprocessor"><a href="#CSS-Preprocessor" class="headerlink" title="CSS Preprocessor"></a>CSS Preprocessor</h2><p>Nesting Code가 가능 </p>
+<p>Mixin 기능</p>
+<p>Variable</p>
+<p>Block property access</p>
+<p>Preprocessor 문법에따라 만든 코드를 CSS로 변환해줌. 즉 컴파일러가 필요함</p>
+<p>SASS, SCSS, Stylus 와 같은 종류가 있음 stylus의 확장자는 styl</p>
+<p>Stylus 저장하면 out 주석한 파일 이름으로 css 컴파일이 자동으로 됨 compress하면 압축됨 파일이 작아짐(minify)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/13/2019-10-13-css-preprocessor/" data-id="ckp45ihdd0036eswb11ok7fli" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-10-12-build-react-springboot-second" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/12/2019-10-12-build-react-springboot-second/" class="article-date">
+  <time datetime="2019-10-11T17:58:54.000Z" itemprop="datePublished">2019-10-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/script/">script</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/12/2019-10-12-build-react-springboot-second/">Let&#39;s build React with Spring boot Server ver.2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Spring-Boot를-활용한-Spring-Framework-개발환경-구축"><a href="#1-Spring-Boot를-활용한-Spring-Framework-개발환경-구축" class="headerlink" title="1. Spring Boot를 활용한 Spring Framework 개발환경 구축"></a>1. Spring Boot를 활용한 Spring Framework 개발환경 구축</h2><br>
+
+<h3 id="Visual-Studio-Code-플러그인-확장"><a href="#Visual-Studio-Code-플러그인-확장" class="headerlink" title="Visual Studio Code 플러그인 확장."></a>Visual Studio Code 플러그인 확장.</h3><p>Ctrl + Shift + x 를 눌러 Marketplace를 열고 아래 두 항목을 찾아 Install한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. Java Extension Pack</span><br><span class="line"></span><br><span class="line">2. Spring Boot Extension Pack</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-10-12-build-react-springboot-second/1.png"></p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/2.png"></p>
+<h3 id="java-home-경로-설정"><a href="#java-home-경로-설정" class="headerlink" title="java.home 경로 설정"></a>java.home 경로 설정</h3><p>상단 메뉴에서 File &gt; Preferences &gt; Settings 으로 들어간 후 jdk를 검색하고 <em>‘Edit in settings.json’</em> 눌러 settings.json 파일 안에 java.home 값을 추가한다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/3.png"></p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/4.png"></p>
+<h3 id="Spring-boot-project-생성"><a href="#Spring-boot-project-생성" class="headerlink" title="Spring-boot project 생성"></a>Spring-boot project 생성</h3><p>Ctrl + Shift + p 를 눌러 나타난 상단 바에 <em>Spring Initalizr: Generate Maven Project Spring</em> 을 선택한다.<br><br><br> Java를 선택하고 원하는 Group Id와 Artifact Id를 작성한다. 예를 들어 Group Id가 <em>com.example</em> 이고 Artifact Id가 <em>helloworld</em> 이라면 패키지는 <em>com.example.helloworld</em> 가 된다. </p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/5.png"></p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/6.png"></p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/7.png"></p>
+<p>Spring boot 버전은 최신 버전을 선택한다</p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/8.png"></p>
+<p>의존성은 아래 두가지 항목을 추가한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. (Spring Boot) DevTools</span><br><span class="line"></span><br><span class="line">2. (Spring) Web</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-10-12-build-react-springboot-second/9.png"></p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/10.png"></p>
+<p>파일탐색기가 열리면 프로젝트 생성을 원하는 폴더를 선택한다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/11.png"></p>
+<p>성공적으로 프로젝트 생성이 완료되었다면 Open을 클릭해 프로젝트를 열자.</p>
+<h3 id="JSP-JSTL을-위한-의존성-추가"><a href="#JSP-JSTL을-위한-의존성-추가" class="headerlink" title="JSP, JSTL을 위한 의존성 추가"></a>JSP, JSTL을 위한 의존성 추가</h3><p>pom.xml을 열어 아래 두 의존성을 추가하기 위한 코드를 작성한다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat.embed<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat-embed-jasper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="application-yml-파일-추가"><a href="#application-yml-파일-추가" class="headerlink" title="application.yml 파일 추가"></a>application.yml 파일 추가</h3><p>Spring-boot에서 프로젝트 설정은 annotation이나 application.properties 파일에서 처리된다. <br><br> application.properties 파일은 보기에 불편한 감이 있어 이를 삭제하고 application.yml 파일로 대체한다. <br><br><br>src/main/resources/ 디렉토리에 있는 application.properties 파일을 제거하고 application.yml 파일을 생성한다. <br><br> 아래의 코드를 application.yml 파일 안에 작성한다.</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">http:</span></span><br><span class="line">    <span class="attr">encoding:</span></span><br><span class="line">      <span class="attr">charset:</span>    <span class="string">UTF-8</span></span><br><span class="line">  <span class="attr">mvc:</span></span><br><span class="line">    <span class="attr">view:</span></span><br><span class="line">      <span class="attr">prefix:</span>     <span class="string">/public/</span></span><br><span class="line">      <span class="attr">suffix:</span>     <span class="string">.html</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">tomcat:</span></span><br><span class="line">    <span class="attr">uri-encoding:</span> <span class="string">UTF-8</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Spring-Server-테스트-실행"><a href="#Spring-Server-테스트-실행" class="headerlink" title="Spring Server 테스트 실행"></a>Spring Server 테스트 실행</h3><p>Ctrl + Shift + ` 또는 상단 메뉴에서 터미널을 클릭해 터미널을 띄운 후 프로젝트 루트 디렉토리에서 <em>mvnm spring-boot:run</em> 명령어를 실행하여 서버가 잘 실행되는지 확인한다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/12.png"></p>
+<p>실행이 잘 된다면 위와 같은 화면에서 터미널이 request를 listening하는 상태가 된다. 여기까지 한다면 Spring-boot를 활용한 Spring Framework 서버를 구현을 완료한 것이다.</p>
+<h2 id="2-React-개발환경-구축"><a href="#2-React-개발환경-구축" class="headerlink" title="2. React 개발환경 구축"></a>2. React 개발환경 구축</h2><h3 id="package-json-파일-생성"><a href="#package-json-파일-생성" class="headerlink" title="package.json 파일 생성"></a>package.json 파일 생성</h3><p>새로운 터미널을 하나 더 열고 프로젝트 루트 디렉토리에서 <em>npm init</em> 명령어를 활용해 새로운 노드 프로젝트를 만든다. (모든 질문에 엔터만 눌러도 무방하며, 이 행위의 결과로 단순히 package.json 파일만 생성된다.)</p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/13.png"></p>
+<h3 id="React-의존-라이브러리-설치"><a href="#React-의존-라이브러리-설치" class="headerlink" title="React 의존 라이브러리 설치."></a>React 의존 라이브러리 설치.</h3><p>React 개발환경 구성을 위해 react, react-dom, @babel/core, @babel/preset-env, @babel/preset-react, babel-loader, css-loader, style-loader, webpack, webpack-cli 의존 라이브러리를 설치한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; npm i react react-dom</span><br><span class="line"></span><br><span class="line">&gt; npm i @babel&#x2F;core @babel&#x2F;preset-env @babel&#x2F;preset-react babel-loader css-loader style-loader webpack webpack-cli -D</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-10-12-build-react-springboot-second/14.png"></p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/15.png"></p>
+<p>설치가 잘 진행 되었다면 package.json 파일에 <em>dependencies</em> 항목과 <em>devDependencies</em> 항목에 설치한 라이브러리 이름들이 잘 추가되었을 것이다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/16.png"></p>
+<h3 id="webpack-설정"><a href="#webpack-설정" class="headerlink" title="webpack 설정"></a>webpack 설정</h3><p>webpack 설정을 추가하기 위해 프로젝트의 루트 디렉토리에 webpack.config.js 파일을 생성하고 아래의 코드를 작성한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    context: path.resolve(__dirname, <span class="string">&#x27;src/main/webapp/jsx&#x27;</span>),</span><br><span class="line">    entry: &#123;</span><br><span class="line">        first: <span class="string">&#x27;./first/index.jsx&#x27;</span>,</span><br><span class="line">        second: <span class="string">&#x27;./second/index.jsx&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: __dirname,</span><br><span class="line">        filename: <span class="string">&#x27;./src/main/webapp/build/[name].bundle.js&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [ &#123;</span><br><span class="line">            test: <span class="regexp">/\.jsx?$/</span>,</span><br><span class="line">            exclude: <span class="regexp">/(node_modules)/</span>,</span><br><span class="line">            use: &#123;</span><br><span class="line">                loader: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line">                options: &#123;</span><br><span class="line">                    presets: [ <span class="string">&#x27;@babel/preset-env&#x27;</span>, <span class="string">&#x27;@babel/preset-react&#x27;</span> ]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">            use: [ <span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span> ]</span><br><span class="line">        &#125; ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Server-Side-Skeleton-코드-작성"><a href="#3-Server-Side-Skeleton-코드-작성" class="headerlink" title="3. Server Side Skeleton 코드 작성"></a>3. Server Side Skeleton 코드 작성</h2><h3 id="MyController-java"><a href="#MyController-java" class="headerlink" title="MyController.java"></a>MyController.java</h3><p>React, Spring을 활용한 개발 환경은 구성되었다. 기본적으로 필요한 코드들을 작성해보자. 우선은 클라이언트 쪽에서 요청이 들어왔을 때 서버쪽에서 최우선적으로 처리해주는 Controller 자바코드를 작성하자. <br><br> src/main 안쪽 프로젝트의 패키지 경로에 <em>MyController.java</em> 클래스 파일을 생성하고 아래의 코드를 작성한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.example.helloworld;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/&#123;name&#125;.html&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">page</span><span class="params">(<span class="meta">@PathVariable</span> String name, Model model)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="first-html"><a href="#first-html" class="headerlink" title="first.html"></a>first.html</h3><p>src/main/webapp/public 경로에 <em>first.html</em> 파일을 만들고 아래의 코드를 작성한다. (해당 디렉토리가 없다면 생성한다.)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>FIRST PAGE<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;../build/first.bundle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="second-html"><a href="#second-html" class="headerlink" title="second.html"></a>second.html</h3><p>src/main/webapp/public 경로에 <em>second.html</em> 파일을 만들고 아래의 코드를 작성한다. (해당 디렉토리가 없다면 생성한다.)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>SECOND PAGE<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;../build/second.bundle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="first-app-css"><a href="#first-app-css" class="headerlink" title="first/app.css"></a>first/app.css</h3><p>css-loader가 잘 동작하는지 확인하기 위해 src/main/webapp/css/first/app.css 파일을 만든다. 그리고 아래와 같이 코드를 작성한다 (해당 디렉토리가 없다면 생성한다.)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-class">.first</span> &#123; <span class="attribute">font-size</span>: <span class="number">24px</span>; <span class="attribute">border-bottom</span>: solid <span class="number">1px</span> black; &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="second-app-css"><a href="#second-app-css" class="headerlink" title="second/app.css"></a>second/app.css</h3><p>css-loader가 잘 동작하는지 확인하기 위해 src/main/webapp/css/second/app.css 파일을 만든다. 그리고 아래와 같이 코드를 작성한다 (해당 디렉토리가 없다면 생성한다.)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-class">.second</span> &#123; <span class="attribute">font-size</span>: <span class="number">14px</span>; <span class="attribute">background-color</span>: yellow; &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Client-Side-Skeleton-코드-작성"><a href="#4-Client-Side-Skeleton-코드-작성" class="headerlink" title="4. Client Side Skeleton 코드 작성"></a>4. Client Side Skeleton 코드 작성</h2><h3 id="first-App-jsx"><a href="#first-App-jsx" class="headerlink" title="first/App.jsx"></a>first/App.jsx</h3><p>src/main/jsx/first 폴더 아래에 App.jsx 파일을 생성하고 아래의 코드를 작성한다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;../../css/first/app.css&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render()&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;h1 className=<span class="string">&quot;first&quot;</span>&gt;Hello First React Skeleton&lt;/h1&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="first-index-jsx"><a href="#first-index-jsx" class="headerlink" title="first/index.jsx"></a>first/index.jsx</h3><p>src/main/jsx/first 폴더 아래에 index.jsx 파일을 생성하고 아래의 코드를 작성한다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App.jsx&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootElement = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>);</span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, rootElement);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="second-app-jsx"><a href="#second-app-jsx" class="headerlink" title="second/app.jsx"></a>second/app.jsx</h3><p>src/main/jsx/second 폴더 아래에 App.jsx 파일을 생성하고 아래의 코드를 작성한다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;../../css/second/app.css&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render()&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;h1 className=<span class="string">&quot;second&quot;</span>&gt;Hello Second React Skeleton&lt;/h1&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="second-index-jsx"><a href="#second-index-jsx" class="headerlink" title="second/index.jsx"></a>second/index.jsx</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App.jsx&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootElement = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>);</span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, rootElement);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="클라이언트-스크립트-빌드"><a href="#클라이언트-스크립트-빌드" class="headerlink" title="클라이언트 스크립트 빌드"></a>클라이언트 스크립트 빌드</h3><p>React는 리소스 파일들을 바로 사용하지 않고 webpack을 활용하여 빌드한 후에 그 bundle 파일을 활용한다. <br><br> 위에서 만든 jsx 파일을 빌드하기 위해 터미널에서 루트 디렉토리로 이동하고 아래의 명령어를 작성한다. <br><br> watch 명령어는 JSX 파일 수정시에 자동적으로 지속 빌드할 수 있도록 도와준다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; node_modules&#x2F;.bin&#x2F;webpack --watch -d</span><br></pre></td></tr></table></figure>
+
+<h3 id="package-json-파일-script-수정"><a href="#package-json-파일-script-수정" class="headerlink" title="package.json 파일 script 수정"></a>package.json 파일 script 수정</h3><p>자주 사용하는 복잡한 명령어는 package.json 파일에서 script 옵션을 통해 간단하게 줄일 수 있다. script 옵션에 아래와 같이 추가한다. start에 들어가는 JAVA_HOME 옵션은 위에서 settings.json 파일에 추가한 java.home 경로와 같다. 본인의 환경에 맞도록 경로를 수정하자.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</span><br><span class="line">  &quot;start&quot;: &quot;set JAVA_HOME=C:\\Program Files\\Java\\jdk-12.0.2&amp;&amp;mvnw spring-boot:run&quot;,</span><br><span class="line">  &quot;watch&quot;: &quot;node_modules\\.bin\\webpack --watch -d&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-최종-빌드"><a href="#5-최종-빌드" class="headerlink" title="5. 최종 빌드"></a>5. 최종 빌드</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm run watch</span><br></pre></td></tr></table></figure>
+
+<p>루트 디렉토리에서 위와 같은 명령어를 작성하게 되면 webpack을 통해 bundle.js 파일을 만들게 된다. watch 옵션을 켜두었음으로 해당 명령어는 종료되지 않고 jsx 파일이 수정되면 자동적으로 새롭게 빌드된다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-second/17.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm run start</span><br></pre></td></tr></table></figure>
+
+<p>위 명령어를 통해 Spring 서버가 실행되었다. 아래의 두 링크를 통해 만들어 놓은 Skeleton 코드들이 잘 동작하는지 확인하자.</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/main.html">MainPage.jsx</a></p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/page1.html">Page1Page.jsx</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/12/2019-10-12-build-react-springboot-second/" data-id="ckp45ihdb002xeswb2mfa3a5u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-10-12-build-react-springboot-first" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/12/2019-10-12-build-react-springboot-first/" class="article-date">
+  <time datetime="2019-10-11T17:58:54.000Z" itemprop="datePublished">2019-10-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/script/">script</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/12/2019-10-12-build-react-springboot-first/">Let&#39;s build React with Spring boot Server ver.1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Spring-Boot를-활용한-Spring-Framework-개발환경-구축"><a href="#1-Spring-Boot를-활용한-Spring-Framework-개발환경-구축" class="headerlink" title="1. Spring Boot를 활용한 Spring Framework 개발환경 구축"></a>1. Spring Boot를 활용한 Spring Framework 개발환경 구축</h2><br>
+
+<h3 id="Visual-Studio-Code-플러그인-확장"><a href="#Visual-Studio-Code-플러그인-확장" class="headerlink" title="Visual Studio Code 플러그인 확장."></a>Visual Studio Code 플러그인 확장.</h3><p>Ctrl + Shift + x 를 눌러 Marketplace를 열고 아래 두 항목을 찾아 Install한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. Java Extension Pack</span><br><span class="line"></span><br><span class="line">2. Spring Boot Extension Pack</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-10-12-build-react-springboot-first/1.png"></p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/2.png"></p>
+<h3 id="java-home-경로-설정"><a href="#java-home-경로-설정" class="headerlink" title="java.home 경로 설정"></a>java.home 경로 설정</h3><p>상단 메뉴에서 File &gt; Preferences &gt; Settings 으로 들어간 후 jdk를 검색하고 <em>‘Edit in settings.json’</em> 눌러 settings.json 파일 안에 java.home 값을 추가한다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/3.png"></p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/4.png"></p>
+<h3 id="Spring-boot-project-생성"><a href="#Spring-boot-project-생성" class="headerlink" title="Spring-boot project 생성"></a>Spring-boot project 생성</h3><p>Ctrl + Shift + p 를 눌러 나타난 상단 바에 <em>Spring Initalizr: Generate Maven Project Spring</em> 을 선택한다.<br><br><br> Java를 선택하고 원하는 Group Id와 Artifact Id를 작성한다. 예를 들어 Group Id가 <em>com.example</em> 이고 Artifact Id가 <em>helloworld</em> 이라면 패키지는 <em>com.example.helloworld</em> 가 된다. </p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/5.png"></p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/6.png"></p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/7.png"></p>
+<p>Spring boot 버전은 최신 버전을 선택한다</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/8.png"></p>
+<p>의존성은 아래 두가지 항목을 추가한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. (Spring Boot) DevTools</span><br><span class="line"></span><br><span class="line">2. (Spring) Web</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-10-12-build-react-springboot-first/9.png"></p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/10.png"></p>
+<p>파일탐색기가 열리면 프로젝트 생성을 원하는 폴더를 선택한다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/11.png"></p>
+<p>성공적으로 프로젝트 생성이 완료되었다면 Open을 클릭해 프로젝트를 열자.</p>
+<h3 id="JSP-JSTL을-위한-의존성-추가"><a href="#JSP-JSTL을-위한-의존성-추가" class="headerlink" title="JSP, JSTL을 위한 의존성 추가"></a>JSP, JSTL을 위한 의존성 추가</h3><p>pom.xml을 열어 아래 두 의존성을 추가하기 위한 코드를 작성한다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat.embed<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat-embed-jasper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="application-yml-파일-추가"><a href="#application-yml-파일-추가" class="headerlink" title="application.yml 파일 추가"></a>application.yml 파일 추가</h3><p>Spring-boot에서 프로젝트 설정은 annotation이나 application.properties 파일에서 처리된다. <br><br> application.properties 파일은 보기에 불편한 감이 있어 이를 삭제하고 application.yml 파일로 대체한다. <br><br><br>src/main/resources/ 디렉토리에 있는 application.properties 파일을 제거하고 application.yml 파일을 생성한다. <br><br> 아래의 코드를 application.yml 파일 안에 작성한다.</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">http:</span></span><br><span class="line">    <span class="attr">encoding:</span></span><br><span class="line">      <span class="attr">charset:</span>    <span class="string">UTF-8</span></span><br><span class="line">  <span class="attr">mvc:</span></span><br><span class="line">    <span class="attr">view:</span></span><br><span class="line">      <span class="attr">prefix:</span>     <span class="string">/jsp/</span></span><br><span class="line">      <span class="attr">suffix:</span>     <span class="string">.jsp</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">tomcat:</span></span><br><span class="line">    <span class="attr">uri-encoding:</span> <span class="string">UTF-8</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Spring-Server-테스트-실행"><a href="#Spring-Server-테스트-실행" class="headerlink" title="Spring Server 테스트 실행"></a>Spring Server 테스트 실행</h3><p>Ctrl + Shift + ` 또는 상단 메뉴에서 터미널을 클릭해 터미널을 띄운 후 프로젝트 루트 디렉토리에서 <em>mvnm spring-boot:run</em> 명령어를 실행하여 서버가 잘 실행되는지 확인한다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/12.png"></p>
+<p>실행이 잘 된다면 위와 같은 화면에서 터미널이 request를 listening하는 상태가 된다. 여기까지 한다면 Spring-boot를 활용한 Spring Framework 서버를 구현을 완료한 것이다.</p>
+<h2 id="2-React-개발환경-구축"><a href="#2-React-개발환경-구축" class="headerlink" title="2. React 개발환경 구축"></a>2. React 개발환경 구축</h2><h3 id="package-json-파일-생성"><a href="#package-json-파일-생성" class="headerlink" title="package.json 파일 생성"></a>package.json 파일 생성</h3><p>새로운 터미널을 하나 더 열고 프로젝트 루트 디렉토리에서 <em>npm init</em> 명령어를 활용해 새로운 노드 프로젝트를 만든다. (모든 질문에 엔터만 눌러도 무방하며, 이 행위의 결과로 단순히 package.json 파일만 생성된다.)</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/13.png"></p>
+<h3 id="React-의존-라이브러리-설치"><a href="#React-의존-라이브러리-설치" class="headerlink" title="React 의존 라이브러리 설치."></a>React 의존 라이브러리 설치.</h3><p>React 개발환경 구성을 위해 react, react-dom, @babel/core, @babel/preset-env, @babel/preset-react, babel-loader, css-loader, style-loader, webpack, webpack-cli 의존 라이브러리를 설치한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; npm i react react-dom</span><br><span class="line"></span><br><span class="line">&gt; npm i @babel&#x2F;core @babel&#x2F;preset-env @babel&#x2F;preset-react babel-loader css-loader style-loader webpack webpack-cli -D</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/res/2019-10-12-build-react-springboot-first/14.png"></p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/15.png"></p>
+<p>설치가 잘 진행 되었다면 package.json 파일에 <em>dependencies</em> 항목과 <em>devDependencies</em> 항목에 설치한 라이브러리 이름들이 잘 추가되었을 것이다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/16.png"></p>
+<h3 id="webpack-설정"><a href="#webpack-설정" class="headerlink" title="webpack 설정"></a>webpack 설정</h3><p>webpack 설정을 추가하기 위해 프로젝트의 루트 디렉토리에 webpack.config.js 파일을 생성하고 아래의 코드를 작성한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    context: path.resolve(__dirname, <span class="string">&#x27;src/main/jsx&#x27;</span>),</span><br><span class="line">    entry: &#123;</span><br><span class="line">        main: <span class="string">&#x27;./MainPage.jsx&#x27;</span>,</span><br><span class="line">        page1: <span class="string">&#x27;./Page1Page.jsx&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    devtool: <span class="string">&#x27;sourcemaps&#x27;</span>,</span><br><span class="line">    cache: <span class="literal">true</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: __dirname,</span><br><span class="line">        filename: <span class="string">&#x27;./src/main/webapp/js/react/[name].bundle.js&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mode: <span class="string">&#x27;none&#x27;</span>,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [ &#123;</span><br><span class="line">            test: <span class="regexp">/\.jsx?$/</span>,</span><br><span class="line">            exclude: <span class="regexp">/(node_modules)/</span>,</span><br><span class="line">            use: &#123;</span><br><span class="line">                loader: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line">                options: &#123;</span><br><span class="line">                    presets: [ <span class="string">&#x27;@babel/preset-env&#x27;</span>, <span class="string">&#x27;@babel/preset-react&#x27;</span> ]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">            use: [ <span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span> ]</span><br><span class="line">        &#125; ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Server-Side-Skeleton-코드-작성"><a href="#3-Server-Side-Skeleton-코드-작성" class="headerlink" title="3. Server Side Skeleton 코드 작성"></a>3. Server Side Skeleton 코드 작성</h2><h3 id="MyController-java"><a href="#MyController-java" class="headerlink" title="MyController.java"></a>MyController.java</h3><p>React, Spring을 활용한 개발 환경은 구성되었다. 기본적으로 필요한 코드들을 작성해보자. 우선은 클라이언트 쪽에서 요청이 들어왔을 때 서버쪽에서 최우선적으로 처리해주는 Controller 자바코드를 작성하자. <br><br> src/main 안쪽 프로젝트의 패키지 경로에 <em>MyController.java</em> 클래스 파일을 생성하고 아래의 코드를 작성한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.helloworld;</span><br><span class="line"><span class="comment">// package 경로는 본인의 프로젝트에 맞추어서 변경한다.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyController</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@GetMapping(&quot;/&#123;name&#125;.html&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">page</span><span class="params">(<span class="meta">@PathVariable</span> String name, Model model)</span> </span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;pageName&quot;</span>, name);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;page&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="page-jsp"><a href="#page-jsp" class="headerlink" title="page.jsp"></a>page.jsp</h3><p>src/main/webapp/jsp 경로에 <em>page.jsp</em> 파일을 만들고 아래의 코드를 작성한다. (해당 디렉토리가 없다면 생성한다.)</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=utf-8&quot;</span>%&gt;</span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;$&#123;pageName&#125;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"> </span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script src=&quot;/js/react/$&#123;pageName&#125;.bundle.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="custom-css"><a href="#custom-css" class="headerlink" title="custom.css"></a>custom.css</h3><p>css-loader가 잘 동작하는지 확인하기 위해 src/main/webapp/css/custom.css 파일을 만든다. 그리고 아래와 같이 코드를 작성한다 (해당 디렉토리가 없다면 생성한다.)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-class">.main</span> &#123; <span class="attribute">font-size</span>: <span class="number">24px</span>; <span class="attribute">border-bottom</span>: solid <span class="number">1px</span> black; &#125;</span><br><span class="line"><span class="selector-class">.page1</span> &#123; <span class="attribute">font-size</span>: <span class="number">14px</span>; <span class="attribute">background-color</span>: yellow; &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Client-Side-Skeleton-코드-작성"><a href="#4-Client-Side-Skeleton-코드-작성" class="headerlink" title="4. Client Side Skeleton 코드 작성"></a>4. Client Side Skeleton 코드 작성</h2><h3 id="MainPage-jsx"><a href="#MainPage-jsx" class="headerlink" title="MainPage.jsx"></a>MainPage.jsx</h3><p>React 구성으로 Main 페이지에 해당하는 코드를 작성하자. src/main/jsx 폴더 아래에 MainPage.jsx 파일을 생성하고 아래의 코드를 작성한다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;../webapp/css/custom.css&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainPage</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;main&quot;</span>&gt;</span>메인 페이지<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">MainPage</span>/&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Page1Page-jsx"><a href="#Page1Page-jsx" class="headerlink" title="Page1Page.jsx"></a>Page1Page.jsx</h3><p>src/main/jsx 폴더 아래에 Page1Page.jsx 파일을 생성하고 아래의 코드를 작성한다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;../webapp/css/custom.css&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page1Page</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;page1&quot;</span>&gt;</span>Page1 페이지<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Page1Page</span>/&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="클라이언트-스크립트-빌드"><a href="#클라이언트-스크립트-빌드" class="headerlink" title="클라이언트 스크립트 빌드"></a>클라이언트 스크립트 빌드</h3><p>React는 리소스 파일들을 바로 사용하지 않고 webpack을 활용하여 빌드한 후에 그 bundle 파일을 활용한다. <br><br> 위에서 만든 jsx 파일을 빌드하기 위해 터미널에서 루트 디렉토리로 이동하고 아래의 명령어를 작성한다. <br><br> watch 명령어는 JSX 파일 수정시에 자동적으로 지속 빌드할 수 있도록 도와준다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; node_modules&#x2F;.bin&#x2F;webpack --watch -d</span><br></pre></td></tr></table></figure>
+
+<h3 id="package-json-파일-script-수정"><a href="#package-json-파일-script-수정" class="headerlink" title="package.json 파일 script 수정"></a>package.json 파일 script 수정</h3><p>자주 사용하는 복잡한 명령어는 package.json 파일에서 script 옵션을 통해 간단하게 줄일 수 있다. script 옵션에 아래와 같이 추가한다. start에 들어가는 JAVA_HOME 옵션은 위에서 settings.json 파일에 추가한 java.home 경로와 같다. 본인의 환경에 맞도록 경로를 수정하자.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</span><br><span class="line">  &quot;start&quot;: &quot;set JAVA_HOME=C:\\Program Files\\Java\\jdk-12.0.2&amp;&amp;mvnw spring-boot:run&quot;,</span><br><span class="line">  &quot;watch&quot;: &quot;node_modules\\.bin\\webpack --watch -d&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-최종-빌드"><a href="#5-최종-빌드" class="headerlink" title="5. 최종 빌드"></a>5. 최종 빌드</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm run watch</span><br></pre></td></tr></table></figure>
+
+<p>루트 디렉토리에서 위와 같은 명령어를 작성하게 되면 webpack을 통해 bundle.js 파일을 만들게 된다. watch 옵션을 켜두었음으로 해당 명령어는 종료되지 않고 jsx 파일이 수정되면 자동적으로 새롭게 빌드된다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/17.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm run start</span><br></pre></td></tr></table></figure>
+
+<p>위 명령어를 통해 Spring 서버가 실행되었다. 아래의 두 링크를 통해 만들어 놓은 Skeleton 코드들이 잘 동작하는지 확인하자.</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/main.html">MainPage.jsx</a></p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/page1.html">Page1Page.jsx</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/10/12/2019-10-12-build-react-springboot-first/" data-id="ckp45ihdc0030eswbfloz1n88" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-29-rotate-two-dim-matrix" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/29/2019-09-29-rotate-two-dim-matrix/" class="article-date">
+  <time datetime="2019-09-29T02:21:54.000Z" itemprop="datePublished">2019-09-29</time>
 </a>
     
   <div class="article-category">
@@ -82,7 +533,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/23/2019-09-23-string-in-descending-order/">String in Descending Order / Sort</a>
+      <a class="article-title" href="/2019/09/29/2019-09-29-rotate-two-dim-matrix/">Rotate Two Dimensional Matrix</a>
     </h1>
   
 
@@ -90,21 +541,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">기본적으로 설정되어 있는 char 타입의 정렬 기준은 ASC값을 따른다.</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">시계방향 : [x][y] -&gt; [n-y][x]</span><br><span class="line">반시계방향 : [x][y] -&gt; [y][n-x]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을 리턴하는 함수, solution을 완성해주세요. <br><br> s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보다 작은 것으로 간주합니다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : String s</span><br><span class="line">output : String</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42576">문제 보기</a></p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>입력값으로 들어온 s를 Arrays.sort()함수를 적용하기 위해 char[] 배열로 변환하자. <br><br> 내림차순으로 정렬하기 위해서 새로운 기준이 필요한 것이 아니기 때문에 Collections.reverseOrder()를 활용하여 내림차순 정렬한다.</p>
-<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>각 영문자들을 정렬하기 위해서 char[] 자료형을 사용해야한다. 그러나 추가적으로 사용한 Collections.reverseOrder() 함수는 primitive 자료형에는 적용할 수가 없다. 따라서 Character[] 자료형를 사용한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Data Structure : Character[]</span></span><br><span class="line">Character[] chs;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : String s, int n</span><br><span class="line">output : String answer</span><br></pre></td></tr></table></figure>
 
-<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>입력값 s를 Character[] 자료형으로 변환한다. Arrays.sort()함수와 Collections.reverseOrder()를 활용하여 내림차순으로 정렬한 후 다시 String형 변환하여 답을 도출한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Character[] ch = s.chars().mapToObj(c -&gt; (<span class="keyword">char</span>)c).toArray(Character[]::<span class="keyword">new</span>);    <span class="comment">// String -&gt; Character[]  </span></span><br><span class="line">Arrays.sort(ch, Collections.reverseOrder()); <span class="comment">// Descending Sorting</span></span><br><span class="line"><span class="keyword">return</span> Arrays.stream(ch).map(String::valueOf).collect(Collectors.joining()); <span class="comment">// Character[] -&gt; String</span></span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42578">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2019/09/23/2019-09-23-string-in-descending-order/" data-id="ckp45ihd20029eswb9sdbbs7w" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2019/09/29/2019-09-29-rotate-two-dim-matrix/" data-id="ckp45ihda002teswb9xui1qjq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -114,10 +560,10 @@
 
 
   
-    <article id="post-2019-09-23-workout-clothes" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2019-09-29-farthest-node" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/09/23/2019-09-23-workout-clothes/" class="article-date">
-  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+    <a href="/2019/09/29/2019-09-29-farthest-node/" class="article-date">
+  <time datetime="2019-09-29T02:21:54.000Z" itemprop="datePublished">2019-09-29</time>
 </a>
     
   <div class="article-category">
@@ -132,7 +578,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/23/2019-09-23-workout-clothes/">Workout Clothes / Greedy</a>
+      <a class="article-title" href="/2019/09/29/2019-09-29-farthest-node/">Farthest Node / Dijkstra</a>
     </h1>
   
 
@@ -140,21 +586,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">Greedy 접근법의 핵심은 해당 문제에 대한 근시안적 방법이 최선의 해결책임을 증명하는 것이다.</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Dijkstra 알고리즘을 활용해 최단경로를 구하자.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>점심시간에 도둑이 들어, 일부 학생이 체육복을 도난당했습니다. 다행히 여벌 체육복이 있는 학생이 이들에게 체육복을 빌려주려 합니다. 학생들의 번호는 체격 순으로 매겨져 있어, 바로 앞번호의 학생이나 바로 뒷번호의 학생에게만 체육복을 빌려줄 수 있습니다. <br><br> 예를 들어, 4번 학생은 3번 학생이나 5번 학생에게만 체육복을 빌려줄 수 있습니다. 체육복이 없으면 수업을 들을 수 없기 때문에 체육복을 적절히 빌려 최대한 많은 학생이 체육수업을 들어야 합니다. <br><br> 전체 학생의 수 n, 체육복을 도난당한 학생들의 번호가 담긴 배열 lost, 여벌의 체육복을 가져온 학생들의 번호가 담긴 배열 reserve가 매개변수로 주어질 때, 체육수업을 들을 수 있는 학생의 최댓값을 return 하도록 solution 함수를 작성해주세요.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int n, int[] lost, int[] reserve</span><br><span class="line">output : int[] answer</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42862">문제 보기</a></p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>이 문제를 Greedy하게 풀 수 있음을 나타내는 부분은 바로 체격의 조건이다. 여벌의 체육복을 가지고 있는 학생이 지원할 수 있는 범위는 자신의 앞 번호와 뒷 번호 그 둘로 제한되어 있다. <br><br> 이제 문제를 가장 잘 해결하기 위한 자료구조를 선정해야 한다. 앞 번호와 뒷 번호를 명확히 보이게 하기 위해 각 학생들을 번호순으로 일렬로 나열시키고 체육복의 개수를 나타내게 하자. 즉 int[] 배열에 학생 번호 순서대로 각 학생들이 가지고 있는 체육복 개수를 넣는다. <br><br> 맨 앞번호 부터 끝번호까지 체육복이 없는 사람이 있다면 여유가 있는 앞 뒤 학생이 빌려주도록 반복한다.</p>
-<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>각 학생들의 체육복의 개수를 나타내기 위한 int[] 자료형을 사용한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    Data Structure : int[]</span></span><br><span class="line"><span class="comment">    각 값들은 학생이 가지고 있는 체육복의 개수를 의미</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">int</span>[] students;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>n개의 노드가 있는 그래프가 있습니다. 각 노드는 1부터 n까지 번호가 적혀있습니다. 1번 노드에서 가장 멀리 떨어진 노드의 갯수를 구하려고 합니다. 가장 멀리 떨어진 노드란 최단경로로 이동했을 때 간선의 개수가 가장 많은 노드들을 의미합니다. <br><br> 노드의 개수 n, 간선에 대한 정보가 담긴 2차원 배열 vertex가 매개변수로 주어질 때, 1번 노드로부터 가장 멀리 떨어진 노드가 몇 개인지를 return 하도록 solution 함수를 작성해주세요. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int n, int[][] edge</span><br><span class="line">output : int answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/49189">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>Dijkstra 알고리즘을 활용하여 각 노드마다 최단거리를 구하고 가장 긴 거리의 개수를 구하면 된다. 최단경로 알고리즘을 많이 접해본 경우 쉽게 해결할 수 있는 문제이다. <br><br> Dijkstra 알고리즘을 구현하기 위해 각 노드마다 거리 정보를 가지고 있는 int[] distances와 방문 여부를 확인하기 위한 boolean[] visits 그리고 간선 정보를 알기 위한 그래프 데이터가 필요하다. <br><br> Dijkstra 알고리즘은 매 스텝마다 거리 정보를 최적화하고 가장 가까운 노드를 찾아 재귀호출하는 것이 핵심이다. </p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>각 노드의 거리 정보를 위한 int[] distances, 각 노드의 방문 여부를 확인하기 위한 boolean[] visits, 간선 정보를 저장하기 위한 map[][] 이 필요하다. <br><br> map은 그래프로 표현함으로 인접행렬, 인접리스트 두가지로 구현이 가능하다. 성능상으로 볼때 인접리스트가 더 효율적임으로 이 방법을 외워두도록 하자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> n                       <span class="comment">// 입력으로 들어온 노드의 개수</span></span><br><span class="line"><span class="keyword">int</span>[] distances;            <span class="comment">// 거리 정보 저장</span></span><br><span class="line"><span class="keyword">boolean</span>[] visits;           <span class="comment">// 방문 여부</span></span><br><span class="line">List&lt;List&lt;Integer&gt;&gt; map;    <span class="comment">// 입력으로 들어온 간선 정보 만약 간선에 가중치 정보가 필요하다면 Class를 통해 새로운 자료형을 구현해야한다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>체육복이 없는 학생의 경우 그 앞, 뒤에 있는 학생이 여벌이 있다면 빌려주도록 하자. 최종적으로 students 배열에 1이상의 수를 세면 정답이 된다. </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="number">1</span> ~ students.length) &#123;</span><br><span class="line">	<span class="keyword">if</span>(students[i] == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(students[i-<span class="number">1</span>] == <span class="number">2</span>) &#123;</span><br><span class="line">			students[i-<span class="number">1</span>]--; students[i]++;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(students[i+<span class="number">1</span>] == <span class="number">2</span>) &#123;</span><br><span class="line">			students[i+<span class="number">1</span>]--; students[i]++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>우선 인접리스트를 활용해 간선 정보를 가지는 map 변수를 초기화 한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">List&lt;List&lt;Integer&gt;&gt; map = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n+<span class="number">1</span>; i++)          <span class="comment">// 노드 개수 만큼 0 인덱스는 고려하지 않고 1부터 계산한다.</span></span><br><span class="line">    map.add(<span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;edge.length; i++) &#123;</span><br><span class="line">    map.get(edge[i][<span class="number">0</span>]).add(edge[i][<span class="number">1</span>]);</span><br><span class="line">    map.get(edge[i][<span class="number">1</span>]).add(edge[i][<span class="number">0</span>]);            <span class="comment">// 무방향 그래프임으로 두 방향에서 값을 설정</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>핵심 dijkstra 알고리즘을 구현한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dijkstra(<span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">int</span> min = Interger.MAX_VALUE;</span><br><span class="line">    <span class="keyword">int</span> min_index = -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    visit[target] = <span class="keyword">true</span>;</span><br><span class="line">    count++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;map.get(target).size(); i++) &#123;       <span class="comment">// 방문하지 않고 인접한 노드의 경우 거리 정보를 업데이트</span></span><br><span class="line">        <span class="keyword">if</span>(!visits[map.get(target).get(i)]) &#123;</span><br><span class="line">            <span class="keyword">if</span>(first) &#123;</span><br><span class="line">                distances[map.get(target).get(i)] = <span class="number">1</span>;      </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(distances[map.get(target).get(i)] &gt; map.get(target).get(i) + <span class="number">1</span>)</span><br><span class="line">                    distances[map.get(target).get(i)] = map.get(target).get(i) + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;distances.length; i++) &#123;     <span class="comment">// 방문하지 않은 노드에 대하여 최소 거리를 가지고 있는 노드를 찾음</span></span><br><span class="line">        <span class="keyword">if</span>(!visit[i]) &#123;</span><br><span class="line">            <span class="keyword">if</span>(min &gt; distances[i]) &#123;</span><br><span class="line">                min = distances[i];</span><br><span class="line">                min_index = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(first)</span><br><span class="line">        first = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(count != distances.length - <span class="number">1</span>)</span><br><span class="line">        dijkstra(min_index);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2019/09/23/2019-09-23-workout-clothes/" data-id="ckp45ihd3002deswbgk7zhhoh" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2019/09/29/2019-09-29-farthest-node/" data-id="ckp45ihdb002weswbbresd5ab" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,10 +613,10 @@
 
 
   
-    <article id="post-2019-09-23-sum-between-two-integers" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2019-09-28-camouflage" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/09/23/2019-09-23-sum-between-two-integers/" class="article-date">
-  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+    <a href="/2019/09/28/2019-09-28-camouflage/" class="article-date">
+  <time datetime="2019-09-28T02:21:54.000Z" itemprop="datePublished">2019-09-28</time>
 </a>
     
   <div class="article-category">
@@ -182,7 +631,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/23/2019-09-23-sum-between-two-integers/">Sum between Two Integers / Arithmetic Sequence</a>
+      <a class="article-title" href="/2019/09/28/2019-09-28-camouflage/">Camouflage / Combination</a>
     </h1>
   
 
@@ -190,18 +639,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><p>$$ sum = {(first + last) size \over 2} $$</p>
-<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>두 정수 a, b가 주어졌을 때 a와 b 사이에 속한 모든 정수의 합을 리턴하는 함수, solution을 완성하세요. <br><br> 예를 들어 a = 3, b = 5인 경우, 3 + 4 + 5 = 12이므로 12를 리턴합니다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int a, int b</span><br><span class="line">output : long answer</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/12912">문제 보기</a></p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>반복문을 활용하여 a부터 b까지의 합을 구할수도 있지만 등차수열의 합 공식을 활용하면 훨씬 효율적인 방법으로 계산할 수 있다. <br><br> <em>‘두 정수 사이의 합 = (첫항 + 끝항) * 항의 개수 / 2’</em> 을 활용하면 바로 정답을 구할 수 있다.</p>
-<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>자료구조가 필요하지 않은 문제다.</p>
-<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>등차수열의 합을 활용하자.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">return</span> (a+b) * (a-b+<span class="number">1</span>) / <span class="number">2</span>; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">A + B + C + AB + AC + BC + ABC &#x3D; (A+1)(B+1)(C+1) - 1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다. <br><br> 예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">종류    이름</span><br><span class="line">얼굴    동그란 안경, 선글라스</span><br><span class="line">상의    파란색 티셔츠</span><br><span class="line">하의    청바지</span><br><span class="line">겉옷    긴 코트</span><br></pre></td></tr></table></figure>
+
+<p>스파이가 가진 의상들이 담긴 2차원 배열 clothes가 주어질 때 서로 다른 옷의 조합의 수를 return 하도록 solution 함수를 작성해주세요.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : String s, int n</span><br><span class="line">output : String answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42578">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>옷의 개수는 1개 이상 입으면 옷을 입은 것으로 간주된다. 그리고 각 옷의 종류에 따라서 혼합하여 옷을 입을 수도 있다. 잠깐 생각해보면 복잡해 보일 수 있지만 이는 수학의 조합이라는 규칙을 가지고 있다. <br><br><br>예를 들어 옷의 종류가 A, B, C가 있고 각 종류 마다 2, 3, 3 가지의 옷을 가지고 있다. <br><br> A만 입는 방법, B만 입는 방법, C만 입는 방법, A와 B를 혼합하여 입는 방법, A와 C를 혼합하여 입는 방법, A와 C를 혼합하여 입는 방법, A와 B와 C를 혼합하여 입는 방법이 존재한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">총 옷 입는 가짓 수 &#x3D; A + B + C + AB + AC + BC + ABC</span><br></pre></td></tr></table></figure>
+
+<p>위의 수식이 일정한 규칙을 가지고 있지만. 이를 그대로 활용하여 코딩하기는 복잡하다. 따라서 수식을 아래와 같이 수정하여 진행한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(A+1)(B+1)(C+1) - 1</span><br></pre></td></tr></table></figure>
+
+<p>두 수식은 동일한 값을 가지며 전개를 해보면 명확히 알 수 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A + B + C + AB + AC + BC + ABC &#x3D; (A+1)(B+1)(C+1) - 1</span><br></pre></td></tr></table></figure>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>특별한 자료구조가 필요하지 않다.</p>
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>각 옷의 종류마다 옷의 개수를 알아내고 공식을 활용해 풀어낸다.</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2019/09/23/2019-09-23-sum-between-two-integers/" data-id="ckp45ihd5002heswb0vr14xv1" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2019/09/28/2019-09-28-camouflage/" data-id="ckp45ihd5002keswb9tky9dy8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,10 +671,10 @@
 
 
   
-    <article id="post-2019-09-28-network" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2019-09-28-graph" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/08/11/2019-09-28-network/" class="article-date">
-  <time datetime="2019-08-11T02:21:54.000Z" itemprop="datePublished">2019-08-11</time>
+    <a href="/2019/09/28/2019-09-28-graph/" class="article-date">
+  <time datetime="2019-09-28T02:21:54.000Z" itemprop="datePublished">2019-09-28</time>
 </a>
     
   <div class="article-category">
@@ -229,7 +689,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/11/2019-09-28-network/">Network / DFS</a>
+      <a class="article-title" href="/2019/09/28/2019-09-28-graph/">Graph</a>
     </h1>
   
 
@@ -237,24 +697,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">그래프에서 서로 연결되어 있지 않은 경우를 생각해보자.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h2 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Graph 자료구조를 표현하기 위한 <span class="number">2</span>가지 방법을 정리한다.</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 인접행렬을 활용한 그래프 표현</span><br><span class="line"><span class="number">2.</span> 인접리스트를 활용한 그래프 표현</span><br></pre></td></tr></table></figure>
 
-<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>네트워크란 컴퓨터 상호 간에 정보를 교환할 수 있도록 연결된 형태를 의미합니다. 예를 들어, 컴퓨터 A와 컴퓨터 B가 직접적으로 연결되어있고, 컴퓨터 B와 컴퓨터 C가 직접적으로 연결되어 있을 때 컴퓨터 A와 컴퓨터 C도 간접적으로 연결되어 정보를 교환할 수 있습니다. 따라서 컴퓨터 A, B, C는 모두 같은 네트워크 상에 있다고 할 수 있습니다. <br><br> 컴퓨터의 개수 n, 연결에 대한 정보가 담긴 2차원 배열 computers가 매개변수로 주어질 때, 네트워크의 개수를 return 하도록 solution 함수를 작성하시오.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int n, int[][] computers</span><br><span class="line">output : int answer</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/43162">문제 보기</a></p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>그래프의 모든 노드를 탐색하면서 서로 연결되어있다면 그냥 지나가고 그렇지 않다면 네트워크가 구분되어져 있는것으로 간주할 수 있기 때문에 answer++ 해준다. <br><br> 그래프를 탐색시 DFS 알고리즘을 활용한다. DFS 알고리즘은 깊이를 우선하여서 모든 노드를 탐색하는 것으로. 간선으로 연결되어 있다는 가정 하에 모든 노드들에 접근이 가능하다. <br><br> 즉 DFS 알고리즘의 노드들이 간선으로 연결 되어진 경우에만 탐색이 가능하다 이는 하나의 네트워크임을 의미하며 모든 노드가 방문할 수 있도록 DFS 알고리즘을 반복한다. 최종적으로 DFS 알고리즘이 몇번 반복되어졌는지에 따라서 네트워크의 개수가 결정된다.</p>
-<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>각 노드들의 방문여부를 확인하기 위해서 boolean[] visits 변수를 선언한다. 그리고 그래프를 표현하기 위한 데이터는 입력 파라미터에 인접행렬 int[][] computers로 주어졌음으로 그대로 사용한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">boolean</span>[] visits;       <span class="comment">// 노드 방문여부를 확인하기 위한 flag 변수</span></span><br><span class="line"><span class="keyword">int</span>[][] computers;      <span class="comment">// 각 간선들의 가중치 값 </span></span><br><span class="line">                        <span class="comment">// (여기서는 1과 0으로 오로지 연결됨과 그렇지 않음만을 나타낸다.)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//  인접행렬을 활용한 그래프 표현, 각 값은 간선의 가중치를 나타냄.</span></span><br><span class="line"><span class="keyword">int</span>[][] graph;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 인접리스트를 활용한 그래프 표현, 각 값은 간선의 가중치를 나타냄.</span></span><br><span class="line">List&lt;List&lt;Integer&gt;&gt; graph;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>DFS 알고리즘을 반복문 코드와 재귀 호출 코드 두가지로 구현한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(target)</span> </span>&#123;</span><br><span class="line">    visits[target] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// to do something</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++)</span><br><span class="line">        <span class="keyword">if</span>(!visits[i] &amp;&amp; computers[target][i] != <span class="number">0</span>)</span><br><span class="line">            dfs(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Input-Data"><a href="#Input-Data" class="headerlink" title="Input Data"></a>Input Data</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 인접행렬</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;graph.length; i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;graph.length; j++)</span><br><span class="line">        <span class="keyword">if</span>(graph == input)</span><br><span class="line">            graph[i][j] = input[i][j];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 인접리스트</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;graph.size(); i++)</span><br><span class="line">    graph = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;input.length; i++)</span><br><span class="line">    graph.get(input[<span class="number">0</span>]).add(input[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
 
-<p>DFS 알고리즘은 서로 연결된 곳만 확인이 가능함으로 별도의 네트워크는 DFS 한바퀴를 돈다 해도 방문할수 없다. <br> 이를 활용하여 모든 노드에 대하여 반복문을 취하고 방문하지 않았을 때 새로운 네트워크로 간주하여 갯수를 올린다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Solution</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!visits[i]) &#123;</span><br><span class="line">            count++;</span><br><span class="line">            dfs(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2019/08/11/2019-09-28-network/" data-id="ckp45ihd7002oeswbdt8u51e5" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2019/09/28/2019-09-28-graph/" data-id="ckp45ihd6002leswba7du1mie" class="article-share-link">Share</a>
       
       
     </footer>
@@ -264,10 +717,10 @@
 
 
   
-    <article id="post-2019-09-28-scanner" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2019-09-28-target-number" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/08/11/2019-09-28-scanner/" class="article-date">
-  <time datetime="2019-08-11T02:21:54.000Z" itemprop="datePublished">2019-08-11</time>
+    <a href="/2019/09/28/2019-09-28-target-number/" class="article-date">
+  <time datetime="2019-09-28T02:21:54.000Z" itemprop="datePublished">2019-09-28</time>
 </a>
     
   <div class="article-category">
@@ -282,7 +735,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/11/2019-09-28-scanner/">Scanner</a>
+      <a class="article-title" href="/2019/09/28/2019-09-28-target-number/">Target Number / PowerSet</a>
     </h1>
   
 
@@ -290,311 +743,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">표준입력 클래스인 Scanner에 대해서 정리해두자.</span><br></pre></td></tr></table></figure>
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">부분집합을 구하는 PowerSet 알고리즘 구현 형태를 외워두자.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="Scanner-인스턴스-생성"><a href="#Scanner-인스턴스-생성" class="headerlink" title="Scanner 인스턴스 생성"></a>Scanner 인스턴스 생성</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;   <span class="comment">// Scanner Class 가져오기.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);    <span class="comment">// sc 인스턴스 생성.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>n개의 음이 아닌 정수가 있습니다. 이 수를 적절히 더하거나 빼서 타겟 넘버를 만들려고 합니다. 예를 들어 [1, 1, 1, 1, 1]로 숫자 3을 만들려면 다음 다섯 방법을 쓸 수 있습니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-1+1+1+1+1 &#x3D; 3</span><br><span class="line">+1-1+1+1+1 &#x3D; 3</span><br><span class="line">+1+1-1+1+1 &#x3D; 3</span><br><span class="line">+1+1+1-1+1 &#x3D; 3</span><br><span class="line">+1+1+1+1-1 &#x3D; 3</span><br></pre></td></tr></table></figure>
 
-<h3 id="int-lt-scanner-nextInt"><a href="#int-lt-scanner-nextInt" class="headerlink" title="int &lt;- scanner.nextInt()"></a>int &lt;- scanner.nextInt()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> num1 = sc.nextInt();</span><br><span class="line"><span class="keyword">int</span> num2 = sc.nextInt();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 입력시 띄어쓰기로 두개의 값이 구분됨으로 개행을 해줄 필요는 없다.</span></span><br><span class="line"><span class="comment">// 물론 개행도 가능하다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>사용할 수 있는 숫자가 담긴 배열 numbers, 타겟 넘버 target이 매개변수로 주어질 때 숫자를 적절히 더하고 빼서 타겟 넘버를 만드는 방법의 수를 return 하도록 solution 함수를 작성해주세요.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int[] numbers, int target</span><br><span class="line">output : int answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/43165">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>각 자리 수는 +, - 값을 가질 수 있다.  경우의 수를 따지면 총 수가 n개 일때 가능한 조합의 수는 2의 n승 가지 이다. 즉 이 조합 방법은 부분집합을 구하는 형태와 같으며 이 문제는 powerSet 알고리즘을 활용하면 모든 경우의 수에 대해 접근할 수 있다. <br><br> powerSet 알고리즘은 재귀형태로 구현하는 것이 가장 간단하다. 이를 위해 powerSet() 함수를 구현하며 또 각 자릿 수의 +, -를 확인하기 위한 boolean[] 타입의 flags 변수를 선언한다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>각 자리의 수 정보를 담겨 있는 int[] numbers 배열을 그대로 사용하며, 각 자리의 +, -를 확인하기 위한 boolean[] flags를 선언한다. 배열의 크기는 numbers의 크기와 동일하다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] numbers;</span><br><span class="line"><span class="keyword">boolean</span>[] flags = <span class="keyword">new</span> <span class="keyword">boolean</span>[numbers.length];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="int-lt-scanner-nextInt-1"><a href="#int-lt-scanner-nextInt-1" class="headerlink" title="int[] &lt;- scanner.nextInt()"></a>int[] &lt;- scanner.nextInt()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> num[];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++)</span><br><span class="line">    num[i] = sc.nextInt();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 배열을 위한 별도의 입력 라이브러리가 존재하지 않는다.</span></span><br><span class="line"><span class="comment">// 반복문을 활용하여 구현하여야 한다.</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="double-lt-scanner-nextDouble"><a href="#double-lt-scanner-nextDouble" class="headerlink" title="double &lt;- scanner.nextDouble()"></a>double &lt;- scanner.nextDouble()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">double</span> num1 = sc.nextDouble();</span><br><span class="line"><span class="keyword">double</span> num2 = sc.nextDouble();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 입력시 띄어쓰기로 두개의 값이 구분됨으로 개행을 해줄 필요는 없다.</span></span><br><span class="line"><span class="comment">// 물론 개행도 가능하다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="double-lt-scanner-nextDouble-1"><a href="#double-lt-scanner-nextDouble-1" class="headerlink" title="double[] &lt;- scanner.nextDouble()"></a>double[] &lt;- scanner.nextDouble()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">double</span> num[];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++)</span><br><span class="line">    num[i] = sc.nextDouble();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 배열을 위한 별도의 입력 라이브러리가 존재하지 않는다.</span></span><br><span class="line"><span class="comment">// 반복문을 활용하여 구현하여야 한다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="char-lt-scanner-next-charAt-0"><a href="#char-lt-scanner-next-charAt-0" class="headerlink" title="char &lt;- scanner.next().charAt(0)"></a>char &lt;- scanner.next().charAt(0)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">char</span> ch1 = sc.next().charAt(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">char</span> ch2 = sc.next().charAt(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 입력시 띄어쓰기로 두개의 값이 구분됨으로 개행을 해줄 필요는 없다.</span></span><br><span class="line"><span class="comment">// 물론 개행도 가능하다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="char-lt-scanner-nextLine-toCharArray"><a href="#char-lt-scanner-nextLine-toCharArray" class="headerlink" title="char[] &lt;- scanner.nextLine().toCharArray()"></a>char[] &lt;- scanner.nextLine().toCharArray()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">char</span>[] ch = sc.nextLine().toCharArray();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 띄어쓰기와 개행없이 한번에 입력시킬 수 있다.</span></span><br><span class="line"><span class="comment">// 만약 문제에서 띄어쓰기가 있다면 위 char &lt;- scanner.next().charAt(0) 방법을 반복문 돌리면 될 것이다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="String-lt-scanner-nextLine"><a href="#String-lt-scanner-nextLine" class="headerlink" title="String &lt;- scanner.nextLine()"></a>String &lt;- scanner.nextLine()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">String str = sc.nextLine();</span><br><span class="line"></span><br><span class="line"><span class="comment">// nextLine() 함수는 개행을 기준으로 입력된 문자열들을 구분한다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="String-lt-scanner-next"><a href="#String-lt-scanner-next" class="headerlink" title="String[] &lt;- scanner.next()"></a>String[] &lt;- scanner.next()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">String[][] map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;length; j++)</span><br><span class="line">        map[i][j] = sc.next()</span><br><span class="line"></span><br><span class="line"><span class="comment">// String 자료형의 2차원 배열에 데이터를 채울때 반복문을 사용하여 많이 사용한다.</span></span><br><span class="line"><span class="comment">// 띄어쓰기와 개행 모두로 입력 구분이 가능함으로 효율적으로 입력이 가능하다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>powerSet 알고리즘을 재귀적으로 구현한다. 이는 배열의 앞자리부터 +, - 두 방향으로 계속 분기해 나간다.<br>마침내 배열의 끝자리까지 도달하게 되면 특정한 +, -가 생성됨으로 이를 활용하여 요구되어지는 작업을 수행한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">powerSet(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerSet</span><span class="params">(<span class="keyword">int</span> depth)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(depth == length) &#123;</span><br><span class="line">		<span class="comment">// numbers와 flags를 활용해 target과 같은 수가 있으면 answer++ 한다.</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	numbers[depth] = <span class="keyword">false</span>;</span><br><span class="line">	powerSet(depth+<span class="number">1</span>);</span><br><span class="line">	numbers[depth] = <span class="keyword">true</span>;</span><br><span class="line">	powerSet(depth+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2019/08/11/2019-09-28-scanner/" data-id="ckp45ihd8002seswb1hteayl4" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-08-06-image-search-using-kakao-api" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/06/2019-08-06-image-search-using-kakao-api/" class="article-date">
-  <time datetime="2019-08-06T02:21:54.000Z" itemprop="datePublished">2019-08-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/project/">project</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/06/2019-08-06-image-search-using-kakao-api/">Image Search (Kakaopay Internship)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-Background"><a href="#1-Background" class="headerlink" title="1. Background"></a>1. Background</h3><p>카카오 인턴쉽 과제로 Kakao Image Search API를 활용한 어플리케이션을 제작하였습니다. 약 7일간 진행하는 소규모 프로젝트이므로 시간관리는 물론 주어진 기능들을 우선적으로 개발하는 것과 본인 역량 가능한 범위 내에 유용한 기능들을 개발하는 것이 중요했습니다.</p>
-<p><img src="/res/2019-08-06-image-search-using-kakao-api/ui.png"></p>
-<h3 id="2-Environment"><a href="#2-Environment" class="headerlink" title="2. Environment"></a>2. Environment</h3><p><em>Platform : Anroid Native App</em> <br> <em>Language : Java</em> <br> <em>Library : ConstraintLayout, JSONObject, Snackbar, PhotoView</em></p>
-<h3 id="3-Technical-Detail"><a href="#3-Technical-Detail" class="headerlink" title="3. Technical Detail"></a>3. Technical Detail</h3><p><strong>1. ConstraintLayout</strong> <br> 이전에 WKU라는 프로젝트를 진행할 때에는 <em>LinearLayout</em> 과 <em>RelativeLayout</em> 을 적절히 섞어가면서 Layout작업을 진행했었습니다. IOS Storyboard에서 사용하는 제약조건을 활용한 레이아웃 디자인이 강력하다 생각했었는데 이것이 안드로이드에서는 <em>ConstraintLayout</em> 임을 이번에 알게 되었고, 정말 편리하다는 느낌을 얻었습니다. <br><br> <strong>2. Animation</strong> <br> 이번 프로젝트에는 <em>Scale Animation</em>, <em>Scroll Animation</em>, <em>Color Animation</em> 3가지 종류의 animation이 들어갔습니다. Scale은 <em>Animation</em>      객체를 상속하여 구현하였고, Scroll은 <em>touchListener</em>, <em>Animation</em> 를 상속, 마지막으로 Color는 <em>ValueAnimator</em> 를 사용하였습니다. <br><br> <strong>3. DownloadManager</strong> <br> 이미지 다운로드 기능을 구현하기 위하여 <em>DownloadManager</em> 객체를 활용하였습니다. <em>checkPermission</em> 을 통하여 예외처리를 구현하고 <em>BroadcastReceiver</em> 를 통해 다운로드가 완료되었을 때 <em>Snackbar</em> 알림을 띄우도록 했습니다.</p>
-<p><br><br></p>
-<p><a href="/workspace/project/kakao_search/res/kidongyun.apk">kidongyun.apk</a></p>
-<p><a href="/workspace/project/kakao_search/res/source_code.zip">source_code.zip</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/kidongYun/ImageSearchApplication/blob/master/kidongyun.apk">kidongyun.apk - From Github</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/kidongyun/ImageSearchApplication">Source code - From Github</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/08/06/2019-08-06-image-search-using-kakao-api/" data-id="ckp45ihcs001meswbby3i5fms" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-08-05-normalization-overfitting-underfitting" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/05/2019-08-05-normalization-overfitting-underfitting/" class="article-date">
-  <time datetime="2019-08-05T02:21:54.000Z" itemprop="datePublished">2019-08-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ai/">ai</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/05/2019-08-05-normalization-overfitting-underfitting/">Normalization, Overfitting, Underfitting</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2><p>입력 데이터를 들어오는 그대로 사용하면 문제가 생길수도 있다. 예를 들어 2개의 입력을 받아서 1개의 결과를 도출하는 Machine Learning Model이라고 생각해보자. 근데 이 2개의 입력 값의 범주가 1개는 1 ~ 10 범위를 가지고 있고 다른 하나는 1000 ~ 10000이라면 단지 이 데이터의 수치에 의해 그 입력값의 가중치가 결정되어 버린다. 이를 위해 입력 데이터를 적절히 선처리작업을 진행해야 한다.</p>
-<p><img src="/res/2019-08-05-normalization-overfitting-underfitting/1.PNG"></p>
-<p>Unnormalized의 경우 모델의 Coutour Plot이 찌그러져서 나타나는 걸 볼 수 있다. 이는 입력값에 존재하는 차이 때문에 그럴수 있다. 이를 개선하기 위해 Normalization을 진행한다. 이는 각 입력값들의 차이를 없애주는 작업으로써 아래의 수식을 적용하면 간단하게 마무리 된다.</p>
-<p>$$ x_{normalized} = { {x_{origin} - average} \over range } $$</p>
-<p>원래의 x값에 해당 데이터들의 평균값으로 뺴주고난 다음 그 데이터의 범위(range) 만큼으로 나누어 준다. range 값은 데이터 중 최대값 - 최소값이 될수도 있으며 Deviation을 구할 수도 있다. 이를 통해 입력 값들의 차이를 줄이고 모델은 보다 나은 학습을 진행할 수 있다.</p>
-<h2 id="Overfitting-Underfitting"><a href="#Overfitting-Underfitting" class="headerlink" title="Overfitting, Underfitting"></a>Overfitting, Underfitting</h2><p><img src="/res/2019-08-05-normalization-overfitting-underfitting/2.PNG"></p>
-<p>이전에 서술한 Linear Regression의 경우는 실제로 문제를 다룰 때에는 High bias한 경우가 많다. 이 말은 너무 고정적이라서 데이터의 변화를 감당하지 못한다는 것이다. 위의 그래프에서 가장 왼쪽 Underfitting의 경우를 보면 선형모델이 데이터를 표현하고 있지만 뭔가 조금은 아쉽다. 이렇게 모델이 High bias하여 데이터들의 특성을 모두 표현해내지 못하는 경우 Underfitting이라고 한다.</p>
-<p>반대로 가장 오른쪽의 Overfitting의 경우를 보자. 이 모델은 너무 High variance하다. Data를 표현하기 위해서 너무 많은 변화를 가지고 있는 모델임을 의미한다. 데이터를 완벽하게 표현함으로 당연히 가장 좋은 모델일 것이라고 생각할 수 있지만 그렇지 않다. 우리가 모델을 만드는 이유는 데이터를 잘 표현해내서 미지의 새로운 데이터가 발생했을 때 모델을 근거로 하여 예측하고 대처하기 위함이다. 그러나 이렇게 High variance하다면 현재 가지고 있는 학습 데이터셋에 과적합이 되어버려서 새로운 데이터의 특성을 받아들이기가 어려워진다. 이러한 경우를 Overfitting이라고 한다.</p>
-<p>Overfitting, Underfitting 문제는 Learning System에서 중요시 다뤄지는 사안이다. 이를 Optimal한 모델로 구현하기 위해서 다양한 노력이 있는데 그 중 대표적인 것은 학습 데이터 셋을 train set, validation set, test set 3가지로 구분하는 것이다. 구분하게 된다면 모델에 대한 평가가 가능해진다.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/08/05/2019-08-05-normalization-overfitting-underfitting/" data-id="ckp45ihcq001eeswb9sntdfvi" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-08-05-train-validation-test-set" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/05/2019-08-05-train-validation-test-set/" class="article-date">
-  <time datetime="2019-08-05T02:21:54.000Z" itemprop="datePublished">2019-08-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ai/">ai</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/05/2019-08-05-train-validation-test-set/">Train set, Validation set, Test set</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="각-Data-Set의-역할"><a href="#각-Data-Set의-역할" class="headerlink" title="각 Data Set의 역할."></a>각 Data Set의 역할.</h2><p>일반적으로 Overfitting을 방지하기 위해서 Data set을 3가지로 구분하여 학습을 진행한다. <br/><br/> 1. Train Set <br/> 학습을 위한 데이터셋이다. 가장 기본적으로 사용되며 일반적으로 Data Set의 60%를 사용한다. <br/><br/> 2. Validation Set <br/> 모델을 평가하기 위한 데이터셋이다. 하이퍼 파라미터나 Hypothesis의 결함을 발견하기 위해서 사용한다. 일반적으로 Data Set의 20%을 사용한다. <br/><br/> 3. Test Set <br/> Learning System의 최종 점검을 위해 사용한다. 마지막 남은 Data Set의 20%를 사용한다.</p>
-<h2 id="Cross-Validation-Set"><a href="#Cross-Validation-Set" class="headerlink" title="Cross Validation Set"></a>Cross Validation Set</h2><p>학습 데이터의 양이 충분하지 않을 경우에는 Validation Set을 없애고 Train Set과 Test Set을 지속 번갈아 가면서 테스트를 하게 되는데 이 방법을 교차 검증(Cross Validation)이라고 부른다. 학습 데이터가 적다면 Test set의 데이터가 더욱 적어서 성능 평가시에 편향이 생기게 된다. 이를 위해 교차 검증은 모든 데이터가 최소 한 번은 테스트 셋으로 쓰일 수 있도록 계속 Iteration한다.</p>
-<p><img src="/res/2019-08-05-train-validation-test-set/1.png"></p>
-<p>위의 예처럼 train set이 총 5개로 분할 되었다면 각 반복시점에서 한번씩은 Test Set으로 사용할 수 있도록하고 각 반복에서 얻어낸 값을 평균 내어 모델을 수정한다.</p>
-<p><a target="_blank" rel="noopener" href="https://cinema4dr12.tistory.com/1275">Detail of Cross Validation</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/08/05/2019-08-05-train-validation-test-set/" data-id="ckp45ihcs001jeswbho60f3qs" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-08-04-convex-function" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/04/2019-08-04-convex-function/" class="article-date">
-  <time datetime="2019-08-04T02:21:54.000Z" itemprop="datePublished">2019-08-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ai/">ai</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/04/2019-08-04-convex-function/">Convex Function</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Convex-Function"><a href="#Convex-Function" class="headerlink" title="Convex Function"></a>Convex Function</h2><p>Convex 함수는 2차함수 처럼 볼록하게 생긴 함수를 말한다. 단순히 모양을 칭하는 말이지만 이것은 Gradient Descent에서는 꽤나 중요하게 작용한다.</p>
-<p><em>Convex Function</em></p>
-<p><img src="/res/2019-08-04-convex-function/1.png"></p>
-<p><em>Non Convex Function</em></p>
-<p><img src="/res/2019-08-04-convex-function/2.png"></p>
-<p>Gradient Descent 알고리즘에서 최소값을 구하기 위해서 미분이 0이 되는 지점을 찾는다. 만약 위에 그림에서 Non Convex Function과 같은 경우 미분이 0이 되는 지점이 2군데나 존재한다. 만약 Cost Function이 Non Convex 모양이라면 랜덤하게 시작되는 처음 위치에 따라서 올바른 최소값을 찾아갈수도 있고 그렇지 않을 수도 있다. 이렇게 되면 훌륭한 알고리즘이라고 보기 어려워진다. 따라서 Gradient Descent에서는 Cost Function을 Convex한 모양으로 유지시켜주는 것이 중요하다.</p>
-<h2 id="Global-Minimum-Local-Minimum"><a href="#Global-Minimum-Local-Minimum" class="headerlink" title="Global Minimum, Local Minimum"></a>Global Minimum, Local Minimum</h2><p>Non Convex Function에서 최소값이 여러군데에서 존재할 때. 전역 범위에서 가장 작은 값은 Global Minimun 이라고 하고 국지적인 관점에서 작은 값을 Local Minimum 이라고 한다. 위의 그래프에서 빨간 점선이 Global Minimim 에 해당하고 보라색 점선이 Local Minimum이다.</p>
-<p><img src="/res/2019-08-04-convex-function/3.jpg"></p>
-<p>위 그래프는 변수가 2가지 일때 나타나는 Non Convex 모델이다. 파란색으로 칠해진 부분이 Minimum에 가까워지는 부분이며, 총 2군데가 있음을 알 수 있다. Non Convex 모델에 따른 Local Minimum 문제를 해결하기 위해서는 Gradient Descent 알고리즘을 사용시에 Cost Function을 Convex 모형으로 변형 시켜주는 것이 최선이다. 대표적으로 Cross Entropy loss 알고리즘이 있다.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/08/04/2019-08-04-convex-function/" data-id="ckp45ihcn0014eswbfxus5c8k" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-08-04-logistic-regression" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/04/2019-08-04-logistic-regression/" class="article-date">
-  <time datetime="2019-08-04T02:21:54.000Z" itemprop="datePublished">2019-08-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ai/">ai</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/04/2019-08-04-logistic-regression/">Logistic Regression</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Logistic-Regression의-필요성-및-Linear-Regression의-한계"><a href="#Logistic-Regression의-필요성-및-Linear-Regression의-한계" class="headerlink" title="Logistic Regression의 필요성 및 Linear Regression의 한계"></a>Logistic Regression의 필요성 및 Linear Regression의 한계</h2><p><img src="/res/2019-08-04-logistic-regression/1.png"></p>
-<p><img src="/res/2019-08-04-logistic-regression/2.png"></p>
-<p>Linear Regression은 일반적으로 결과인 y값이 연속적인 값을 가질때 데이터르 표현하기에 유용하다. 그러나 만약 y값이 이산적이라면 어떨까. 두번째 그래프는 y값이 붉은색과 푸른색으로 2가지 형태만 가지고 있다. 합격과 불합격을 의미하도록 만들었다. 데이터가 만약 이러한 특성을 가진다면 Linear Regression 모델만으로는 이산적인 값을 가지는 데이터들을 표현하기는 부적합하다. 그래서 Logistic Regression을 사용한다. </p>
-<p>부가적인 설명으로 machine learning 에서는 y값이 이산적인 상황에서 사용되는 기법을 Classification 이라고 한다. 대표적으로 KNN, SVM 모델들을 예로 들수 있으며, Regression은 함수식으로 표현되기 때문에 연속적인 수치들도 표현이 가능하다. 그러나 Regression에서도 이산적인 경우를 위한 방법을 제공하는데<br>이를 Logistic Regression이라고 한다.</p>
-<h2 id="Sigmoid-Function"><a href="#Sigmoid-Function" class="headerlink" title="Sigmoid Function"></a>Sigmoid Function</h2><p><img src="/res/2019-08-04-logistic-regression/2.png"></p>
-<p>y 값을 2개만 가지는 데이터의 특성에 반면 무한한 값을 가지는 linear regression은 부적합하다. 이를 위해 새로운 모델을 생각해 보자. 무언가 2개를 명확히 구분할 수 있도록 하는 모델이면 좋을듯 하다.</p>
-<p><img src="/res/2019-08-04-logistic-regression/3.png"></p>
-<p>$$ y = {1 \over {1 + e^{-z}}} $$</p>
-<p>위와 같은 형태의 함수를 시그모이드라고 부른다. S자 모양을 닮아서 그렇다고 한다. 보면 가운데 부분을 제외하고 양 날개 부분은 값이 합격과 불합격으로 분명하게 나뉜다. 선형회귀 모델 보다는 2분법적으로 무언가를 나누는데에 적합한것 같다. 위의 그래프의 시그모이드 모형은 조금은 이상적이며 실제적으로 쓰이는 것은 아래와 같다.</p>
-<p><img src="/res/2019-08-04-logistic-regression/4.png"></p>
-<p>0.5 값을 기준으로 y 값이 달라진다고 생각하면 된다. 위의 예를 활용한다면 0.5 이하는 불합격, 0.5 이상은 합격이다. 보면 y 값은 0 ~ 1의 범주를 가진다. 이는 확률과 굉장히 유사한 개념이며 이와 동일하게 생각해도 좋다. 즉 50% 이하는 불합격, 50% 이상은 합격인 것이다. 즉 기존의 선형회귀와는 달리 확률론을 모델에 적용하여 이분법적인 사고를 가능하게 만드는 것이 Logistic Regression에서 Sigmoid model이다.</p>
-<h2 id="Activation-Function"><a href="#Activation-Function" class="headerlink" title="Activation Function"></a>Activation Function</h2><p>Logistic Regression의 Hypothesis model을 결정할 때 Sigmoid Model이 Linear Model 대체하는 개념이 아니다. Linear Model과 같은 실제 Hypothesis model이 존재한다면 그 결과값(y)를 다시 sigmoid model의 입력으로 받아서 값의 범주를 0 ~ 1 안으로 들어오게만 바꿔준다. 기존의 선형 회귀 모델이론에 확률을 추가하는 느낌이다. 이렇게 실제 가설 모델 의 결과값을 다시 입력값으로 받아 시스템이 처리하기 쉽게 바꿔주는 함수들을 activation function이라고 부르며 sigmoid 말고도 ReLU, Tanh 등이 존재한다.</p>
-<h2 id="Hypothesis"><a href="#Hypothesis" class="headerlink" title="Hypothesis"></a>Hypothesis</h2><p>지금까지 배운 Sigmoid Model을 활용해 Logistic Regression의 Hypothesis model을 세워보자. 이는 아래와 같다.</p>
-<p>$$ y = {1 \over {1 + e^{-z}}}, ,,,,,,, z = WX + b $$</p>
-<p>$$ y = {1 \over {1 + e^{-(WX + b)}}} $$</p>
-<p>z 값이 이전에 배운 Linear Regression의 출력값으로 활용되었다. 전체적인 흐름은 아래와 같다. 그리고 이해를 위해 앞으로는 Hypothesis를 h(x)로<br>표현하도록 하겠다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Input values -&gt; Linear Model -&gt; Sigmoid Model -&gt; Output value</span><br></pre></td></tr></table></figure>
-
-<p>$$ h(x) = {1 \over {1 + e^{-(WX + b)}}} $$</p>
-<h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><p>이번 Cost Function은 Linear Regression과는 많이 다르다. Logistic Regression이 Linear Regression과 가장 다른 부분인것 같다.<br>Gradient Descent 알고리즘을 적용하기 위해서는 Cost Function이 Convex한 모양을 가져야 한다. 그렇지 않으면 Local Minimum 문제에 도달할 수 있다. 그러나 이번 Logistic Regression Hypothesis는 아래와 같이 자연로그를 포함하고 있어 Linear Regression과 같이 최소제곱법을 사용하게 된다면 이는 Non Convex 모양이 되어버린다.</p>
-<p><em>Logistic Regression Hypothesis</em></p>
-<p>$$ y = {1 \over {1 + e^{-(WX + b)}}} $$</p>
-<p>Logistic Regression에서 Cost Function이 Convex 모양을 갖기 위한 새로운 알고리즘을 소개한다. Cross Entropy Loss라고 부르며 Log함수를 활용한다. Cost Function에서 가장 중요한 점은 Hypothesis 모델이 데이터를 잘 표현하고 있다면 에러 값을 작게하고 그렇지 않다면 크게 하도록 만드는 것이다. 이와 동일하게 Logistic Regression에서는 출력값이 참 혹은 아니오 2가지 밖에 없음으로 만약 Hypothesis 모델의 예측이 데이터와 같다면 잘 표현한 것으로 에러를 적게 하고 반대의 경우로 예측이 틀렸다면 에러를 높이면 된다. </p>
-<h2 id="Cross-Entropy-Loss"><a href="#Cross-Entropy-Loss" class="headerlink" title="Cross Entropy Loss"></a>Cross Entropy Loss</h2><p>$$ Cost Function = {<br>    \begin{matrix}<br>         -ln(h(x)) : y = 1 \<br>         -ln(1 - h(x)) : y = 0<br>     \end{matrix}<br>$$</p>
-<p>Cross Entropy Loss 는 실제 데이터의 y값이 1인경우 0인경우에 따라서 이용하는 함수가 달라진다. 우선 각 y = 1인 경우를 살펴보자.</p>
-<p><em>-ln(h(x))</em></p>
-<p><img src="/res/2019-08-04-logistic-regression/5.PNG"></p>
-<p>실제 데이터의 결과 y = 1 일때 사용하는 함수의 그래프이다. 실제 데이터의 결과가 y = 1이라면 Hypothesis model을 통한 예측값이 1일 떄는 데이터를 잘 표현한 것임으로 에러는 적은 값을 가져야하고 0일 때에는 데이터를 잘 표현하지 못했음으로(예측을 틀렸음으로) 에러는 큰 값을 가져야 한다. 이 모델을 살펴보면 hypothesis model을 의미하는 h(x)가 입력 값으로 들어가고 있다. 위의 파란 그래프 따라서 보면 이 입력값이 1일 때는 Error는 0을 가리키며 반대로 0일 경우 예측에 틀림으로 무한대의 에러값을 가지고 있다.</p>
-<p><em>-ln(1 - h(x))</em></p>
-<p><img src="/res/2019-08-04-logistic-regression/6.PNG"></p>
-<p>실제 데이터의 결과 y = 0 일때 사용하는 함수의 그래프이다. 실제 데이터의 결과가 y=0 이라면 Hypothesis model을 통한 예측값이 0일 떄는 데이터를 잘 표현한 것임으로 에러는 적은 값을 가져야하고 1일 때에는 데이터를 잘 표현하지 못했음으로 에러는 큰 값을 가져야 한다. 이는 위 y = 1의 경우와 반대로 이루어진다고 보면 된다. 초록색 그래프를 잘 살펴보자. hypothesis model을 의미하는 h(x)가 입력 값으로 들어가고 있다. 이 입력 값이 0일 때에는 Error는 0을 가리키며 반대로 1일 경우 예측에 틀림으로 무한대의 에러값을 가지고 있다.</p>
-<p>한가지 명심해야할 사항은 입력값으로 들어오는 h(x) 값의 범위는 Sigmoid 함수를 사용하고 있음으로 0 ~ 1이다. 그럼으로 그 외의 범위에 있는 값은 신경 쓸 필요가 없다.</p>
-<p>위의 Cross Entropy Loss는 y값의 경우에 따라서 2개의 수식으로 나누어져 있는데 이는 단지 이해를 위한 것으로 이번에는 하나의 수식으로 표현해 보겠다.</p>
-<p>$$ Cost,Function = yln(h(x)) - (1-y)ln(1 - h(x)) $$</p>
-<p>y 값의 경우에 따라서 두 부분의 수식이 상반되며 활성화 되었다가 비활성화된다. 이는 위의 2개의 수식을 표현한 것과 일치함을 보인다. 이는 한개의 데이터에 대한 Error 수치임으로 모든 데이터에 대해서 적용할 수 있도록 Cost Function을 확장하자. 그리고 데이터의 개수가 영향을 주면 안됨으로 데이터의 개수만큼 나누어 주자. 즉 평균을 구한다.</p>
-<p>$$ Cost,Function = {1 \over n} \sum_{i=1}^n (y_iln(h(x_i)) - (1 - y_i)ln(1 - h(x_i))) $$</p>
-<h2 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h2><p>Cost Function을 Convex한 모양으로 만들었음으로 Gradient Descent 알고리즘을 동일하게 적용하여 Hypothesis의 weight 값과 bias 값을 수정하면 된다. 아래는 Cost Function의 편미분과 Gradient Descent 알고리즘이 적용된 Delta Rule 이다.</p>
-<p><em>Partial Derivative</em></p>
-<p>$$<br>    {\partial \over \partial w_1} Cost,Function = {1 \over n} \sum_{i=1}^{n} (h(x^{(i)}) - y^{(i)})x_1^{(i)} \<br>    {\partial \over \partial w_2} Cost,Function = {1 \over n} \sum_{i=1}^{n} (h(x^{(i)}) - y^{(i)})x_2^{(i)} \<br>    {\partial \over \partial w_3} Cost,Function = {1 \over n} \sum_{i=1}^{n} (h(x^{(i)}) - y^{(i)})x_3^{(i)} \</p>
-<pre><code>\\ ... \\
-
-&#123;\partial \over \partial b&#125; Cost\,Function = &#123;1 \over n&#125; \sum_&#123;i=1&#125;^&#123;n&#125; (h(x^&#123;(i)&#125;) - y^&#123;(i)&#125;)</code></pre>
-<p>$$</p>
-<p><a target="_blank" rel="noopener" href="http://solarisailab.com/archives/2237">Cross Entropy Loss 미분 상세 과정</a>{: target=”_blank”}</p>
-<p><em>Delta Rule</em></p>
-<p>$$<br>    w_1^{(n+1)} = w_1^{(n)} - \alpha { \partial \over \partial w_1} Cost Function \<br>    w_2^{(n+1)} = w_2^{(n)} - \alpha { \partial \over \partial w_2} Cost Function \<br>    w_3^{(n+1)} = w_3^{(n)} - \alpha { \partial \over \partial w_3} Cost Function \</p>
-<pre><code>\\ ... \\
-
-b^&#123;(n+1)&#125; = b^&#123;(n)&#125; - \alpha &#123; \partial \over \partial b&#125; Cost Function</code></pre>
-<p>$$</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/08/04/2019-08-04-logistic-regression/" data-id="ckp45ihcp001beswb68vt8pty" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2019/09/28/2019-09-28-target-number/" data-id="ckp45ihd7002peswb6j1w30gy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -608,7 +774,7 @@ b^&#123;(n+1)&#125; = b^&#123;(n)&#125; - \alpha &#123; \partial \over \partial 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/16/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/18/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/16/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/18/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -619,7 +785,7 @@ b^&#123;(n+1)&#125; = b^&#123;(n)&#125; - \alpha &#123; \partial \over \partial 
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/gradle/">gradle</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
     </div>
   </div>
 
@@ -634,7 +800,7 @@ b^&#123;(n+1)&#125; = b^&#123;(n)&#125; - \alpha &#123; \partial \over \partial 
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
     </div>
   </div>
 
@@ -647,23 +813,23 @@ b^&#123;(n+1)&#125; = b^&#123;(n)&#125; - \alpha &#123; \partial \over \partial 
       <ul>
         
           <li>
-            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+            <a href="/2021/06/20/2021-06-20-jpa/">Jpa</a>
           </li>
         
           <li>
-            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+            <a href="/2021/06/15/2021-06-15-kabang/">Kabang</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+            <a href="/2021/06/15/2021-06-15-jpa/">Jpa</a>
           </li>
         
           <li>
-            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+            <a href="/2021/06/14/2021-06-14-jpa/">Jpa</a>
           </li>
         
           <li>
-            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+            <a href="/2021/06/14/2021-06-14-kabang/">Jpa</a>
           </li>
         
       </ul>

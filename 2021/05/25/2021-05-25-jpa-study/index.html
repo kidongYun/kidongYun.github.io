@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JPA 공부 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JPA 배경1. 영속성이란?영속화는 단순하게 설명하면 애플리케이션의 데이터가 애플리케이션의 프로세스보다 더 오래 지속하게끔 하려는 것을 말한다. 이를 위해서 애플리케이션에서 사용되는 메모리 공간이 아닌 제 3의 메모리 공간에데이터를 저장해야한다. 이 공간들은 대표적으로 MySQL, Postgresql, Oracle 등의 관계형 데이터베이스, MongoDB와">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JPA 공부">
+<meta property="og:url" content="http://example.com/2021/05/25/2021-05-25-jpa-study/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JPA 배경1. 영속성이란?영속화는 단순하게 설명하면 애플리케이션의 데이터가 애플리케이션의 프로세스보다 더 오래 지속하게끔 하려는 것을 말한다. 이를 위해서 애플리케이션에서 사용되는 메모리 공간이 아닌 제 3의 메모리 공간에데이터를 저장해야한다. 이 공간들은 대표적으로 MySQL, Postgresql, Oracle 등의 관계형 데이터베이스, MongoDB와">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-24T15:54:00.000Z">
+<meta property="article:modified_time" content="2021-06-07T14:19:50.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2021-05-25-jpa-study" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/25/2021-05-25-jpa-study/" class="article-date">
+  <time datetime="2021-05-24T15:54:00.000Z" itemprop="datePublished">2021-05-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JPA 공부
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JPA-배경"><a href="#JPA-배경" class="headerlink" title="JPA 배경"></a>JPA 배경</h2><h3 id="1-영속성이란"><a href="#1-영속성이란" class="headerlink" title="1. 영속성이란?"></a>1. 영속성이란?</h3><p>영속화는 단순하게 설명하면 애플리케이션의 데이터가 애플리케이션의 프로세스보다 더 오래 지속하게끔 하려는 것을 말한다. 이를 위해서 애플리케이션에서 사용되는 메모리 공간이 아닌 제 3의 메모리 공간에<br>데이터를 저장해야한다. 이 공간들은 대표적으로 MySQL, Postgresql, Oracle 등의 관계형 데이터베이스, MongoDB와 같은 NoSQL, 주로 캐시 목적으로 사용되는 Redis에 해당한다.<br>자바는 위와 같은 제 3의 공간에 데이터 영속화를 위해 제공하는 라이브러리가 있는데 이 라이브러리의 이름은 JDBC 이다.</p>
+<h3 id="2-JDBC"><a href="#2-JDBC" class="headerlink" title="2. JDBC"></a>2. JDBC</h3><p>관계형 데이터베이스와 연동하기 위해서 자바에서 제공하는 표준 라이브러리. 자바 개발자들과 각 영속화 드라이버들 간의 통신을 위한 규격이라고 이해하면 된다.<br>이 JDBC 라이브러리와 각 데이터베이스에 해당하는 드라이버들을 의존성으로 추가하면 각 데이터베이스와 자바를 연동시킬 수 있다.</p>
+<h3 id="3-SQP-Mapper-JDBC-라이브러리가-가지는-문제점"><a href="#3-SQP-Mapper-JDBC-라이브러리가-가지는-문제점" class="headerlink" title="3. SQP Mapper, JDBC 라이브러리가 가지는 문제점."></a>3. SQP Mapper, JDBC 라이브러리가 가지는 문제점.</h3><ol>
+<li><p>Domain - Relation 사이에 매핑하는 것 자체가 많은 시간이 소비된다.</p>
+</li>
+<li><p>자바는 객체지향 언어이지만. SQL로 인해서 객체지향적인 코드를 작성하기 어렵다.</p>
+</li>
+<li><p>..</p>
+</li>
+</ol>
+<p>-&gt; 이를 개선하기 위해서 ORM이 나타났다.</p>
+<h3 id="4-ORM-Object-Relation-Mapping-등장"><a href="#4-ORM-Object-Relation-Mapping-등장" class="headerlink" title="4. ORM (Object-Relation Mapping) 등장"></a>4. ORM (Object-Relation Mapping) 등장</h3><p>ORM은 애플리케이션의 클래스와 SQL 데이터베이스 테이블 사이의 매핑 정보를 기술한 메타데이터를 사용하여, 자바 애플리케이션의 객체를 SQL 데이터베이스의 테이블에 자동으로 깔끔하게 영속화 해주는 기술.</p>
+<p>매핑정보를 기술한 메타데이터 -&gt; 보통 자바의 어노테이션을 활용해서 기술하며, 이걸 잘 이해하고 사용하는 것이 중요하다.</p>
+<p>ORM도 JDBC를 내부적으로 사용하며, JDBC를 보다 자바스럽게 사용할수 있도록 감싼 라이브러리라고 생각하면 된다.</p>
+<p>매핑을 하기 위한 코드를 작성하지 않아도 되기 때문에 생산성이 증가되며, 작성되는 코드가 적어지기 떄문에 유지보수도 더 좋아진다.</p>
+<p>성능 같은 경우는. JPA는 Persistant Context 영역에서 데이터를 캐싱하기 때문에 특정 케이스에 대해서는 성능이 더 좋을 수 있다.</p>
+<p>그리고 또하나 중요한 ORM의 특징은 ORM 자체 내에서 각 데이터베이스 벤더에 대한 쿼리로 변경하기 때문에 개발자는 특정 벤더에 종속된 쿼리를 작성하지 않아도 된다. 즉 벤더에 독립적인 애플리케이션을 만들 수 있다.</p>
+<h3 id="5-ORM의-Object-Relation-차이를-메꾸려는-노력"><a href="#5-ORM의-Object-Relation-차이를-메꾸려는-노력" class="headerlink" title="5. ORM의 Object, Relation 차이를 메꾸려는 노력"></a>5. ORM의 Object, Relation 차이를 메꾸려는 노력</h3><ol>
+<li><p>객체는 커스텀 객체타임을 새롭게 만들어서 정의할수 있지만. 릴레이션은 쉽지 않다.</p>
+</li>
+<li><p>객체의 동일하다의 개념과, 릴레이션의 동일하다의 개념도 다르다.<br>자바에서 객체의 동일하다는 equals() 함수와, hashcode() 함수를 오버라이딩해서 정의하지만. 릴레이션은 단순히 PK 값으로만 대조가 가능하다.</p>
+</li>
+<li><p>방향성에 대한 문제.<br>객체가 다른 객체를 의존한다면. 이 말은 방향성이 생긴다. 객체에서의 관계는 기본적으로 방향성이 분명히 드러난다.<br>릴레이션은 FK를 활용해서 두 릴레이션에 대한 정보를 조회가 가능하기 때문에 사실상 방향성이 없다.<br>그리고 데이터베이스에서는 N:N 관계를 N:1-1:N 형태로 정규화 하여 표현하기 때문에 N:N도 표현할 수 없다.</p>
+</li>
+<li><p>중첩 참조에 따른 성능 문제.<br>객체는 특정 객체가 가진 특정 객체가 가진 특정 객체가 가진 특정 객체에 접근하는 방법이 심플함.<br>그러나 릴레이션에서는 위와 같은 구조를 구현하려면 모두 조인을 해야함. 즉 한번 한번 중첩될수록 실제 성능에 큰 이슈가 생김.</p>
+</li>
+<li><p>N+1 문제. -&gt; Lazy Loading 때문에 발생.</p>
+</li>
+</ol>
+<h2 id="JPA-기본"><a href="#JPA-기본" class="headerlink" title="JPA 기본"></a>JPA 기본</h2><h3 id="1-JPA-Hibernate-Spring-Data-JPA-구분"><a href="#1-JPA-Hibernate-Spring-Data-JPA-구분" class="headerlink" title="1. JPA, Hibernate, Spring Data JPA 구분"></a>1. JPA, Hibernate, Spring Data JPA 구분</h3><p>JPA 는 인터페이스, 명세, 규격, 규약이며 Hibernate는 이 JPA의 규격을 따라 만든 실제 구현체, Spring Data JPA는 이 JPA를 보다 쉽게 사용하기 위해서 Spring Framework 에서 제공하는 하나의 모듈.</p>
+<h3 id="2-기본적인-어노테이션에-대해서"><a href="#2-기본적인-어노테이션에-대해서" class="headerlink" title="2. 기본적인 어노테이션에 대해서"></a>2. 기본적인 어노테이션에 대해서</h3><p>@Entity : 고유의 식별자를 가져야 합니다.</p>
+<p>@Id :</p>
+<p>@GeneratedValue :</p>
+<p>@Column : </p>
+<p>@Temporal : </p>
+<p>@Value : </p>
+<p>@ManyToOne :`</p>
+<p>@OneToMany : </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/25/2021-05-25-jpa-study/" data-id="ckq4jx11s00114f8jdmwm16z7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/05/28/2021-05-28-spring-environment/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Spring Environment
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/gradle/">gradle</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/20/2021-06-20-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/15/2021-06-15-kabang/">Kabang</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/15/2021-06-15-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/14/2021-06-14-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/14/2021-06-14-kabang/">Jpa</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

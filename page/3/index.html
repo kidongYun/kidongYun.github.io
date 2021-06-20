@@ -64,10 +64,52 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2021-03-16-tcp-udp" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2021-05-28-gradle-basic" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/16/2021-03-16-tcp-udp/" class="article-date">
-  <time datetime="2021-03-15T15:54:00.000Z" itemprop="datePublished">2021-03-16</time>
+    <a href="/2021/05/28/2021-05-28-gradle-basic/" class="article-date">
+  <time datetime="2021-05-27T15:54:00.000Z" itemprop="datePublished">2021-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/gradle/">gradle</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/28/2021-05-28-gradle-basic/">Basic Gradle</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="apply-plugin-‘java’"><a href="#apply-plugin-‘java’" class="headerlink" title="apply plugin: ‘java’"></a>apply plugin: ‘java’</h1><p>apply plugin 키워드는 Gradle 플러그인을 사용하기 위함<br>‘java’ 는 Java 프로그램을 위한 기능을 제공하는 플러그인이다.</p>
+<h1 id="buildscript"><a href="#buildscript" class="headerlink" title="buildscript"></a>buildscript</h1><p>buildscript 안에서 정의된 dependencies는 task를 사용할 때 사용되고, 밖에서 정의된 dependencies는 소스를 컴파일할때 사용.</p>
+<h1 id="compile-vs-implementation"><a href="#compile-vs-implementation" class="headerlink" title="compile vs implementation"></a>compile vs implementation</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/28/2021-05-28-gradle-basic/" data-id="ckq4jx10d00004f8j6pfg5v92" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-05-28-spring-environment" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/28/2021-05-28-spring-environment/" class="article-date">
+  <time datetime="2021-05-27T15:54:00.000Z" itemprop="datePublished">2021-05-28</time>
 </a>
     
   <div class="article-category">
@@ -82,7 +124,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/16/2021-03-16-tcp-udp/">TCP vs UDP</a>
+      <a class="article-title" href="/2021/05/28/2021-05-28-spring-environment/">Spring Environment</a>
     </h1>
   
 
@@ -90,339 +132,95 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="TCP-Transfer-Controler-Protocol"><a href="#TCP-Transfer-Controler-Protocol" class="headerlink" title="TCP (Transfer Controler Protocol)"></a>TCP (Transfer Controler Protocol)</h3><h3 id="UDP-User-Datagram-Protocol"><a href="#UDP-User-Datagram-Protocol" class="headerlink" title="UDP (User Datagram Protocol)"></a>UDP (User Datagram Protocol)</h3><h3 id="전송계층-엔드-포인트간에-신뢰성있는-데이터-전송을-담당하는-계층"><a href="#전송계층-엔드-포인트간에-신뢰성있는-데이터-전송을-담당하는-계층" class="headerlink" title="전송계층 - 엔드 포인트간에 신뢰성있는 데이터 전송을 담당하는 계층."></a>전송계층 - 엔드 포인트간에 신뢰성있는 데이터 전송을 담당하는 계층.</h3><p>신뢰성 - 데이터를 순차적, 안정적인 전달.</p>
-<p>전송 - 포트 번호에 해당하는 프로세스에 데이터를 전달.<br>포트 번호에 맞는 프로세스를 찾아준다는 것. 이게 전송계층이 해주는 일이였구나.</p>
-<p>송신자가 보낸 패킷이 순서 없이 무작위로 보냈다면 이걸 순서대로 정리해주는 것이 전송 계층.</p>
-<p>네트워크가 바빠서 혼잡문제가 발생해서 패킷이 유실될 수도 있다.</p>
-<h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><p>이러한 신뢰성을 보장하는 전송계층의 프로토콜이 TCP (Transmission Control Protocol)</p>
-<p>TCP 의 가장 큰 특징은 가상회선을 연결하고 끊는다는 점.</p>
-<p>어플리케이션 레이어에서 보내고 싶어하는 데이터가 있다고 하자. 이를 보내기 위해 전송계층이 받으면. 필요한 크기 만큼으로 이 데이터들을 자르고<br>TCP 송 수신을 위한 헤더 정보를 그 잘린 데이터 앞에 추가한다.</p>
-<p>이걸 세그먼트라고 함. (TCP Header + data)</p>
-<p>TCP Header 는 총 32비트로 이뤄져 있는데. 여기서 8번째부터 16번째까지 총 9개에 해당하는 비트가 TCP 연결 제어 및 데이터 관리를 한다.</p>
-<p>여기 비트 안에 ACK, SYN, FIN 이런 플래그들이 들어있음.</p>
-<p>ACK : 수신자가 송신자에게 보내는 플래그.</p>
-<p>SYN : 커넥션을 연결할 때 플래그</p>
-<p>FIN : 커넥션 연결을 끊을 때 쓰는 플래그</p>
-<p>TCP 3-way handshake.</p>
-<p>커넥션을 수립하는 과정.</p>
-<p>1단계<br>Client 가 SYN 비트를 1로 설정하고 Server 에게 패킷을 송신. (커넥션 연결 하려고 한다는 의미를 가짐)</p>
-<p>2단계<br>Server 가 SYN + ACK 비트를 1로 설정하고 Client 에게 패킷을 송신 (커넥션을 연결하려고 하며, 송신자에게 이전 패킷을 수신했다는 걸 알려줌)</p>
-<p>3단계<br>Client 가 ACK 비트를 1로 하여 Server 에게 송신.<br>(서버에게 수신하였음을 알리기 위해 송신)</p>
-<p>최종적으로 가상회선이 구축되면 둘다 모두 established 상태가 된다.</p>
-<p>TCP 데이터 전송 방식.</p>
-<p>Client가 패킷을 송신. -&gt;</p>
-<p>Server에서 ACK 송신.</p>
-<p>만약 정상적으로 수신하지 못했다면.<br>즉 Client가 ACK를 수신하지 못한다면. 클라이언트가 기다리다가 안오면 재전송.</p>
-<p> TCP 4 way-handshake</p>
-<p>가상회선 해지하는 단계.</p>
-<ol>
-<li><p>데이터 전부를 송신한 Client가 FIN 플래그를 1로 두고 송신. TIME_WAIT 상태로 바뀜.</p>
+        <h1 id="Spring-Environment"><a href="#Spring-Environment" class="headerlink" title="Spring Environment"></a>Spring Environment</h1><p>스프링의 환경이자 설정과 관련된 인터페이스.<br>Proiles 설정과 Property 설정에 접근할 수 있다.<br>ApplicationContext 안에 해당 객체가 포함되어 있어서 ApplicationContext 로도 접근이 가능하다.</p>
+<p>Profiles<br>스프링 웹 애플리케이션을 개발할 때, 애플리케이션 환경에 따라 약간씩 변경이 되어야할 설정 값들을 코드의 변경 없이 설정만으로 편리하게 변경할 수 있도록 제공하는 인터페이스이자 분리의 기준.</p>
+<p>application.properties<br>application-local.properties<br>application-test.properties<br>위와 같이 설정 파일을 만들고. 이 파일에 각 환경에 맞는 값들을 넣는다.</p>
+<p>VM-option 이나 다양한 방법으로 어떤 properties 파일을 접근할지를 어플리케이션 구동시에 선택할 수 있다.<br>@Profile(“test”) 어노테이션으로도 접근 가능.</p>
+<h1 id="UtilityClass"><a href="#UtilityClass" class="headerlink" title="UtilityClass"></a>UtilityClass</h1><p>@UtilityClass<br>유틸리티 클래스에 적용하면 되는 어노테이션이다. 만약 이 어노테이션을 작성하면 기본생성자가 private 생성되며 만약 리플렉션 혹은 내부에서 생성자를 호출할 경우에는 UnsupportedOperationException이 발생한다.</p>
+<h2 id="acceptsProfiles-String…-profiles"><a href="#acceptsProfiles-String…-profiles" class="headerlink" title="acceptsProfiles(String… profiles)"></a>acceptsProfiles(String… profiles)</h2><p>실행되는 프로파일이 profiles 파라미터에 있는 프로파일이라면 true 를 반환하고 그렇지 않으면 false 를 반환한다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/28/2021-05-28-spring-environment/" data-id="ckq4jx10m00014f8j17yf18fy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-05-25-jpa-study" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/25/2021-05-25-jpa-study/" class="article-date">
+  <time datetime="2021-05-24T15:54:00.000Z" itemprop="datePublished">2021-05-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/25/2021-05-25-jpa-study/">JPA 공부</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JPA-배경"><a href="#JPA-배경" class="headerlink" title="JPA 배경"></a>JPA 배경</h2><h3 id="1-영속성이란"><a href="#1-영속성이란" class="headerlink" title="1. 영속성이란?"></a>1. 영속성이란?</h3><p>영속화는 단순하게 설명하면 애플리케이션의 데이터가 애플리케이션의 프로세스보다 더 오래 지속하게끔 하려는 것을 말한다. 이를 위해서 애플리케이션에서 사용되는 메모리 공간이 아닌 제 3의 메모리 공간에<br>데이터를 저장해야한다. 이 공간들은 대표적으로 MySQL, Postgresql, Oracle 등의 관계형 데이터베이스, MongoDB와 같은 NoSQL, 주로 캐시 목적으로 사용되는 Redis에 해당한다.<br>자바는 위와 같은 제 3의 공간에 데이터 영속화를 위해 제공하는 라이브러리가 있는데 이 라이브러리의 이름은 JDBC 이다.</p>
+<h3 id="2-JDBC"><a href="#2-JDBC" class="headerlink" title="2. JDBC"></a>2. JDBC</h3><p>관계형 데이터베이스와 연동하기 위해서 자바에서 제공하는 표준 라이브러리. 자바 개발자들과 각 영속화 드라이버들 간의 통신을 위한 규격이라고 이해하면 된다.<br>이 JDBC 라이브러리와 각 데이터베이스에 해당하는 드라이버들을 의존성으로 추가하면 각 데이터베이스와 자바를 연동시킬 수 있다.</p>
+<h3 id="3-SQP-Mapper-JDBC-라이브러리가-가지는-문제점"><a href="#3-SQP-Mapper-JDBC-라이브러리가-가지는-문제점" class="headerlink" title="3. SQP Mapper, JDBC 라이브러리가 가지는 문제점."></a>3. SQP Mapper, JDBC 라이브러리가 가지는 문제점.</h3><ol>
+<li><p>Domain - Relation 사이에 매핑하는 것 자체가 많은 시간이 소비된다.</p>
 </li>
-<li><p>Server가 ACK 송신. 알겠다라는 의미. 서버 측에서 받은 데이터 마무리 작업이 아직 안 끝날 수도 있기 때문에. Client 가 ACK를 받아도 기다린다. FIN 신호가 와야 진짜로 끝나는 거임.</p>
+<li><p>자바는 객체지향 언어이지만. SQL로 인해서 객체지향적인 코드를 작성하기 어렵다.</p>
 </li>
-<li><p>Server의 작업이 완료되면 FIN 신로를 보냄.</p>
-</li>
-<li><p>Client가 FIN 신호를 받으면 받았다는 의미로 ACK<br>를 Server 한테 보내고 CLOSED 상태로 변경. 끝임.</p>
+<li><p>..</p>
 </li>
 </ol>
-<p>TCP 문제점.<br>속도, 재전송 이슈.</p>
-<h3 id="UDP-User-Datagram-Protocol-1"><a href="#UDP-User-Datagram-Protocol-1" class="headerlink" title="UDP (User Datagram Protocol)"></a>UDP (User Datagram Protocol)</h3><p>세그먼트가 TCP 와 동일하게 UDP Header 가 붙는다.</p>
-<p>이건 근데 전송계층의 특성은. 아니고 OSI 의 특징이지.<br>레이어가 내려갈수록 헤더가 추가되지.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/16/2021-03-16-tcp-udp/" data-id="ckp45ihf700a4eswbc4qp3cqu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2021-03-16-db-tunning" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/16/2021-03-16-db-tunning/" class="article-date">
-  <time datetime="2021-03-15T15:54:00.000Z" itemprop="datePublished">2021-03-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/16/2021-03-16-db-tunning/">oracle 튜닝하기</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>튜닝의 시작 </p>
-<p>XPLAN을 통해서 실행 계획 일기.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  *</span><br><span class="line"><span class="keyword">FROM</span>    HR.EMPLOYEES</span><br><span class="line"><span class="keyword">WHERE</span>   EMPLOYEE_ID <span class="keyword">LIKE</span> <span class="string">&#x27;2%&#x27;</span>;</span><br><span class="line"></span><br><span class="line">SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY_CURSOR(null, null, &#x27;ALLSTATS LAST&#x27;)); -&gt; 이거가 XPLAN 활용해서 실행계획을 보여주는 쿼리</span><br></pre></td></tr></table></figure>
-
-<p>실행 계획을 수행하고 나면 Id, Operation, Name, Starts, E-Rows, A-Rows, A-Time, Buffers… </p>
-<p>이렇게 테이블이 나타나는데. 읽을 때 Operation의 개행이 가장 안쪽인 것 부터 읽는다.</p>
-<p>인덱스를 사용하고 나서 인덱스의 자료형을 준수해주지 않으면 내부적으로 해당 인덱스 컬럼 값을  변환하기 떄문에 인덱스를 제대로 활용할 수 없다.<br>즉 FULL SCAN이 일어난다.</p>
-<p>튜닝이 정상적으로 되었는지를 알려면 기본적으로 Buffers 수가 줄었는지를 봐야 한다.</p>
-<p>FULL SCAN<br>INDEX RANGE SCAN<br>INDEX UNIQUE SCAN</p>
-<p>NESTED LOOPS -&gt; 프로그래밍 언어에서 for문이 중첩되어 있는 구조와 동일.</p>
-<p>FULL SCAN -&gt; INDEX SCAN 으로 변경하여 성능 튜닝.</p>
-<p>실행 계획을 봐야 우리가 작성한 쿼리가 정말 효율적인지. 아니라면 비효율적인 구간이 어딘지를 자세히 살펴볼 수 있다.<br>이런것들을 모두 알려면 사실 공부해야할 게 많음으로 모두 습득하고 튜닝된 쿼리를 작성할 수 있도록 하자.</p>
-<p>오라클 힌트<br>-&gt; 힌트를 옵티마이저에게 주는 것.<br>힌트에 오류가 있어도 Syntax를 뱉지는 않는다.<br>실행 계획에 영향을 미친다. 쿼리를 이런 방식으로 풀어라 라고 힌트를 주는 것이다.<br>즉 힌트를 주기 전에 그 이전에 쿼리가 어떻게 동작하는지를 알아야 한느데 이를 알기 위해서는 실행 계획을 봐야한다.</p>
-<p>JOIN 순서를 조절할 수도 있음. A-&gt;B를 조인하는게 더 성능이 좋을 경우 ORDERED 이런 힌트를 주어서 해결 가능.</p>
-<p>기본적으로는 힌트를 주지 않는게 좋다.<br>즉 옵티마이저가 최적화된 쿼리를 동작할 것이다 라고 생각해야한다.</p>
-<p>최종적으로 작성한 쿼리가 성능이 낮다면 그때 힌트를 줘야함. 튜닝 단계에서.</p>
-<p>조인방식도 엄청 다양하다.</p>
-<p>NESTED LOOP JOIN, HASH JOIN<br>..</p>
-<h3 id="NETSTED-LOOP-JOIN"><a href="#NETSTED-LOOP-JOIN" class="headerlink" title="NETSTED LOOP JOIN"></a>NETSTED LOOP JOIN</h3><p>-&gt; 중첩 for문과 같은 원리.</p>
-<p>IDOL_GROUP 과 IDOL_MEMBER 조인을 한다해보자.</p>
-<p>소녀시대 -&gt; 태연<br>        -&gt; 티파니<br>        -&gt; 윤아<br>2ne1    -&gt; 박봄<br>        -&gt; 산다라박</p>
-<p>이런 식으로 조인되며 IDOL_GROUP 테이블이 OUTER_TABLE 이 되고(for문에서 밖에있는 for문의 역할과 같다)<br>IDOL_MEMBER 테이블이 INNER_TABLE 이 된다.</p>
-<p>이런 식으로 조인하는 방법이 NESTED LOOP JOIN 이라고 한다.</p>
-<p>보통 이럴떄에는 INNER TABLE에 해당하는 영역을 INDEX로 걸어서 성능을 높인다.</p>
-<p>건건이 테이블을 조인하기 때문에 대량의 테이블을 조인하는 방법으로는 적절하지 않다.</p>
-<p>아이돌 그룹 - 아이돌 멤버 처럼 1:M 관계를 가질 떄 1에 해당하는 테이블이 OUTER TABLE로 가야 성능에 유리하다.</p>
-<h3 id="SORT-MERGE-JOIN"><a href="#SORT-MERGE-JOIN" class="headerlink" title="SORT MERGE JOIN"></a>SORT MERGE JOIN</h3><p>NESTED LOOP JOIN 방법과 유사하나. 다른점이 있다면 조인 이전에 먼저 조인 테이블 기준으로 정렬을 하고 조인을 시작한다.</p>
-<p>INNER TABLE 에 인덱스가 걸려있지 않아서 NESTED LOOP JOIN을 사용하기가 너무 비효율적이다 할 떄 사용할 수 있다.</p>
-<h3 id="오라클-메모리-PGA-SGA"><a href="#오라클-메모리-PGA-SGA" class="headerlink" title="오라클 메모리 (PGA, SGA)"></a>오라클 메모리 (PGA, SGA)</h3><p>오라클이 사용하는 메모리는 크게 두가지가 존재.</p>
-<p>SGA(System Global Area) - 모든 사용자가 공유 가능하여 사용</p>
-<p>PGA(Program Global Area) - 사용자마다 공유하지 않고 개별적으로 사용</p>
-<p>데이터베이스를 사용하는 구조를 그려보면 아래와 같다.</p>
-<p>유저 프로세스 -&gt; 서버 프로세스 + PGA -&gt; 데이터 베이스</p>
-<p>유저 프로세스에서 쿼리를 날리면 서버 프로세스가 이를 받고 데이터 베이스에서 데이터들을 가져오는 작업을 한다.<br>이떄 요청 받은 내용 및 기타 정보들을 저장하기 위해 서버 프로세스는 자신만의 메모리 공간인 PGA를 사용한다.</p>
-<p>PGA - 데이터베이스에 접속하는 모든 유저에게 할당되는 각각의 서버 프로세스가 독자적으로 사용하는 오라클 메모리 영역.</p>
-<h3 id="HASH-JOIN"><a href="#HASH-JOIN" class="headerlink" title="HASH JOIN"></a>HASH JOIN</h3><p>배치에서 ㅈ쓰면 좋은 수행 원리다.</p>
-<p>PGA 영역 중 sorted area 부분을 hash key로 두고 조인을 하는 방법?</p>
-<p>데이터 크기가 메모리 크기보다 커지면 디스크를 써야하기 떄문에 오히려 성능이 떨어질 수 있다.</p>
-<h3 id="서브쿼리의-종류"><a href="#서브쿼리의-종류" class="headerlink" title="서브쿼리의 종류"></a>서브쿼리의 종류</h3><ol>
-<li><p>select 절에 사용하는 scalar subquery</p>
+<p>-&gt; 이를 개선하기 위해서 ORM이 나타났다.</p>
+<h3 id="4-ORM-Object-Relation-Mapping-등장"><a href="#4-ORM-Object-Relation-Mapping-등장" class="headerlink" title="4. ORM (Object-Relation Mapping) 등장"></a>4. ORM (Object-Relation Mapping) 등장</h3><p>ORM은 애플리케이션의 클래스와 SQL 데이터베이스 테이블 사이의 매핑 정보를 기술한 메타데이터를 사용하여, 자바 애플리케이션의 객체를 SQL 데이터베이스의 테이블에 자동으로 깔끔하게 영속화 해주는 기술.</p>
+<p>매핑정보를 기술한 메타데이터 -&gt; 보통 자바의 어노테이션을 활용해서 기술하며, 이걸 잘 이해하고 사용하는 것이 중요하다.</p>
+<p>ORM도 JDBC를 내부적으로 사용하며, JDBC를 보다 자바스럽게 사용할수 있도록 감싼 라이브러리라고 생각하면 된다.</p>
+<p>매핑을 하기 위한 코드를 작성하지 않아도 되기 때문에 생산성이 증가되며, 작성되는 코드가 적어지기 떄문에 유지보수도 더 좋아진다.</p>
+<p>성능 같은 경우는. JPA는 Persistant Context 영역에서 데이터를 캐싱하기 때문에 특정 케이스에 대해서는 성능이 더 좋을 수 있다.</p>
+<p>그리고 또하나 중요한 ORM의 특징은 ORM 자체 내에서 각 데이터베이스 벤더에 대한 쿼리로 변경하기 때문에 개발자는 특정 벤더에 종속된 쿼리를 작성하지 않아도 된다. 즉 벤더에 독립적인 애플리케이션을 만들 수 있다.</p>
+<h3 id="5-ORM의-Object-Relation-차이를-메꾸려는-노력"><a href="#5-ORM의-Object-Relation-차이를-메꾸려는-노력" class="headerlink" title="5. ORM의 Object, Relation 차이를 메꾸려는 노력"></a>5. ORM의 Object, Relation 차이를 메꾸려는 노력</h3><ol>
+<li><p>객체는 커스텀 객체타임을 새롭게 만들어서 정의할수 있지만. 릴레이션은 쉽지 않다.</p>
 </li>
-<li><p>from 절에 사용하는 inline view</p>
+<li><p>객체의 동일하다의 개념과, 릴레이션의 동일하다의 개념도 다르다.<br>자바에서 객체의 동일하다는 equals() 함수와, hashcode() 함수를 오버라이딩해서 정의하지만. 릴레이션은 단순히 PK 값으로만 대조가 가능하다.</p>
 </li>
-<li><p>where 절에 사용하는 중첩 서브쿼리.</p>
+<li><p>방향성에 대한 문제.<br>객체가 다른 객체를 의존한다면. 이 말은 방향성이 생긴다. 객체에서의 관계는 기본적으로 방향성이 분명히 드러난다.<br>릴레이션은 FK를 활용해서 두 릴레이션에 대한 정보를 조회가 가능하기 때문에 사실상 방향성이 없다.<br>그리고 데이터베이스에서는 N:N 관계를 N:1-1:N 형태로 정규화 하여 표현하기 때문에 N:N도 표현할 수 없다.</p>
+</li>
+<li><p>중첩 참조에 따른 성능 문제.<br>객체는 특정 객체가 가진 특정 객체가 가진 특정 객체가 가진 특정 객체에 접근하는 방법이 심플함.<br>그러나 릴레이션에서는 위와 같은 구조를 구현하려면 모두 조인을 해야함. 즉 한번 한번 중첩될수록 실제 성능에 큰 이슈가 생김.</p>
+</li>
+<li><p>N+1 문제. -&gt; Lazy Loading 때문에 발생.</p>
 </li>
 </ol>
-<p>서브쿼리 자체가 성능에 무조건 안좋다는 것은 선입견</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 서브쿼리를 활용한 경우 */</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> HR.EMPLOYEES A</span><br><span class="line"> <span class="keyword">WHERE</span> A.DEPARTMENT_ID <span class="keyword">IN</span> (<span class="keyword">SELECT</span> B.DEPARTMENT_ID</span><br><span class="line">                            <span class="keyword">FROM</span> HR.DEPARTMENTS B</span><br><span class="line">                            <span class="keyword">WHERE</span> B.LOCATION_ID=<span class="number">1700</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* FROM 절에서 조인 */</span></span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line">  <span class="keyword">FROM</span> HR.EMPLOYEES A,</span><br><span class="line">       HR.DEPARTMENTS B</span><br><span class="line"> <span class="keyword">WHERE</span> A.DEPARTMENT_ID = B.DEPARTMENT_ID</span><br><span class="line">   <span class="keyword">AND</span> B.LOCATION_ID = <span class="number">1700</span>;          </span><br><span class="line"></span><br><span class="line"><span class="comment">/* NO_UNNEST 힌트문 적용한 경우 (성능이 더 떨어짐 원래 서브쿼리 방식)*/</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> HR.EMPLOYEES A</span><br><span class="line"> <span class="keyword">WHERE</span> A.DEPARTMENT_ID <span class="keyword">IN</span> (<span class="keyword">SELECT</span> <span class="comment">/*+NO_UNNEST*/</span></span><br><span class="line">                                 B.DEPARTMENT_ID</span><br><span class="line">                            <span class="keyword">FROM</span> HR.DEPARTMENTS B</span><br><span class="line">                            <span class="keyword">WHERE</span> B.LOCATION_ID=<span class="number">1700</span>);                </span><br></pre></td></tr></table></figure>
-
-<p>실행계획을 살펴보면 위 두 쿼리가 둘다 HASH JOIN을 사용해서 동일한 형태로 동작하고 있음을 알수 있다.</p>
-<p>원래 서브쿼리는 NO_UNNEST 이 방식을 동작하는데 서브쿼리를 푼 두번째 쿼리가 더 효과적으로 데이터를 가져오기 때문에<br>옵티마이저가 이 방식으로 HASH JOIN을 해서 데이터를 가져온다.</p>
-<h3 id="서브쿼리를-반드시-쓰면-안되는-경우"><a href="#서브쿼리를-반드시-쓰면-안되는-경우" class="headerlink" title="서브쿼리를 반드시 쓰면 안되는 경우."></a>서브쿼리를 반드시 쓰면 안되는 경우.</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.EMPLOYEE_ID,</span><br><span class="line">       A.FIRST_NAME,</span><br><span class="line">       A.LAST_NAME,</span><br><span class="line">       A.SALARY</span><br><span class="line">  <span class="keyword">FROM</span> HR.EMPLOYEES A</span><br><span class="line"> <span class="keyword">WHERE</span> A.SALARY = (<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(SALARY) <span class="keyword">FROM</span> HR.EMPLOYEES)</span><br><span class="line">    <span class="keyword">OR</span> A.SALARY = (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(SALARY) <span class="keyword">FROM</span> HR.EMPLOYEES);</span><br></pre></td></tr></table></figure>
-
-<p>위의 케이스를 잘 보면 HR.EMPLOYEES 이 동일한 테이블을 다른 차이 없이 3번 접근하고 있다,<br>그러면 이 테이블을 3번 액세스 한다. 비효율적이겠찌..</p>
-<p>어떻게 수정해야 할까.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> B.EMPLOYEE_ID,</span><br><span class="line">       B.FIRST_NAME,</span><br><span class="line">       B.LAST_NAME,</span><br><span class="line">       B.SALARY</span><br><span class="line">  <span class="keyword">FROM</span> (                </span><br><span class="line">            <span class="keyword">SELECT</span> A.EMPLOYEE_ID,</span><br><span class="line">                   A.FIRST_NAME,</span><br><span class="line">                   A.LAST_NAME,</span><br><span class="line">                   A.SALARY,</span><br><span class="line">                   ROW_NUMBER() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> SALARY) MINSAL,</span><br><span class="line">                   ROW_NUMBER() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> SALARY <span class="keyword">DESC</span>) MAXSAL</span><br><span class="line">              <span class="keyword">FROM</span> HR.EMPLOYEES A</span><br><span class="line">       ) B</span><br><span class="line"> <span class="keyword">WHERE</span> B.MINSAL = <span class="number">1</span> <span class="keyword">OR</span> B.MAXSAL = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
-<p>이렇게 하면 같은 내용의 쿼리지만. EMPLOYEE_ID 이 테이블을 한번만 액세스 하고 있다. 훨씬 더 효율적</p>
-<p>실행계획으로 살펴봐라.</p>
-<p>테이블을 여러번 액세스 한다는 것이 성능이 떨어지는 이유는 기본적으로 테이블이 디스크에 존재하기 때문이다. 성능 튜닝을 할 때 우선적으로 포커스를 두는 것은 디스크 I/O 발생을 줄이는 것인데.<br>이 부분이 속도가 가장 느리기 때문이다.</p>
-<p>그렇기 떄문에 테이블을 여러번 접근하는 것은 디스크 I/O 발생빈도가 늘어난다는 의미 임으로 이를 개선할 필요성이 있따.</p>
-<h4 id="동일한-테이블을-바라보는-방법으로-서브쿼리를-작성하는-것은-안된다"><a href="#동일한-테이블을-바라보는-방법으로-서브쿼리를-작성하는-것은-안된다" class="headerlink" title="동일한 테이블을 바라보는 방법으로 서브쿼리를 작성하는 것은 안된다."></a>동일한 테이블을 바라보는 방법으로 서브쿼리를 작성하는 것은 안된다.</h4><h3 id="4-1-B-TREE-INDEX-구조"><a href="#4-1-B-TREE-INDEX-구조" class="headerlink" title="4.1 B-TREE INDEX 구조"></a>4.1 B-TREE INDEX 구조</h3><p>B-TREE INDEX 구조는 ROOT BLOCK, BRANCH BLOCK, LEAF BLOCK 으로 우선 구분된다. 각 BLOCK 들은 아래와 같은 데이터를 가진다.</p>
-<p>ROOT BLOCK = BRANCH BLOCK 주소, 인덱스 컬럼 값<br>BRANCH BLOCK = LEAF BLOCK 주소, 인덱스 컬럼 값<br>LEAF BLOCK = 인덱스 컬럼 값, TABLE의 ROW ID</p>
-<p>여기서 인덱스 컬럼 값은 테이블에서 인덱스를 설정한 컬럼 값을 의미한다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> COL1, COL2, COL3, COL4 <span class="keyword">FROM</span> TAB <span class="keyword">WHERE</span> COL1 <span class="keyword">BETWEEN</span> :VAL1 <span class="keyword">AND</span> :VAL2;</span><br></pre></td></tr></table></figure>
-
-<p>위와 같은 SQL에서 만약 COL1 값에만 인덱스가 걸려 있다면 SELECT 절에 있는 COL2, COL3, COL4 데이터들은 인덱스 테이블을 통해서 가져올 수 없다.<br>이런 경우에는 LEAF BLOCK 이 가지고 있는 TABLE ROW ID 값을 통해 접근해서 가져온다.</p>
-<h3 id="4-2-INDEX-RANGE-SCAN"><a href="#4-2-INDEX-RANGE-SCAN" class="headerlink" title="4.2 INDEX RANGE SCAN"></a>4.2 INDEX RANGE SCAN</h3><p>INDEX RANGE SCAN은 말그대로 INDEX 테이블에서 특정 범위 내 BLOCK 순차적으로 탐색하는 것이다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> COL1, COL2, COL3, COL4 <span class="keyword">FROM</span> TAB <span class="keyword">WHERE</span> COL1 <span class="keyword">BETWEEN</span> :VAL1 <span class="keyword">AND</span> :VAL2;</span><br></pre></td></tr></table></figure>
-
-<p>위와 같은 쿼리가 있고 COl1 값이 인덱스로 설정되어 있다면. 우선 COL1 컬럼 기준으로 :VAL1 값을 찾아간다.<br>이 값을 찾기 위해서 ROOT BLOCK -&gt; BRANCH BLOCK -&gt; LEAF BLOCK 순으로 탐색할 것이다.<br>:VAL1 에 해당하는 LEAF BLOCK을 찾았다면. :VAL2에 해당하는 값이 나올때 까지 LEAF BLOCK을 선형적으로, 순차적으로 탐색한다.</p>
-<p>인덱스를 순차적으로 읽으면서 한 건씩 ROWID를 가지고 TABLE BLOCK을 한 개씩 ACCESS 하기 때문에 이를 RANDOM SINGLE BLOCK I/O 라고 부르며<br>TABLE ACCES BY INDEX ROWID 라는 실행계획으로 전시된다.</p>
-<p>이 방법은 최악의 경우 조회 건수 만큼(즉 인덱스를 사용한 이유가 없이 FULL SCAN을 한다는 의미) I/O가 발생할 수 있다.<br>-&gt; 아니네. FULL TABLE SCAN 방법은 멀티로 동작하기 때문에 오히려 최악의 케이스 일때는 이 방법이 더 빠르다고 언급함.</p>
-<p>위에서 계속 언급한 BLOCK 이라는 것은 저장된 데이터의 묶음 단위로 보면 된다</p>
-<p>ROOT BLOCK과 BRANCH BLOCK에 들어가는 주소값 들은 가상으 ㅣ값을 활용 한다.</p>
-<p>만약 SELECT * 이 절에 인덱스에서 사용되는 컬럼만 조회하고 다른 컬럼들이 없다면 TABLE BLOCK을 ACCESS 할 필요가 없다.</p>
-<p>XPLAN 실행 계획 테이블에서 Name 필드는 테이블 명이 들어간다. 인덱스 테이블이나, 일반 테이블 등.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">IX_ORDERS_N1 : ORDER_DATE, ORDER_MODE, EMPLOYEE_ID</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ INDEX(A IX_ORDERS_N1) */</span></span><br><span class="line">       ORDER_DATE, CUSTOMER_ID,</span><br><span class="line">       ORDER_MODE, ORDER_TOTAL</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS A</span><br><span class="line"> <span class="keyword">WHERE</span> ORDER_DATE <span class="keyword">BETWEEN</span> <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20210101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">                      <span class="keyword">AND</span> <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20210102&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 실행 계획                      </span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span></span><br><span class="line">    <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span></span><br></pre></td></tr></table></figure>
-
-<p>위와 같이 실행계획이 나타난다면 TABLE ACCESS BY INDEX ROWID 는 위에서 설명했듯이 INDEX BLOCK -&gt; TABLE BLOCK 으로 ACCESS하는 RANDOM SINGLE BLOCK I/O를 나타내는 OPERATION이다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*+ INDEX(A IX_ORDERS_N1) *&#x2F;</span><br></pre></td></tr></table></figure>
-<p>와 같인 힌트를 주면 INDEX RANGE SCAㅜ, INDEX FULL SCAN 으로 수행한다.</p>
-<h3 id="4-3-INDEX-RANGE-SCAN-DESCENDING"><a href="#4-3-INDEX-RANGE-SCAN-DESCENDING" class="headerlink" title="4.3 INDEX RANGE SCAN DESCENDING"></a>4.3 INDEX RANGE SCAN DESCENDING</h3><p>INDEX RANGE SCAN DESCENING 실행계획의 특징은 INDEX RANGE SCAN과 동일하다. 다른 점이 있다면 INDEX를 역순으로 읽는 다는 점이다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">IX_ORDERS_N1 : ORDER_DATE</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ INDEX_DESC(A IX_ORDERS_N1) */</span></span><br><span class="line">       ORDER_DATE, CUSTOMER_ID,</span><br><span class="line">       ORDER_MODE, ORDER_TOTAL</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS A</span><br><span class="line"> <span class="keyword">WHERE</span> ORDER_DATE <span class="keyword">BETWEEN</span> <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">                      <span class="keyword">AND</span> <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20210102&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> ORDER_DATE <span class="keyword">DESC</span>;                    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 실행 계획</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span></span><br><span class="line">    <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span> DESCENDING</span><br></pre></td></tr></table></figure>
-
-<p>위 쿼리를 실행하게 되면 아래와 같은 실행 계획이 발생할 것이다. 여기서 INDEX RANGE SCAN DESCENDING 이 나타나는 걸 볼 수 있는데. INDEX_DESC() 힌트를 줘서 그런것도 있지만.<br>기본적으로 ORDER BY DESC 정렬을 이처럼 역순으로 하게 되면 이처럼 동작한다. 즉 힌트문을 제거해도 동일하게 동작할 것이다.</p>
-<p>OPTIMIZER는 인덱스를 역순으로 읽으면서 ORDER BY에 의한 SORT(ORDER BY) OPERATION 작업을 생략할 수 있다. -&gt; 더 성능이 좋아진다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">IX_ORDERS_N1 : ORDER_DATE</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MAX</span>(ORDER_DATE)</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS</span><br><span class="line"> <span class="keyword">WHERE</span> ORDER_MODE = <span class="string">&#x27;direct&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 실행 계획</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">SORT</span> <span class="keyword">AGGREGATE</span></span><br><span class="line">    <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">FULL</span></span><br></pre></td></tr></table></figure>
-
-<p>ORDER_DATE 기준으로 인덱스가 설정되어 있기 때문에 만약 ORDER_MODE 조건이 없다면. INDEX FULL SCAN(MIN/MAX) OPERATION 이 발생해서 Bufffers 수치가 낮을 것이다. 하지만 저 조건으로 인해 FULL TABLE SCAN 이 발생한다.</p>
-<p>이를 튜닝할 수 있는 방법 중 하나는 INDEX DESCENDING을 이용한 TOP N 쿼리를 사용하는 방법이다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ORDER_DATE</span><br><span class="line">  <span class="keyword">FROM</span> (</span><br><span class="line">        <span class="keyword">SELECT</span> <span class="comment">/*+ INDEX_DESC(A IX_ORDERS_N1) */</span></span><br><span class="line">               ORDER_DATE</span><br><span class="line">          <span class="keyword">FROM</span> ORDERS A</span><br><span class="line">         <span class="keyword">WHERE</span> ORDER_DATE &gt; <span class="keyword">TO_DATE</span>(<span class="string">&#x27;10000101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">           <span class="keyword">AND</span> ORDER_MODE = <span class="string">&#x27;direct&#x27;</span></span><br><span class="line">         <span class="keyword">ORDER</span> <span class="keyword">BY</span> ORDER_DATE <span class="keyword">DESC</span>   </span><br><span class="line">  )</span><br><span class="line"> <span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt;= <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 실행 계획</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">COUNT</span> STOPKEY</span><br><span class="line">    <span class="keyword">VIEW</span></span><br><span class="line">      <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span></span><br><span class="line">        <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span> DESCENDING</span><br></pre></td></tr></table></figure>
-
-<p>인덱스는 컬럼 기준으로 정렬이 되어있음을 이용하는 테크닉 같다. 서브 쿼리 부분을 보면 ORDER_DATE 컬럼을 조회하고, 이 값을 DESC 형태로 정렬하게끔 보여지도록 하는데.<br>이렇게 하면 INDEX RANGE SCAN DESCENDING OPERATION 이 수행되고 인덱스 테이블의 가장 큰쪽에 존재하는 값이 가장 큰 값임을 바로 알 수 있다 이 곳에서 순차적으로 탐색하면서 ORDER_MODE 조건에 맞는 데이터가 나타나면 바로 반환한다. ROWNUM &lt;= 1 조건이 하나의 값만 반환하라고 명시하고 있기 때문이다.</p>
-<p>실행 계획을 보면 COUNT STOPKEY OPERATION이 있는데 이부분이 ROWNUM &lt;= 1 조건으로 인해 발생한 동작이다.</p>
-<p>만약 ORDER_MODE 와 같이 조건에 해당하는 부분이 PK 처럼 구분되는 값들이 많다면. 큰쪽부터 검색한다 해도. 조건에 맞는 데이터를 찾는 데에 오래 걸리기 때문에 성능이 매우 저하된다.<br>조건이 선택지가 적고 자주 발견되는 데이터인지를 우선 파악해야 한다.</p>
-<h3 id="4-4-INDEX-RANGE-SCAN-MIN-MAX"><a href="#4-4-INDEX-RANGE-SCAN-MIN-MAX" class="headerlink" title="4.4 INDEX RANGE SCAN (MIN/MAX)"></a>4.4 INDEX RANGE SCAN (MIN/MAX)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">IX_ORDERS_N2 : EMPLOYEE_ID, ORDER_DATE</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ INDEX(A IX_ORDERS_N2) */</span></span><br><span class="line">       <span class="keyword">MAX</span>(ORDER_DATE)</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS A</span><br><span class="line"> <span class="keyword">WHERE</span> EMPLOYEE_ID = <span class="string">&#x27;E402&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> // 실행 계획</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">SORT</span> <span class="keyword">AGGREGATE</span></span><br><span class="line">    <span class="keyword">FIRST</span> <span class="keyword">ROW</span></span><br><span class="line">      <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span> (<span class="keyword">MIN</span>/<span class="keyword">MAX</span>)</span><br></pre></td></tr></table></figure>
-
-<p>INDEX 컬럼이 EMPLOYEE_ID, ORDER_DATE 와 같이 구성되어 있고 INDEX 선두 컬럼이 조건 절에 들어오며 두 번째 컬럼인 ORDER_DATE가 MAX 처리 되었을 때 나타나는 실행계획이<br>INDEX RANGE SCAN (MIN/MAX) 이다. 조건에 해당하는 EMPLOYEE_ID = ‘E402’ 에 대한 많은 ORDER_DEATE 중에서 가장 끝에 있는 인덱스 만 읽고 빠져나온다.<br>인덱스는 정렬되어 있기 때문에 가능하다.</p>
-<p>BUFFER가 3회로 나타날 텐데 그 이유는 ROOT BLOCK, BRANCH BLOCK, LEAF BLOCK을 각각 한번씩 총 3번 읽었기 때문이다.</p>
-<h3 id="4-5-INDEX-컬럼-가공"><a href="#4-5-INDEX-컬럼-가공" class="headerlink" title="4.5 INDEX 컬럼 가공"></a>4.5 INDEX 컬럼 가공</h3><p>인덱스로 사용한 컬럼을 TRIM(COLUMN_NAME), TO_DATE(COLUMN_NAME, ‘YYYYMMDD’) 와 같이 가공하게 되면. OPTIMIZER가 인덱스를 인지하지 못하고 FULL TABLE SCAN을 수행한다.<br>주의해야하는 부분이다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">IX_ORDERS_N3 : CUSTOMER_ID, ORDER_DATE</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> ORDER_DATE, CUSTOMER_ID,</span><br><span class="line">       ORDER_MODE, ORDER_TOTAL</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS A</span><br><span class="line"> <span class="keyword">WHERE</span> <span class="keyword">RTRIM</span>(CUSTOMER_ID) = <span class="string">&#x27;C01492&#x27;</span></span><br><span class="line">   <span class="keyword">AND</span> ORDER_DATE <span class="keyword">BETWEEN</span> <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">                      <span class="keyword">AND</span> <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20130101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>);</span><br><span class="line"></span><br><span class="line">// 실행 계획</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">FULL</span></span><br></pre></td></tr></table></figure>
-
-<p>CUSTOMER_ID 스키마가 CHAR(7) 이라고 한다면 위처럼 6자리인 데이터를 조회할 수 없다. 이는 근본적으로는 스키마의 설계가 잘못된 것이지만. 만약 레거시로 존재한다고 했을 때<br>쿼리의 성능을 높이기 위해서는 어떤 방법이 있을까. </p>
-<p>RTRIM을 써서 CUSTOMER_ID 인덱스 컬럼을 직접 수정하기 보다는 RPAD 를 사용해서 들어오는 데이터를 변환시키면 인덱스를 사용하 ㄹ수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ORDER_DATE, CUSTOMER_ID</span><br><span class="line">       ORDER_MODE, ORDER_TOTAL</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS A</span><br><span class="line"> <span class="keyword">WHERE</span> CUSTOMER_ID = RPAD(<span class="string">&#x27;C01492&#x27;</span>, <span class="number">7</span>, <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">   <span class="keyword">AND</span> ORDER_DATE <span class="keyword">BETWEEN</span> <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">                      <span class="keyword">AND</span> <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20130101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 실행 계획</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span></span><br><span class="line">    <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span></span><br></pre></td></tr></table></figure>
-
-<p>기존 실행 게획에서는 TABLE ACCESS FULL 동작을 하다가 위처럼 변경하게 되면 INDEX RANGE SCAN 동작으로 변경됨을 알 수 있다.</p>
-<h3 id="4-6-CLUSTERING-FACTORER"><a href="#4-6-CLUSTERING-FACTORER" class="headerlink" title="4.6 CLUSTERING FACTORER"></a>4.6 CLUSTERING FACTORER</h3><p>CLUSTERING FACTOR 라는 것은 무엇일까? 이것은 데이터가 모여 있는 정도 라고 볼 수 있다.</p>
-<p>인덱스 테이블에서 LEAF BLOCK이 가지고 있는 ROWID를 가지고 테이블 데이터를 하나씩 찾아갈 때 계속 동일한 BLOCK를 액세스 한다면 이는 CF(CLUSTERING FACTOR)가 잘되어 있다고 볼 수 있고 반대의 경우로 서로 다른 BLOCk을 찾아갈 확률이 높다면 CF는 나쁜 것이다.</p>
-<p>CF가 좋으면 BLOCK I/O 가 감소하고, 반대의 경우 증가한다.</p>
-<p>위 4.2 에서 살펴본 INDEX RANGE SCAN은 DATA BLOCK의 위착 RANDOM하게 왔다 갔다하기 때문에 CF가 좋지 않은 예시로 볼 수 있다.</p>
-<p>PS. BLOCK 이라는 것은 데이터 묶음 단위로 생각해야 한다. 하나의 데이터를 가지고 있는 것이 아니다.</p>
-<p>CF가 가장 좋은 경우는 INDEX에 저장된 데이터의 순서가 완전히 일치하는 경우이며. 반대로 좋지 않은 경우는 INDEX의 데이터 블록 순서와는 상관 없이 흩어져 있는 경우가 된다.</p>
-<p>중요한 점은. CF를 활용할 때 이 데이터 블록을 한번 접근했다고 해서 그 블록을 영구히 캐싱하는 것은 아니다. 바로 다음 로우를 조회하는 시점에만 이 블록을 캐싱으로 활용할 수 있기 때문에 만약 Data Block들이 밀집되어 있다고 해도 이를 연속적으로 접근하지 않는다면 CF가 좋지 않은 경우가 된다.</p>
-<p>인덱스 테이블 순으로 정렬된 테이블을 만들고 이를 활용해 인덱스 테이블 순서와 동일한 새로운 테이블을 생성해보자. 즉 CF가 가장 좋은 경우를 얻어보는 거다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 인덱스 테이블과 일치하는 테이블 ORDERS_CF 생성</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> ORDERS_CF</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS</span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> ORDER_DATE;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ORDER_DATE 기준으로 인덱스 생성</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">INDEX</span> IX_ORDERS_CF_N1</span><br><span class="line"><span class="keyword">ON</span> ORDERS_CF(ORDER_DATE);</span><br></pre></td></tr></table></figure>
-
-<p>위와 같이하게 되면 인덱스 테이블 블록과 데이터 테이블 블록이 일치하기 때문에 CF는 최상이다.</p>
-<p>CF를 조회하는 방법은 아래와 같다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.TABLE_NAME, A.INDEX_NAME, A.CLUSTERING_FACTOR, A.NUM_ROWS, B.BLOCKS TABLE_BLOCKS</span><br><span class="line">  <span class="keyword">FROM</span> DBA_INDEXES A, DBA_TABLES B</span><br><span class="line"> <span class="keyword">WHERE</span> A.TABLE_NAME = B.TABLE_NAME</span><br><span class="line">   <span class="keyword">AND</span> A.OWNER = B.OWNER</span><br><span class="line">   <span class="keyword">AND</span> A.INDEX_NAME <span class="keyword">IN</span> (<span class="string">&#x27;IX_ORDERS_N1&#x27;</span>, <span class="string">&#x27;IX_ORDERS_CF_N1&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>좋은 CF의 수치는 TABLE BLOCK 수에 근접하고 반대의 경우 테이블 전체 건수에 근접하게 된다.</p>
-<p>의문) PK 같은 값을 인덱싱하면 효과가 없다고 배웠는데 잘 생각해보면.<br>데이터 테이블 탐색 방법은 선형 탐색 방법이고, 인덱스는 B-TREE 탐색 방법이기 때문에<br>PK 같은걸 인덱싱해도 성능이 좋지 않을까?? -&gt; 맞는 것 같다 확인해보니까 기본적으로 PK는 인덱스가 적용되어 있는거 같다.</p>
-<p>일반적으로 인덱스 컬럼이 추가도리 수록 CF는 나빠진다. 추가도니 컬럼으로 정렬이 되어 INDEX의 저장 순서와 테이블의 저장 순서가 달라지게 되기 때문이다.<br>그러나 만약 선행적으로 적용된 인덱스 컬럼이 날짜 정보처럼 (시, 분, 초 까지 가지는) 거의 유니크한 값이라면. 다른 인덱스 컬럼과 같은 값을 가지는 경우가 거의 없어서<br>정렬 순서가 크게 달라지지 안흔다.</p>
-<p>결론적으로 CF가 매우 좋은 INDEX의 컬럼이 UNIQUE에 가까울 경우에는 그 뒤에 컬럼이 추가 되더라도 CF가 나빠지지 않는다.</p>
-<h4 id="FUNCTION-BASED-INDEX"><a href="#FUNCTION-BASED-INDEX" class="headerlink" title="FUNCTION BASED INDEX"></a>FUNCTION BASED INDEX</h4><p>컬럼에 TO_CHAR() 함수와 같은 것을 적용시켜서 그 데이터를 인덱스 컬럼으로 하는 인덱스 테이블을 말한다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">INDEX</span> IX_ORDERS_CF_N3</span><br><span class="line"><span class="keyword">ON</span> ORDERS_CF(TO_CHAR(ORDER_DATE, <span class="string">&#x27;YYYYMMDD&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="4-7-INDEX-RANGE-SCAN-VS-FULL-TABLE-SCAN"><a href="#4-7-INDEX-RANGE-SCAN-VS-FULL-TABLE-SCAN" class="headerlink" title="4.7 INDEX RANGE SCAN VS FULL TABLE SCAN"></a>4.7 INDEX RANGE SCAN VS FULL TABLE SCAN</h3><p>FULL TABLE SCAN은 TABLE BLOCK 전체를 DB_FILE_MULTIBLOCK_READ_COUNT 파라미터 값에 비례해서 수십 BLOCK씩 MULTI BLOCK으로 읽는다.</p>
-<p>이렇게 I/O를 하는 방법이 RANDOM SIGNLE BLOCK I/O, MULTI BLOCK I/O 로 상이한데. 그렇기 때문에 테이블 전체 건수의 1/20 이상이라면<br>FULl  TABLE SCAN을 사용하는 것이 유리하다.</p>
-<p>즉 테이블의 많은 부분을 차지하는 row를 가져올 때에는 오히려 INDEX RANGE SCAN 방법이 역효과가 난다는 의미이다. SINGLE I/O 이기 때문에 그렇다.</p>
-<p>이거는 아무래도 실행 계획을 보면서 Buffers, A-Times 등을 보면서 판단을 해야하지 않을까 싶다.</p>
-<p>아무튼 결론은. 테이블 전체 만큼의 데이터를 가져 오려고 하면 INDEX를 사용하지 말고 그냥 FULL SCAN을 하라.</p>
-<h3 id="4-8-INDEX-ACCESS-조건-FILTER-조건"><a href="#4-8-INDEX-ACCESS-조건-FILTER-조건" class="headerlink" title="4.8 INDEX ACCESS 조건, FILTER 조건"></a>4.8 INDEX ACCESS 조건, FILTER 조건</h3><p>INDEX ACCESS 조건이라는 것은 INDEX SCAN 시에 SCAN 범위를 줄여주는데에 참여한 조건을 의미한다.</p>
-<p>INDEX FILTER 조건이라는 것은 실제 SCAN 범위는 줄여주지 못하고 말 그대로 데이터의 FILTER 역할 만을 한다는 의미이다.</p>
-<p>인덱스 탐색량을 줄이기 위해서는 INDEX ACCESS 조건이 더 많이 발생하도록 하는게 좋다. SCAN 범위가 줄기 때문이다.</p>
-<p>범위 조건 연산(&gt;=, &lt;=, BETWEEN, LIKE 등) 이 수행되기 이전에는 ACCESS 조건이 나타나지만 그 이후에는 FILTER 조건으로 사용되는게 인덱스의 특징이다.</p>
-<p>COL1, COL2, COL3, COL4 컬럼으로 구성된 INDEX가 있다고 해보자.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE COL1 = &#x27;1&#x27; AND COL2 = &#x27;A&#x27; AND COL3 = &#x27;나&#x27; AND COL4 = &#x27;a&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>이렇게 모든 조건 연산들이 범위 조건 연산이 아니라면 모두 INDEX ACCESS 조건으로 사용되어 범위를 줄여줄 수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE COL1=&#x27;1&#x27; AND COL2 = &#x27;A&#x27; AND COL3 BETWEEN &#x27;가&#x27; AND &#x27;다&#x27; AND COL4 = &#x27;a&#x27;</span><br></pre></td></tr></table></figure>
-<p>COL1, COL2 는 범위 조건 연산인 COL3 이전에 발생했기 때문에 INDEX ACCESS 조건으로 사용되지만.<br>COL4 는 이 후이기 때문에 FILTER 조건으로 사용된다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE COL1=&#x27;1&#x27; AND COL2 = &#x27;A&#x27; AND COL4 = &#x27;a&#x27;</span><br></pre></td></tr></table></figure>
-<p>COL3 컬럼에 대한 조건이 생략되어 있는데 생략된 것도 범위 조건 연산으로 보며. 그렇기 떄문에 COL1, COL2는 INDEX ACCESS 조건, COL4 는 INDEX FILTER 조건이 된다.</p>
-<p>예시를 보자.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">IX_ORDERS_N1 : ORDER_DATE, ORDER_MODE, EMPLOYEE_ID</span><br><span class="line">IX_ORDERS_N2 : EMPLOYEE_ID, ORDER_MOD, ORDER_DATE</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> TO_CHAR(ORDER_DATE, <span class="string">&#x27;YYYYMM&#x27;</span>) ORDER_MM</span><br><span class="line">       , <span class="keyword">COUNT</span>(*) ORDER_CNT</span><br><span class="line">       , <span class="keyword">SUM</span>(ORDER_TOTAL) ORDER_AMT</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS A</span><br><span class="line"> <span class="keyword">WHERE</span> ORDER_DATE <span class="keyword">BETWEEN</span> <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20110101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">                      <span class="keyword">AND</span> <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">   <span class="keyword">AND</span> EMPLOYEE_ID = <span class="string">&#x27;E123&#x27;</span></span><br><span class="line">   <span class="keyword">AND</span> ORDER_MODE = <span class="string">&#x27;direct&#x27;</span></span><br><span class="line"> <span class="keyword">GROUP</span> <span class="keyword">BY</span> TO_CHAR(ORDER_DATE, <span class="string">&#x27;YYYYMM&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>IX_ORDERS_N2 의 조건이 범위 연산이 후위에 있기 때문에 INDEX_ACCESS 조건이 더 많이 생성되어서 더 좁은 범위를 스캔해도 되어 성능이 좋아진다.</p>
-<h3 id="4-9-INDEX-SKIP-SCAN"><a href="#4-9-INDEX-SKIP-SCAN" class="headerlink" title="4.9 INDEX SKIP SCAN"></a>4.9 INDEX SKIP SCAN</h3><p>INDEX SKIP SCAN은 조회 조건이 INDEX의 ACCESS 조건이 아니라 FILTERING 조건으로 들어오는 경우 ACCESS 범위에 해당하는 모든 INDEX BLOCK을 순차적으로 SCAN하는 것이 아니라 (이 방법이 기존의 INDEX 방법) 불필요한 LEAF BLOCK들은 SKIP 해서 인덱스 범위를 줄여주는 동작이다.</p>
-<p>이건 좋지는 않다고 했음. 왜냐하면 결국 선두 인덱스가 생략된 상태로 조회되었을때가 가정인데. 이 가정 자체가 사실 좋지 않은 가정임.</p>
-<h3 id="4-10-INDEX-FULL-SCAN"><a href="#4-10-INDEX-FULL-SCAN" class="headerlink" title="4.10 INDEX FULL SCAN"></a>4.10 INDEX FULL SCAN</h3><p>INDEX FULL SCAN은 INDEX LEAF BLOCK 전체를 순차적으로 ACCESS 하는 동작을 말한다. 모든 LEAF BLOCK을 탐색하기 때문에 성능은 당연히 떨어지고, INDEX 건수가 많을 수록 더 느리다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">IX_ORDERS_N3 : ORDER_STATUS, ORDER_MODE, EMPLOYEE_ID, ORDER_DATE</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ INDEX(A IX_ORDERS_N3) */</span></span><br><span class="line">       TO_CHAR(ORDER_DATE, <span class="string">&#x27;YYYYMM&#x27;</span>) ORDER_MM,</span><br><span class="line">       <span class="keyword">COUNT</span>(*) ORDER_CNT,</span><br><span class="line">       <span class="keyword">SUM</span>(ORDER_TOTAL) ORDER_AMT</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS A</span><br><span class="line"> <span class="keyword">WHERE</span> ORDER_DATE <span class="keyword">BETWEEN</span> <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">                      <span class="keyword">AND</span> <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120301&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line"> <span class="keyword">GROUP</span> <span class="keyword">BY</span> TO_CHAR(ORDER_DATE, <span class="string">&#x27;YYYYMM&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">HASH</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span></span><br><span class="line">      <span class="keyword">INDEX</span> <span class="keyword">FULL</span> <span class="keyword">SCAN</span></span><br></pre></td></tr></table></figure>
-
-<p>위와 같이 쿼리를 작성하면 원래는 TABLE FULL SCAN 이 발생할 것 같은데.. 힌트문을 줘서 INDEX FULL SCAN이 발생. INDEX 는 순차적 탐색이기 떄문에 상대적으로 더 느리다.</p>
-<p>위와같은 INDEX FULL SCAN 방법이 유용한 케이스를 생각해보자.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ORDER_DATE, EMPLOYEE_ID, ORDER_MODE, ORDER_STATUS, ORDER_TOTAL</span><br><span class="line">  <span class="keyword">FROM</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> ORDER_DATE, EMPLOYEE_ID, ORDER_MODE, ORDER_STATUS, ORDER_TOTAL</span><br><span class="line">      <span class="keyword">FROM</span> ORDERS A</span><br><span class="line">     <span class="keyword">ORDER</span> <span class="keyword">BY</span> ORDER_STATUS, ORDER_MODE, EMPLOYEE_ID, ORDER_DATE )</span><br><span class="line"> <span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt;= <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">COUNT</span> STOPKEY</span><br><span class="line">    <span class="keyword">VIEW</span></span><br><span class="line">      <span class="keyword">SORT</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> STOPKEY</span><br><span class="line">        <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">FULL</span></span><br></pre></td></tr></table></figure>
-
-<p>위 쿼리에서 서브쿼리 내용이 TABLE ACCESS FULL을 하고 조건에 따라 정렬을 하게된다. 그러나 ORDER_DATE 기준으로 이미 인덱스가 있는 것을 알기 때문에 굳이 쿼리 수행시에 정렬을 하는 것 보다는. ORDER_DATE 조건을 주게되면 인덱스를 사용하게 되기때문에 이미 정렬된 상태로 데이터를 가져올 수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ORDER_DATE, EMPLOYEE_ID, ORDER_MODE, ORDER_STATUS, ORDER_TOTAL</span><br><span class="line">  <span class="keyword">FROM</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> ORDER_DATE, EMPLOYEE_ID, ORDER_MODE, ORDER_STATUS, ORDER_TOTAL</span><br><span class="line">      <span class="keyword">FROM</span> ORDERS A</span><br><span class="line">     <span class="keyword">WHERE</span> ORDER_DATE &gt; <span class="keyword">TO_DATE</span>(<span class="string">&#x27;1999&#x27;</span>, <span class="string">&#x27;YYYY&#x27;</span>) </span><br><span class="line">     <span class="keyword">ORDER</span> <span class="keyword">BY</span> ORDER_STATUS, ORDER_MODE, EMPLOYEE_ID, ORDER_DATE )</span><br><span class="line"> <span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt;= <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">-- 실행 계획</span></span><br><span class="line"> <span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">COUNT</span> STOPKEY</span><br><span class="line">    <span class="keyword">VIEW</span></span><br><span class="line">      <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span></span><br><span class="line">        <span class="keyword">INDEX</span> <span class="keyword">FULL</span> <span class="keyword">SCAN</span></span><br></pre></td></tr></table></figure>
-
-<p>즉 요약하면. 재정렬이 필요할 때 정렬해야하는 컬럼 기준으로 인덱스가 있다면. 인덱스에 이미 정렬되어 있기 때문에 그 인덱스를 활용하는 것이 보다 성능적으로 좋다.</p>
-<h3 id="4-11-INDEX-FULL-SCAN-MIN-MAX"><a href="#4-11-INDEX-FULL-SCAN-MIN-MAX" class="headerlink" title="4.11 INDEX FULL SCAN(MIN/MAX)"></a>4.11 INDEX FULL SCAN(MIN/MAX)</h3><p>조건절(WHERE)  부분에 인덱스 컬럼이 존재하지 않고 MIN(), MAX() 함수로 데이터를 뽑을 때에는 INDEX FULL SCAN 이 일어난다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">IX_ORDERS_N1 : ORDER_DATE</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MAX</span>(ORDER_DATE)</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">SORT</span> <span class="keyword">AGGREGATE</span></span><br><span class="line">    <span class="keyword">INDEX</span> <span class="keyword">FULL</span> <span class="keyword">SCAN</span> (<span class="keyword">MIN</span>/<span class="keyword">MAX</span>)</span><br></pre></td></tr></table></figure>
-
-<p>WHERE 절이 없기 때문에 INDEX FULL SCAN이 발생. 근데 buffers 수가 root block -&gt; branch block -&gt; leaf block 이렇게 3번 접근하는데 이게 INDEX RANGE SCAN 이랑 효율은 똑같은 거 같은데…</p>
-<p>INDEX FULL SCAN 일때 아래와 같이 MIN, MAX 를 모두 가져오려고 한다면 FULL TABLE SCAN 이 발생.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MIN</span>(ORDER_DATE), <span class="keyword">MAX</span>(ORDER_DATE)</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">SORT</span> <span class="keyword">AGGREGATE</span></span><br><span class="line">    <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">FULL</span></span><br></pre></td></tr></table></figure>
-
-<p>MIN, MAX를 하나씩 조회할 때 처럼 따로따로 가져오기 위해서는 아래처럼 쿼리를 작성해야 함.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MIN</span>(ORDER_DATE), <span class="keyword">MAX</span>(ORDER_DATE)</span><br><span class="line">  <span class="keyword">FROM</span> (</span><br><span class="line">        <span class="keyword">SELECT</span> <span class="keyword">MAX</span>(ORDER_DATE) ORDER_DATE</span><br><span class="line">          <span class="keyword">FROM</span> ORDERS</span><br><span class="line">         <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">        <span class="keyword">SELECT</span> <span class="keyword">MIN</span>(ORDER_DATE)</span><br><span class="line">          <span class="keyword">FROM</span> ORDERS);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">SORT</span> <span class="keyword">AGGREGATE</span></span><br><span class="line">    <span class="keyword">VIEW</span></span><br><span class="line">      <span class="keyword">UNION</span>-<span class="keyword">ALL</span></span><br><span class="line">        <span class="keyword">SORT</span> <span class="keyword">AGGREGATE</span></span><br><span class="line">          <span class="keyword">INDEX</span> <span class="keyword">FULL</span> <span class="keyword">SCAN</span> (<span class="keyword">MIN</span>/<span class="keyword">MAX</span>)</span><br><span class="line">        <span class="keyword">SORT</span> <span class="keyword">AGGREGATE</span></span><br><span class="line">          <span class="keyword">INDEX</span> <span class="keyword">FULL</span> <span class="keyword">SCAN</span> (<span class="keyword">MIN</span>/<span class="keyword">MAX</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="4-12-INDEX-FAST-FULL-SCAN"><a href="#4-12-INDEX-FAST-FULL-SCAN" class="headerlink" title="4.12 INDEX FAST FULL SCAN"></a>4.12 INDEX FAST FULL SCAN</h3><p>인덱스 테이블의 모든 스캔방법이 순차적이지는 않은데. 바로 INDEX FAST FULL SCAN 방법이 FULL TABLE SCAN 과 동일하게 MULTI BLOCK I/O를 지원한다.<br>다만 이 방식이 동작하기 위해서는 INDEX 컬럼 외에 테이블 컬럼이 SQL에 포함되어 있으면 안된다.</p>
-<p>내 생각에는 조건만 성립한다면 가장 빠른 조회 방법이지 않을까 싶다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">IX_ORDERS_N3 : ORDER_STATUS, ORDER_MODE, EMPLOYEE_ID, ORDER_DATE</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> TO_CHAR(ORDER_DATE, <span class="string">&#x27;YYYYMM&#x27;</span>) YYYYMM,</span><br><span class="line">       <span class="keyword">COUNT</span>(*) CNT</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS</span><br><span class="line"> <span class="keyword">WHERE</span> ORDER_MODE = <span class="string">&#x27;online&#x27;</span></span><br><span class="line"> <span class="keyword">GROUP</span> <span class="keyword">BY</span> TO_CHAR(ORDER_DATE, <span class="string">&#x27;YYYYMM&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">HASH</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">INDEX</span> <span class="keyword">FAST</span> <span class="keyword">FULL</span> <span class="keyword">SCAN</span>   </span><br></pre></td></tr></table></figure>
-
-<p>테이블 사이즈 보다 인덱스 사이즈가 일반적으로 작으니까 FULL TABLE SCAN 보다 INDEX FAST FULL SCAN 방법이 더 빠를거다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*)</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS A</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">SORT</span> <span class="keyword">AGGREGATE</span></span><br><span class="line">    <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">FULL</span></span><br></pre></td></tr></table></figure>
-
-<p>위 쿼리의 경우 단순 COUNT 하는 것이기 때문에 컬럼 중에 인덱스가 걸린 컬럼만 조회해서 INDEX FAST FULL SCAN을 하면 보다 더 빠를 것 같은데.<br>실제로 동작한 OPERATION을 보면 TABLE ACCESS FULL이 동작되었다. 이는 NULL 값과 관련이 있다.</p>
-<p>인덱스를 추가하거나 변경하는 것은 그 테이블을 참조하는 다른 SQL들의 실행 계획이 변경되어 성능에 영향이 갈 수 있기 때문에 쉬운 것은 아님을 알아야 한다.</p>
-<h3 id="4-13-INDEX-COMBINATION"><a href="#4-13-INDEX-COMBINATION" class="headerlink" title="4.13 INDEX COMBINATION"></a>4.13 INDEX COMBINATION</h3><p>한 테이블에 여러 인덱스가 있을 때 인덱스를 조합해서 사용할 수 있는 형태를 말한다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">IX_SALES_N1 : CUSTOMER_ID, ORDER_DATE</span><br><span class="line">IX_SALES_N2 : EMPLOYEE_ID, ORDER_DATE</span><br><span class="line">IX_SALES_N3 : PRODUCT_ID, ORDER_DATE</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ INDEX_COMBILE(A IX_SALES_N3 IX_SALES_N2) */</span></span><br><span class="line">       ORDER_DATE, CUSTOMER_ID, ORDER_QTY, ORDER_AMT</span><br><span class="line">  <span class="keyword">FROM</span> SALES A</span><br><span class="line"> <span class="keyword">WHERE</span> (PRODUCT_ID = <span class="string">&#x27;P246&#x27;</span> <span class="keyword">AND</span> EMPLOYEE_ID = <span class="string">&#x27;E412&#x27;</span>)</span><br><span class="line">   <span class="keyword">AND</span> ORDER_DATE &gt;= <span class="string">&#x27;20210101&#x27;</span></span><br><span class="line">   <span class="keyword">AND</span> ORDER_DATE &lt; <span class="string">&#x27;20120601&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span></span><br><span class="line">    <span class="keyword">BITMAP</span> CONVERSION <span class="keyword">TO</span> ROWIDS</span><br><span class="line">      <span class="keyword">BITMAP</span> <span class="keyword">AND</span></span><br><span class="line">        <span class="keyword">BITMAP</span> CONVERSION <span class="keyword">FROM</span> ROWIDS</span><br><span class="line">          <span class="keyword">SORT</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">            <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span></span><br><span class="line">        <span class="keyword">BITMAP</span> CONVERSION <span class="keyword">FROM</span> ROWIDS</span><br><span class="line">          <span class="keyword">SORT</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">            INDX <span class="keyword">RANGE</span> <span class="keyword">SCAN</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="4-14-INDEX-JOIN"><a href="#4-14-INDEX-JOIN" class="headerlink" title="4.14 INDEX JOIN"></a>4.14 INDEX JOIN</h3><p>INDEX JOIN은 INDEX 끼리 JOIN 되는 형태이며 HASH JOIN 형태로 동작한다. 동작하기 위해서는 SELECT 절에 있는 모든 컬럼과 WHERE 절에 있는 모든 컬럼들이<br>INDEX 컬럼이여야 한다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">IX_SALES_N1 : CUSTOMER_ID, ORDER_DATE</span><br><span class="line">IX_SALES_N2 : EMPLOYEE_ID, ORDER_DATE</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ INDEX_JOIN(A) */</span></span><br><span class="line">       ORDER_DATE, EMPLOYEE_ID, CUSTOMER_ID</span><br><span class="line">  <span class="keyword">FROM</span> SALES A</span><br><span class="line"> <span class="keyword">WHERE</span> (EMPLOYEE_ID = <span class="string">&#x27;E412&#x27;</span> <span class="keyword">AND</span> CUSTOMER_ID = <span class="string">&#x27;C03107&#x27;</span>)</span><br><span class="line">   <span class="keyword">AND</span> ORDER_DATE &gt;= <span class="string">&#x27;20120101&#x27;</span></span><br><span class="line">   <span class="keyword">AND</span> ORDER_DATE &lt; <span class="string">&#x27;20120601&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">VIEW</span></span><br><span class="line">    <span class="keyword">HASH</span> <span class="keyword">JOIN</span></span><br><span class="line">      <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span>    |   IX_SALES_N1</span><br><span class="line">      <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span>    |   IX_SALES_N2</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-1-NESTED-LOOP-JOIN"><a href="#5-1-NESTED-LOOP-JOIN" class="headerlink" title="5.1 NESTED LOOP JOIN"></a>5.1 NESTED LOOP JOIN</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TAB1.COL2, TAB2.COL3, TAB3.COL4</span><br><span class="line">  <span class="keyword">FROM</span> TAB1, TAB2, TAB3</span><br><span class="line"> <span class="keyword">WHERE</span> TAB1.COL1 = TAB2.COL1</span><br><span class="line">   <span class="keyword">AND</span> TAB2.COL2 = TAB3.COL3</span><br><span class="line">   <span class="keyword">AND</span> TAB1.COL1 <span class="keyword">BETWEEN</span> VALUES1 <span class="keyword">AND</span> VALUES2 </span><br></pre></td></tr></table></figure>
-
-<p>NL 방식의 특징은 아래와 같다.</p>
-<p>먼저 수행되는 선행 테이블의 처리 결과 만큼 후행 테이블 작업이 반복되기 때문에 선행 테이블의 작업량이 전체 작업량을 좌우 한다.</p>
-<p>선행 테이블의 결과 만들어진 셋이 후행 테이블에 상수 값으로 제공된다.</p>
-<p>후행 테이블은 동일한 테이블을 선행 테이블의 결과 만큼 지속 반복함으로 인덱스가 존재해야 한다. 그렇지 않다면 그 반복 수 만큼 FULL TABLE SCAN을 하게 됨으로<br>성능에 매우 좋지 않다.</p>
-<p>주로 처리해야하는 데이터가 적은 OLTP 서비스에서 주로 이용된다.</p>
-<ul>
-<li>INDEX SCAN 에서 가장 큰 부하 부분이 RANDOM SINGLE BLOCK I/O 부분이다. 따라서 대량 데이터 SCAN 시에는 INDEX SCAN이 불리하다고 언급함.</li>
-</ul>
-<p>NESTED LOOP JOIN 은 OLTP에서 부분적인 데이터를 보여줄 때 유용하다. 대용량 BATCH 프로그램에서 사용시에는 성능이 많이 저하된다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ LEADING(B A) USE_NL(A) */</span></span><br><span class="line">       A.EMPLOYEE_ID, A.LAST_NAME, B.DEPARTMENT_NAME</span><br><span class="line">  <span class="keyword">FROM</span> EMPLOYEES A, DEPARTMENTS B</span><br><span class="line"> <span class="keyword">WHERE</span> A.DEPARTMENT_ID = B.DEPARTMENT_ID; </span><br></pre></td></tr></table></figure>
-
-<p>위 SQL은 LEADING(B A) 로 명시되어 있으믕로 DEPARTMENTS 테이블이 선행테이블로, 그리고 EMPLOYEES 테이블이 후행테이블로 조인된다.</p>
-<p>DEPARTMENT 테이블에서 먼저 SCAN 작업이 이루어지고, “ WHERE A.DEPARTMENT_ID = ‘D001’ “ 의 형태로 상수값으로 바뀌어서 후행 테이블의 SCAN 이 동작된다.<br>여기서 EMPLOYEES 테이블에 DEPARTMENT_ID 에 대한 인덱스가 안걸려있다면 매번 FULL TABLE SCAN을 해야함으로 성능에 좋지 않다.</p>
-<p>NL의 3가지 방식. - 기본 방식, PREFETCH 방식, BATCHING 방식 이건 좀 어렵다 ㅠㅠ.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> A.ORDER_ID, A.ORDER_STATUS, A.EMPLOYEE_ID, </span><br><span class="line">       B.PRODUCT_ID, B.QUANTITY</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS A,</span><br><span class="line">       ORDER_ITEMS B</span><br><span class="line"> <span class="keyword">WHERE</span> A.ORDER_ID = B.ORDER_ID</span><br><span class="line">   <span class="keyword">AND</span> A.ORDER_DATE &gt;= <span class="keyword">TO_DATE</span>(<span class="string">&#x27;2012010100&#x27;</span>, <span class="string">&#x27;YYYYMMDDHH24&#x27;</span>)</span><br><span class="line">   <span class="keyword">AND</span> A.ORDER_DATE &lt; <span class="keyword">TO_DATE</span>(<span class="string">&#x27;2012010101&#x27;</span>, <span class="string">&#x27;YYYYMMDDHH24&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획 (기본 방식)</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">NESTED</span> LOOPS</span><br><span class="line">    <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span>     |   ORDERS</span><br><span class="line">      <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span>              |   IX_ORDES_N1</span><br><span class="line">    <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span>     |   ORDER_ITEMS</span><br><span class="line">      <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span>              |   IX_ORDER_ITEMS_PK</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획 (PREFETCH 방식)</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span></span><br><span class="line">    <span class="keyword">NESTED</span> LOOPS</span><br><span class="line">      <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span></span><br><span class="line">        <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span></span><br><span class="line">      <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span>      </span><br></pre></td></tr></table></figure>
-
-<p>IX_ORDER_ITEMS_PK 보면 후행테이블이 기본적으로 PK 인덱스를 사용함을 알 수 있다. FULL TABLE SCAN 이 정말 성능에 안좋다는 것을 암시하는 부분.</p>
-<h3 id="5-2-HASH-JOIN"><a href="#5-2-HASH-JOIN" class="headerlink" title="5.2 HASH JOIN"></a>5.2 HASH JOIN</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ USE_HASH(A B)*/</span></span><br><span class="line">       A.ORDER_DATE A.EMPLOYEE_ID, A.CUSTOMER_ID,</span><br><span class="line">       B.UNIT_PRICE * B.QUANTITY SALES_AMT</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS A, ORDER_ITEMS B</span><br><span class="line"> <span class="keyword">WHERE</span> A.ORDER_ID = B.ORDER_ID</span><br><span class="line">   <span class="keyword">AND</span> A.ORDER_DATE &gt;= <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120701&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">   <span class="keyword">AND</span> A.ORDER_DATE &lt; <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120702&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">   <span class="keyword">AND</span> B.ORDER_DATE &gt;= <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120701&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">   <span class="keyword">AND</span> B.ORDER_DATE , <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120702&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">HASH</span> <span class="keyword">JOIN</span></span><br><span class="line">    <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span></span><br><span class="line">      <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span></span><br><span class="line">    <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span></span><br><span class="line">      <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span>   </span><br></pre></td></tr></table></figure>
-
-<p>선행 테이블인 ORDERS를 PGA 메모리에 HASH TABLE로 생성 후에 후행 테이블 ORDER_ITEMS를 SCAN하면서 PGA에서 컬럼 매핑하는 방식으로 수행.</p>
-<p>조인조건이 equal인 경우에만 가능.</p>
-<p>선행 테이블의 데이터가 소량일 때 성능이 극대화된다. 적은 SIZE의 테이블이 HASH TABLE로 생성되어야 한다.</p>
-<p>메모리 내에서 수행될 때 빠른 속도를 보장하지만 이 메모리 사이즈를 초과하게 되면 디스크와 계속 SWAPPING을 해야하기 때문에 성능이 저하된다.</p>
-<p>NL에 비해 상대적으로 CPU 사용량과 메모리 사용량이 높다.</p>
-<p>배치처리, 테이블 FULL SCAN 시 유리하다.</p>
-<p>OLTP 처리시 CPU 자원을 많이 사용할수 잇으니 주의해야 한다.</p>
-<p>JOIN KEY의 중복이 많을수록 HASH KEY 충돌로 성능이 저한된다. 해시 충돌을 줄여야 한다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ LEADING(A B C) USE_HASH(A B C) </span></span><br><span class="line"><span class="comment">           NO_SWAP_JOIN_INPUTS(C) */</span></span><br><span class="line">       B.JOB_ID, C.GENDER,</span><br><span class="line">       <span class="keyword">COUNT</span>(*) ORDER_CNT,</span><br><span class="line">       <span class="keyword">SUM</span>(ORDER_TOTAL) ORDER_AMT</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS A, EMPLOYEES B, CUSTOMERS C</span><br><span class="line"> <span class="keyword">WHERE</span> A.EMPLOYEE_ID = B.EMPLOYEE_ID</span><br><span class="line">   <span class="keyword">AND</span> A.CUSTOMER_ID = C.CUSTOMER_ID</span><br><span class="line">   <span class="keyword">AND</span> A.ORDER_DATE &gt;= <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">   <span class="keyword">AND</span> A.ORDER_DATE &lt; <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20121101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line"> <span class="keyword">GROUP</span> <span class="keyword">BY</span> B.JOB_ID, C.GENDER;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">HASH</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">HASH</span> <span class="keyword">JOIN</span></span><br><span class="line">      <span class="keyword">HASH</span> <span class="keyword">JOIN</span></span><br><span class="line">        <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">FULL</span>      |   ORDERS</span><br><span class="line">        <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">FULL</span>      |   EMPLOYEES</span><br><span class="line">      <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">FULL</span>        |   CUSTOMERS</span><br></pre></td></tr></table></figure>
-
-
-<p>HASH TABLE의 목적으로 생성되는 테이블을 BUILD INPUT 이라고 한다</p>
-<p>위 테이블은 A -&gt; B -&gt; C 순서로 조인을 하고 있는데. 만약 A의 테이블 결과가 상대적으로 많다면. 이 A 테이블을 PGA 메모리에 올려두고 해쉬 테이블을 만들기 때문에.<br>메모리 사용량이 많을 수 밖에 없다. 그래서 이럴때에는 상대적으로 더 적은 결과가 도출되는 테이블을 먼저 선행 테이블 처리하는 것이 좋다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ LEADING(B A C) USE_HASH(A B C) </span></span><br><span class="line"><span class="comment">           SWAP_JOIN_INPUTS(C)  */</span></span><br><span class="line">       B.JOB_ID, C.GENDER, <span class="keyword">COUNT</span>(*) ORDER_CNT, <span class="keyword">SUM</span>(ORDER_TOTAL) ORDER_AMT</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS A, EMPLOYEES B, CUSTOMERS C</span><br><span class="line"> <span class="keyword">WHERE</span> A.EMPLOYEE_ID = B.EMPLOYEE_ID</span><br><span class="line">   <span class="keyword">AND</span> A.CUSTOMER_ID = C.CUSTOMER_ID</span><br><span class="line">   <span class="keyword">AND</span> A.ORDER_DATE &gt;= <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">   <span class="keyword">AND</span> A.ORDER_DATE &lt; <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20121101&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line"> <span class="keyword">GROUP</span> <span class="keyword">BY</span> B.JOB_ID, C.GENDER;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 실행 계획.</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">HASH</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">HASH</span> <span class="keyword">JOIN</span></span><br><span class="line">      <span class="keyword">TABLE</span> ACCESES <span class="keyword">FULL</span>        | CUSTOMERS</span><br><span class="line">      <span class="keyword">HASH</span> <span class="keyword">JOIN</span></span><br><span class="line">        <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">FULL</span>       | EMPLOYEES</span><br><span class="line">        <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">FULL</span>       | ORDERS</span><br></pre></td></tr></table></figure>
-
-<p>힌트문을 적용하지 않아도 OPTIMIZER가 알아서 더 좋은 성능을 위해 위처럼 테이블 SWAP을 했을 것이다.</p>
-<p>보면 B -&gt; A -&gt; C 순서로 선행 테이블이 보다 작은 테이블이 되도록 하여 PGA 메모리 사용률을 줄였다.</p>
-<p>SWAP_JOIN_INPUTS(C) 힌트문으로 인해서 C에 해당하는 CUSTOMER 테이블이 BUILD INPUT(해시 테이블) 로 생성이 되었다.</p>
-<p>동작 과정을 서술하면 아래와 같다.</p>
-<ol>
-<li>CUSTOMERS를 HASH TABLE로 생성 (SWAP_JOIN_INPUTS(C))</li>
-<li>EMPLOYEES를 HASH TABLE로 생성 (LEADING(B))</li>
-<li>ORDERS를 SCAN하면서 2번에 생성한 HASH TABLE SCAN</li>
-<li>3번 결과가 SCAN되면서 1번에서 생성한 HASH TABLE SCAN.</li>
-</ol>
-<p>XPLAN에서 Used-Mem 부분 중 괄호 안에 숫자가 (1) 로 전시된다면 그것은 PGA 메모리가 모자라서 DISK SWAPPING이 발생했다는 의미이다.<br>(0) - Optimal<br>(1) - One Pass<br>(2) - Multi Pass</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SWAP_JOIN_INPUTS(D) -&gt; D 에 해당하는 테이블을 해시 테이블로 먼저 넣겠다는 의미. 선행테이블로 쓰이게 된다.</span><br><span class="line">LEADING(C A B D E) -&gt; C -&gt; A -&gt; B -&gt; D -&gt; E 순서로 해시 조인하게 된다.</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-3-SORT-MERGE-JOIN"><a href="#5-3-SORT-MERGE-JOIN" class="headerlink" title="5.3 SORT MERGE JOIN"></a>5.3 SORT MERGE JOIN</h3><p>JOIN 하고자 하는 두 테이블의 JOIN COLUMN 값으로 각각 SORT를 한 후에 정렬된 컬럼값을 비교하면서 조인하는 방식.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ USE_MERGE(A B) */</span></span><br><span class="line">       A.ORDER_DATE, A.EMPLOYEE_ID, A.CUSTOMER_ID, B.PRODUCT_ID</span><br><span class="line">       B.UNIT_PRICE * B.QUANTITY SALES_AMT</span><br><span class="line">  <span class="keyword">FROM</span> ORDERS A,</span><br><span class="line">       ORDER_ITEMS B</span><br><span class="line"> <span class="keyword">WHERE</span> A.ORDER_ID = B.ORDER_ID</span><br><span class="line">   <span class="keyword">AND</span> A.ORDER_DATE &gt;= <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120701&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">   <span class="keyword">AND</span> A.ORDER_DATE &lt; <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120702&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">   <span class="keyword">AND</span> B.ORDER_DATE &gt;= <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120701&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>)</span><br><span class="line">   <span class="keyword">AND</span> B.ORDER_DATE &lt; <span class="keyword">TO_DATE</span>(<span class="string">&#x27;20120702&#x27;</span>, <span class="string">&#x27;YYYYMMDD&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--- 실행 계획</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">STATEMENT</span></span><br><span class="line">  <span class="keyword">MERGE</span> <span class="keyword">JOIN</span></span><br><span class="line">    <span class="keyword">SORT</span> <span class="keyword">JOIN</span></span><br><span class="line">      <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span>       |   ORDERS</span><br><span class="line">        <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span>                |   IX_ORDERS_N1</span><br><span class="line">    <span class="keyword">SORT</span> <span class="keyword">JOIN</span></span><br><span class="line">      <span class="keyword">TABLE</span> <span class="keyword">ACCESS</span> <span class="keyword">BY</span> <span class="keyword">INDEX</span> <span class="keyword">ROWID</span>       |   ORDER_ITEMS</span><br><span class="line">        <span class="keyword">INDEX</span> <span class="keyword">RANGE</span> <span class="keyword">SCAN</span>                |   IX_ORDER_ITEMS_N1</span><br><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">`   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">SORT가 발생하기 때문에 PGA 메모리를 사용. SORT 시 PGA 메모리 사용량이 사이즈를 초과하게 되면 DISK SWAPPING이 발생.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### 실장님의 가르침</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">인덱스 스킵스캔을 타는 것은 결국 인덱스 설정이 적절하지 않는다는 의미이기 때문에 다시한번 재고 해봐야 한다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">nested loop join 방법은 outer table, inner table 둘다 디스크에 존재하며 outer table이 루프를 돌면서 inner table을 조인한다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">hash join 방법은 inner table 을 메모리에 올려두고 조인하기 때문에 보다 더 빠르다.</span></span><br><span class="line"><span class="string">inner table을 메모리에 올린다의 전제조건은 inner table을 full로 사용할 경우이다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">ctrl + e -&gt; 실행계획이 보인다.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span><span class="keyword">SQL</span></span><br><span class="line"><span class="comment">/*+ use_hash(aa, bb) */</span></span><br></pre></td></tr></table></figure>
-<p>이 방법을 쓰면 HASH JOIN을 한다.</p>
-<p>쿼리를 짤때에는 기본적으로 인덱스를 확인해야 한다. full 스캔이 나오면 안된다.</p>
-<p>인덱스 컬럼을 가공 시 해당 컬럼을 인덱스로 사용이 안되는데 조인되는 테이블이 아니고 피 조인 테이블에 적용하면 가능하다.</p>
-<p>실행 계획을 볼때에는 상수가 아니라 변수로 두고 해야지 더 정확하다.<br>상수가 있다면 기본적으로 오라클은 해당 데이터를 먼저 기준으로 두고 스캔한다.</p>
-<p>변수 설정하는 방법 :aaa</p>
-<p>스칼라 서브쿼리 vs 조인<br>만약 스칼라 서브쿼리 되는 곳에 작성한 쿼리가 충분히 캐쉬를 활용할 수 있는 쿼리라면 사용해도 좋지만 그렇지 않다면 그런 쿼리는 좋지 않다.<br>대신 조인을 써라.</p>
-<p>CASE 키워드 보다는 DECODE 키워드가 좀더 빠르다. 구문을 파싱하는 작업이 덜하다.</p>
-<p>80% 이상을 가져온다고 하면 인덱스 조회보다 FULL 조회가 더 빠르다.</p>
-<p>캐싱된다고 하지만 결국 이거는 메모리에 올라가는 거기 때문에 TTL이 존재하지는 않는다 다만. 다른 쿼리에 의해 올라간 데이터에 의해 밀린다.</p>
-<p>HAVING 절은 SORT GROUP BY 동작이 처리되고 난 다음에 수행되기 때문에 WHERE 절 처럼 성능을 향상시키지는 않는다.</p>
+<h2 id="JPA-기본"><a href="#JPA-기본" class="headerlink" title="JPA 기본"></a>JPA 기본</h2><h3 id="1-JPA-Hibernate-Spring-Data-JPA-구분"><a href="#1-JPA-Hibernate-Spring-Data-JPA-구분" class="headerlink" title="1. JPA, Hibernate, Spring Data JPA 구분"></a>1. JPA, Hibernate, Spring Data JPA 구분</h3><p>JPA 는 인터페이스, 명세, 규격, 규약이며 Hibernate는 이 JPA의 규격을 따라 만든 실제 구현체, Spring Data JPA는 이 JPA를 보다 쉽게 사용하기 위해서 Spring Framework 에서 제공하는 하나의 모듈.</p>
+<h3 id="2-기본적인-어노테이션에-대해서"><a href="#2-기본적인-어노테이션에-대해서" class="headerlink" title="2. 기본적인 어노테이션에 대해서"></a>2. 기본적인 어노테이션에 대해서</h3><p>@Entity : 고유의 식별자를 가져야 합니다.</p>
+<p>@Id :</p>
+<p>@GeneratedValue :</p>
+<p>@Column : </p>
+<p>@Temporal : </p>
+<p>@Value : </p>
+<p>@ManyToOne :`</p>
+<p>@OneToMany : </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/16/2021-03-16-db-tunning/" data-id="ckp45ihfw00d1eswb8bxddygz" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/05/25/2021-05-25-jpa-study/" data-id="ckq4jx11s00114f8jdmwm16z7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -432,10 +230,10 @@
 
 
   
-    <article id="post-2021-03-15-woowah-oop" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2021-04-27-elasticsearch-term-lowercase" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/15/2021-03-15-woowah-oop/" class="article-date">
-  <time datetime="2021-03-14T15:54:00.000Z" itemprop="datePublished">2021-03-15</time>
+    <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/" class="article-date">
+  <time datetime="2021-04-26T15:54:00.000Z" itemprop="datePublished">2021-04-27</time>
 </a>
     
   <div class="article-category">
@@ -450,7 +248,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/15/2021-03-15-woowah-oop/">우아한 객체지향</a>
+      <a class="article-title" href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
     </h1>
   
 
@@ -458,114 +256,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>객체지향에서 설계에 대해서 굉장히 중요한 것은 의존성이다.</p>
-<p>설계라는 것은 -&gt; 코드를 어떻게 배치할 것에 대한 의사결정.<br>어떤 패키지에 어떤 코드를 넣을거고, 어떤 프로젝트에 어떤 코드를 넣을거고.. 이런 것들.</p>
-<p>초점은 변경에 맞춰야한다. 같이 변경되는 코드는 함께두어야하고 그렇지 않으면 따로둬야한다.<br>이 변경이라는 것이 결국은 의존성.</p>
-<p>A ——-&gt; B<br>A가 B에 의존되고 있다 = B가 변경되면 A도 변경될 가능성이 있다.</p>
-<p>의존성은 변경과 관련된 것.</p>
-<p>Class 사이의 Dependancy</p>
-<p>Package 사이의 Dependancy</p>
-<p>두가지로 나뉜다.</p>
-<p>클래스 의존성 종류.</p>
-<p>연관관계 (Association) -&gt; A에서 B로 영구적으로 갈 수 있는 것</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> B b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>의존관계 (Dependency) -&gt; 일시적으로 관계를 맺는 것.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> B <span class="title">method</span><span class="params">(B b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> B();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>상속관계 (Inheritance) -&gt; 구현이 바뀌더라도 영향을 받는다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>실체화 관계 -&gt; 인터페이스가 구현된것</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">implements</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>설계를 할때 좋은 의존성을 관리하는 규칙</p>
-<ol>
-<li>양방향 의존성을 피하라 (순환참조 관계)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** BAD */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> B b;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setA</span><span class="params">(B b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.b = b;</span><br><span class="line">        <span class="keyword">this</span>.b.setA(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> A a;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setA</span><span class="params">(A a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>. a = a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** GOOD */</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> B b;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setA</span><span class="params">(B b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.b = b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>만약 정말 이렇게 구현된 객체가 있다면 이것은 한 클래스로도 만들 수 있음에도 억지로 찢어 놓은 걸 수도 있다.</p>
-<ol start="2">
-<li>다중성이 적은 방향을 선택하라.</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** BAD */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Collection&lt;B&gt; bs;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** GOOD */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> A a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>의존성이 필요없다면 제거하라.</li>
-</ol>
-<p>패키지 사이의 의존성 사이클을 제거하라.</p>
-<p>설계에서 가장 중요한건 변경.<br>의존성이 사이클이 돈다는 이야기는 -&gt; 원래 하나의 패키지로 볼수도 있음을 고려해야함.</p>
-<p>시스템은 엄청 동적인것이지만 이걸 구현하는 코드는 정적인 것.</p>
-<p>정적인 이 코드로 동적인 시스템을 구현하기 위해선 시스템이 가진 정적인 특징들을 잘 잡아쟈한다.</p>
-<p>첫번째 클래스 다이어그램ㅇ르 그리고 이 클래스 끼리의 관계라고 하는것. 의존성이라고 하는 걸 잘 고려하자.<br>의존성은 방향성이 존재.</p>
-<p>디비의 릴레이션은 외래키 잡으면 방향성이 없음</p>
-<p>관계의 방향 -&gt; 협력의 방향 -&gt; 의존성의 방향<br>시스템상에서 실제로 플로우가 어떻게 흐르느냐에 따라서 그걸 따라서 클래스 다이어그램을 만들고, 관계를 그려야한다. 즉 의존성을 만들어내야 한다.</p>
-<p>클래스 다이어그램을 그리라 -&gt; 협력의 방향을 상상해라 -&gt; 의존성을 잡아라.</p>
-<p>이 의존성을 표현하는 방법은 4가지 아까 위에서 언급함.</p>
-<p>(1) 연관관계 (객체참조)<br>협력을 위해 필요한 영구적 탐색 구조.<br>실제적으로는 데이터에 영향을 받지만 우선은 잡는다.</p>
-<p>(2) 의존관계 (파라미터, 리턴타입, 지연변수)<br>협력을 위해 일시적으로 필요한 의존성.</p>
-<p>협력을 해야하는 이유, 의존성을 가져야 하는 이유를 항상 생각하라.</p>
-<p>연관관계는 개념적인것. 이를 구현하기 위해 객체참조. 이 개념을 구현하기 위한 방법이 여러가지가 있음.<br>대표적인 방법은 객체참조.</p>
-<p>메세지를 받는다 = 메서드를 호출한다.<br>메세지라는 개념적인 것을 먼저 생각하고 그다음에 메서드라는 구현의 관점을 떠올려라.</p>
-<p><strong>**</strong> Layered Archutecture <strong>**</strong></p>
-<p>Presentation Layer</p>
-<p>Service Layer</p>
-<p>Domain Layer -&gt; 이 계층을 내가 맨날 생각했었는데 한번도 이게 언급된적이 없길래 내가 잘못생각하나 싶었는데. 이게 진짜 중요하네. 와 리얼 명강의다. 꿀정보를 얻었다.<br>비지니스 로직을 구현하는 레벨이 여기다ㅏ.<br>Jpa를 쓴다면 이 엔티티라는 녀석이 도메인 레이어애 해당하는 거지. 근데 Sql Mapper를 쓰게 되면 이게 자동으로 매핑이 안되니까.<br>도메인을 먼저 클래스 다이어그램으로 잡고 시작을 해야해 그거 기준으로 매퍼들을 만들어야해.</p>
-<p>Infrastructure Layer</p>
-<p>와 서비스쪽 코드보니까 정적 팩토리 메서드로 매핑한다. 와 진짜 내가 쓰던 코딩 스타일이 다 여기나오네.. 진짜 헛으로 고민하고 짠 시간들이 아니였다. ㅠㅠ</p>
-<p>설계를 개선하기.</p>
-<p>클래스 다이어그램을 그리고, 의존성을 다 그려봐라. 그러면 좀 잘 보인다.</p>
-<ol>
-<li>객체 참조로 인한 결합도 상승.</li>
-</ol>
-<p>패키지의 양방향 의존성 관계.</p>
-<p>의존성 역전 원리. -&gt; 클래스들의 추상화들에 의존하게 하라. 인터페이스를 바라보게하라.<br>인터페이스이거나 추상 클래스여야 한다는 고정관념이 있다.</p>
-<p>해결방법 첫번쨰.</p>
-<p>(1) 중간 객체를 이용한 의존성 사이클 끊기.</p>
-<p>(2) 연관관계를 다시 살펴보기. = 어떤 객체에서 어떤 객체로 탐색할수 있도록 하는 것.<br>성능 문제 - 어디까지 조회할 것인가.<br>연관관계가 끝까지 가있기 때문에.<br>데이터들이 메모리에 올라가있으면 상관 없으나 Persistance Layer 까지 내려가게 되면 조인 문제 등으로 성능이슈가 발생한다.</p>
-<p>어디까지 읽어야 하는가 말아야하는가 Lazy Loading을 어디까지 해야하는가.</p>
-<p>근본적인 문제는 모두가 연결되어 있어서 그렇다.</p>
-<p>객체 참조가 길어지면 = 트랜잭션도 길어진다.</p>
-<p>클래스 다이어그램만 고려하고 객체 참조를 하게 되면 -&gt; 인프라적인 이슈들을 생각하지 않게 한다.<br>너무 이상론이라는 거지.</p>
-<p>롱 트랜잭션으로 묶여있는 곳을 냄새를 맡을떄</p>
-<p>트랜잭션의 발생 빈도, 주기가 서로 맞는지를 봐야한다.</p>
-<p>클래스 다이어그램 기준 객체 참조를 하면서 객체를 만들게 되면. 롱 트랜잭션이 발생하고 트랜잭션 경합으로 인한 성능 저하.</p>
-<p>객체 참조의 문제점 -&gt; EVERYTHING IS CONNECTED 모든게 연결되는게 문제점.<br>모든 객체가 연결되어 있기 때문에 어디라도 접근이 가능할 것 같지만 어디라도 함꼐 수정할 것 같지만 성능저하, 트랜잭션 문제, 이상론이고. 인프라적으로는 최대의 적.</p>
-<p>객체 참조는 결합도가 가장 높은 의존성. -&gt; 필요하다면 객체 참조를 끊어야 함.</p>
-<p>연관관계 = A를 알면 B를 알 수 있어.<br>연관관계를 표현할 수 있는 방법 중 하나가 객체 참조. (강한 결합도)</p>
-<p>Repository를 통한 탐색(약한 결합도)<br>연관관계를 A 라는 파라미터를 받으면 B를 얻을 수 있어요 이거를 보여줘야 함.</p>
-<p>어디까지 객체 참조를 해야하는가.<br>본질적으로 결합도가 굉장히 높은 애들. vs<br>굳이 연결하지 않아도 Repository로 접근해서 해결 가능한 것들.</p>
-<p>함께 생성되고 함께 삭제되는 객체들을 함께 묶어라 -&gt; 트랜잭션의 주기가 같아야 하기 떄문에.</p>
-<p>도메인 제약사항을 공유하는 객체들을 함께 묶어라.</p>
-<p>그러나 가능하면 분리하라. 약한 결합성을 가지게 하라.</p>
-<p>A가 B의 객체 참조 대신에 B의 PK를 가지게 해서 repository를 통해서 객체를 가져오도록 구현하자. 이게 보다 더 약한 결합성이다.</p>
-<p>ex) 장바구니와 장바구니 안에 들어가는 아이템들은 라이프 사이클이 다르다 (생성되는 시점, 지워지는 시점) 등등<br>서로 연결되는 데이터가 별로 없다. 이런 경우에는 그냥 약한 결합성을 유지하도록 하는게 좋다.</p>
-<p>객체를 묶을 때 라이프 사이클, 도메인 제약사항의 공통점을 찾아보자.</p>
-<p>묶인 객체들 내부끼리는 객체 참조로 통신.<br>경계 밖의 객체는 ID를 이용해 접근.</p>
-<p>객체참조라는 개념이 메세지를 주고받는 것에 대해서 객체지향을 설명하기가 이론적으로 좋은데. 이상적이다.<br>즉 실무적으로 자원을 생각하고, 성능을 고려해야 한다면 이것만 믿을 수 없다.</p>
-<p>객체가 묶인 단위를 기준으로<br>트랜잭션 단위 관리의 기준<br>조회 경계 단위 관리의 기준.<br>영속화 의 기준.<br>이 될수 있다.</p>
-<p>몽고DB 같은 NoSQL를 사용하게 되면 이 강한결합도를 가진 객체의 묶음 단위로 컬렉션을 구축하면 된다.</p>
-<p>응집도를 다르게 표현하면 같이 변경되야하는 객체들이 같이 있는게 응집도가 높다는 것.</p>
-<p>도메인들의 흐름을 표현하는 방법</p>
-<p>첫번째 절차지향적인 OrderDeleveredService 코드를 작성하자. -&gt; 로직간의 결합도가 높다.</p>
-<p>두번째 도메인 이벤트 중심 퍼블리싱. -&gt; 로직간의 결합도를 느슨하게 하지만 특정 코드가 호출되면 다음 코드가 호출되었으면 좋겠어 이런느낌.</p>
-<p>객체 참조는 로직이 아닌 객체 끼리의 결합도였음.</p>
-<p>도메인 단위로 패키지를 나누면 의존성 사이클이 엄청나게 생긴다.</p>
-<p>그래서 레이어드 기준으로 보통 패키지를 만들어서 관리한다.</p>
-<p>근데 도메인을 위에 언급한 강의들을 가지고 리팩토링을 한다면 도메인 단위로 패키지를 구분할 수 있다.<br>도메인 단위로 패키지를 가지게 되면 시스템을 분리하기가 쉬워진다. 그말은 즉은 보다 더 훨씬 모듈화가 되어있다는 의미.</p>
-<p>도메인 단위로 시스템을 분리할 수가 있다. 이게 진짜 개쩌는 팁이네.</p>
-<p>도메인 관리를 잘해서 최종적으로는 도메인 단위로 객체를 관리.</p>
-<p>의존성을 따라서 시스템을 진화시켜라.</p>
-
+        <p>Elasticsearch Term 쿼리 쓸때 소문자로 해야 합니다.. 삽질 엄청 했습니다.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;size&quot;</span> : <span class="number">100</span>,</span><br><span class="line">    <span class="attr">&quot;query&quot;</span> : &#123;</span><br><span class="line">        <span class="attr">&quot;terms&quot;</span> : &#123;</span><br><span class="line">            <span class="attr">&quot;airlineCode&quot;</span> : [<span class="string">&quot;bx&quot;</span>, <span class="string">&quot;rs&quot;</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/15/2021-03-15-woowah-oop/" data-id="ckp45ihf3009weswb6qb99idc" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/04/27/2021-04-27-elasticsearch-term-lowercase/" data-id="ckp45ihfo00cgeswb3g8r7c2y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -575,10 +271,10 @@
 
 
   
-    <article id="post-2021-03-13-elastic-search" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2021-04-26-callable-lambda" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/13/2021-03-13-elastic-search/" class="article-date">
-  <time datetime="2021-03-12T15:54:00.000Z" itemprop="datePublished">2021-03-13</time>
+    <a href="/2021/04/26/2021-04-26-callable-lambda/" class="article-date">
+  <time datetime="2021-04-25T15:54:00.000Z" itemprop="datePublished">2021-04-26</time>
 </a>
     
   <div class="article-category">
@@ -593,7 +289,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/13/2021-03-13-elastic-search/">Elastic Search</a>
+      <a class="article-title" href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
     </h1>
   
 
@@ -601,85 +297,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>데이터 베이스 -&gt; 로그 스태쉬 -&gt; 엘라스틱 서치 -&gt; 키바나</p>
-<p>엘라스틱서치는 jvm 위에서 동작하기 때문에 jdk 8 이상 있어야한다.</p>
-<p>엘라스틱서치는 역색인 기능 덕분에 검색의 기능 관점에서는 RDB보다 훨씬 빠르다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Elastic Search              Relational DB</span><br><span class="line">Index                       Database</span><br><span class="line">Type                        Table</span><br><span class="line">Document                    Row</span><br><span class="line">Field                       Column</span><br><span class="line">Mapping                     Schema</span><br></pre></td></tr></table></figure>
-
-<p>REST API 데이터를 CRUD 조작이 가능하다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Elastic Search              Relational DB               CRUD</span><br><span class="line">GET                         Select                      Read</span><br><span class="line">PUT                         Update                      Update</span><br><span class="line">POST                        Inster                      Create</span><br><span class="line">DELETE                      Delete                      Delete</span><br></pre></td></tr></table></figure>
-
-<p>Elastic Search GET 예제</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET http:&#x2F;&#x2F;localhost:9200&#x2F;classses</span><br></pre></td></tr></table></figure>
-<p>localhost:9200 이 부분이 elasticsearch 서버 IP 주소 및 포트이고 그다음 classes 이거가 인덱스</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET http:&#x2F;&#x2F;localhost:9200&#x2F;classses?pretty</span><br></pre></td></tr></table></figure>
-<p>뒤에 pretty 속성을 주면 결과가 보기 좋게 반환된다.</p>
-<p>인덱스 생성하기 예제 (PUT을 사용했다.)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XPUT http:&#x2F;&#x2F;localhost:9200&#x2F;classes</span><br></pre></td></tr></table></figure>
-
-<p>인덱스 제거하기 예제 (DELETE를 사용한다.)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XDELETE http:&#x2F;&#x2F;localhost:9200&#x2F;classes</span><br></pre></td></tr></table></figure>
-
-<p>문자열을 직접 넣어서 document 만들기.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST http:&#x2F;&#x2F;localhost:9200&#x2F;classes&#x2F;class&#x2F;1&#x2F; -d &#39;</span><br><span class="line">&#123;&quot;title&quot; : &quot;Algorithm&quot;, &quot;professor&quot;, &quot;john&quot;&#125; &#39;</span><br></pre></td></tr></table></figure>
-
-<p>파일을 활용해서 document 만들기.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST http:&#x2F;&#x2F;localhost:9200&#x2F;classes&#x2F;class&#x2F;1&#x2F; -d @oneclass.json</span><br></pre></td></tr></table></figure>
-
-<p>기존에 존재하는 document에 필드 추가하기.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST http:&#x2F;&#x2F;localhost:9200&#x2F;classes&#x2F;class&#x2F;1&#x2F; update -d &#39;</span><br><span class="line">&#123;&quot;doc&quot; : &#123;&quot;unit&quot; : 1&#125;&#125; &#39;</span><br></pre></td></tr></table></figure>
-
-<p>스크립트를 활용해서 다큐먼트 수정하기.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST http:&#x2F;&#x2F;localhost:9200&#x2F;classes&#x2F;class&#x2F;1&#x2F; update -d ‘</span><br><span class="line">&#123; “script” : “ctx._source.unit +&#x3D; 5” &#125; ’</span><br></pre></td></tr></table></figure>
-
-<p>벌크 (여러가지 다큐먼트를 한번에 삽입하는 방법)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST http:&#x2F;&#x2F;localhost:9200&#x2F;_bulk?pretty —data-binary @classes.json</span><br></pre></td></tr></table></figure>
-
-<p>매핑 (Schema)<br>매핑이 없이도 데이터를 넣을 수 있다.<br>그러나 실무에서 매핑없이 넣는 것은 위험한 일. 자바스크립트를 사용하는 것 대신 타입스크립트를 쓰는것과 동일.</p>
-<p>매핑에서 geo_point 는 지도 위의 위치를 의미.<br>인덱스를 조회해 보면 mapping 영역이 있음 거기를 처리하는 것.</p>
-<p>키바나로 시각화를 할때 매핑된 데이터를 활용해야 더 디테일하게 조작이 가능하다.</p>
-<p>———————————————</p>
-<p>몽고디비 레플리카 서버 + 엘라스틱서치 검색엔진 적용.</p>
-<p>엘라스틱서치 간략한 정리.</p>
-<p>왜 엘라스틱서치 검색방법이 더 빠른가. -&gt; 역색인 방법.<br>빅데이터들을 빠르게 검색하고 처리가 가능하다.</p>
-<p>엘라스틱서치 만으로 그러면 서비스를 할수 있지 않나.<br>단점이 있다 단점이 뭐냐면. </p>
-<p>엘라스틱 서치의 search을 알아보자.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET localhost:9200&#x2F;basketball&#x2F;record&#x2F;_search?pretty</span><br></pre></td></tr></table></figure>
-
-<p>URI의 q 파라미터 값을 활용하여 쿼리를 작성할 수 있다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#39;localhost:9200&#x2F;basketball&#x2F;record&#x2F;_search?q&#x3D;points:30&amp;pretty&#39;</span><br></pre></td></tr></table></figure>
-
-<p>REQUEST BODY 를 활용해서도 쿼리를 날릴 수 있다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#39;localhost:9200&#x2F;basketball&#x2F;record&#x2F;_search -d &#96;&#123;</span><br><span class="line"></span><br><span class="line">    &quot;query&quot; : &#123;</span><br><span class="line">        &quot;term&quot; : &#123; &quot;points&quot; : 30 &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#96;&#39;</span><br></pre></td></tr></table></figure>
-
-<p>REquest body 옵션은 다양한 질의가 가능하다 나중에 찾아보자.</p>
-<p>elastic aggregation.</p>
-<p>aggs = aggregations</p>
-<p>metry aggs -&gt; 산술 어그리게이션.</p>
-<p>BUCKET AGGS -&gt; 그룹 바이로 보면 된다.</p>
-<p>뭔가 다큐먼트 통합적으로 연산을 할 떄 사용하는 거 같은데.</p>
-<p>디비에서 있는 SUM(), MAX() 이런 연산을 지원하는 거 같다.</p>
-<p>키바나 설정.</p>
-<p>키바나 management 메뉴.</p>
-<p>index pattern -&gt; index 설정하는 곳에 엘라스틱서치의 인덱스를 넣는다.</p>
-<hr>
-<p>엘라스틱 서치 인강.</p>
-<p>루씬 기반의 검색 엔진.<br>자바 기반으로 만들어짐. (JVM 위에서 돈다. jdk8이상 필요)</p>
-<p>Elastic stack -&gt; Elaticsearch + Logstash + Kibana</p>
-<p>빅데이터 사업쪽에서 많이 사용하나봄.<br>엘라스틱 개발자가 돈을 잘번대.</p>
-<p>클라우드, 온오프라믹스?</p>
-<p>엘라스틱 설치</p>
-<p>데이터베이스가 있고 이걸 로그스태쉬를 활용해서 엘라스틱서치에 연동을 할 수 있다.</p>
-<p>postgresql -&gt; logstash -&gt; elasticsearch -&gt; kibana<br>이거 구축을 해보자.</p>
-<p>————————————————</p>
-<p>오픈소스 검색 및 분석 엔진.<br>방대한 양의 데이터를 신속하게, 거의 실시간으로 저장, 검색, 분석할 수 있도록 지원.</p>
-<p>활용 예시<br>로그 또는 트랜잭션 데이터들을 모아서 의미 있는 데이터화.<br>두번째 데이터들 빅데이터들을 모아서 의미 있는 데이터화.</p>
-<p>엘라스틱 스택.<br>엘라스틱 서치 + 키바나 + 로그스태쉬</p>
-
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Callable&lt;List&lt;Schedule&gt;&gt;&gt; callables = requests.stream()</span><br><span class="line">        .map(req -&gt; (Callable&lt;List&lt;Schedule&gt;&gt;) () -&gt; search(req)).collect(toList());</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/13/2021-03-13-elastic-search/" data-id="ckp45ihf2009reswb7n7u706p" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/04/26/2021-04-26-callable-lambda/" data-id="ckp45ihfo00cfeswb96en7028" class="article-share-link">Share</a>
       
       
     </footer>
@@ -689,10 +311,10 @@
 
 
   
-    <article id="post-2021-03-13-wooah-redis" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2021-04-19-async" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/13/2021-03-13-wooah-redis/" class="article-date">
-  <time datetime="2021-03-12T15:54:00.000Z" itemprop="datePublished">2021-03-13</time>
+    <a href="/2021/04/19/2021-04-19-async/" class="article-date">
+  <time datetime="2021-04-18T15:54:00.000Z" itemprop="datePublished">2021-04-19</time>
 </a>
     
   <div class="article-category">
@@ -707,7 +329,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/13/2021-03-13-wooah-redis/">우아한레디스, 디디의 Redis</a>
+      <a class="article-title" href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
     </h1>
   
 
@@ -715,98 +337,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>캐쉬의 구조 2가지 형태</p>
-<ol>
-<li><p>Look aside Cache<br>메인은 DB이고 DB에서 캐쉬로 데이터를 가져와서 저장. 캐쉬에 데이터가 있으면 캐쉬 데이터를 사용하여 성능을 개선하고 없으면 디비에서 가져와서 다시 캐쉬에 저장.<br>일반적인 구조</p>
-</li>
-<li><p>Write back<br>캐쉬에 데이터를 특정기간 동안 먼저 저장하고 캐쉬에 있는 데이터들을 디비에 저장.<br>휘발할 수 있는 가능성 있다. </p>
-</li>
-</ol>
-<p>Collection<br>개발의 편의성, 개발의 난이도.</p>
-<p>Memcached 보다 redis가 나은 점 -&gt; 레디스는 collection을 제공하고, memcached는 이걸 제공하지 않느다.<br>컬렉션이 제공되면 개발의 편의성이 높아지고, 생산성이 올라간다.</p>
-<p>즉 멤캐시드는 이런걸 제공하지 않기 때문에 다 직접 구현해야한다는 의미.</p>
-<p>두 트랜잭션의 레이스 컨디션이 발생하는 문제 -&gt; 멤캐시드는 이런거 세마포어나 뮤텍스 기법으로 해결을 해야하는데 레디스는 기본적으로 ACID의 A가 지원된다. 레이스 컨디션 오류를 기본적으로 잡아준다.</p>
-<p>레디스의 컬렉션이 이런걸 지원한다.</p>
-<p>레디스를 주로 쓰는경우<br>여러대의 서버에서 접근해야하는 원격 저장소가 필요할때<br>EX) 인증 토큰, 랭킹 보드, 유저 API LIMIT, 잡 큐</p>
-<p>레디스 컬렉션<br>String : key-value 구조<br>List :<br>Set : 중복 데이터 방지<br>Sorted set : 기본적으로 set인데 스토어를 줘서 순서를 제공</p>
-<p>String<br>Set <key> <value><br>get <key></p>
-<p>mset<br>mget<br>여러개를 넣거나 가져올 수 있다</p>
-<p>List 타입 : 왼쪽 오른쪽으로 넣거나 뺄 수 있다.<br>Lpust Rpust Lpop Rpop</p>
-<p>데이터 성질에 따라서 컬렉션 구조를 잘 골라야한다.</p>
-<p>set<br>sadd smembers sismember<br> smembers 는 데이터를 모두 가져오는 건데 이런거 성능 주의.</p>
-<p>sorted set : 이거 많이 사용한다고 한<br>zadd <key> <score> <value><br>zrange <key> <startIndex> <endIndex><br>zrange</p>
-<p>레디스는 인메모리 저장소 이기 떄문에. 물리적메모리 공간보다 더 클수 없다.<br>물론 불가하다는건 아닌데 swap이 발생하게 되고 결국 디스크를 활용하게 되서<br>레디스를 제대로 활용하는 방법이 아니다.<br>그래서 레디스는 메모리 사용률을 모니터링 해야한다.</p>
-<p>메모리 관리.<br>64기가바이트 메모리를 가진 서버에 인스턴스라는 적을 작은 단위로 사용하는 것이 안전함.<br>이해가 안되는 군. 뭔가 어렵다.</p>
-<p>jemalloc -&gt; java 쪽에서메모리 할당하는 함수같은데. 이거가 4096 이런 단위로 할당함</p>
-<p>메모리가 부족할 때는<br>-&gt; Cache is Cash  캐쉬가돈이다.<br>보통 70% 정도 사용하고 있다면 더 큰 시스템을 사용하거나, 데이터량을 줄여야하는 선택지를 고려해야함.</p>
-<p>Collection 들이 아래 자료구조를 사용.<br>Hash -&gt; HashTable<br>Sorted Set -&gt; Skiplist, HashTable<br>Set -&gt; HashTable</p>
-<p>실제 위와 같은 컬렉션을 사용하게 되면 메모리 사용률은 조금 더 나온다. 포인터 등 오버헤드 작업에서 필요한 메모리가 존재 </p>
-<p>Ziplist 이거를 사용하면 조금 더 느리지만 메모리는 좀더 절약할 수 있다.<br>인메모리기 때문에 그냥 선형탐색을 하더라도 빠르다. 즉 메모리 공간 사용률을 줄이고 시간복잡도를 그냥 높게 가져간다는 의미인거 같음.</p>
-<p>O(N) 관련 명령어는 주의하다.<br>Redis는 싱글 스레드.<br>레디스는 싱글 스레드이기 떄문에 여러 개의 명령을 처리할 수 없다.</p>
-<p>싱글 스레드이기 때문에 하나의 명령어가 시간이 오래걸리는걸 사용하면 다른 명령어들이 밀려서 타임아웃이 발생.<br>그래서 조심히 사용해야 한다.</p>
-<p>ex) KEYS, FLUSHALL, FLUSHDB, Delete Collections, Get All Collections</p>
-<p>실수 사례 -  Key가 백만개 이상인데 확인을 위해 KEYS 명령을 사용하는 경우.<br>KEYS 명령은 scan 명령으로 대체 가능.<br>KEYS 는 한번에 처리, scan은 긴 명령을 짧은 여러번의 명령으로 바꾸기 때문에 타임아웃 발생 가능성 낮아짐.<br>저 사이사이에 작업들을 함.</p>
-<p>Collection의모든 item을 가져와야 할 때.<br>Collection 작은단위로 나눠서 관리하자.</p>
-<p>Springsecurity oauth Redis TokenStore 이슈.</p>
-<p>Redis Replication.<br>Replication 이라는것은 A서버의 데이터를 B서버에 변경사항도 동일하게 복제가 가능하다.</p>
-<p>Async Replication<br>-&gt; Replication Lag이 발생할 수 있다.<br>마스터에 데이터가 변경되면 슬레이브에 변경내용을 콜. 근데 이 상황에 렉이 발생하면 미매칭 될 수도 있음.<br>master-slave 용어에서 original-replica.</p>
-<p>Redis Replication 설정 과정.</p>
-<p>redis.conf 권장설정<br>Maxclient 설정 50000 -&gt; 접속 가능한 고객 수<br>RDB/AOF 설정 off -&gt; 성능개선 마스터는 꺼두고 레플리카에만 켜둔다. 필요하다면<br>특정 commands disable<br>Keys<br>AWS의 ElasticCache 이미 하고 있음.</p>
-<p>Redis 데이터 분산 방법.<br>Application<br>    - Consistent Hashing<br>        서버0,서버1, </p>
-<p>원래 서버 로드밸런싱할때 모듈러 연산을 하나?? -&gt; 리밸런싱에 취약하다.</p>
-<p>서버가 증축되었을 때 데이터가 리밸런스가 50% 이상일어나고, 자주 일어나면 좋지 않은 현상.<br>반대로 서버 하나가 장애가 일어나면 다시 리밸런스가 일어나야함.<br>이런 형태가 서버가 장애에 취약한 방식.<br>이걸 해결하기 위한 Consistent Hashing 방식.</p>
-<p>Consistent Hashing 방식<br>서버가 모듈러 연산이 아니고 해쉬 코드를 가진다. ex) 10000, 20000, 30000<br>해쉬코드 값이 서버랑 비교해서 가장 크고 가장 가까운 곳으로 가게끔 한다.<br>더 큰 코드가 없으면 원형구조로 가장 해쉬코드가 작은 작은 서버로 간다.<br>서버가 추가되거나 제거될때<br>이런식으로 하면 기존의 데이터들의 리밸런스가 영향이 있는 데이터만 하고 다른 데이터들은 수정될 필요가 없다.</p>
-<p>Sharding 방식<br>데이터를 어떻게 나눌 것인가.<br>데이터를 어떻게 찾을 것인가.</p>
-<p>하나의 데이터를 모든 서버에서 찾아야 하면?</p>
-<p>상황마다 샤딩 전략이 달라짐.</p>
-<p>가장 간단한 방법 Range 적용.<br>하나의 샤딩이 1<del>1000 Key를 가지고 두번째는 2</del>2000 이런식으로.</p>
-<p>이렇게 되면 ID가 몰리면 하나의 서버에 데이터가 집중되서 특정 서버는 놀게되는 현상이 발생.<br>다른 데이터들을 다른 서버로 옮길 수가 없고. 불균등하다.</p>
-<p>서버를 확장하는것은 쉽다 단순히 키를 증가시키면 되기 때문에.</p>
-<p>두번째 방법 modular 적용.<br>2배씩 늘리는 이유는 데이터 이주가 심플해진다. 가는 곳이 정해지기 떄문.<br>서버가 2배로 늘어나면 가야할 서버가 0 -&gt; 2, 1 -&gt; 3 이렇게 간다<br>먼 느낌인지 알듯.<br>문제가 32개의 서버에서 64개로 늘리기는 쉽지 않다.</p>
-<p>서버 한대씩 늘어나는 것은 리밸런싱이 많이 일어남.</p>
-<p>Indexed<br>해당 키가 어디에 저장되어야 할 관리 서버가 따로 존재. 그때그떄 서버들의 상태를 이서버를 확인<br>이 인덱스 서버가 죽으면 관리를 못하는 단점.</p>
-<p>Redis Cluster<br>client - primary #1 - Secondary #1<br>            primary #2 - Secondary #2<br>            primary #3 - Secondary #3</p>
-<p>Slot 단위의 데이터 관리. -&gt; 메모리 사용량이 더 많음.<br>라이브러리 구현이 필요.</p>
-<p>Redis Failover</p>
-<p>Coorinator - Zookeeper, etcd, consul?</p>
-<p>VIP 기반, DNS기반</p>
-<p>API Server 가 특정 VIP, DNS 로레디스 서버를 호출하고. 레디스 서버는 기본적으로 #1 이 이 DNS, VIP를 가리키고 있는데 장애가 발생하면. Health-checker 이거가 #2로 변경한다.<br>API Server 가 추가적인 구현이 필요없다.</p>
-<p>DNS 기반은 DNS Cache TTL을 확인해봐야함.<br>만약 이 유효기간이 길면 장애처리가 이 기간동안에는 안될 수 있음.</p>
-<p>Moitoring Factor<br>Redis Info를 통한 정보<br>RSS (Physical Memory를 얼마나 사용하고 있는가.) 이게 젤 중요<br>Used Memory<br>Connection 수 -&gt; 레디스는 싱글 스레드라서 커넥션 맺꼬 끊은거를 계속 하면 성능이 떨어진다.<br>초당 처리 요청 수</p>
-<p>Monitor 명령을 통해 사용되고 있는 명령들의 모음을 볼 수 있음.<br>이것도 성능에 영향이 있음으로 쓸때는 짧게 써야함.</p>
-<p>기본적으로 레디스는 좋으나 메모리가 빡빡하게 사용할 경우 어렵다.</p>
-<p>Redis as Cache 로 바라본다면 그래도 문제가 적게 발생.<br>이때에는 디비에 부하가 어느정도 증가하는지를 확인해야함.</p>
-<p>Redis as Persistent Store 로 본다면 좀더 주의해야 한다.<br>메모리를 절대 빡빡하게 사용하면 안됨.<br>RDB/AOF가필요하다면 Secondary에서만 구동.<br>이 방법으로 쓰는거면 돈을 많이 투자할 수 밖에 없다.</p>
-<p>——————————— 디디의레디스.</p>
-<p>레디스의 개요.</p>
-<p>remote dictionary server</p>
-<p>여기서 dictionary 는 python 에서 나오는데 map구조.</p>
-<p>In memory data structure.</p>
-<p>다양한 자료구조를 제공한다. -&gt; Collection.</p>
-<p>Cache : 나중의 요청에 대한 미리 저장해두고 나중에 빠르게 사용하는 것.</p>
-<p>메모리의 계층 구조.</p>
-<p>디스크 -&gt; 메인메모리 -&gt; 캐쉬 -&gt; 레지스터</p>
-<p>캐시(SRAM) vs 메인메로리(DRAM) ?? 구현 관점에서 궁금.</p>
-<p>메인메모리는 휘발성.</p>
-<p>원리 디비 개념은 디스크에 저장하고 가져오는 개념이였는데 메모리도 용량이 커지면서<br>메모리에서 그냥 데이터 저장하고 캐쉬 형태로 사용하는 디비가 나왔는데 이게 레디스</p>
-<p>컬렉션. (자료구조) 멤캐시드는 이걸 제공하지 않는다.</p>
-<p>자바랑 비교</p>
-<p>String : Map<br>List : LinkedList<br>Sorted Set : TreeSet</p>
-<p>자바랑 어떻게 다를 까.</p>
-<p>왜 자바의 컬렉션 프레임워크를 안 쓸까.</p>
-<p>서버가 여러대인 경우. 일관성문제 발생.<br>특정 서버에는 있고 다른 서버에서 없다.</p>
-<p>Multi-Threading 환경에서 레이스 컨디션 발생.<br>근데 레디스는 애초에 싱글 스레드인데.<br>레디스 자료구조는 임계구역에 대해서 기본적으로 동기화 처리를 제공한다.<br>그렇기 때문에 컬렉션 프레임워크를 안쓰는 거구나.</p>
-<p>여러 서버에서 공유를 해야하고, 임계구역에 대한 조치가 컬렉션 프레임워크랑 레디스의 컬렉션이 다른 점.</p>
-<p>레디스가 근데 무슨 언어로 구현되어있지?</p>
-<p>레디스가 싱글 스레드 방식으로 동작하는 이유.<br>IO 작업이 많기 때문에 -&gt; IO 쪽은 리소스가 애초에 적기 때문에 스레드가 많아도 병목현상이 발생하고 실제적으로 성능을 끌어올리기 어렵다.</p>
-<p>싱글 스레드이기 때문에 시간 복잡도가 O(N) 부터 주의해서 사용해야함. 왜냐하면 다른 작업들이 밀리게 되고 타임아웃이 발생하게 됨.</p>
-<p>메모리 관리.<br>메모리 파편화 -&gt; 실제로 더 많이 사용하는 걸로 보임. 파편화된 부분도 운영체제는 사용하는 메모리라고 인지.<br>가상 메모리의 swap -&gt; 메인메모리가 가득차게되면 이게 필수적. 디스크를 접근하는거기 때문에 지연시간이 필연적.<br>Replication -&gt; 데이터 복제하는 기능. 슬레이브 영역에 저장하는 방법.<br>복제하는 방법 Fork() -&gt;</p>
-<p>Redis Persistant -&gt; 레디스를 캐쉬의 목적이 아닌 RDB 목적으로 사용하는 방법.</p>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/13/2021-03-13-wooah-redis/" data-id="ckp45ihf3009ueswb5ybb8ah8" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/04/19/2021-04-19-async/" data-id="ckp45ihfh00b5eswb9v9r2v0h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -816,10 +351,10 @@
 
 
   
-    <article id="post-2021-03-12-matcher-any" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2021-04-15-localdate-object-to-json-type" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/12/2021-03-12-matcher-any/" class="article-date">
-  <time datetime="2021-03-11T15:54:00.000Z" itemprop="datePublished">2021-03-12</time>
+    <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/" class="article-date">
+  <time datetime="2021-04-14T15:54:00.000Z" itemprop="datePublished">2021-04-15</time>
 </a>
     
   <div class="article-category">
@@ -834,7 +369,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/12/2021-03-12-matcher-any/">Matcher any 여러 개일때와 null 있을 때</a>
+      <a class="article-title" href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
     </h1>
   
 
@@ -842,13 +377,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Test Code 작성시 Mocking을 위해서 Matcher 클래스는 유용하게 사용되는데. 파라미터가 여러 개 들어갈 경우. 실제 값과 any를 활용한 값이 섞여서 전달되면<br>정상적으로 Mocking이 되지 않는다.</p>
-<p>두번째로 null 객체를 넣고 싶을 때에는 isNull(T) 이 함수를 활용하면 된다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">when(mypageServiceMock.retrieve(isNull(PartnerVO.class), anyString(), anyString(), anyString(), anyString(), anyString(), anyBoolean(), Matchers.&lt;BookingMapper&gt;any(), anyString()))</span><br><span class="line">        .thenReturn(retrieveDetail);</span><br></pre></td></tr></table></figure>
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">mapper.registerModule(<span class="keyword">new</span> JavaTimeModule()); <span class="comment">// 추가</span></span><br><span class="line">mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS); <span class="comment">// 추가</span></span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/12/2021-03-12-matcher-any/" data-id="ckp45ihf2009peswb8196hs35" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/04/15/2021-04-15-localdate-object-to-json-type/" data-id="ckp45ihfg00b0eswb2xkj63ce" class="article-share-link">Share</a>
       
       
     </footer>
@@ -858,10 +391,10 @@
 
 
   
-    <article id="post-2021-03-04-interface" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2021-04-15-why-do-we-use-abstract" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/04/2021-03-04-interface/" class="article-date">
-  <time datetime="2021-03-03T15:54:00.000Z" itemprop="datePublished">2021-03-04</time>
+    <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/" class="article-date">
+  <time datetime="2021-04-14T15:54:00.000Z" itemprop="datePublished">2021-04-15</time>
 </a>
     
   <div class="article-category">
@@ -876,7 +409,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/04/2021-03-04-interface/">Interface</a>
+      <a class="article-title" href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
     </h1>
   
 
@@ -884,12 +417,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="추상화"><a href="#추상화" class="headerlink" title="추상화."></a>추상화.</h3><h3 id="의존성을-제거"><a href="#의존성을-제거" class="headerlink" title="의존성을 제거"></a>의존성을 제거</h3><h3 id="동일한-스타일의-대표적인-예시들"><a href="#동일한-스타일의-대표적인-예시들" class="headerlink" title="동일한 스타일의 대표적인 예시들."></a>동일한 스타일의 대표적인 예시들.</h3><p>VRAM, Docker, JVM</p>
+        <p>interface는 추상클래스랑은 다르게 규격, 규약에 가깝다. 준수해야하는 규칙이다.</p>
+<p>SOLID 에서 I 에 해당하는 ISP 보면 알 수 있듯이 이 Interface는 최소한으로 잡으며, Interface마다 분리해서 설계한다.</p>
+<p>여기서 만약 특정 Interface를 준수하여 작성된 하위클래스 3개가 있다고 하자.</p>
+<p>이 3개의 클래스들은 어느정도 공통성을 가진 기능을 구현해야할 수도 있을 것이다.</p>
+<p>이럴때 추상클래스를 Interface와 하위클래스들 사이에 구현하며 이 추상클래스에서 공통된 기능들을 구현한다.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/04/2021-03-04-interface/" data-id="ckp45ihez009feswb9yp6hq7t" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/04/15/2021-04-15-why-do-we-use-abstract/" data-id="ckp45ihfg00b3eswbcmq57f6p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -899,10 +436,10 @@
 
 
   
-    <article id="post-2021-03-04-transaction-dbms" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2021-04-15-bridge-pattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/04/2021-03-04-transaction-dbms/" class="article-date">
-  <time datetime="2021-03-03T15:54:00.000Z" itemprop="datePublished">2021-03-04</time>
+    <a href="/2021/04/15/2021-04-15-bridge-pattern/" class="article-date">
+  <time datetime="2021-04-14T15:54:00.000Z" itemprop="datePublished">2021-04-15</time>
 </a>
     
   <div class="article-category">
@@ -917,7 +454,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/04/2021-03-04-transaction-dbms/">Transaction</a>
+      <a class="article-title" href="/2021/04/15/2021-04-15-bridge-pattern/">기능클래스, 구현클래스, 브릿지패턴</a>
     </h1>
   
 
@@ -925,17 +462,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="트랜잭션"><a href="#트랜잭션" class="headerlink" title="트랜잭션"></a>트랜잭션</h3><p>하나의 논리적 작업 단위를 구성하는 일련의 연산들의 집합을 트랜잭션이라고 한다.</p>
-<p>ACID 성질</p>
-<p>Atomicity(원자성) : DBMS는 완료되지 않은 트랜잭션의 중간 상태를 데이터베이스에 반영해서는 안 된다. ‘all or nothing’</p>
-<p>Consistency(일관성) : </p>
-<p>Isolation(독립성) : 여러 트랜잭션이 동시에 수행되더라도 각각의 트랜잭션은 다른 트랜잭션의 수행에 영향을 받지 않고 독립적으로 수행되어야 한다.</p>
-<p>Durability(지속성) : 트랜잭션이 성공적으로 완료되어 커밋되고 나면, 해당 트랜잭션에 의한 모든 변경은 장애가 발생하더라도 보존되어야 한다.</p>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/04/2021-03-04-transaction-dbms/" data-id="ckp45ihf0009heswb8qv18gmf" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/04/15/2021-04-15-bridge-pattern/" data-id="ckp45ihfn00ceeswbgooh8omc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -945,10 +476,10 @@
 
 
   
-    <article id="post-2021-03-04-vram" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2021-04-07-high-level-elasticsearch-client" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/04/2021-03-04-vram/" class="article-date">
-  <time datetime="2021-03-03T15:54:00.000Z" itemprop="datePublished">2021-03-04</time>
+    <a href="/2021/04/07/2021-04-07-high-level-elasticsearch-client/" class="article-date">
+  <time datetime="2021-04-06T15:54:00.000Z" itemprop="datePublished">2021-04-07</time>
 </a>
     
   <div class="article-category">
@@ -963,7 +494,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/04/2021-03-04-vram/">Virtual Memory</a>
+      <a class="article-title" href="/2021/04/07/2021-04-07-high-level-elasticsearch-client/">스프링 부트에 high level 엘라스틱서치 클라이언트 적용</a>
     </h1>
   
 
@@ -971,55 +502,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>가상 메모리 이점</p>
-<p>모든 프로세스는 자신만의 가상 주소 공간을 가지고 있다.</p>
-<p>특정 프로세스 내에서 쓰레드가 수행될 때 해당 쓰레드는 프로세스가 소유하고 있는 메모리에 대해서만 접근이 가능하다.</p>
-<h3 id="물리-메모리와-프로세스의-분리"><a href="#물리-메모리와-프로세스의-분리" class="headerlink" title="물리 메모리와 프로세스의 분리"></a>물리 메모리와 프로세스의 분리</h3><h3 id="Demanding-Page"><a href="#Demanding-Page" class="headerlink" title="Demanding - Page"></a>Demanding - Page</h3><h3 id="Thrashing"><a href="#Thrashing" class="headerlink" title="Thrashing"></a>Thrashing</h3>
+        <h3 id="dependencies"><a href="#dependencies" class="headerlink" title="dependencies"></a>dependencies</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch.client<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>elasticsearch-rest-high-level-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Config"><a href="#Config" class="headerlink" title="Config"></a>Config</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ElasticsearchConfig</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String host = <span class="string">&quot;XXX.XXX.XXX.XXX&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> port = <span class="number">9200</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestHighLevelClient <span class="title">client</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestHighLevelClient(RestClient.builder(<span class="keyword">new</span> HttpHost(host, port, <span class="string">&quot;http&quot;</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/04/2021-03-04-vram/" data-id="ckp45ihf0009keswbff7palku" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2021-03-04-ci-cd" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/04/2021-03-04-ci-cd/" class="article-date">
-  <time datetime="2021-03-03T15:54:00.000Z" itemprop="datePublished">2021-03-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/04/2021-03-04-ci-cd/">CI CD</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Docker compose 는 docker 를 기반으로 여러 컨테이너를 구축하는 방법인가보다.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/04/2021-03-04-ci-cd/" data-id="ckp45ihf1009meswb8uw03h5z" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/04/07/2021-04-07-high-level-elasticsearch-client/" data-id="ckp45ihfe00ayeswb8g1a6q5t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1033,7 +522,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -1044,7 +533,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/gradle/">gradle</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
     </div>
   </div>
 
@@ -1059,7 +548,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
     </div>
   </div>
 
@@ -1072,23 +561,23 @@
       <ul>
         
           <li>
-            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+            <a href="/2021/06/20/2021-06-20-jpa/">Jpa</a>
           </li>
         
           <li>
-            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+            <a href="/2021/06/15/2021-06-15-kabang/">Kabang</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+            <a href="/2021/06/15/2021-06-15-jpa/">Jpa</a>
           </li>
         
           <li>
-            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+            <a href="/2021/06/14/2021-06-14-jpa/">Jpa</a>
           </li>
         
           <li>
-            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+            <a href="/2021/06/14/2021-06-14-kabang/">Jpa</a>
           </li>
         
       </ul>

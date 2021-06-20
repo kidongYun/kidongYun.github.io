@@ -64,10 +64,419 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2019-07-24-guide-system-for-engineering-college" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2019-09-23-mock-test" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/07/24/2019-07-24-guide-system-for-engineering-college/" class="article-date">
-  <time datetime="2019-07-24T02:21:54.000Z" itemprop="datePublished">2019-07-24</time>
+    <a href="/2019/09/23/2019-09-23-mock-test/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-mock-test/">Mock Test / Modulus</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">반복문 안에서 일정 주기로 적용해야하는 무언가가 있다면 Modulus 연산자를 의심해보자.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>수포자는 수학을 포기한 사람의 준말입니다. 수포자 삼인방은 모의고사에 수학 문제를 전부 찍으려 합니다. 수포자는 1번 문제부터 마지막 문제까지 다음과 같이 찍습니다. <br><br><br>1번 수포자가 찍는 방식: 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, … <br><br>2번 수포자가 찍는 방식: 2, 1, 2, 3, 2, 4, 2, 5, 2, 1, 2, 3, 2, 4, 2, 5, … <br><br>3번 수포자가 찍는 방식: 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, … <br><br><br>1번 문제부터 마지막 문제까지의 정답이 순서대로 들은 배열 answers가 주어졌을 때, 가장 많은 문제를 맞힌 사람이 누구인지 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int[] answers</span><br><span class="line">output : int[] answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42840">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>1, 2, 3번 수포자들이 문제를 찍는 방식은 모두 일정 주기로 반복된다. 이러한 문제에서 유용한 코딩 방법은 %연산자를 사용하는 것이다. <br><br> 3인의 수포자들의 찍는 방식을 저장하기 위한 배열 3개를 만들고 문제 수 만큼 반복문을 돌려 맞은 개수를 확인한다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>1, 2, 3번 수포자들의 정답지를 저장하기 위한 int[] 타입의 변수 3개를 활용하자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    Data Structure : int[]</span></span><br><span class="line"><span class="comment">    세 변수는 각각 수포자 1, 2, 3의 정답지를 의미한다.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] sol1 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] sol2 = &#123;<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] sol3 = &#123;<span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><blockquote>
+<p>문제 수(answers.length) 만큼 반복문을 돌려 각 수포자들의 정답 개수를 확인한다.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   numOfAnswers;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span> ~ answers.length) &#123;</span><br><span class="line">	<span class="keyword">if</span>(answers[i] == sol1[i%<span class="number">5</span>]) numOfAnswers[<span class="number">0</span>]++;</span><br><span class="line">	<span class="keyword">if</span>(answers[i] == sol2[i%<span class="number">8</span>]) numOfAnswers[<span class="number">1</span>]++;</span><br><span class="line">	<span class="keyword">if</span>(answers[i] == sol3[i%<span class="number">10</span>]) numOfAnswers[<span class="number">2</span>]++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-mock-test/" data-id="ckp45ihd00024eswb4syqfr81" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-number-of-py" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-number-of-py/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-number-of-py/">Number of PY / String</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String의 대소문자 구분으로 인해 문제풀이가 번거로운 경우 toUpperCase(), toLowerCase() 함수로 통일하자.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>대문자와 소문자가 섞여있는 문자열 s가 주어집니다. s에 ‘p’의 개수와 ‘y’의 개수를 비교해 같으면 True, 다르면 False를 return 하는 solution를 완성하세요. ‘p’, ‘y’ 모두 하나도 없는 경우는 항상 True를 리턴합니다. 단, 개수를 비교할 때 대문자와 소문자는 구별하지 않습니다. <br><br> 예를 들어 s가 pPoooyY면 true를 return하고 Pyy라면 false를 return합니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : String s</span><br><span class="line">output : boolean answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/12916">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>입력 파라미터 s를 toUpperCase(), toLowerCase()를 활용해 대문자 혹은 소문자로 통일하고 , s의 크기만큼 반복문을 돌려 p와 y의 개수를 센다. 결과적으로 두 수가 동일하면 true, 아니면 false를 반환한다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>입력으로 들어온 String 자료형을 그대로 사용한다. 즉 특별한 자료구조가 필요하지 않으며 다만 대문자 혹은 소문자 일치시키기 위한 작업을 선처리한다. 그리고 p, y의 개수를 체크하기 위한 int형 변수 2개를 추가한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">String s = s.toLowerCase(); <span class="comment">// 입력으로 받은 값이다</span></span><br><span class="line"><span class="keyword">int</span> p, y;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Algorithms"><a href="#Algorithms" class="headerlink" title="Algorithms"></a>Algorithms</h3><p>0부터 s의 크기만큼 반복문을 돌리고 그 안에서 p, y의 개수를 카운트한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="number">0</span> ~ s.length) &#123;</span><br><span class="line">	<span class="keyword">if</span>(s.charAt(i) == <span class="string">&#x27;y&#x27;</span>) y++;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(s.charAt(i) == <span class="string">&#x27;p&#x27;</span>)p++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-number-of-py/" data-id="ckp45ihd00025eswb4t8u97z9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-sort-using-comparator" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-sort-using-comparator/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-sort-using-comparator/">Sort using Comparator / Sort</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Comparator 클래스를 활용하여 Custom Sorting을 구현해보자.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>문자열로 구성된 리스트 strings와, 정수 n이 주어졌을 때, 각 문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다. <br><br> 예를 들어 strings가 [sun, bed, car]이고 n이 1이면 각 단어의 인덱스 1의 문자 u, e, a로 strings를 정렬합니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : String[] strings, int n</span><br><span class="line">output : String[] answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/12915">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>Array.sort() 함수는 자료의 타입이 String일 때 기본적으로 사전순으로 나열한다. 그러나 이 문제처럼 특별한 기준으로 정렬하고 싶을 때에는 Comparator 클래스를 상속하거나 Comparable 인터페이스를 구현하여 문제를 해결한다. <br><br> 비교 대상이 primitive 자료형일 경우 Comparator 클래스를 상속하는게 보다 간단하며 새로운 객체를 구현해야 하는 경우는 Comparable 인터페이스를 구현한다. <br><br> Array.sort() 함수에 두번째 파라미터로 Comparator 객체를 전달하면 이 기준으로 정렬하도록 도와준다. </p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>자료구조가 필요하지 않은 문제다.</p>
+<h3 id="Algorithms"><a href="#Algorithms" class="headerlink" title="Algorithms"></a>Algorithms</h3><p>알고리즘이라기 보다는 Comparator 클래스의 사용법을 이해하자. 특히 이 문제에서 n으로 정렬시 비기는 경우가 발생하면 사전순으로 정렬하도록 요구한다. 이럴때는 Comparator 클래스에서 return 0가 나와야 하는 부분에 compareTo() 함수를 사용해 기존의 정렬방법을 사용할수 있도록 구현한다. <br><br> 추가적으로 return 1과 return -1의 부분만 변경해주면 오름차순에서 내림차순으로 혹은 그 반대로 정렬할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Arrays.sort(strings, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(o1.charAt(n) &gt; o2.charAt(n))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(o1.charAt(n) &lt; o2.charAt(n))</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> o1.compareTo(o2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-sort-using-comparator/" data-id="ckp45ihd10028eswb65uwglvr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-string-in-descending-order" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-string-in-descending-order/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-string-in-descending-order/">String in Descending Order / Sort</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">기본적으로 설정되어 있는 char 타입의 정렬 기준은 ASC값을 따른다.</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을 리턴하는 함수, solution을 완성해주세요. <br><br> s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보다 작은 것으로 간주합니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : String s</span><br><span class="line">output : String</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42576">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>입력값으로 들어온 s를 Arrays.sort()함수를 적용하기 위해 char[] 배열로 변환하자. <br><br> 내림차순으로 정렬하기 위해서 새로운 기준이 필요한 것이 아니기 때문에 Collections.reverseOrder()를 활용하여 내림차순 정렬한다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>각 영문자들을 정렬하기 위해서 char[] 자료형을 사용해야한다. 그러나 추가적으로 사용한 Collections.reverseOrder() 함수는 primitive 자료형에는 적용할 수가 없다. 따라서 Character[] 자료형를 사용한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Data Structure : Character[]</span></span><br><span class="line">Character[] chs;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>입력값 s를 Character[] 자료형으로 변환한다. Arrays.sort()함수와 Collections.reverseOrder()를 활용하여 내림차순으로 정렬한 후 다시 String형 변환하여 답을 도출한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Character[] ch = s.chars().mapToObj(c -&gt; (<span class="keyword">char</span>)c).toArray(Character[]::<span class="keyword">new</span>);    <span class="comment">// String -&gt; Character[]  </span></span><br><span class="line">Arrays.sort(ch, Collections.reverseOrder()); <span class="comment">// Descending Sorting</span></span><br><span class="line"><span class="keyword">return</span> Arrays.stream(ch).map(String::valueOf).collect(Collectors.joining()); <span class="comment">// Character[] -&gt; String</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-string-in-descending-order/" data-id="ckp45ihd20029eswb9sdbbs7w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-workout-clothes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-workout-clothes/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-workout-clothes/">Workout Clothes / Greedy</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">Greedy 접근법의 핵심은 해당 문제에 대한 근시안적 방법이 최선의 해결책임을 증명하는 것이다.</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>점심시간에 도둑이 들어, 일부 학생이 체육복을 도난당했습니다. 다행히 여벌 체육복이 있는 학생이 이들에게 체육복을 빌려주려 합니다. 학생들의 번호는 체격 순으로 매겨져 있어, 바로 앞번호의 학생이나 바로 뒷번호의 학생에게만 체육복을 빌려줄 수 있습니다. <br><br> 예를 들어, 4번 학생은 3번 학생이나 5번 학생에게만 체육복을 빌려줄 수 있습니다. 체육복이 없으면 수업을 들을 수 없기 때문에 체육복을 적절히 빌려 최대한 많은 학생이 체육수업을 들어야 합니다. <br><br> 전체 학생의 수 n, 체육복을 도난당한 학생들의 번호가 담긴 배열 lost, 여벌의 체육복을 가져온 학생들의 번호가 담긴 배열 reserve가 매개변수로 주어질 때, 체육수업을 들을 수 있는 학생의 최댓값을 return 하도록 solution 함수를 작성해주세요.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int n, int[] lost, int[] reserve</span><br><span class="line">output : int[] answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42862">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>이 문제를 Greedy하게 풀 수 있음을 나타내는 부분은 바로 체격의 조건이다. 여벌의 체육복을 가지고 있는 학생이 지원할 수 있는 범위는 자신의 앞 번호와 뒷 번호 그 둘로 제한되어 있다. <br><br> 이제 문제를 가장 잘 해결하기 위한 자료구조를 선정해야 한다. 앞 번호와 뒷 번호를 명확히 보이게 하기 위해 각 학생들을 번호순으로 일렬로 나열시키고 체육복의 개수를 나타내게 하자. 즉 int[] 배열에 학생 번호 순서대로 각 학생들이 가지고 있는 체육복 개수를 넣는다. <br><br> 맨 앞번호 부터 끝번호까지 체육복이 없는 사람이 있다면 여유가 있는 앞 뒤 학생이 빌려주도록 반복한다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>각 학생들의 체육복의 개수를 나타내기 위한 int[] 자료형을 사용한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    Data Structure : int[]</span></span><br><span class="line"><span class="comment">    각 값들은 학생이 가지고 있는 체육복의 개수를 의미</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">int</span>[] students;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>체육복이 없는 학생의 경우 그 앞, 뒤에 있는 학생이 여벌이 있다면 빌려주도록 하자. 최종적으로 students 배열에 1이상의 수를 세면 정답이 된다. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="number">1</span> ~ students.length) &#123;</span><br><span class="line">	<span class="keyword">if</span>(students[i] == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(students[i-<span class="number">1</span>] == <span class="number">2</span>) &#123;</span><br><span class="line">			students[i-<span class="number">1</span>]--; students[i]++;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(students[i+<span class="number">1</span>] == <span class="number">2</span>) &#123;</span><br><span class="line">			students[i+<span class="number">1</span>]--; students[i]++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-workout-clothes/" data-id="ckp45ihd3002deswbgk7zhhoh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-23-sum-between-two-integers" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/2019-09-23-sum-between-two-integers/" class="article-date">
+  <time datetime="2019-09-23T02:21:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/2019-09-23-sum-between-two-integers/">Sum between Two Integers / Arithmetic Sequence</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><p>$$ sum = {(first + last) size \over 2} $$</p>
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>두 정수 a, b가 주어졌을 때 a와 b 사이에 속한 모든 정수의 합을 리턴하는 함수, solution을 완성하세요. <br><br> 예를 들어 a = 3, b = 5인 경우, 3 + 4 + 5 = 12이므로 12를 리턴합니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int a, int b</span><br><span class="line">output : long answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/12912">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>반복문을 활용하여 a부터 b까지의 합을 구할수도 있지만 등차수열의 합 공식을 활용하면 훨씬 효율적인 방법으로 계산할 수 있다. <br><br> <em>‘두 정수 사이의 합 = (첫항 + 끝항) * 항의 개수 / 2’</em> 을 활용하면 바로 정답을 구할 수 있다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>자료구조가 필요하지 않은 문제다.</p>
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>등차수열의 합을 활용하자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">return</span> (a+b) * (a-b+<span class="number">1</span>) / <span class="number">2</span>; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/09/23/2019-09-23-sum-between-two-integers/" data-id="ckp45ihd5002heswb0vr14xv1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-28-network" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/11/2019-09-28-network/" class="article-date">
+  <time datetime="2019-08-11T02:21:54.000Z" itemprop="datePublished">2019-08-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/11/2019-09-28-network/">Network / DFS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Core"><a href="#Core" class="headerlink" title="Core"></a>Core</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">그래프에서 서로 연결되어 있지 않은 경우를 생각해보자.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>네트워크란 컴퓨터 상호 간에 정보를 교환할 수 있도록 연결된 형태를 의미합니다. 예를 들어, 컴퓨터 A와 컴퓨터 B가 직접적으로 연결되어있고, 컴퓨터 B와 컴퓨터 C가 직접적으로 연결되어 있을 때 컴퓨터 A와 컴퓨터 C도 간접적으로 연결되어 정보를 교환할 수 있습니다. 따라서 컴퓨터 A, B, C는 모두 같은 네트워크 상에 있다고 할 수 있습니다. <br><br> 컴퓨터의 개수 n, 연결에 대한 정보가 담긴 2차원 배열 computers가 매개변수로 주어질 때, 네트워크의 개수를 return 하도록 solution 함수를 작성하시오.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input : int n, int[][] computers</span><br><span class="line">output : int answer</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/43162">문제 보기</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>그래프의 모든 노드를 탐색하면서 서로 연결되어있다면 그냥 지나가고 그렇지 않다면 네트워크가 구분되어져 있는것으로 간주할 수 있기 때문에 answer++ 해준다. <br><br> 그래프를 탐색시 DFS 알고리즘을 활용한다. DFS 알고리즘은 깊이를 우선하여서 모든 노드를 탐색하는 것으로. 간선으로 연결되어 있다는 가정 하에 모든 노드들에 접근이 가능하다. <br><br> 즉 DFS 알고리즘의 노드들이 간선으로 연결 되어진 경우에만 탐색이 가능하다 이는 하나의 네트워크임을 의미하며 모든 노드가 방문할 수 있도록 DFS 알고리즘을 반복한다. 최종적으로 DFS 알고리즘이 몇번 반복되어졌는지에 따라서 네트워크의 개수가 결정된다.</p>
+<h3 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h3><p>각 노드들의 방문여부를 확인하기 위해서 boolean[] visits 변수를 선언한다. 그리고 그래프를 표현하기 위한 데이터는 입력 파라미터에 인접행렬 int[][] computers로 주어졌음으로 그대로 사용한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">boolean</span>[] visits;       <span class="comment">// 노드 방문여부를 확인하기 위한 flag 변수</span></span><br><span class="line"><span class="keyword">int</span>[][] computers;      <span class="comment">// 각 간선들의 가중치 값 </span></span><br><span class="line">                        <span class="comment">// (여기서는 1과 0으로 오로지 연결됨과 그렇지 않음만을 나타낸다.)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>DFS 알고리즘을 반복문 코드와 재귀 호출 코드 두가지로 구현한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(target)</span> </span>&#123;</span><br><span class="line">    visits[target] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// to do something</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++)</span><br><span class="line">        <span class="keyword">if</span>(!visits[i] &amp;&amp; computers[target][i] != <span class="number">0</span>)</span><br><span class="line">            dfs(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>DFS 알고리즘은 서로 연결된 곳만 확인이 가능함으로 별도의 네트워크는 DFS 한바퀴를 돈다 해도 방문할수 없다. <br> 이를 활용하여 모든 노드에 대하여 반복문을 취하고 방문하지 않았을 때 새로운 네트워크로 간주하여 갯수를 올린다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Solution</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!visits[i]) &#123;</span><br><span class="line">            count++;</span><br><span class="line">            dfs(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/11/2019-09-28-network/" data-id="ckp45ihd7002oeswbdt8u51e5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-28-scanner" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/11/2019-09-28-scanner/" class="article-date">
+  <time datetime="2019-08-11T02:21:54.000Z" itemprop="datePublished">2019-08-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/11/2019-09-28-scanner/">Scanner</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">표준입력 클래스인 Scanner에 대해서 정리해두자.</span><br></pre></td></tr></table></figure>
+
+<h3 id="Scanner-인스턴스-생성"><a href="#Scanner-인스턴스-생성" class="headerlink" title="Scanner 인스턴스 생성"></a>Scanner 인스턴스 생성</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;   <span class="comment">// Scanner Class 가져오기.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);    <span class="comment">// sc 인스턴스 생성.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="int-lt-scanner-nextInt"><a href="#int-lt-scanner-nextInt" class="headerlink" title="int &lt;- scanner.nextInt()"></a>int &lt;- scanner.nextInt()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> num1 = sc.nextInt();</span><br><span class="line"><span class="keyword">int</span> num2 = sc.nextInt();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 입력시 띄어쓰기로 두개의 값이 구분됨으로 개행을 해줄 필요는 없다.</span></span><br><span class="line"><span class="comment">// 물론 개행도 가능하다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="int-lt-scanner-nextInt-1"><a href="#int-lt-scanner-nextInt-1" class="headerlink" title="int[] &lt;- scanner.nextInt()"></a>int[] &lt;- scanner.nextInt()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> num[];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++)</span><br><span class="line">    num[i] = sc.nextInt();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 배열을 위한 별도의 입력 라이브러리가 존재하지 않는다.</span></span><br><span class="line"><span class="comment">// 반복문을 활용하여 구현하여야 한다.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="double-lt-scanner-nextDouble"><a href="#double-lt-scanner-nextDouble" class="headerlink" title="double &lt;- scanner.nextDouble()"></a>double &lt;- scanner.nextDouble()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">double</span> num1 = sc.nextDouble();</span><br><span class="line"><span class="keyword">double</span> num2 = sc.nextDouble();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 입력시 띄어쓰기로 두개의 값이 구분됨으로 개행을 해줄 필요는 없다.</span></span><br><span class="line"><span class="comment">// 물론 개행도 가능하다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="double-lt-scanner-nextDouble-1"><a href="#double-lt-scanner-nextDouble-1" class="headerlink" title="double[] &lt;- scanner.nextDouble()"></a>double[] &lt;- scanner.nextDouble()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">double</span> num[];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++)</span><br><span class="line">    num[i] = sc.nextDouble();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 배열을 위한 별도의 입력 라이브러리가 존재하지 않는다.</span></span><br><span class="line"><span class="comment">// 반복문을 활용하여 구현하여야 한다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="char-lt-scanner-next-charAt-0"><a href="#char-lt-scanner-next-charAt-0" class="headerlink" title="char &lt;- scanner.next().charAt(0)"></a>char &lt;- scanner.next().charAt(0)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">char</span> ch1 = sc.next().charAt(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">char</span> ch2 = sc.next().charAt(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 입력시 띄어쓰기로 두개의 값이 구분됨으로 개행을 해줄 필요는 없다.</span></span><br><span class="line"><span class="comment">// 물론 개행도 가능하다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="char-lt-scanner-nextLine-toCharArray"><a href="#char-lt-scanner-nextLine-toCharArray" class="headerlink" title="char[] &lt;- scanner.nextLine().toCharArray()"></a>char[] &lt;- scanner.nextLine().toCharArray()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">char</span>[] ch = sc.nextLine().toCharArray();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 띄어쓰기와 개행없이 한번에 입력시킬 수 있다.</span></span><br><span class="line"><span class="comment">// 만약 문제에서 띄어쓰기가 있다면 위 char &lt;- scanner.next().charAt(0) 방법을 반복문 돌리면 될 것이다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="String-lt-scanner-nextLine"><a href="#String-lt-scanner-nextLine" class="headerlink" title="String &lt;- scanner.nextLine()"></a>String &lt;- scanner.nextLine()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">String str = sc.nextLine();</span><br><span class="line"></span><br><span class="line"><span class="comment">// nextLine() 함수는 개행을 기준으로 입력된 문자열들을 구분한다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="String-lt-scanner-next"><a href="#String-lt-scanner-next" class="headerlink" title="String[] &lt;- scanner.next()"></a>String[] &lt;- scanner.next()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">String[][] map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;length; i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;length; j++)</span><br><span class="line">        map[i][j] = sc.next()</span><br><span class="line"></span><br><span class="line"><span class="comment">// String 자료형의 2차원 배열에 데이터를 채울때 반복문을 사용하여 많이 사용한다.</span></span><br><span class="line"><span class="comment">// 띄어쓰기와 개행 모두로 입력 구분이 가능함으로 효율적으로 입력이 가능하다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/08/11/2019-09-28-scanner/" data-id="ckp45ihd8002seswb1hteayl4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-08-06-image-search-using-kakao-api" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/06/2019-08-06-image-search-using-kakao-api/" class="article-date">
+  <time datetime="2019-08-06T02:21:54.000Z" itemprop="datePublished">2019-08-06</time>
 </a>
     
   <div class="article-category">
@@ -82,7 +491,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/24/2019-07-24-guide-system-for-engineering-college/">Ecguide</a>
+      <a class="article-title" href="/2019/08/06/2019-08-06-image-search-using-kakao-api/">Image Search (Kakaopay Internship)</a>
     </h1>
   
 
@@ -90,19 +499,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-Background"><a href="#1-Background" class="headerlink" title="1. Background"></a>1. Background</h3><p>공과대학 건물은 하늘에서 보면 ‘ㅍ’모양으로 많은 사람들이 길을 잃기 쉽게 만들어진 구조입니다. 또 5층 건물로 약 200개의 교수실, 연구실, 강의실들이 있어서 한번에 그 장소를 찾기는 쉽지 않습니다. 그래서 공과대학 정문에 키오스크 단말기를 설치하여 필요시 간편하게 위치를 찾을 수 있도록 안내해주는 서비스입니다. <br><br> 총 4명이 함께 진행한 프로젝트입니다. <br> <em>프로젝트 관리 - 공과대학장</em> <br> <em>3D 지도 이미지 구현 - 건축학과 학생</em> <br> <em>웹 디자인 - 컴퓨터공학과 학생</em> <br> <em>웹 서버 및 기능 구현 - 컴퓨터공학과 학생</em> <br><br> <strong>저는 웹 서버 및 기능 구현을 담당했습니다.</strong></p>
-<p><img src="/res/2019-07-24-guide-system-for-engineering-college/ecguide.png"></p>
-<h3 id="2-Environment"><a href="#2-Environment" class="headerlink" title="2. Environment"></a>2. Environment</h3><p><em>Server : Linux + Apache + Mysql + PHP</em> <br> <em>Language : HTML+CSS+JS</em> <br> <em>Library : JQuery, Google Speech API</em></p>
-<h3 id="3-Technical-Detail"><a href="#3-Technical-Detail" class="headerlink" title="3. Technical Detail"></a>3. Technical Detail</h3><p><strong>1. Google Speech API는 SSL 위에서 동작합니다.</strong> <br><br>Google Speech API는 테스트 환경에서 문제없이 동작했습니다. 그러나 원광대학교 서버에 이 서비스를 올리고 실행해보니 STT 서비스가 잘 동작하지 않았습니다. 문제는 HTTP에서 이 서비스를 지원하지 않는 것이였습니다. 반드시 HTTPS 를 써야하는데 원광대학교 서버가 이를 지원하지 않았습니다. 그래서 아쉽게도 최종 결과물에서는 STT기능이 제외되어 있습니다. <br><br><br><strong>2. Domain Name System 구조에 대한 이해</strong> <br> 예전에 CCNA를 공부할 때 각 시스템의 <em>hosts</em> 파일을 통해 IP에 Domain Name을 설정할 수 있음을 알고 있었습니다. 그러나 <em>ecguide.wku.ac.kr</em> 의 의미는 ‘한국(kr) 도메인 서버에 저장된 많은 리스트 중에 아카데미(ac) 도메인 서버로 연결되고, 또 이 서버의 리스트들 중 원광대(wku) 도메인 서버가 연결되고, 마지막으로 ecguide가 원광대(wku) 도메인 서버에 물려있다는 의미’임을 이번에 확실히 이해하게 되었습니다.</p>
-<h3 id="4-Impression"><a href="#4-Impression" class="headerlink" title="4. Impression"></a>4. Impression</h3><p><strong>1. 업무시 의사소통의 중요성</strong> <br><br>이 프로젝트 진행 시에 저 스스로에게 가장 아쉬웠던건 교수님의 제안에 대해서 한번도 부정적인 언급을 하지 못했다는 것입니다.<br>시간이 많이 소요되는 작업이면 그렇다고 이야기를 해야하고, 또 나의 역량 밖의 업무인지 아닌지를 이야기를 해야하는데 그렇게 하지를 못했던 것 같습니다. 프로젝트를 함께한다면 일방향적인 소통이 아니라 모두 자신의 이야기를 해야한다는 중요성을 느꼈습니다.<br><br><br> <strong>2. 디자인은 디자이너에게</strong> <br><br>전공자는 다르다는 말은 음악할 때도 그렇고 여러번 들었던 이야기 인데 이번 프로젝트를 하면서도 느끼게 되었습니다. 자원이 된다면 해당 업무는 해당 업무의 전공자에게 맡기는게 대부분의 경우 최선의 선택이라는 것을 느꼈습니다.</p>
+        <h3 id="1-Background"><a href="#1-Background" class="headerlink" title="1. Background"></a>1. Background</h3><p>카카오 인턴쉽 과제로 Kakao Image Search API를 활용한 어플리케이션을 제작하였습니다. 약 7일간 진행하는 소규모 프로젝트이므로 시간관리는 물론 주어진 기능들을 우선적으로 개발하는 것과 본인 역량 가능한 범위 내에 유용한 기능들을 개발하는 것이 중요했습니다.</p>
+<p><img src="/res/2019-08-06-image-search-using-kakao-api/ui.png"></p>
+<h3 id="2-Environment"><a href="#2-Environment" class="headerlink" title="2. Environment"></a>2. Environment</h3><p><em>Platform : Anroid Native App</em> <br> <em>Language : Java</em> <br> <em>Library : ConstraintLayout, JSONObject, Snackbar, PhotoView</em></p>
+<h3 id="3-Technical-Detail"><a href="#3-Technical-Detail" class="headerlink" title="3. Technical Detail"></a>3. Technical Detail</h3><p><strong>1. ConstraintLayout</strong> <br> 이전에 WKU라는 프로젝트를 진행할 때에는 <em>LinearLayout</em> 과 <em>RelativeLayout</em> 을 적절히 섞어가면서 Layout작업을 진행했었습니다. IOS Storyboard에서 사용하는 제약조건을 활용한 레이아웃 디자인이 강력하다 생각했었는데 이것이 안드로이드에서는 <em>ConstraintLayout</em> 임을 이번에 알게 되었고, 정말 편리하다는 느낌을 얻었습니다. <br><br> <strong>2. Animation</strong> <br> 이번 프로젝트에는 <em>Scale Animation</em>, <em>Scroll Animation</em>, <em>Color Animation</em> 3가지 종류의 animation이 들어갔습니다. Scale은 <em>Animation</em>      객체를 상속하여 구현하였고, Scroll은 <em>touchListener</em>, <em>Animation</em> 를 상속, 마지막으로 Color는 <em>ValueAnimator</em> 를 사용하였습니다. <br><br> <strong>3. DownloadManager</strong> <br> 이미지 다운로드 기능을 구현하기 위하여 <em>DownloadManager</em> 객체를 활용하였습니다. <em>checkPermission</em> 을 통하여 예외처리를 구현하고 <em>BroadcastReceiver</em> 를 통해 다운로드가 완료되었을 때 <em>Snackbar</em> 알림을 띄우도록 했습니다.</p>
 <p><br><br></p>
-<p><a target="_blank" rel="noopener" href="http://ecguide.wku.ac.kr/Ecguide/home.php">Sample Site</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/kidongyun/ecguide">Github Source code</a></p>
+<p><a href="/workspace/project/kakao_search/res/kidongyun.apk">kidongyun.apk</a></p>
+<p><a href="/workspace/project/kakao_search/res/source_code.zip">source_code.zip</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kidongYun/ImageSearchApplication/blob/master/kidongyun.apk">kidongyun.apk - From Github</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kidongyun/ImageSearchApplication">Source code - From Github</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2019/07/24/2019-07-24-guide-system-for-engineering-college/" data-id="ckp45ihci000seswb8z9zgl8v" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2019/08/06/2019-08-06-image-search-using-kakao-api/" data-id="ckp45ihcs001meswbby3i5fms" class="article-share-link">Share</a>
       
       
     </footer>
@@ -112,14 +522,14 @@
 
 
   
-    <article id="post-2019-07-24-wonkwang-restaurant-social-application" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2019-08-05-normalization-overfitting-underfitting" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/07/24/2019-07-24-wonkwang-restaurant-social-application/" class="article-date">
-  <time datetime="2019-07-24T02:21:54.000Z" itemprop="datePublished">2019-07-24</time>
+    <a href="/2019/08/05/2019-08-05-normalization-overfitting-underfitting/" class="article-date">
+  <time datetime="2019-08-05T02:21:54.000Z" itemprop="datePublished">2019-08-05</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/project/">project</a>
+    <a class="article-category-link" href="/categories/ai/">ai</a>
   </div>
 
   </div>
@@ -130,7 +540,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/24/2019-07-24-wonkwang-restaurant-social-application/">Onebowl</a>
+      <a class="article-title" href="/2019/08/05/2019-08-05-normalization-overfitting-underfitting/">Normalization, Overfitting, Underfitting</a>
     </h1>
   
 
@@ -138,575 +548,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-Background"><a href="#1-Background" class="headerlink" title="1. Background"></a><strong>1. Background</strong></h3><p>소프트웨어공학 과목 수업에서 진행된 프로젝트입니다. 미리 제시된 아이디어를 가지고 Waterfall모델로 문서자체를 중시해서 프로젝트를 설계하고 한 단계씩 신중하게 진행하는 것이 핵심 목표였습니다 <br><br> 제가 프로젝트를 진행한 과정입니다. <br> <em>1. 요구사항 분석 - 요구사항 명세서 작성</em> <br> <em>2. 설계 - 기능 분석, 클래스 다이어그램, UX/UI설계</em> <br> <em>3. 구현 - 개발 및 디자인 작업</em> <br> <em>4. 유지보수 - 테스트 및 버전 업데이트</em> <br><br> 6명의 인원이 함께 진행하는 프로젝트였고 그 중 저는 프로젝트 매니지먼트와 서버 및 기능 구현 그리고 Phonegap,Cordova를 활용한 Converting 작업을 담당했습니다.</p>
-<p><img src="/res/2019-07-24-wonkwang-restaurant-social-application/onebowl.png"></p>
-<h3 id="2-Environment"><a href="#2-Environment" class="headerlink" title="2. Environment"></a><strong>2. Environment</strong></h3><p><em>Server : LAMP Web server</em> <br> <em>Language : HTML+CSS+JS</em> <br> <em>Framework : Phonegap, Cordova</em></p>
-<h3 id="3-Technical-Detail"><a href="#3-Technical-Detail" class="headerlink" title="3. Technical Detail"></a><strong>3. Technical Detail</strong></h3><p><strong>Phonegap, Cordova를 활용한 Hybrid Mobile Application</strong> <br> 당시에는 Phonegap, Cordova를 활용해 CLI기반으로 웹 소스를 직접 Native App에 맞게끔 변환시켜서 사용하였습니다. 변환 자체가 간단한게 장점이지만 어플리케이션이 굉장히 버벅거리는 것을 느꼈습니다. 이는 Cordova가 Webview를 기반으로 Converting 작업을 진행하기 때문이라는 것을 알았고 또 디바이스 종속적인 기능들을 사용하기가 어려움을 알았습니다. <br><br></p>
-<h3 id="4-Impression"><a href="#4-Impression" class="headerlink" title="4. Impression"></a><strong>4. Impression</strong></h3><p><strong>Waterfall 보다는 Agile</strong> <br>정상적인 방법으로는 문서를 먼저 다 작성하고 이를 기반으로 코딩을 해야하나 짧은 기간으로 인해 먼저 구현을 하고 이를 기반으로 문서 작업을 진행하였습니다. 부수적인 문서작업은 정말로 많은 시간을 요구하였습니다. 그것보다는 실무중심적으로 회의를 지속적으로 진행해 피드백이 보다 왕성해지고 문서보다는 작품으로 결과물을 보여줘서 수정이 필요한 부분을 빠르게 찾아내는 것이 훨씬 효율적임을 알았습니다.</p>
-<br>
-
-<p><a target="_blank" rel="noopener" href="https://github.com/kidongyun/onebowl">Github Source code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/07/24/2019-07-24-wonkwang-restaurant-social-application/" data-id="ckp45ihcj000teswbcguodm8y" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-25-css-flexbox" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/25/2019-05-25-css-flexbox/" class="article-date">
-  <time datetime="2019-05-24T23:47:54.000Z" itemprop="datePublished">2019-05-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/css/">css</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/25/2019-05-25-css-flexbox/">How to use Flexbox basically</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>CSS에서 <em>flex</em> 속성을 사용하는 기본적인 방법을 알아보자.</p>
-<h3 id="1-기본-설정"><a href="#1-기본-설정" class="headerlink" title="1. 기본 설정"></a>1. 기본 설정</h3><p>우선 테스트를 위한 간단한 html 코드와 css 코드를 작성하자.</p>
-<h4 id="flex-html"><a href="#flex-html" class="headerlink" title="flex.html"></a>flex.html</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;parent&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;child1&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;child2&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;child3&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span>                </span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>flex 속성이 어떻게 반영되는지 알기 위해 <em>parent</em> 와 <em>child</em> 요소들에 색상과 크기를 정의해주자.</p>
-<h4 id="flex-css"><a href="#flex-css" class="headerlink" title="flex.css"></a>flex.css</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#cccccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.child1</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#222222</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.child2</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#555555</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.child3</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#888888</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/res/2019-05-25-css-flexbox/1.png"></p>
-<h3 id="2-flex-container-flex-item"><a href="#2-flex-container-flex-item" class="headerlink" title="2. flex container, flex item"></a>2. flex container, flex item</h3><p>flex를 사용할 때는 요소가 크게 두가지로 나누어 지는데 </p>
-<p><em>flex.html</em> 를 보면 알수 있듯이 부모요소와 자식요소로 이루어져 있다.</p>
-<p>부모요소를 <em>flex container</em>, 자식요소는 <em>flex item</em> 라고 부른다.</p>
-<p><em>flex</em> 속성을 사용하기 위해서는 먼저 <strong>부모 요소의 <em>display</em> 에 <em>flex</em> 속성을 주어야한다.</strong></p>
-<h4 id="flex-css-1"><a href="#flex-css-1" class="headerlink" title="flex.css"></a>flex.css</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#cccccc</span>;</span><br><span class="line">    display: flex;                  // NEW CODE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>이렇게 되면 parent요소 안에 있는 자식 요소들은 flex 속성들을 사용할 수 있다.</p>
-<p><img src="/res/2019-05-25-css-flexbox/2.png"></p>
-<p>단순히 <em>display: flex;</em> 속성을 준 것 만으로도 변화가 생긴 것을 볼 수 있다.</p>
-<p>위에서 아래로 정렬되던 것이 왼쪽에서 오른쪽으로 바뀌었다.</p>
-<h3 id="3-flex-direction"><a href="#3-flex-direction" class="headerlink" title="3. flex-direction"></a>3. flex-direction</h3><p><strong>flex는 기본적으로 flex item들의 정렬을 왼쪽에서 오른쪽으로 진행한다.</strong></p>
-<p>즉 flex의 정렬기준, 정렬방향을 담당하는 <em>flex-direction</em> 속성이 기본적으로 <em>row</em> 의 값을 가지고 있다.</p>
-<p>만약 다시 위에서 아래로 정렬을 하고 싶다면 <em>flex-direction</em> 속성을 <em>column</em> 으로 바꾸면 된다.</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#cccccc</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    flex-direction: column;         // NEW CODE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>혹시나 오른쪽에서 왼쪽, 아래쪽에서 위로와 같이 정렬방식을 역으로 진행하고 싶다면.</p>
-<p><em>flex-direction_에 _row-reverse</em> 속성이나 <em>column-reverse</em> 속성을 적용해 주자.</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#cccccc</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    flex-direction: row-reverse;    // NEW CODE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="flex-direction-row"><a href="#flex-direction-row" class="headerlink" title="flex-direction: row"></a>flex-direction: row</h4><p><img src="/res/2019-05-25-css-flexbox/1.png"></p>
-<h4 id="flex-direction-column"><a href="#flex-direction-column" class="headerlink" title="flex-direction: column"></a>flex-direction: column</h4><p><img src="/res/2019-05-25-css-flexbox/2.png"></p>
-<h4 id="flex-direction-row-reverse"><a href="#flex-direction-row-reverse" class="headerlink" title="flex-direction: row-reverse"></a>flex-direction: row-reverse</h4><p><img src="/res/2019-05-25-css-flexbox/3.png"></p>
-<h4 id="flex-direction-column-reverse"><a href="#flex-direction-column-reverse" class="headerlink" title="flex-direction: column-reverse"></a>flex-direction: column-reverse</h4><p><img src="/res/2019-05-25-css-flexbox/4.png"></p>
-<h3 id="4-justify-content"><a href="#4-justify-content" class="headerlink" title="4. justify-content"></a>4. justify-content</h3><p>flex에서 <em>justify-content</em> 속성은 수평 방향의 정렬 방식을 설정하는 속성이다.</p>
-<p>앞, 뒤, 가운데 등 어디에 배치 할지 혹은 여유공간은 어떻게 둘지 등을 설정할 수 있다.</p>
-<p>flex container에 이 속성을 적용하게 되면 flex item 들이 해당 정렬 방식대로 적용된다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">justify-content: flex-start;    &#x2F;&#x2F; 앞쪽을 기준으로 배치 (기본값)</span><br><span class="line">justify-content: flex-end;      &#x2F;&#x2F; 뒤쪽을 기준으로 배치</span><br><span class="line">justify-content: center;        &#x2F;&#x2F; 가운데를 기준으로 배치</span><br><span class="line">justify-content: space-between; &#x2F;&#x2F; flex item 요소들 사이에만 동일한 여유 공간을 두고 배치</span><br><span class="line">justify-content: space-around;  &#x2F;&#x2F; 모든 여백에 동일한 여유 공간을 두고 배치</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>주로 위의 5개 속성을 주로 사용하며 아래와 같이 _parent_에 적용해보자.</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#cccccc</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-direction</span>: row;</span><br><span class="line">    justify-content: flex-start;        // NEW CODE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="justify-content-flex-start"><a href="#justify-content-flex-start" class="headerlink" title="justify-content: flex-start"></a>justify-content: flex-start</h4><p><img src="/res/2019-05-25-css-flexbox/2.png"></p>
-<h4 id="justify-content-flex-end"><a href="#justify-content-flex-end" class="headerlink" title="justify-content: flex-end"></a>justify-content: flex-end</h4><p><img src="/res/2019-05-25-css-flexbox/5.png"></p>
-<h4 id="justify-content-center"><a href="#justify-content-center" class="headerlink" title="justify-content: center"></a>justify-content: center</h4><p><img src="/res/2019-05-25-css-flexbox/6.png"></p>
-<h4 id="justify-content-space-between"><a href="#justify-content-space-between" class="headerlink" title="justify-content: space-between"></a>justify-content: space-between</h4><p><img src="/res/2019-05-25-css-flexbox/7.png"></p>
-<h4 id="justify-content-space-around"><a href="#justify-content-space-around" class="headerlink" title="justify-content: space-around"></a>justify-content: space-around</h4><p><img src="/res/2019-05-25-css-flexbox/8.png"></p>
-<h3 id="4-align-items"><a href="#4-align-items" class="headerlink" title="4. align-items"></a>4. align-items</h3><p><em>justify-content</em> 가 수평에 대한 정렬방식이라면 <em>align-items</em> 는 수직적인 정렬방식을 설정할 수 있다. </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">align-items: stretch;           &#x2F;&#x2F; flex item이 flex container의 높이와 같고 연이어 배치 (기본값)</span><br><span class="line">align-items: flex-start;        &#x2F;&#x2F; 위쪽 기준으로 배치</span><br><span class="line">align-items: center;            &#x2F;&#x2F; 가운데 기준으로 배치</span><br><span class="line">align-items: flex-end;          &#x2F;&#x2F; 아래쪽 기준으로 배치</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><em>justify-content</em> 와 마찬가지로 parent 요소에 적용해보자.</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#cccccc</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-direction</span>: row;</span><br><span class="line">    <span class="attribute">align-items</span>: stretch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="align-items-stretch"><a href="#align-items-stretch" class="headerlink" title="align-items: stretch"></a>align-items: stretch</h4><p><img src="/res/2019-05-25-css-flexbox/9.png"></p>
-<h4 id="align-items-flex-start"><a href="#align-items-flex-start" class="headerlink" title="align-items: flex-start"></a>align-items: flex-start</h4><p><img src="/res/2019-05-25-css-flexbox/2.png"></p>
-<h4 id="align-items-center"><a href="#align-items-center" class="headerlink" title="align-items: center"></a>align-items: center</h4><p><img src="/res/2019-05-25-css-flexbox/11.png"></p>
-<h4 id="align-items-flex-end"><a href="#align-items-flex-end" class="headerlink" title="align-items: flex-end"></a>align-items: flex-end</h4><p><img src="/res/2019-05-25-css-flexbox/10.png"></p>
-<p>다만 stretch는 중요하게도 flex item의 높이 값이 flex container와 같아진다.</p>
-<p>그래서 child 요소들에 height값을 넣어두면 stretch가 우선순위에 밀려 적용되지 않는다.</p>
-<p>따라서 stretch 속성은 다른것들과 별개로 적용시 아래처럼 child 요소들의 height 속성을 제거해주자.</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#cccccc</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-direction</span>: row;</span><br><span class="line">    <span class="attribute">align-items</span>: stretch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.child1</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    // height: 60px;</span><br><span class="line">    <span class="selector-tag">background-color</span>: <span class="selector-id">#222222</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.child2</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    // height: 60px;</span><br><span class="line">    <span class="selector-tag">background-color</span>: <span class="selector-id">#555555</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.child3</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    // height: 60px;</span><br><span class="line">    <span class="selector-tag">background-color</span>: <span class="selector-id">#888888</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>flexbox를 사용하는 방법은 더욱 더 다양하고 조금 더 깊게 연구 해볼 필요가 있다.</p>
-<p>그러나 위에 있는 기본적인 내용들을 숙지하고 프로젝트에 들어간다면 스스로 고민해보면서</p>
-<p>다양한 형태의 UI의 레이아웃들을 구성할 수 있을 것이다.</p>
-<p>그리고 flexbox가 왜 이렇게 까지 대중화 되었는지도 이해할 수 있을 것이다.</p>
+        <h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2><p>입력 데이터를 들어오는 그대로 사용하면 문제가 생길수도 있다. 예를 들어 2개의 입력을 받아서 1개의 결과를 도출하는 Machine Learning Model이라고 생각해보자. 근데 이 2개의 입력 값의 범주가 1개는 1 ~ 10 범위를 가지고 있고 다른 하나는 1000 ~ 10000이라면 단지 이 데이터의 수치에 의해 그 입력값의 가중치가 결정되어 버린다. 이를 위해 입력 데이터를 적절히 선처리작업을 진행해야 한다.</p>
+<p><img src="/res/2019-08-05-normalization-overfitting-underfitting/1.PNG"></p>
+<p>Unnormalized의 경우 모델의 Coutour Plot이 찌그러져서 나타나는 걸 볼 수 있다. 이는 입력값에 존재하는 차이 때문에 그럴수 있다. 이를 개선하기 위해 Normalization을 진행한다. 이는 각 입력값들의 차이를 없애주는 작업으로써 아래의 수식을 적용하면 간단하게 마무리 된다.</p>
+<p>$$ x_{normalized} = { {x_{origin} - average} \over range } $$</p>
+<p>원래의 x값에 해당 데이터들의 평균값으로 뺴주고난 다음 그 데이터의 범위(range) 만큼으로 나누어 준다. range 값은 데이터 중 최대값 - 최소값이 될수도 있으며 Deviation을 구할 수도 있다. 이를 통해 입력 값들의 차이를 줄이고 모델은 보다 나은 학습을 진행할 수 있다.</p>
+<h2 id="Overfitting-Underfitting"><a href="#Overfitting-Underfitting" class="headerlink" title="Overfitting, Underfitting"></a>Overfitting, Underfitting</h2><p><img src="/res/2019-08-05-normalization-overfitting-underfitting/2.PNG"></p>
+<p>이전에 서술한 Linear Regression의 경우는 실제로 문제를 다룰 때에는 High bias한 경우가 많다. 이 말은 너무 고정적이라서 데이터의 변화를 감당하지 못한다는 것이다. 위의 그래프에서 가장 왼쪽 Underfitting의 경우를 보면 선형모델이 데이터를 표현하고 있지만 뭔가 조금은 아쉽다. 이렇게 모델이 High bias하여 데이터들의 특성을 모두 표현해내지 못하는 경우 Underfitting이라고 한다.</p>
+<p>반대로 가장 오른쪽의 Overfitting의 경우를 보자. 이 모델은 너무 High variance하다. Data를 표현하기 위해서 너무 많은 변화를 가지고 있는 모델임을 의미한다. 데이터를 완벽하게 표현함으로 당연히 가장 좋은 모델일 것이라고 생각할 수 있지만 그렇지 않다. 우리가 모델을 만드는 이유는 데이터를 잘 표현해내서 미지의 새로운 데이터가 발생했을 때 모델을 근거로 하여 예측하고 대처하기 위함이다. 그러나 이렇게 High variance하다면 현재 가지고 있는 학습 데이터셋에 과적합이 되어버려서 새로운 데이터의 특성을 받아들이기가 어려워진다. 이러한 경우를 Overfitting이라고 한다.</p>
+<p>Overfitting, Underfitting 문제는 Learning System에서 중요시 다뤄지는 사안이다. 이를 Optimal한 모델로 구현하기 위해서 다양한 노력이 있는데 그 중 대표적인 것은 학습 데이터 셋을 train set, validation set, test set 3가지로 구분하는 것이다. 구분하게 된다면 모델에 대한 평가가 가능해진다.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2019/05/25/2019-05-25-css-flexbox/" data-id="ckp45ihcf000keswb5gqce10o" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-22-yong-portfolio" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/22/2019-05-22-yong-portfolio/" class="article-date">
-  <time datetime="2019-05-22T11:24:54.000Z" itemprop="datePublished">2019-05-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/project/">project</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/22/2019-05-22-yong-portfolio/">Yong Portfolio</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-Background"><a href="#1-Background" class="headerlink" title="1. Background"></a>1. Background</h3><p>디자이너 포트폴리오 전시를 위한 정적 페이지입니다. 시각디자인을 전공한 디자이너분께서는 작품들을 전시할 웹사이트를 필요로 하셨고 이를 위해 이 사이트를 제작하였습니다. 기존에 작업했던 디자인 작품을 활용하였고 <strong>저는 기본적인 레이아웃 구성, 이미지들의 유연한 리사이징, 애니메이션과 같은 웹 퍼블리싱 업무를 하였습니다.</strong>  </p>
-<p><img src="/res/2019-05-22-yong-portfolio/1.png"></p>
-<p><img src="/res/2019-05-22-yong-portfolio/2.png"></p>
-<p><img src="/res/2019-05-22-yong-portfolio/3.png"></p>
-<p><img src="/res/2019-05-22-yong-portfolio/4.png"></p>
-<p><img src="/res/2019-05-22-yong-portfolio/5.png"></p>
-<h3 id="2-Environment"><a href="#2-Environment" class="headerlink" title="2. Environment"></a>2. Environment</h3><p><em>Server : Git Page</em> <br> <em>Language : HTML+CSS+JS</em> <br> <em>Library : JQuery</em></p>
-<h3 id="3-Technical-Detail"><a href="#3-Technical-Detail" class="headerlink" title="3. Technical Detail"></a>3. Technical Detail</h3><p><strong>1. Apache Web Server에서 Git Page로 서버 변경하였습니다</strong> <br><br>테스트 서버로 구축해둔 LAMP Server가 있었습니다. 평소처럼 이를 사용하는 중에 Git Page를 알게 되었습니다. Server side에서 일종의 처리를 진행하지 않는, 즉 <em>Tomcat</em>, <em>JBoss</em> 와 같은 WAS Middleware를 사용하지 않는 정적페이지는 Git Page에서 무료로 호스팅해준다는 것을 알게되었고 Web server를 변경하였습니다. <br><br> <strong>2. 모바일과 PC 모두를 고려하여 Reactive Web으로 구현하였습니다</strong> <br> 단순히 <em>Media tag</em> 를 활용하여 반응형 웹을 구현할 수 있다는 것을 이해하고 테스트 코드 수준으로만 반응형 웹을 구현했었던 순간을 반성하게 되는 기회였습니다. 가장 어려웠던건 이미지의 비율을 유지하면서 화면의 크기에 따라 배치도 유연하게 하는 것이였는데 <em>CSS Flex Attribute</em> 를 활용하여 이 문제를 해결할 수 있었습니다. <br><br> <strong>3. One Web server, Multi Service</strong> <br> 프로젝트 내용 자체에는 관련이 없지만 하는 중에 알게된 내용입니다. IP가 한 개, 동일한 Web Server 장비에서 여러 개의 서비스를 할려면 Domain으로 구분하여 할 수 있다는 것을 알게 되었습니다. Apache 서버의 경우 <em>httpd.conf</em> 설정파일 안에 <em>virtual-host</em> 를 늘린다음 각 host마다 별도의 도메인을 설정해주면 됩니다.</p>
-<h3 id="4-Impression"><a href="#4-Impression" class="headerlink" title="4. Impression"></a>4. Impression</h3><p>항상 개발자들끼리 협업을 진행하다가 제대로 디자이너와 협업을 하게 된 첫 프로젝트라고 생각합니다. 이 프로젝트 중 많은 색다름을 겪었는데 그 중 하나가 font 작업이였습니다. 이 디자이너분이 보내주신 폰트 파일은 otf 형식으로 200MB가 넘어서 깜짝놀라 확인해보니 이는 아마도 통합본의 의미를 가지는 것 같았습니다. 결국 필요한 것만 골라내어 용량 줄이기에 성공했습니다.</p>
-<p><br><br></p>
-<p><a target="_blank" rel="noopener" href="https://kidongyun.github.io/workspace/project/yong/res/demo">Sample Site</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/kidongyun/yong">Github Source code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/05/22/2019-05-22-yong-portfolio/" data-id="ckp45ihcd000geswb4b8o3t3f" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-10-wonkwang-university-application" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/10/2019-05-10-wonkwang-university-application/" class="article-date">
-  <time datetime="2019-05-10T02:21:54.000Z" itemprop="datePublished">2019-05-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/project/">project</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/2019-05-10-wonkwang-university-application/">Wonkwang Univ. Intra Application</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-Background"><a href="#1-Background" class="headerlink" title="1. Background"></a>1. Background</h3><p>기존의 원광대 정보서비스는 오직 데스크탑 기준의 웹서비스만 제공했기에, 항상 불편함을 겪는 원광대 학생들의 편의를 위해 모바일에 UI가 최적화된 어플리케이션을 개발했습니다. <br><br> 1인 개발로 진행한 이 프로젝트는 기존에 제공된 캠퍼스 지도, 학사일정, 출결 조회, 장학금 조회, 시간표 조회, 성적 조회, 기숙사 외박 신청, 생리 공결 신청, BBS 조회 등을 보다 편리하게 이용할 수 있도록 개선하고 강의 공지 알림, 시간표 위젯, 필수 이수 과목 정보 제공, 교내 연락처 정보 제공 기능을 추가하였습니다. <br><br> 긍정적인 평가, 적극적인 지지도 받았지만 아쉽게도 학사 정보보안 관련 문제로 인해 서비스를 중단하게 되었습니다. </p>
-<p><img src="/res/2019-05-10-wonkwang-university-application/uxui_1.jpg"></p>
-<p><img src="/res/2019-05-10-wonkwang-university-application/uxui_2.jpg"></p>
-<p><img src="/res/2019-05-10-wonkwang-university-application/uxui_3.jpg"></p>
-<h3 id="2-Environment"><a href="#2-Environment" class="headerlink" title="2. Environment"></a>2. Environment</h3><p><em>Platform : Android Native Application</em> <br> <em>Language : Java</em> <br> <em>Database : SQLite</em> <br> <em>Library &amp; Detail : Jsoup, MPAndroidChart, RSA Encryption, Viewpager</em></p>
-<h3 id="3-Technical-Detail"><a href="#3-Technical-Detail" class="headerlink" title="3. Technical Detail"></a>3. Technical Detail</h3><p><strong>1. Jsoup Library를 활용하여 학사정보 데이터들을 크롤링하였습니다.</strong> <br><br>로그인이 필요한 페이지는 세션 데이터가 요구되어 바로 html 데이터를 가져올 수 없었습니다. 그래서 먼저 로그인 시도를 하고 그 때 서버가 주는 세션값을 활용하여 웹정보시스템에 접근할 수 있었습니다. 그 이후 필요한 데이터들을 가진 각 웹 페이지를 html형태로 가져오고, css문법으로 parsing하여 크롤링하였습니다. <br><br><br><strong>2. Infinity Scroll 형태로 RecycleView의 부하를 감소시켰습니다.</strong> <br><br>BBS의 경우 누적된 내용이 많아 한번에 모든 것을 가져오면 로딩이 심했습니다. 이를 해결하기 위해 RecycleView에 데이터를 넣을 때 한번에 모든 데이터를 넣지 않고 Infinity Scroll 형태로 사용자가 일정 콘텐츠 이상 보았을 경우에만 새롭게 데이터를 갱신하도록 만들었습니다.<br><br><br><strong>3. Multi Thread 기법으로 많은 업무를 Background에서 진행시켰습니다.</strong> <br><br>처리해야하는 작업이 많아짐에 따라 UI가 느려지는 현상을 몸소 경험했습니다. 이를 위해 무거운 Database에 접근하는 작업이나, 크롤링과 같이 환경에 따라 느려질수 있는 Network 업무들은 Multi Thread로 구현하였습니다. 이후에 Swift를 배울 때 UI를 제외한 다른 업무들은 일반적으로 다른 Thread를 활용하여 구현한다는 것을 깨달았습니다. <br><br> </p>
-<h3 id="4-Impression"><a href="#4-Impression" class="headerlink" title="4. Impression"></a>4. Impression</h3><p>내가 만든 서비스를 다른사람이 행복하게 쓰는 모습을 보면서 나 또한 뿌듯함을 느꼈고 결국 <strong>개발자로 살아가야겠다는 확신을 얻는 계기가 된 프로젝트입니다.</strong> <br><br> 아쉬웠던 부분은 정보보안의 문제로 인해 서비스를 결국 내리게 되면서 내가 만들고 싶다고 해서 모든 콘텐츠를 만들수는 없다는 걸 느낀 것과 Android Native App으로 구현하게 되면서 IOS계열 스마트폰에 서비스할 수 없었던 것이 였습니다.</p>
-<p><br><br></p>
-<p><a target="_blank" rel="noopener" href="https://www.youtube.com/embed/6pwatQ0UGXw">Sample Video 1</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.youtube.com/embed/TYq4YvBenwg">Sample Video 2</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/kidongyun/wku">Github Source code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/05/10/2019-05-10-wonkwang-university-application/" data-id="ckp45ihce000jeswbgia170jx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-05-categories-jekyll-menu" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/05/2019-05-05-categories-jekyll-menu/" class="article-date">
-  <time datetime="2019-05-05T02:38:54.000Z" itemprop="datePublished">2019-05-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/blog/">blog</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/05/2019-05-05-categories-jekyll-menu/">Categorized Posts using Menu</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-Decide-categories-of-which-you-want"><a href="#1-Decide-categories-of-which-you-want" class="headerlink" title="1. Decide categories of which you want."></a>1. Decide categories of which you want.</h3><p>I will divide my posts to two parts. first is <strong>Jekyll</strong> and the last thing is <strong>React</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Think the way how to divide your posts</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-modify-your-config-yml-file"><a href="#2-modify-your-config-yml-file" class="headerlink" title="2. modify your ___config.yml__ file"></a>2. modify your ___config.yml__ file</h3><p>add the new code in anywhere of your __config.yml_ file</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">title:</span> <span class="string">Jekyll</span></span><br><span class="line">    <span class="attr">url:</span>   <span class="string">/jekyll/</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">title:</span> <span class="string">React</span></span><br><span class="line">    <span class="attr">url:</span>   <span class="string">/react/</span></span><br></pre></td></tr></table></figure>
-
-<p>below is your __config.yml_ file before modifying</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">title:</span> <span class="string">Development</span> <span class="string">Portfolio</span></span><br><span class="line"><span class="attr">email:</span> <span class="string">oriondigestive@example.com</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&gt;-</span> <span class="comment"># this means to ignore newlines until &quot;baseurl:&quot;</span></span><br><span class="line">  <span class="string">Computer</span> <span class="string">Programming</span> <span class="string">Development</span> <span class="string">Web</span> <span class="string">Application</span> <span class="string">SPA</span> <span class="string">Ajax</span></span><br><span class="line">  <span class="string">Github</span> <span class="string">Git</span> <span class="string">Jekyll</span> <span class="string">Blog</span></span><br><span class="line">  <span class="string">React</span> <span class="string">ReactNative</span> <span class="string">NodeJS</span> <span class="string">Express</span> </span><br><span class="line">  <span class="string">MachineLearning</span> <span class="string">DataMinning</span> <span class="string">ArtificialIntelligence</span></span><br><span class="line"><span class="attr">baseurl:</span> <span class="string">&quot;&quot;</span> </span><br><span class="line"><span class="attr">url:</span> <span class="string">&quot;&quot;</span> </span><br><span class="line"><span class="attr">twitter_username:</span> <span class="string">jekyllrb</span></span><br><span class="line"><span class="attr">github_username:</span>  <span class="string">kidongYun</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">/:title/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">markdown:</span> <span class="string">kramdown</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">minima</span></span><br><span class="line"><span class="attr">plugins:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">jekyll-feed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>and below is your __config.yml_ file after changing</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">title:</span> <span class="string">Development</span> <span class="string">Portfolio</span></span><br><span class="line"><span class="attr">email:</span> <span class="string">oriondigestive@example.com</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&gt;-</span> <span class="comment"># this means to ignore newlines until &quot;baseurl:&quot;</span></span><br><span class="line">  <span class="string">Computer</span> <span class="string">Programming</span> <span class="string">Development</span> <span class="string">Web</span> <span class="string">Application</span> <span class="string">SPA</span> <span class="string">Ajax</span></span><br><span class="line">  <span class="string">Github</span> <span class="string">Git</span> <span class="string">Jekyll</span> <span class="string">Blog</span></span><br><span class="line">  <span class="string">React</span> <span class="string">ReactNative</span> <span class="string">NodeJS</span> <span class="string">Express</span> </span><br><span class="line">  <span class="string">MachineLearning</span> <span class="string">DataMinning</span> <span class="string">ArtificialIntelligence</span></span><br><span class="line"><span class="attr">baseurl:</span> <span class="string">&quot;&quot;</span> </span><br><span class="line"><span class="attr">url:</span> <span class="string">&quot;&quot;</span> </span><br><span class="line"><span class="attr">twitter_username:</span> <span class="string">jekyllrb</span></span><br><span class="line"><span class="attr">github_username:</span>  <span class="string">kidongYun</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">/:title/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">####################################### START NEW CODE</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">title:</span> <span class="string">Jekyll</span></span><br><span class="line">    <span class="attr">url:</span>   <span class="string">/jekyll/</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">title:</span> <span class="string">React</span></span><br><span class="line">    <span class="attr">url:</span>   <span class="string">/react/</span></span><br><span class="line"><span class="comment">####################################### END NEW CODE</span></span><br><span class="line"></span><br><span class="line"><span class="attr">markdown:</span> <span class="string">kramdown</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">minima</span></span><br><span class="line"><span class="attr">plugins:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">jekyll-feed</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Even if the codes in __config.yml_ are a little different between your and mine, that’s okay.</p>
-<p>Just if you add above code related to <em>menu</em> at anywhere of __config.yml_ successfully. then your service is maybe operate well.</p>
-<p>if you finished, you can see the result on your jekyll page like below.</p>
-<p><img src="/res/2019-05-05-categories-jekyll-menu/4.png"></p>
-<p>Actually That’s shape is a little different because of <strong>Jekyll theme</strong></p>
-<p>and You should check whether your Jekyll theme can apply <strong>menu</strong> attribute or not. </p>
-<p>if it isn’t, you must make this manually. Don’t follow my posts.</p>
-<h3 id="3-Make-directories-related-to-categories"><a href="#3-Make-directories-related-to-categories" class="headerlink" title="3. Make directories related to categories"></a>3. Make directories related to categories</h3><p>Let’s make the directories and you should keep their names are equal with <strong>url</strong> of menu attribute in __config.yml_</p>
-<p><img src="/res/2019-05-05-categories-jekyll-menu/1.png"></p>
-<p>look carefully the above picture, highlighted directories is my new folders for categorizing.</p>
-<h3 id="4-Make-a-index-html-files-in-each-new-folders"><a href="#4-Make-a-index-html-files-in-each-new-folders" class="headerlink" title="4. Make a index.html files in each new folders"></a>4. Make a <strong>index.html</strong> files in each new folders</h3><p><img src="/res/2019-05-05-categories-jekyll-menu/2.png"></p>
-<p><img src="/res/2019-05-05-categories-jekyll-menu/3.png"></p>
-<h3 id="5-Lastly-filling-your-new-index-html-files"><a href="#5-Lastly-filling-your-new-index-html-files" class="headerlink" title="5. Lastly, filling your new index.html files"></a>5. Lastly, filling your new <strong>index.html</strong> files</h3><p>follow code below.</p>
-<p><img src="/res/2019-05-05-categories-jekyll-menu/5.png"></p>
-<p>you should customize (code) to yours <strong>ex) (layout name), (category name)</strong></p>
-<p>and (layout name) is found in the __layouts_ directory in your jekyll projects</p>
-<h4 id="It’s-my-case"><a href="#It’s-my-case" class="headerlink" title="It’s my case"></a>It’s my case</h4><p><img src="/res/2019-05-05-categories-jekyll-menu/6.png"></p>
-<p>if you want to fix category page concretely, </p>
-<p>You should understand about the structure or code of your jekyll service.</p>
-<p>and then fix your page manually.</p>
-<p>You can see the following as the result</p>
-<p><img src="/res/2019-05-05-categories-jekyll-menu/7.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/05/05/2019-05-05-categories-jekyll-menu/" data-id="ckp45ihcc000eeswb37c6dudy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-05-02-webpack-watch" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/02/2019-05-02-webpack-watch/" class="article-date">
-  <time datetime="2019-05-01T20:09:54.000Z" itemprop="datePublished">2019-05-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/script/">script</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/02/2019-05-02-webpack-watch/">Let&#39;s update modification automatically in React using Webpack Watch attribute.</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Let’s-update-modification-automatically-in-React-using-Webpack-Watch-attribute"><a href="#Let’s-update-modification-automatically-in-React-using-Webpack-Watch-attribute" class="headerlink" title="Let’s update modification automatically in React using Webpack Watch attribute."></a>Let’s update modification automatically in React using Webpack Watch attribute.</h3><p>add code below in <strong>webpack.config.js</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>this attribution named <em>watch</em> is the function that can update <strong>bundle.js</strong> file automatically.</p>
-<p>and belows is the totally code of <strong>webpack.config.js</strong></p>
-<h4 id="before"><a href="#before" class="headerlink" title="before"></a><em>before</em></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: [</span><br><span class="line">    <span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.(js|jsx|)$/</span>,</span><br><span class="line">                exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">                use: [<span class="string">&#x27;babel-loader&#x27;</span>]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">                use: [<span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [<span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>, <span class="string">&#x27;.jsx&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    output: &#123;</span><br><span class="line">    path: __dirname + <span class="string">&#x27;/public&#x27;</span>,</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h4 id="after"><a href="#after" class="headerlink" title="after"></a><em>after</em></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: [</span><br><span class="line">    <span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.(js|jsx|)$/</span>,</span><br><span class="line">                exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">                use: [<span class="string">&#x27;babel-loader&#x27;</span>]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">                use: [<span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [<span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>, <span class="string">&#x27;.jsx&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    output: &#123;</span><br><span class="line">    path: __dirname + <span class="string">&#x27;/public&#x27;</span>,</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">/////////////////////////////////////////////////////// START NEW CODE</span></span><br><span class="line">    watch: <span class="literal">true</span></span><br><span class="line">    <span class="comment">/////////////////////////////////////////////////////// END NEW CODE</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>Don’t forget to add comma between new code and previous thing.</p>
-<p>then you can see the result below in the end when you use <strong>npm run build</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/05/02/2019-05-02-webpack-watch/" data-id="ckp45ihcb000beswbh6feeylf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-04-27-using-css-react" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/27/2019-04-27-using-css-react/" class="article-date">
-  <time datetime="2019-04-26T18:23:00.000Z" itemprop="datePublished">2019-04-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/script/">script</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/27/2019-04-27-using-css-react/">The way how to using CSS format in React</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Let’s find out the way how to modify your <strong>React</strong> project when you want to operate <strong>CSS</strong> format files in yours</p>
-<p>If it doesn’t work with showing message like below. the reason doesn’t operate is because you did’t install the things relate to <strong>CSS Styling</strong></p>
-<p><img src="/res/2019-04-27-using-css-react/1.png"></p>
-<p>so now, we will install 2 packages using <strong>npm</strong>.</p>
-<p>they are <strong>css-loader</strong> and <strong>style-loader</strong>.</p>
-<h3 id="1-Let’s-install-css-loader-style-loader-via-npm"><a href="#1-Let’s-install-css-loader-style-loader-via-npm" class="headerlink" title="1. Let’s install css-loader, style-loader via npm"></a>1. Let’s install <strong>css-loader</strong>, <strong>style-loader</strong> via <strong>npm</strong></h3><p>follow command below at your <em>React</em> project folder</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; npm install --save-dev css-loader style-loader</span><br></pre></td></tr></table></figure>
-
-<p><img src="/res/2019-04-27-using-css-react/2.png"></p>
-<h3 id="2-Update-your-webpack-config-js-file"><a href="#2-Update-your-webpack-config-js-file" class="headerlink" title="2. Update your webpack.config.js file"></a>2. Update your webpack.config.js file</h3><p>add code below in your webpack.config.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">    use: [<span class="string">&#x27;css-loader&#x27;</span>, <span class="string">&#x27;style-loader&#x27;</span>]</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p>Originally, your <strong>webpack.config.js</strong> maybe is like below.</p>
-<h4 id="Before"><a href="#Before" class="headerlink" title="Before"></a><em>Before</em></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: [</span><br><span class="line">        <span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.(js|jsx)$/</span>,</span><br><span class="line">                exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">                use: [<span class="string">&#x27;babel-loader&#x27;</span>]</span><br><span class="line">            &#125; </span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [<span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>, <span class="string">&#x27;.jsx&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    output: &#123;</span><br><span class="line">        path: __dirname + <span class="string">&#x27;/public&#x27;</span>,</span><br><span class="line">        filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>Let’s modify it like below.</p>
-<h4 id="After"><a href="#After" class="headerlink" title="After"></a><em>After</em></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: [</span><br><span class="line">        <span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.(js|jsx)$/</span>,</span><br><span class="line">                exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">                use: [<span class="string">&#x27;babel-loader&#x27;</span>]</span><br><span class="line">            &#125;, </span><br><span class="line">            <span class="comment">/////////////////////////////////////////////////////// START NEW CODE</span></span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">                use: [<span class="string">&#x27;css-loader&#x27;</span>, <span class="string">&#x27;style-loader&#x27;</span>]</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="comment">/////////////////////////////////////////////////////// END NEW CODE</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [<span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>, <span class="string">&#x27;.jsx&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    output: &#123;</span><br><span class="line">        path: __dirname + <span class="string">&#x27;/public&#x27;</span>,</span><br><span class="line">        filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>Don’t miss the <strong>comma</strong> ‘,’ between the code associated with <em>babel-loader</em> and <em>css-loader</em> when you modify your <strong>webpack.config.js</strong></p>
-<p>If you do the above successfully, then your React system will understand <strong>.css</strong> files  </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/04/27/2019-04-27-using-css-react/" data-id="ckp45ihca000aeswb3hr9c27q" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-04-26-build-react-express" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/26/2019-04-26-build-react-express/" class="article-date">
-  <time datetime="2019-04-25T17:58:54.000Z" itemprop="datePublished">2019-04-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/script/">script</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/26/2019-04-26-build-react-express/">Let&#39;s build React with Express Server</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>If you are the first <strong>React</strong>, please search <strong>create-react-app</strong>, see other posts.</p>
-<p>Building React Service manually without <strong>create-react-app</strong> is somewhat difficult for beginners.</p>
-<p>I will build <strong>React</strong> via <strong>npm</strong> package manager. It needs <strong>node</strong> so if you don’t have then please download in <a target="_blank" rel="noopener" href="https://nodejs.org/ko/download/">here</a>.</p>
-<h3 id="1-To-create-node-project"><a href="#1-To-create-node-project" class="headerlink" title="1. To create node project"></a>1. To create <strong>node</strong> project</h3><p>First of all, you should make the directory for using your react project. </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">... &gt; mkdir my_react_express</span><br><span class="line">... &gt; cd my_react_express</span><br><span class="line">...&#x2F;my_react_express &gt; </span><br></pre></td></tr></table></figure>
-
-<p>when you want to make <strong>node</strong> project, you just use command below.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; npm init -y</span><br></pre></td></tr></table></figure>
-<p>if you don’t use the option ‘-y’ then you should treat the detail of your new node project.</p>
-<p><img src="/res/2019-04-26-build-react-express/1.png"></p>
-<p>and you can check <strong>package.json</strong> file in your project directory.</p>
-<p><img src="/res/2019-04-26-build-react-express/2.png"></p>
-<p><img src="/res/2019-04-26-build-react-express/3.png"></p>
-<h3 id="2-To-install-express-react-react-dom-at-dependecies"><a href="#2-To-install-express-react-react-dom-at-dependecies" class="headerlink" title="2. To install express, react, react-dom at dependecies"></a>2. To install <strong>express</strong>, <strong>react</strong>, <strong>react-dom</strong> at dependecies</h3><p>follow below command at your folder</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; npm install -save express react react-dom</span><br></pre></td></tr></table></figure>
-
-<p><img src="/res/2019-04-26-build-react-express/4.png"></p>
-<p>You can see __node_modules__ folder in your react directory.<br>and you can also check the new addition, associated with <strong>express</strong>, <strong>react</strong>, <strong>react-dom</strong> at <strong>dependencies</strong> of package.json</p>
-<p><img src="/res/2019-04-26-build-react-express/5.png"></p>
-<p><img src="/res/2019-04-26-build-react-express/6.png"></p>
-<h3 id="3-To-install-babel-core-babel-preset-env-babel-preset-react-babel-loader-webpack-webpack-cli-at-devDependecies"><a href="#3-To-install-babel-core-babel-preset-env-babel-preset-react-babel-loader-webpack-webpack-cli-at-devDependecies" class="headerlink" title="3. To install @babel/core, @babel/preset-env, @babel/preset-react, babel-loader, webpack, webpack-cli at devDependecies"></a>3. To install <strong>@babel/core</strong>, <strong>@babel/preset-env</strong>, <strong>@babel/preset-react</strong>, <strong>babel-loader</strong>, <strong>webpack</strong>, <strong>webpack-cli</strong> at devDependecies</h3><p>follow command below at your folder</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; npm install --save-dev @babel&#x2F;core @babel&#x2F;preset-env @babel&#x2F;preset-react babel-loader webpack webpack-cli</span><br></pre></td></tr></table></figure>
-
-<p>and then Let’s check your <strong>package.json</strong> file one more.</p>
-<p><img src="/res/2019-04-26-build-react-express/8.png"></p>
-<p><strong>devDependencies</strong> entry has been added to <strong>package.json</strong> file, and what is installed in it.</p>
-<h3 id="4-Let’s-consist-all-files-folders-properly-to-your-React-directory"><a href="#4-Let’s-consist-all-files-folders-properly-to-your-React-directory" class="headerlink" title="4. Let’s consist all files, folders properly to your React directory."></a>4. Let’s consist all files, folders properly to your React directory.</h3><h4 id="First-Let’s-make-3-folders-in-your-React-directory"><a href="#First-Let’s-make-3-folders-in-your-React-directory" class="headerlink" title="First, Let’s make 3 folders in your React directory."></a>First, Let’s make 3 folders in your React directory.</h4><p><img src="/res/2019-04-26-build-react-express/9.png"></p>
-<p>follow command below.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; mkdir public</span><br><span class="line">...&#x2F;my_react_express &gt; mkdir server</span><br><span class="line">...&#x2F;my_react_express &gt; mkdir src</span><br></pre></td></tr></table></figure>
-
-<p><img src="/res/2019-04-26-build-react-express/10.png"></p>
-<p><img src="/res/2019-04-26-build-react-express/11.png"></p>
-<h4 id="next-step-make-6-files-in-your-React-directory"><a href="#next-step-make-6-files-in-your-React-directory" class="headerlink" title="next step, make 6 files in your React directory."></a>next step, make 6 files in your React directory.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express&#x2F;webpack.config.js</span><br><span class="line">...&#x2F;my_react_express&#x2F;.babelrc</span><br><span class="line">...&#x2F;my_react_express&#x2F;public&#x2F;index.html</span><br><span class="line">...&#x2F;my_react_express&#x2F;src&#x2F;App.js</span><br><span class="line">...&#x2F;my_react_express&#x2F;src&#x2F;index.js</span><br><span class="line">...&#x2F;my_react_express&#x2F;server&#x2F;main.js</span><br></pre></td></tr></table></figure>
-
-<p><img src="/res/2019-04-26-build-react-express/12.png"></p>
-<h3 id="5-Let’s-fill-in-your-new-files"><a href="#5-Let’s-fill-in-your-new-files" class="headerlink" title="5. Let’s fill in your new files."></a>5. Let’s fill in your new files.</h3><h4 id="…-my-react-express-webpack-config-js"><a href="#…-my-react-express-webpack-config-js" class="headerlink" title="…/my_react_express/webpack.config.js"></a>…/my_react_express/webpack.config.js</h4><p>typing code below in your <strong>webpack.config.js</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: [</span><br><span class="line">        <span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.(js|jsx)$/</span>,</span><br><span class="line">                exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">                use: [<span class="string">&#x27;babel-loader&#x27;</span>]</span><br><span class="line">            &#125; </span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [<span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>, <span class="string">&#x27;.jsx&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    output: &#123;</span><br><span class="line">        path: __dirname + <span class="string">&#x27;/public&#x27;</span>,</span><br><span class="line">        filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>One of the important features of <strong>webpack</strong> is gathering static files and resources together and then extract what to <strong>bundle.js</strong></p>
-<h4 id="…-my-react-express-babelrc"><a href="#…-my-react-express-babelrc" class="headerlink" title="…/my_react_express/.babelrc"></a>…/my_react_express/.babelrc</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;presets&quot;</span>: [<span class="string">&quot;@babel/preset-env&quot;</span>, <span class="string">&quot;@babel/preset-react&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="…-my-react-express-public-index-html"><a href="#…-my-react-express-public-index-html" class="headerlink" title="…/my_react_express/public/index.html"></a>…/my_react_express/public/index.html</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>React App<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/bundle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="…-my-react-express-src-App-js"><a href="#…-my-react-express-src-App-js" class="headerlink" title="…/my_react_express/src/App.js"></a>…/my_react_express/src/App.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render()&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;h1&gt;Hello React Skeleton&lt;/h1&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
-
-<h4 id="…-my-react-express-src-index-js"><a href="#…-my-react-express-src-index-js" class="headerlink" title="…/my_react_express/src/index.js"></a>…/my_react_express/src/index.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> rootElement = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>);</span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, rootElement);</span><br></pre></td></tr></table></figure>
-
-<h4 id="…-my-react-express-server-main-js"><a href="#…-my-react-express-server-main-js" class="headerlink" title="…/my_react_express/server/main.js"></a>…/my_react_express/server/main.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"></span><br><span class="line">app.use(express.static(<span class="string">&#x27;public&#x27;</span>))</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;start! express server on port 3000&quot;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.sendFile(path.join(__dirname, <span class="string">&quot;../public/index.html&quot;</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-Update-new-code-your-package-json-file"><a href="#6-Update-new-code-your-package-json-file" class="headerlink" title="6. Update new code your package.json file"></a>6. Update new code your <strong>package.json</strong> file</h3><p>please add new code below in your <strong>scripts</strong> of <strong>package.json</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;start&quot;</span>: <span class="string">&quot;nodemon ./server/main.js&quot;</span>,</span><br><span class="line"><span class="string">&quot;build&quot;</span>: <span class="string">&quot;webpack -p&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>The below is all the code in <strong>package.json</strong> </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;my_react_express&quot;</span>,</span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>,</span><br><span class="line">        <span class="comment">/////////////////////////////////////////////////////// START NEW CODE</span></span><br><span class="line">        <span class="string">&quot;start&quot;</span>: <span class="string">&quot;nodemon ./server/main.js&quot;</span>,</span><br><span class="line">        <span class="string">&quot;build&quot;</span>: <span class="string">&quot;webpack -p&quot;</span></span><br><span class="line">        <span class="comment">/////////////////////////////////////////////////////// END NEW CODE</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;keywords&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">    <span class="string">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;express&quot;</span>: <span class="string">&quot;^4.16.4&quot;</span>,</span><br><span class="line">        <span class="string">&quot;react&quot;</span>: <span class="string">&quot;^16.8.6&quot;</span>,</span><br><span class="line">        <span class="string">&quot;react-dom&quot;</span>: <span class="string">&quot;^16.8.6&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;@babel/core&quot;</span>: <span class="string">&quot;^7.4.3&quot;</span>,</span><br><span class="line">        <span class="string">&quot;@babel/preset-env&quot;</span>: <span class="string">&quot;^7.4.3&quot;</span>,</span><br><span class="line">        <span class="string">&quot;@babel/preset-react&quot;</span>: <span class="string">&quot;^7.0.0&quot;</span>,</span><br><span class="line">        <span class="string">&quot;webpack&quot;</span>: <span class="string">&quot;^4.30.0&quot;</span>,</span><br><span class="line">        <span class="string">&quot;webpack-cli&quot;</span>: <span class="string">&quot;^3.3.1&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>if you don’t do thing above, you can’t execute your <strong>React</strong>  </p>
-<h3 id="7-Run-your-React-using-npm-script"><a href="#7-Run-your-React-using-npm-script" class="headerlink" title="7. Run your React using npm script"></a>7. Run your React using npm script</h3><p>follow code below</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; npm run build</span><br></pre></td></tr></table></figure>
-<p>as I mentioned before, if you finished, you can get a <strong>bundle.js</strong> file.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...&#x2F;my_react_express &gt; npm start</span><br></pre></td></tr></table></figure>
-
-<p>Finally, Let’s go to <a target="_blank" rel="noopener" href="http://localhost:3000/">localhost:3000</a></p>
-<p><img src="/res/2019-04-26-build-react-express/13.png"></p>
-<p>Thank you for reading so far.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/04/26/2019-04-26-build-react-express/" data-id="ckp45ihc70008eswb29aoc4s2" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2019-04-25-how-post-jekyll" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/25/2019-04-25-how-post-jekyll/" class="article-date">
-  <time datetime="2019-04-24T18:23:00.000Z" itemprop="datePublished">2019-04-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/blog/">blog</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/25/2019-04-25-how-post-jekyll/">How to post The Jekyll page via Markdown</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-Make-a-md-file-in-…-posts"><a href="#1-Make-a-md-file-in-…-posts" class="headerlink" title="1. Make a .md file in …/_posts/"></a>1. Make a <strong>.md</strong> file in …/_posts/</h3><p>__/_posts__ folder is for holding your Jekyll posts. </p>
-<p>and I recommend you to use the editor(<strong>Atom</strong>, <strong>VSCode</strong>, <strong>Editplus</strong>) for typing this.</p>
-<p>I commonly use <strong>VSCode</strong>. if you want, you can download <strong>VSCode</strong> in <a target="_blank" rel="noopener" href="https://code.visualstudio.com/download">here</a></p>
-<p><img src="/res/2019-04-25-how-post-jekyll/1.png"></p>
-<p>then please open your Jekyll Project folder in <strong>File &gt; Open Folder</strong></p>
-<p>and make a <strong>.md</strong> file in /_posts folder.</p>
-<p><img src="/res/2019-04-25-how-post-jekyll/2.png"></p>
-<p><img src="/res/2019-04-25-how-post-jekyll/3.png"></p>
-<p>you should keep the shape of your file name like below when you making Jekyll posts.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date-title.md</span><br><span class="line"></span><br><span class="line">example) 2019-04-25-jekyll-test.md</span><br></pre></td></tr></table></figure>
-
-<p>then you can check your updates at locally</p>
-<h3 id="2-Let’s-fill-the-content-in-your-post"><a href="#2-Let’s-fill-the-content-in-your-post" class="headerlink" title="2. Let’s fill the content in your post"></a>2. Let’s fill the content in your post</h3><p><img src="/res/2019-04-25-how-post-jekyll/4.png"></p>
-<p>please type what you want in your post as shown below.</p>
-<h3 id="3-Push-your-updates-to-Github-Repository"><a href="#3-Push-your-updates-to-Github-Repository" class="headerlink" title="3. Push your updates to Github Repository."></a>3. Push your updates to Github Repository.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;anything&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<p>and also you can check your updates at your github pages.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/04/25/2019-04-25-how-post-jekyll/" data-id="ckp45ihc60006eswbas9udlyw" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2019/08/05/2019-08-05-normalization-overfitting-underfitting/" data-id="ckp45ihcq001eeswb9sntdfvi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -720,7 +575,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/18/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/20/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/18/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/20/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -731,7 +586,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/gradle/">gradle</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
     </div>
   </div>
 
@@ -746,7 +601,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
     </div>
   </div>
 
@@ -759,23 +614,23 @@
       <ul>
         
           <li>
-            <a href="/2021/04/27/2021-04-27-elasticsearch-term-lowercase/">Elasticsearch Term 쿼리 쓸때 소문자로 해야 함</a>
+            <a href="/2021/06/20/2021-06-20-jpa/">Jpa</a>
           </li>
         
           <li>
-            <a href="/2021/04/26/2021-04-26-callable-lambda/">Callable 을 람다로 받기</a>
+            <a href="/2021/06/15/2021-06-15-kabang/">Kabang</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/2021-04-19-async/">비동기 처리</a>
+            <a href="/2021/06/15/2021-06-15-jpa/">Jpa</a>
           </li>
         
           <li>
-            <a href="/2021/04/15/2021-04-15-localdate-object-to-json-type/">LocalDate json timestamp</a>
+            <a href="/2021/06/14/2021-06-14-jpa/">Jpa</a>
           </li>
         
           <li>
-            <a href="/2021/04/15/2021-04-15-why-do-we-use-abstract/">추상클래스를 사용하는 이유</a>
+            <a href="/2021/06/14/2021-06-14-kabang/">Jpa</a>
           </li>
         
       </ul>

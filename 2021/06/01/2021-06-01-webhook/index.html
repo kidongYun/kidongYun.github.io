@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Webhook | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Hooking특정 상황에 이벤트가 발생하도록 구현해두고, 이를 클라이언트 측에서 컨트롤 할 수 있도록 하는 것. Webhook웹훅은 새 이벤트가 서버에서 발생한 겨우 서버 측 응용 프로그램이 클라이언트 측 응용 프로그램에 알릴 수 있는 메커니즘을 제공합니다. 역방향 API 라고도 불립니다. 일반적인 API는 클라이언트가 서버를 호출하는 구조이지만. 반면 웹">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webhook">
+<meta property="og:url" content="http://example.com/2021/06/01/2021-06-01-webhook/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hooking특정 상황에 이벤트가 발생하도록 구현해두고, 이를 클라이언트 측에서 컨트롤 할 수 있도록 하는 것. Webhook웹훅은 새 이벤트가 서버에서 발생한 겨우 서버 측 응용 프로그램이 클라이언트 측 응용 프로그램에 알릴 수 있는 메커니즘을 제공합니다. 역방향 API 라고도 불립니다. 일반적인 API는 클라이언트가 서버를 호출하는 구조이지만. 반면 웹">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-31T15:54:00.000Z">
+<meta property="article:modified_time" content="2021-06-07T14:21:25.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2021-06-01-webhook" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/06/01/2021-06-01-webhook/" class="article-date">
+  <time datetime="2021-05-31T15:54:00.000Z" itemprop="datePublished">2021-06-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Webhook
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Hooking"><a href="#Hooking" class="headerlink" title="Hooking"></a>Hooking</h2><p>특정 상황에 이벤트가 발생하도록 구현해두고, 이를 클라이언트 측에서 컨트롤 할 수 있도록 하는 것.</p>
+<h2 id="Webhook"><a href="#Webhook" class="headerlink" title="Webhook"></a>Webhook</h2><p>웹훅은 새 이벤트가 서버에서 발생한 겨우 서버 측 응용 프로그램이 클라이언트 측 응용 프로그램에 알릴 수 있는 메커니즘을 제공합니다.</p>
+<p>역방향 API 라고도 불립니다. 일반적인 API는 클라이언트가 서버를 호출하는 구조이지만. 반면 웹훅의 경우 웹훅을 호출하는 서버 측에 등록하면 서버에서 특정 이벤트가 발생했을 때 클라이언트를 호출합니다.</p>
+<p>데이터를 지속 폴링하는 방법보다 서버측에서 이벤트가 발생했을 때 이를 듣고 있는 리스너가 있고 이를 콜백으로 내려주기 때문에 성능적으로 좀더 낫다. 계속 보는게 아니고 다 끝나면 알려주는 구조.</p>
+<p>특정 API 와 연계되는 다른 API를 하나 만드는 것으로 단순히 이해할 수 있지만.<br>여기서 Webhook API 의 핵심은. 클라이언트의 URL 그리고 추가적인 정보들을 Client 에서 컨트롤 할 수 있도록 하는 것이다.</p>
+<p>즉 이 WebHook API에 설정된 정보들은 클라이언트 기준으로 생성되고, API 호출 이후 완료되는 시점에 이 클라이언트가 설정해둔 정보들로 콜백시킬 수 있다.</p>
+<p>polling 방식이 아니고 이벤트를 던지는 거기때문에 성능 상으로도 더 유리하다.</p>
+<h2 id="Git-hook"><a href="#Git-hook" class="headerlink" title="Git hook"></a>Git hook</h2><p>.git/hooks 폴더 안에 git 애서 제공하는 hooking 스크립트들이 있음. 몇개 없다.</p>
+<p>각 스크립트는 특정 상황에 따라 맞추어서 동작한다. 예를 들면 푸시하기 이전, 커밋하고 난 이후 이런 식.</p>
+<p>폴더안에 .sample 확장자로 되어있는데. 이 확장자를 지워주면 바로 동작이 된다.</p>
+<p>즉 아래와 같은 경로에 동일한 이름을 가진 파일이 있으면 자동으로 git이 hooking 하여서 스크립트들을 수행해준다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi SOME_GIT_REPOSITORY&#x2F;.git&#x2F;hooks&#x2F;pre-commit</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/06/01/2021-06-01-webhook/" data-id="ckq4jx11g00094f8j5du4db5g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/06/01/2021-06-01-lombok-cleanup/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Cleanup annotation of Lombok
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/05/31/2021-05-31-cicd-pipeline/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CICD Pipeline</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/gradle/">gradle</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/20/2021-06-20-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/15/2021-06-15-kabang/">Kabang</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/15/2021-06-15-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/14/2021-06-14-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/14/2021-06-14-kabang/">Jpa</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

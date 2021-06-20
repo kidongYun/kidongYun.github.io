@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>심볼릭 링크, 하드 링크, 복사 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. cp1&gt; cp priginal.txt link.txt  original.txt 의 데이터 전체가 link.txt 파일로 복사된다. 즉 원본파일이 64KB의 크기를 가지고 있었다면 복사되는 파일도 같은 64KB의 크기로 파일 시스템의 공간을 차지한다.이 두파일은 서로 개별적이고 독립적이어서 서로에게 영향을 미치지 않는다. 2. symbolic li">
+<meta property="og:type" content="article">
+<meta property="og:title" content="심볼릭 링크, 하드 링크, 복사">
+<meta property="og:url" content="http://example.com/2021/06/03/2021-06-04-link/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. cp1&gt; cp priginal.txt link.txt  original.txt 의 데이터 전체가 link.txt 파일로 복사된다. 즉 원본파일이 64KB의 크기를 가지고 있었다면 복사되는 파일도 같은 64KB의 크기로 파일 시스템의 공간을 차지한다.이 두파일은 서로 개별적이고 독립적이어서 서로에게 영향을 미치지 않는다. 2. symbolic li">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-02T15:54:00.000Z">
+<meta property="article:modified_time" content="2021-06-07T14:21:25.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2021-06-04-link" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/06/03/2021-06-04-link/" class="article-date">
+  <time datetime="2021-06-02T15:54:00.000Z" itemprop="datePublished">2021-06-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      심볼릭 링크, 하드 링크, 복사
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-cp"><a href="#1-cp" class="headerlink" title="1. cp"></a>1. cp</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; cp priginal.txt link.txt</span><br></pre></td></tr></table></figure>
+
+<p>original.txt 의 데이터 전체가 link.txt 파일로 복사된다. 즉 원본파일이 64KB의 크기를 가지고 있었다면 복사되는 파일도 같은 64KB의 크기로 파일 시스템의 공간을 차지한다.<br>이 두파일은 서로 개별적이고 독립적이어서 서로에게 영향을 미치지 않는다.</p>
+<h2 id="2-symbolic-link"><a href="#2-symbolic-link" class="headerlink" title="2. symbolic link"></a>2. symbolic link</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; ln -s original.txt link.txt</span><br></pre></td></tr></table></figure>
+
+<p>ln 명령에 -s 옵션을 주어 심볼릭링크를 사용하게 된다. 이때 생성된 link.txt 파일은 단순히 original.txt 파일을 가리키는 포인터의 개념과 같다. 즉 데이터와는 무관하게 원본파일을 참조하는 것이다.<br>따라서 link.txt 파일을 호출하게 되면 original.txt 파일을 연결시켜주게 된다. link.txt 파일을 삭제하면 original.txt 파일을 그대로 유지되지만 original.txt를 삭제하게 되면 link.txt 파일은<br>무용지물이 된다.</p>
+<h2 id="3-hard-link"><a href="#3-hard-link" class="headerlink" title="3. hard link"></a>3. hard link</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln original.txt link.txt</span><br></pre></td></tr></table></figure>
+
+<p>ln 명령에 -s 옵션을 빼고 link.txt 파일을 생성하게 된다. 이때 link.txt 파일은 original.txt 파일의 또 다른 이름이 되며 같은 내용을 가리키게 도니다. 따라서 link.txt 파일을 열어 편집을 하고 저장을 한뒤 original.txt 파일을 열게 되면 편집된 내용을 볼 수 있다.</p>
+<h2 id="4-요약"><a href="#4-요약" class="headerlink" title="4. 요약."></a>4. 요약.</h2><p>I think it’s good idea to write in english when you create the note like this file. and after this, if you want to upload as a devlog file for sharing other people, Let use korean at that time. i think it will be better way than now.</p>
+<p>Let’s summary about above contents. cp command create the other file what is really same with the original one. and they are different store in the disk. i mean they are really separated.</p>
+<p>symbolic link is like just a concept of pointer in c programming language. symbolic link file just refer the original file. so if the original file is changed, then it will be affected to symblic link file.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/06/03/2021-06-04-link/" data-id="ckq4jx11h000d4f8j0lr51p0e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/06/03/2021-06-03-jpa/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JPA 공부
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/06/01/2021-06-01-lombok-cleanup/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Cleanup annotation of Lombok</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/aws/">aws</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/gradle/">gradle</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/project/">project</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/script/">script</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/20/2021-06-20-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/15/2021-06-15-kabang/">Kabang</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/15/2021-06-15-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/14/2021-06-14-jpa/">Jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/14/2021-06-14-kabang/">Jpa</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
