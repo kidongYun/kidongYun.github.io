@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Let&#39;s build React with Spring boot Server ver.1 | Hexo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="React,Spring" />
+    
+    <meta name="description" content="1. Spring Boot를 활용한 Spring Framework 개발환경 구축 Visual Studio Code 플러그인 확장.Ctrl + Shift + x 를 눌러 Marketplace를 열고 아래 두 항목을 찾아 Install한다. 123451. Java Extension Pack2. Spring Boot Extension Pack   java.hom">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Let&#39;s build React with Spring boot Server ver.1">
+<meta property="og:url" content="http://example.com/2019/10/12/2019-10-12-build-react-springboot-first/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. Spring Boot를 활용한 Spring Framework 개발환경 구축 Visual Studio Code 플러그인 확장.Ctrl + Shift + x 를 눌러 Marketplace를 열고 아래 두 항목을 찾아 Install한다. 123451. Java Extension Pack2. Spring Boot Extension Pack   java.hom">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/res/2019-10-12-build-react-springboot-first/1.png">
+<meta property="article:published_time" content="2019-10-11T17:58:54.000Z">
+<meta property="article:modified_time" content="2022-04-15T00:49:03.305Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/res/2019-10-12-build-react-springboot-first/1.png">
+    
+
+    
+        <link rel="alternate" href="/" title="Hexo" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/1-Student/">1. Student</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/1-Student/Algorithm/">Algorithm</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/1-Student/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/1-Student/Machine-learning/">Machine learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/1-Student/Project/">Project</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/1-Student/React/">React</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/">2. Interpark</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Algorithm/">Algorithm</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Cloud/">Cloud</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Computer-Science/">Computer Science</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Container/">Container</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Css/">Css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Database/">Database</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Git/">Git</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Maven/">Maven</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Network/">Network</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/React/">React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Typescript/">Typescript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/AWS/">AWS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Database/">Database</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Flutter/">Flutter</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Git/">Git</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Gradle/">Gradle</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Hexo/">Hexo</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/JUnit/">JUnit</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Javascript/">Javascript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Kotlin/">Kotlin</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Linux/">Linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Mac/">Mac</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Monitoring/">Monitoring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Redis/">Redis</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Vue/">Vue</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Web/">Web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Webflux/">Webflux</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/4-Unfinished/">4. Unfinished</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/2-Interpark/">2. Interpark</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/2-Interpark/Spring/">Spring</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-2019-10-12-build-react-springboot-first" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Let&#39;s build React with Spring boot Server ver.1
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2019/10/12/2019-10-12-build-react-springboot-first/" class="article-date">
+       <time datetime="2019-10-11T17:58:54.000Z" itemprop="datePublished">2019-10-12</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2019/10/12/2019-10-12-build-react-springboot-first/" class="article-date">
+     <time datetime="2022-04-15T00:49:03.305Z" itemprop="dateModified">2022-04-15</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/React/" rel="tag">React</a>, <a class="tag-link-link" href="/tags/Spring/" rel="tag">Spring</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h2 id="1-Spring-Boot를-활용한-Spring-Framework-개발환경-구축"><a href="#1-Spring-Boot를-활용한-Spring-Framework-개발환경-구축" class="headerlink" title="1. Spring Boot를 활용한 Spring Framework 개발환경 구축"></a>1. Spring Boot를 활용한 Spring Framework 개발환경 구축</h2><p><br></p>
+<h3 id="Visual-Studio-Code-플러그인-확장"><a href="#Visual-Studio-Code-플러그인-확장" class="headerlink" title="Visual Studio Code 플러그인 확장."></a>Visual Studio Code 플러그인 확장.</h3><p>Ctrl + Shift + x 를 눌러 Marketplace를 열고 아래 두 항목을 찾아 Install한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. Java Extension Pack</span><br><span class="line"></span><br><span class="line">2. Spring Boot Extension Pack</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/res/2019-10-12-build-react-springboot-first/1.png" alt=""></p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/2.png" alt=""></p>
+<h3 id="java-home-경로-설정"><a href="#java-home-경로-설정" class="headerlink" title="java.home 경로 설정"></a>java.home 경로 설정</h3><p>상단 메뉴에서 File &gt; Preferences &gt; Settings 으로 들어간 후 jdk를 검색하고 <em>‘Edit in settings.json’</em> 눌러 settings.json 파일 안에 java.home 값을 추가한다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/3.png" alt=""></p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/4.png" alt=""></p>
+<h3 id="Spring-boot-project-생성"><a href="#Spring-boot-project-생성" class="headerlink" title="Spring-boot project 생성"></a>Spring-boot project 생성</h3><p>Ctrl + Shift + p 를 눌러 나타난 상단 바에 <em>Spring Initalizr: Generate Maven Project Spring</em> 을 선택한다.<br><br><br> Java를 선택하고 원하는 Group Id와 Artifact Id를 작성한다. 예를 들어 Group Id가 <em>com.example</em> 이고 Artifact Id가 <em>helloworld</em> 이라면 패키지는 <em>com.example.helloworld</em> 가 된다. </p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/5.png" alt=""></p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/6.png" alt=""></p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/7.png" alt=""></p>
+<p>Spring boot 버전은 최신 버전을 선택한다</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/8.png" alt=""></p>
+<p>의존성은 아래 두가지 항목을 추가한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. (Spring Boot) DevTools</span><br><span class="line"></span><br><span class="line">2. (Spring) Web</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/res/2019-10-12-build-react-springboot-first/9.png" alt=""></p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/10.png" alt=""></p>
+<p>파일탐색기가 열리면 프로젝트 생성을 원하는 폴더를 선택한다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/11.png" alt=""></p>
+<p>성공적으로 프로젝트 생성이 완료되었다면 Open을 클릭해 프로젝트를 열자.</p>
+<h3 id="JSP-JSTL을-위한-의존성-추가"><a href="#JSP-JSTL을-위한-의존성-추가" class="headerlink" title="JSP, JSTL을 위한 의존성 추가"></a>JSP, JSTL을 위한 의존성 추가</h3><p>pom.xml을 열어 아래 두 의존성을 추가하기 위한 코드를 작성한다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat.embed<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat-embed-jasper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="application-yml-파일-추가"><a href="#application-yml-파일-추가" class="headerlink" title="application.yml 파일 추가"></a>application.yml 파일 추가</h3><p>Spring-boot에서 프로젝트 설정은 annotation이나 application.properties 파일에서 처리된다. <br><br> application.properties 파일은 보기에 불편한 감이 있어 이를 삭제하고 application.yml 파일로 대체한다. <br><br><br>src/main/resources/ 디렉토리에 있는 application.properties 파일을 제거하고 application.yml 파일을 생성한다. <br><br> 아래의 코드를 application.yml 파일 안에 작성한다.</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">http:</span></span><br><span class="line">    <span class="attr">encoding:</span></span><br><span class="line">      <span class="attr">charset:</span>    <span class="string">UTF-8</span></span><br><span class="line">  <span class="attr">mvc:</span></span><br><span class="line">    <span class="attr">view:</span></span><br><span class="line">      <span class="attr">prefix:</span>     <span class="string">/jsp/</span></span><br><span class="line">      <span class="attr">suffix:</span>     <span class="string">.jsp</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">tomcat:</span></span><br><span class="line">    <span class="attr">uri-encoding:</span> <span class="string">UTF-8</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Spring-Server-테스트-실행"><a href="#Spring-Server-테스트-실행" class="headerlink" title="Spring Server 테스트 실행"></a>Spring Server 테스트 실행</h3><p>Ctrl + Shift + ` 또는 상단 메뉴에서 터미널을 클릭해 터미널을 띄운 후 프로젝트 루트 디렉토리에서 <em>mvnm spring-boot:run</em> 명령어를 실행하여 서버가 잘 실행되는지 확인한다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/12.png" alt=""></p>
+<p>실행이 잘 된다면 위와 같은 화면에서 터미널이 request를 listening하는 상태가 된다. 여기까지 한다면 Spring-boot를 활용한 Spring Framework 서버를 구현을 완료한 것이다.</p>
+<h2 id="2-React-개발환경-구축"><a href="#2-React-개발환경-구축" class="headerlink" title="2. React 개발환경 구축"></a>2. React 개발환경 구축</h2><h3 id="package-json-파일-생성"><a href="#package-json-파일-생성" class="headerlink" title="package.json 파일 생성"></a>package.json 파일 생성</h3><p>새로운 터미널을 하나 더 열고 프로젝트 루트 디렉토리에서 <em>npm init</em> 명령어를 활용해 새로운 노드 프로젝트를 만든다. (모든 질문에 엔터만 눌러도 무방하며, 이 행위의 결과로 단순히 package.json 파일만 생성된다.)</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/13.png" alt=""></p>
+<h3 id="React-의존-라이브러리-설치"><a href="#React-의존-라이브러리-설치" class="headerlink" title="React 의존 라이브러리 설치."></a>React 의존 라이브러리 설치.</h3><p>React 개발환경 구성을 위해 react, react-dom, @babel/core, @babel/preset-env, @babel/preset-react, babel-loader, css-loader, style-loader, webpack, webpack-cli 의존 라이브러리를 설치한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; npm i react react-dom</span><br><span class="line"></span><br><span class="line">&gt; npm i @babel/core @babel/preset-env @babel/preset-react babel-loader css-loader style-loader webpack webpack-cli -D</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/res/2019-10-12-build-react-springboot-first/14.png" alt=""></p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/15.png" alt=""></p>
+<p>설치가 잘 진행 되었다면 package.json 파일에 <em>dependencies</em> 항목과 <em>devDependencies</em> 항목에 설치한 라이브러리 이름들이 잘 추가되었을 것이다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/16.png" alt=""></p>
+<h3 id="webpack-설정"><a href="#webpack-설정" class="headerlink" title="webpack 설정"></a>webpack 설정</h3><p>webpack 설정을 추가하기 위해 프로젝트의 루트 디렉토리에 webpack.config.js 파일을 생성하고 아래의 코드를 작성한다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">context</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;src/main/jsx&#x27;</span>),</span><br><span class="line">    <span class="attr">entry</span>: &#123;</span><br><span class="line">        <span class="attr">main</span>: <span class="string">&#x27;./MainPage.jsx&#x27;</span>,</span><br><span class="line">        <span class="attr">page1</span>: <span class="string">&#x27;./Page1Page.jsx&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">devtool</span>: <span class="string">&#x27;sourcemaps&#x27;</span>,</span><br><span class="line">    <span class="attr">cache</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">        <span class="attr">path</span>: __dirname,</span><br><span class="line">        <span class="attr">filename</span>: <span class="string">&#x27;./src/main/webapp/js/react/[name].bundle.js&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&#x27;none&#x27;</span>,</span><br><span class="line">    <span class="attr">module</span>: &#123;</span><br><span class="line">        <span class="attr">rules</span>: [ &#123;</span><br><span class="line">            <span class="attr">test</span>: <span class="regexp">/\.jsx?$/</span>,</span><br><span class="line">            <span class="attr">exclude</span>: <span class="regexp">/(node_modules)/</span>,</span><br><span class="line">            <span class="attr">use</span>: &#123;</span><br><span class="line">                <span class="attr">loader</span>: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line">                <span class="attr">options</span>: &#123;</span><br><span class="line">                    <span class="attr">presets</span>: [ <span class="string">&#x27;@babel/preset-env&#x27;</span>, <span class="string">&#x27;@babel/preset-react&#x27;</span> ]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">            <span class="attr">use</span>: [ <span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span> ]</span><br><span class="line">        &#125; ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="3-Server-Side-Skeleton-코드-작성"><a href="#3-Server-Side-Skeleton-코드-작성" class="headerlink" title="3. Server Side Skeleton 코드 작성"></a>3. Server Side Skeleton 코드 작성</h2><h3 id="MyController-java"><a href="#MyController-java" class="headerlink" title="MyController.java"></a>MyController.java</h3><p>React, Spring을 활용한 개발 환경은 구성되었다. 기본적으로 필요한 코드들을 작성해보자. 우선은 클라이언트 쪽에서 요청이 들어왔을 때 서버쪽에서 최우선적으로 처리해주는 Controller 자바코드를 작성하자. <br><br> src/main 안쪽 프로젝트의 패키지 경로에 <em>MyController.java</em> 클래스 파일을 생성하고 아래의 코드를 작성한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.helloworld;</span><br><span class="line"><span class="comment">// package 경로는 본인의 프로젝트에 맞추어서 변경한다.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyController</span> &#123;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@GetMapping(&quot;/&#123;name&#125;.html&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">page</span><span class="params">(<span class="meta">@PathVariable</span> String name, Model model)</span> &#123;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;pageName&quot;</span>, name);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;page&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="page-jsp"><a href="#page-jsp" class="headerlink" title="page.jsp"></a>page.jsp</h3><p>src/main/webapp/jsp 경로에 <em>page.jsp</em> 파일을 만들고 아래의 코드를 작성한다. (해당 디렉토리가 없다면 생성한다.)</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=utf-8&quot;</span>%&gt;</span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;$&#123;pageName&#125;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"> </span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;root&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;/js/react/$&#123;pageName&#125;.bundle.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="custom-css"><a href="#custom-css" class="headerlink" title="custom.css"></a>custom.css</h3><p>css-loader가 잘 동작하는지 확인하기 위해 src/main/webapp/css/custom.css 파일을 만든다. 그리고 아래와 같이 코드를 작성한다 (해당 디렉토리가 없다면 생성한다.)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-class">.main</span> &#123; <span class="attribute">font-size</span>: <span class="number">24px</span>; <span class="attribute">border-bottom</span>: solid <span class="number">1px</span> black; &#125;</span><br><span class="line"><span class="selector-class">.page1</span> &#123; <span class="attribute">font-size</span>: <span class="number">14px</span>; <span class="attribute">background-color</span>: yellow; &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="4-Client-Side-Skeleton-코드-작성"><a href="#4-Client-Side-Skeleton-코드-작성" class="headerlink" title="4. Client Side Skeleton 코드 작성"></a>4. Client Side Skeleton 코드 작성</h2><h3 id="MainPage-jsx"><a href="#MainPage-jsx" class="headerlink" title="MainPage.jsx"></a>MainPage.jsx</h3><p>React 구성으로 Main 페이지에 해당하는 코드를 작성하자. src/main/jsx 폴더 아래에 MainPage.jsx 파일을 생성하고 아래의 코드를 작성한다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;../webapp/css/custom.css&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MainPage</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line"> </span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;main&quot;</span>&gt;</span>메인 페이지<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">MainPage</span>/&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Page1Page-jsx"><a href="#Page1Page-jsx" class="headerlink" title="Page1Page.jsx"></a>Page1Page.jsx</h3><p>src/main/jsx 폴더 아래에 Page1Page.jsx 파일을 생성하고 아래의 코드를 작성한다.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;../webapp/css/custom.css&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Page1Page</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line"> </span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;page1&quot;</span>&gt;</span>Page1 페이지<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Page1Page</span>/&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="클라이언트-스크립트-빌드"><a href="#클라이언트-스크립트-빌드" class="headerlink" title="클라이언트 스크립트 빌드"></a>클라이언트 스크립트 빌드</h3><p>React는 리소스 파일들을 바로 사용하지 않고 webpack을 활용하여 빌드한 후에 그 bundle 파일을 활용한다. <br><br> 위에서 만든 jsx 파일을 빌드하기 위해 터미널에서 루트 디렉토리로 이동하고 아래의 명령어를 작성한다. <br><br> watch 명령어는 JSX 파일 수정시에 자동적으로 지속 빌드할 수 있도록 도와준다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; node_modules/.bin/webpack --watch -d</span><br></pre></td></tr></table></figure>
+<h3 id="package-json-파일-script-수정"><a href="#package-json-파일-script-수정" class="headerlink" title="package.json 파일 script 수정"></a>package.json 파일 script 수정</h3><p>자주 사용하는 복잡한 명령어는 package.json 파일에서 script 옵션을 통해 간단하게 줄일 수 있다. script 옵션에 아래와 같이 추가한다. start에 들어가는 JAVA_HOME 옵션은 위에서 settings.json 파일에 추가한 java.home 경로와 같다. 본인의 환경에 맞도록 경로를 수정하자.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="string">&quot;set JAVA_HOME=C:\\Program Files\\Java\\jdk-12.0.2&amp;&amp;mvnw spring-boot:run&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;watch&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node_modules\\.bin\\webpack --watch -d&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="5-최종-빌드"><a href="#5-최종-빌드" class="headerlink" title="5. 최종 빌드"></a>5. 최종 빌드</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm run watch</span><br></pre></td></tr></table></figure>
+<p>루트 디렉토리에서 위와 같은 명령어를 작성하게 되면 webpack을 통해 bundle.js 파일을 만들게 된다. watch 옵션을 켜두었음으로 해당 명령어는 종료되지 않고 jsx 파일이 수정되면 자동적으로 새롭게 빌드된다.</p>
+<p><img src="/res/2019-10-12-build-react-springboot-first/17.png" alt=""></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; npm run start</span><br></pre></td></tr></table></figure>
+<p>위 명령어를 통해 Spring 서버가 실행되었다. 아래의 두 링크를 통해 만들어 놓은 Skeleton 코드들이 잘 동작하는지 확인하자.</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/main.html">MainPage.jsx</a></p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/page1.html">Page1Page.jsx</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://example.com/2019/10/12/2019-10-12-build-react-springboot-first/" data-id="cl2h1lx7y0077f0wbc0xu292q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "headline": "Let&#39;s build React with Spring boot Server ver.1",
+        "image": "http://example.com/res/2019-10-12-build-react-springboot-first/1.png",
+        "keywords": "React Spring",
+        "genre": "2. Interpark Spring",
+        "datePublished": "2019-10-12",
+        "dateCreated": "2019-10-12",
+        "dateModified": "2022-04-15",
+        "url": "http://example.com/2019/10/12/2019-10-12-build-react-springboot-first/",
+        "description": "1. Spring Boot를 활용한 Spring Framework 개발환경 구축
+Visual Studio Code 플러그인 확장.Ctrl + Shift + x 를 눌러 Marketplace를 열고 아래 두 항목을 찾아 Install한다.
+123451. Java Extension Pack2. Spring Boot Extension Pack
+
+
+java.hom",
+        "wordCount": 1830
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/10/24/2019-10-24-build-spring-mvc/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Building Spring MVC via Intellij IDEA
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/10/12/2019-10-12-build-react-springboot-second/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Let&#39;s build React with Spring boot Server ver.2</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/04/27/2022-04-27-configure-hexo/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/3-Kakaobank/Hexo/">Hexo</a></p>
+                            <p class="item-title"><a href="/2022/04/27/2022-04-27-configure-hexo/" class="title">Configure hexo</a></p>
+                            <p class="item-date"><time datetime="2022-04-27T02:38:54.000Z" itemprop="datePublished">2022-04-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/04/20/2022-04-22-cross-origin-same-origin/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/3-Kakaobank/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2022/04/20/2022-04-22-cross-origin-same-origin/" class="title">Cross Origin / Same Origin</a></p>
+                            <p class="item-date"><time datetime="2022-04-20T02:38:54.000Z" itemprop="datePublished">2022-04-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/04/14/2022-04-14-webflux/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/3-Kakaobank/Webflux/">Webflux</a></p>
+                            <p class="item-title"><a href="/2022/04/14/2022-04-14-webflux/" class="title">Webflux</a></p>
+                            <p class="item-date"><time datetime="2022-04-14T02:38:54.000Z" itemprop="datePublished">2022-04-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/04/11/2022-04-11-webflux/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/3-Kakaobank/Webflux/">Webflux</a></p>
+                            <p class="item-title"><a href="/2022/04/11/2022-04-11-webflux/" class="title">Webflux</a></p>
+                            <p class="item-date"><time datetime="2022-04-11T02:38:54.000Z" itemprop="datePublished">2022-04-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/04/08/2022-04-08-webflux-routerfunction/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/3-Kakaobank/Spring/">Spring</a></p>
+                            <p class="item-title"><a href="/2022/04/08/2022-04-08-webflux-routerfunction/" class="title">Webflux RouterFunction</a></p>
+                            <p class="item-date"><time datetime="2022-04-08T02:38:54.000Z" itemprop="datePublished">2022-04-08</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/1-Student/">1. Student</a><span class="category-list-count">51</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/1-Student/Algorithm/">Algorithm</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/1-Student/Blog/">Blog</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/1-Student/Machine-learning/">Machine learning</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/1-Student/Project/">Project</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/1-Student/React/">React</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/">2. Interpark</a><span class="category-list-count">108</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Algorithm/">Algorithm</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Blog/">Blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Cloud/">Cloud</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Computer-Science/">Computer Science</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Container/">Container</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Css/">Css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Database/">Database</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Java/">Java</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Network/">Network</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/React/">React</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Spring/">Spring</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Typescript/">Typescript</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><span class="category-list-count">51</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/AWS/">AWS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Blog/">Blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Database/">Database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Flutter/">Flutter</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Gradle/">Gradle</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/JUnit/">JUnit</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Java/">Java</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Javascript/">Javascript</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Mac/">Mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Monitoring/">Monitoring</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Redis/">Redis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Spring/">Spring</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Webflux/">Webflux</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/4-Unfinished/">4. Unfinished</a><span class="category-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AOP/" rel="tag">AOP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BackboneJS/" rel="tag">BackboneJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Brew/" rel="tag">Brew</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud/" rel="tag">Cloud</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Science/" rel="tag">Computer Science</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Container/" rel="tag">Container</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Controller/" rel="tag">Controller</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Css/" rel="tag">Css</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DI/" rel="tag">DI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Design-Pattern/" rel="tag">Design Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dto/" rel="tag">Dto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/" rel="tag">Flutter</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graphql/" rel="tag">Graphql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/" rel="tag">Html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intellij/" rel="tag">Intellij</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ionic/" rel="tag">Ionic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit/" rel="tag">JUnit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jackson/" rel="tag">Jackson</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">48</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jekyll/" rel="tag">Jekyll</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jira/" rel="tag">Jira</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jmeter/" rel="tag">Jmeter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jpa/" rel="tag">Jpa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Json/" rel="tag">Json</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jwt/" rel="tag">Jwt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kiba/" rel="tag">Kiba</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-learning/" rel="tag">Machine learning</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/" rel="tag">Memory</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Monitoring/" rel="tag">Monitoring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/" rel="tag">Network</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/O-O-P/" rel="tag">O.O.P</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/" rel="tag">Object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Php/" rel="tag">Php</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/" rel="tag">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reflect/" rel="tag">Reflect</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rest/" rel="tag">Rest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Roofline/" rel="tag">Roofline</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STT/" rel="tag">STT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/" rel="tag">Security</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sentry/" rel="tag">Sentry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">53</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swagger/" rel="tag">Swagger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Telnet/" rel="tag">Telnet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/" rel="tag">Test</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/" rel="tag">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UnderscoreJS/" rel="tag">UnderscoreJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webapp/" rel="tag">Webapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webflux/" rel="tag">Webflux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xml/" rel="tag">Xml</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AOP/" style="font-size: 10px;">AOP</a> <a href="/tags/AWS/" style="font-size: 16.15px;">AWS</a> <a href="/tags/Algorithm/" style="font-size: 18.46px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 10.77px;">Android</a> <a href="/tags/BackboneJS/" style="font-size: 10px;">BackboneJS</a> <a href="/tags/Blog/" style="font-size: 13.85px;">Blog</a> <a href="/tags/Brew/" style="font-size: 10px;">Brew</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Cloud/" style="font-size: 13.08px;">Cloud</a> <a href="/tags/Computer-Science/" style="font-size: 14.62px;">Computer Science</a> <a href="/tags/Container/" style="font-size: 10.77px;">Container</a> <a href="/tags/Controller/" style="font-size: 10.77px;">Controller</a> <a href="/tags/Css/" style="font-size: 12.31px;">Css</a> <a href="/tags/DI/" style="font-size: 10px;">DI</a> <a href="/tags/Database/" style="font-size: 15.38px;">Database</a> <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 10.77px;">Docker</a> <a href="/tags/Dto/" style="font-size: 10px;">Dto</a> <a href="/tags/ElasticSearch/" style="font-size: 12.31px;">ElasticSearch</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Flutter/" style="font-size: 12.31px;">Flutter</a> <a href="/tags/Git/" style="font-size: 13.08px;">Git</a> <a href="/tags/Gradle/" style="font-size: 13.08px;">Gradle</a> <a href="/tags/Graphql/" style="font-size: 10px;">Graphql</a> <a href="/tags/Hexo/" style="font-size: 11.54px;">Hexo</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/Intellij/" style="font-size: 10px;">Intellij</a> <a href="/tags/Ionic/" style="font-size: 10px;">Ionic</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JUnit/" style="font-size: 10px;">JUnit</a> <a href="/tags/Jackson/" style="font-size: 10px;">Jackson</a> <a href="/tags/Java/" style="font-size: 19.23px;">Java</a> <a href="/tags/Javascript/" style="font-size: 17.69px;">Javascript</a> <a href="/tags/Jekyll/" style="font-size: 12.31px;">Jekyll</a> <a href="/tags/Jira/" style="font-size: 10px;">Jira</a> <a href="/tags/Jmeter/" style="font-size: 10px;">Jmeter</a> <a href="/tags/Jpa/" style="font-size: 10px;">Jpa</a> <a href="/tags/Json/" style="font-size: 10px;">Json</a> <a href="/tags/Jwt/" style="font-size: 10px;">Jwt</a> <a href="/tags/Kiba/" style="font-size: 10px;">Kiba</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lombok/" style="font-size: 10.77px;">Lombok</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Machine-learning/" style="font-size: 16.92px;">Machine learning</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/Monitoring/" style="font-size: 10px;">Monitoring</a> <a href="/tags/Mybatis/" style="font-size: 11.54px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Network/" style="font-size: 13.85px;">Network</a> <a href="/tags/Node/" style="font-size: 11.54px;">Node</a> <a href="/tags/O-O-P/" style="font-size: 10px;">O.O.P</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/Php/" style="font-size: 12.31px;">Php</a> <a href="/tags/Postgresql/" style="font-size: 10px;">Postgresql</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/React/" style="font-size: 14.62px;">React</a> <a href="/tags/Redis/" style="font-size: 13.08px;">Redis</a> <a href="/tags/Reflect/" style="font-size: 10px;">Reflect</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rest/" style="font-size: 10px;">Rest</a> <a href="/tags/Roofline/" style="font-size: 10px;">Roofline</a> <a href="/tags/STT/" style="font-size: 10px;">STT</a> <a href="/tags/Security/" style="font-size: 10.77px;">Security</a> <a href="/tags/Sentry/" style="font-size: 10px;">Sentry</a> <a href="/tags/Spring/" style="font-size: 20px;">Spring</a> <a href="/tags/Swagger/" style="font-size: 10px;">Swagger</a> <a href="/tags/Telnet/" style="font-size: 10px;">Telnet</a> <a href="/tags/Test/" style="font-size: 15.38px;">Test</a> <a href="/tags/Typescript/" style="font-size: 10px;">Typescript</a> <a href="/tags/UnderscoreJS/" style="font-size: 10px;">UnderscoreJS</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Web/" style="font-size: 10.77px;">Web</a> <a href="/tags/Webapp/" style="font-size: 10px;">Webapp</a> <a href="/tags/Webflux/" style="font-size: 10.77px;">Webflux</a> <a href="/tags/Webpack/" style="font-size: 10.77px;">Webpack</a> <a href="/tags/Xml/" style="font-size: 10.77px;">Xml</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 John Doe</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://example.com/2019/10/12/2019-10-12-build-react-springboot-first/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

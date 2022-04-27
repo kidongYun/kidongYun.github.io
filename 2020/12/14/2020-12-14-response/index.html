@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>API 서버에서 응답 객체에 대한 고찰 | Hexo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Spring" />
+    
+    <meta name="description" content="API 개발 작업을 처음 의뢰 받게 되면 가장 먼저 눈에 들어오는 것은 일반적으로 요청과 응답에 대한 API SPEC 일 것이다 . 클라이언트에서 어떤 데이터를 요구하는지, 서버에서는 클라이언트의 요구에 어떻게 응답해줘야 하는지 고민 해야 한다.이 글에 주된 내용은 API 응답 구조를 어떠한 형태로 그리는 것이 보다 나은지 에 대한 이야기이다. 특히 응답">
+<meta property="og:type" content="article">
+<meta property="og:title" content="API 서버에서 응답 객체에 대한 고찰">
+<meta property="og:url" content="http://example.com/2020/12/14/2020-12-14-response/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="API 개발 작업을 처음 의뢰 받게 되면 가장 먼저 눈에 들어오는 것은 일반적으로 요청과 응답에 대한 API SPEC 일 것이다 . 클라이언트에서 어떤 데이터를 요구하는지, 서버에서는 클라이언트의 요구에 어떻게 응답해줘야 하는지 고민 해야 한다.이 글에 주된 내용은 API 응답 구조를 어떠한 형태로 그리는 것이 보다 나은지 에 대한 이야기이다. 특히 응답">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-14T02:38:54.000Z">
+<meta property="article:modified_time" content="2022-04-15T00:49:03.359Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="Hexo" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/1-Student/">1. Student</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/1-Student/Algorithm/">Algorithm</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/1-Student/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/1-Student/Machine-learning/">Machine learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/1-Student/Project/">Project</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/1-Student/React/">React</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/">2. Interpark</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Algorithm/">Algorithm</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Cloud/">Cloud</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Computer-Science/">Computer Science</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Container/">Container</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Css/">Css</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Database/">Database</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Git/">Git</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Maven/">Maven</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Network/">Network</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/React/">React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/2-Interpark/Typescript/">Typescript</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/AWS/">AWS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Database/">Database</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Flutter/">Flutter</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Git/">Git</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Gradle/">Gradle</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Hexo/">Hexo</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/JUnit/">JUnit</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Javascript/">Javascript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Kotlin/">Kotlin</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Linux/">Linux</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Mac/">Mac</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Monitoring/">Monitoring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Redis/">Redis</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Vue/">Vue</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Web/">Web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/3-Kakaobank/Webflux/">Webflux</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/4-Unfinished/">4. Unfinished</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/2-Interpark/">2. Interpark</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/2-Interpark/Spring/">Spring</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-2020-12-14-response" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        API 서버에서 응답 객체에 대한 고찰
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2020/12/14/2020-12-14-response/" class="article-date">
+       <time datetime="2020-12-14T02:38:54.000Z" itemprop="datePublished">2020-12-14</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2020/12/14/2020-12-14-response/" class="article-date">
+     <time datetime="2022-04-15T00:49:03.359Z" itemprop="dateModified">2022-04-15</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Spring/" rel="tag">Spring</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>API 개발 작업을 처음 의뢰 받게 되면 가장 먼저 눈에 들어오는 것은 일반적으로 요청과 응답에 대한 API SPEC 일 것이다 . 클라이언트에서 어떤 데이터를 요구하는지, 서버에서는 클라이언트의 요구에 어떻게 응답해줘야 하는지 고민 해야 한다.<br>이 글에 주된 내용은 API 응답 구조를 어떠한 형태로 그리는 것이 보다 나은지 에 대한 이야기이다. 특히 응답 객체 내에서 비즈니스 데이터가 아닌 필연적으로 가지게 되는 에러 코드, 에러 상태 등에 대한 것을 다룬다.<br>이 글은 저자의 경험에 비롯된 주관적인 글임으로 단순히 하나의 참고 글로써 읽어주시길 바란다.</p>
+<h3 id="에러-코드-에러-설명-필드-명"><a href="#에러-코드-에러-설명-필드-명" class="headerlink" title="에러 코드, 에러 설명 필드 명"></a>에러 코드, 에러 설명 필드 명</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;errorCode&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;errorDesc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;정상입니다&quot;</span><span class="punctuation">,</span></span><br><span class="line">    ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;errorNo&quot;</span><span class="punctuation">:</span> <span class="number">1003</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;errorDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;카드번호 불일치 오류&quot;</span><span class="punctuation">,</span></span><br><span class="line">    ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;status&quot;</span><span class="punctuation">:</span> <span class="number">1003</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;카드번호 불일치 오류&quot;</span><span class="punctuation">,</span></span><br><span class="line">    ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>내가 개발 초기에 자주 접했던 API 응답 구조는 보통 위와 같은 구조였다. 에러 코드와 에러 설명을 위한 두 값이 필연적으로 존재하고, 그 필드 명은 각 API 마다 상이했다.<br>여기서 내가 느낀 한 가지 문제점을 언급해보려고 한다.<br>API 서버를 바라보고 있는 클라이언트 개발자가 있다고 생각하자. API 마다 에러 코드, 에러 설명에 대한 필드 명이 모두 다르기 때문에 각 API 들을 쓸 때 서버 쪽에서 제공하는 API 공식 문서를 확인 해야 하고, 문서가 제대로 준비되어 있지 않다면 API 서버 개발자와 연락을 해서 정보를 얻어야 한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">에러 코드, 에러 설명에 대한 필드 명을 각 API 마다 확인 해야 한다.</span><br></pre></td></tr></table></figure>
+<h3 id="통일된-Response-응답-객체"><a href="#통일된-Response-응답-객체" class="headerlink" title="통일된 Response 응답 객체"></a>통일된 Response 응답 객체</h3><p>그렇다면 에러 코드, 에러 설명에 해당하는 필드 명을 모든 API 에서 항상 동일하게 내려주는 것이 어떨까? 그렇게 된다면 API 사용자의 입장에서는 에러 코드, 에러 설명 필드 명을 바로 인지 할 수 있으며 이를 찾기 위한 시간을 줄일 수 있을 것이다.<br>그렇다면 이를 어떻게 구현할 수 있을까? 물론 파트너들과 개발 가이드 문서를 만들고 특정 필드 명을 사용하도록 규정을 정할 수도 있지만, 아래와 같이 공통의 Response 객체를 만들어 사용할 수도 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Response</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> errorCode;</span><br><span class="line">    <span class="keyword">private</span> String errorDesc;</span><br><span class="line">    <span class="keyword">private</span> Object data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>대부분의 응답 객체가 가져야 하는 에러 코드, 에러 설명 정보를 ‘errorCode’, ‘errorDesc’ 필드 명으로 통일하여 API 사용자가 보다 알아보기 쉬운 획일적인 API 구조로 내려줄 수 있게 되었다.</p>
+<h3 id="서버-개발자-마음대로의-에러-코드"><a href="#서버-개발자-마음대로의-에러-코드" class="headerlink" title="서버 개발자 마음대로의 에러 코드"></a>서버 개발자 마음대로의 에러 코드</h3><p>이제 다음 문제점을 생각해보자. 현재 API 사용자들은 이 ‘errorrCode’ 에 들어가는 각 숫자들의 의미를 API 가이드 공식 문서를 통해 이해해야 한다. ‘errorCode’ 값이 ‘1003’ 일 때 ‘카드 번호 불일치 오류’ 라고 한다면 API 사용자들은 단순히 받아들여야 한다. 즉 에러 코드에 대한 결정이 순전히 서버 개발자의 마음대로 이기 때문에 API 사용자는 새로운 API 를 접할 때마다 매번 새로운 에러 코드 규칙을 익혀야 한다.<br>에러 코드에 대한 설명을 보통은 API 문서를 통해 제공 받지만 경험적으로 API 문서가 잘 관리되는 것은 쉽지 않다. 항상 시간에 쫓겨 야근까지 하는 개발자에게 문서 작업도 완벽하게 하는 것은 쉽지 않다고 생각한다.<br>API 공식 문서가 잘 관리되지 않는다면 특정 ‘errorCode’ 가 반환 되었을 때 해당 오류에 대한 자세한 정보를 문서에서 확인하기 어려우며 오로지 ‘errorDesc’ 에서 내려오는 설명을 가지고 이해해야 한다.<br>물론 Swagger 등의 API 문서화를 자동화 해주는 다른 접근으로의 해결 방법들이 존재하지만 지금은 보다 근본적인 문제점을 생각하자.</p>
+<h3 id="표준화-되어있는-에러-코드"><a href="#표준화-되어있는-에러-코드" class="headerlink" title="표준화 되어있는 에러 코드"></a>표준화 되어있는 에러 코드</h3><p>API 통신은 여러가지 형태로 존재할 수 있지만, 현대에 와서는 많은 서비스들이 HTTP 프로토콜을 기반으로 하여 통신을 한다. 그렇다면 이미 표준으로 지정되어 있는 HTTP STATUS 코드를 기반으로 ‘errorCode’ 값을 만들면 어떨까?그렇다면 API 사용자들도 받아들이기 쉬울 것이다.<br>HTTP STATUS 의 특성에 따라 ‘200’ 이면 성공,‘400’ 대역의 에러 코드가 나타났다면 API 사용자가 날린 요청에 오류가 있고, ‘500’ 대역의 에러 코드가 나타났다면 서버에 오류가 있음을 API 사용자들이 바로 인지할 수 있게 된다.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;errorCode&quot;</span><span class="punctuation">:</span> <span class="number">200</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;errorDesc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;OK&quot;</span><span class="punctuation">,</span></span><br><span class="line">    ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;errorCode&quot;</span><span class="punctuation">:</span> <span class="number">500</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;errorDesc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;INTERNAL_SERVER_ERROR&quot;</span><span class="punctuation">,</span></span><br><span class="line">    ...</span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>HTTP STATUS 에 대한 공식 문서를 찾아보면 이미 다양한 케이스에 대해서 미리 정의를 해두고 있다. 대부분의 경우에는 이를 활용해서 ‘errorCode’, ‘errorDesc’ 값을 내릴 수 있다고 생각한다.<br>그러나 특정 비즈니스에 맞춰져 있는 오류를 반환 해야 할 경우도 있다. 그런 경우에는 기존의 방식대로 서버 개발자가 임의의 에러 코드를 만들고 이를 사용해야 한다. 다만 이런 경우에는 클라이언트의 이해를 위해 ‘errorDesc’ 정보를 보다 자세하게 적거나, API 문서를 명확히 하는 것이 좋다.</p>
+<h3 id="동적타입의-활용"><a href="#동적타입의-활용" class="headerlink" title="동적타입의 활용"></a>동적타입의 활용</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Response</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> errorCode;</span><br><span class="line">    <span class="keyword">private</span> String errorDesc;</span><br><span class="line">    <span class="keyword">private</span> Object data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>이전에 만든 Response 객체에서 data 필드 부분을 좀 더 살펴보자.<br>이 필드는 특정 비즈니스에 맞춰진 모든 데이터들을 받아야 하기 때문에 Object 타입으로 받고 있다. Response의 관점에서는 알 수 없는 구조를 받아야 하기 때문에 Object 타입을 사용하는 것은 불가피하다. 그러나 Object 타입의 근본적인 문제는 타입 세이프 하지 않아서 컴파일 시점에 오류를 찾아내지 못한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Response</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> errorCode;</span><br><span class="line">    <span class="keyword">private</span> String errorDesc;</span><br><span class="line">    <span class="keyword">private</span> Object data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span></span><br><span class="line"><span class="keyword">public</span> Response <span class="title function_">goodExample</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Response.builder().errorCode(<span class="number">200</span>).errorDesc(<span class="string">&quot;OK&quot;</span>).data(<span class="number">150</span>).build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span></span><br><span class="line"><span class="keyword">public</span> Response <span class="title function_">badExample</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Response.builder().errorCode(<span class="number">200</span>).errorDesc(<span class="string">&quot;OK&quot;</span>).data(<span class="string">&quot;150&quot;</span>).build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>‘data’ 필드에 들어갈 데이터의 형식이 ‘int’ 이기를 기대했지만 실제로는 ‘Object’ 타입이기 때문에 ‘String’, ‘int’ 모두를 고려하지 않고 받게 되어. 컴파일 시점에 오류를 검출하지 못한다. 이를 개선하기 위해 제네릭 문법을 활용해서 동적으로 타입을 지정할 수 있도록 하자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Response</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> errorCode;</span><br><span class="line">    <span class="keyword">private</span> String errorDesc;</span><br><span class="line">    <span class="keyword">private</span> T data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span></span><br><span class="line"><span class="keyword">public</span> Response&lt;Integer&gt; <span class="title function_">goodExample</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Response.&lt;Integer&gt;builder().errorCode(<span class="number">200</span>).errorDesc(<span class="string">&quot;OK&quot;</span>).data(<span class="number">150</span>).build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span></span><br><span class="line"><span class="keyword">public</span> Response&lt;Integer&gt; <span class="title function_">badExample</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Response.&lt;Integer&gt;builder().errorCode(<span class="number">200</span>).errorDesc(<span class="string">&quot;OK&quot;</span>).data(<span class="string">&quot;150&quot;</span>).build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>‘badExample()’ 의 경우에는 ‘Integer’ 타입을 원하지만 ‘data’ 필드에 ‘String’ 객체를 넣었음으로 컴파일 시점에 오류가 나타날 것이다.</p>
+<h3 id="ErrorDesc-필드의-필요성"><a href="#ErrorDesc-필드의-필요성" class="headerlink" title="ErrorDesc 필드의 필요성"></a>ErrorDesc 필드의 필요성</h3><p>우리는 습관적으로 ‘errorCode’, ‘errorDesc’ 두 값을 마치 형제처럼 종종 함께 선언하고 사용했다. 이 구조에 대해서 좀 더 면밀히 생각해보자.<br>‘errorDesc’ 값은 API 통신에 문제가 없는 경우 사용될 일이 없다. 왜냐하면 필드 명에서 말해주듯이 에러가 발생했을 때 에러에 대한 설명을 넣기 위한 필드이기 때문이다. 반대로 data 필드를 생각해보자. 이 값은 일반적으로 API 통신이 성공적일 경우에만 사용이 될 수 있다.<br>그러면 ‘errorDesc’ 필드와 ‘data’ 필드를 하나의 필드로 묶어보는 것은 어떨까? API 통신이 성공했을 때는 해당 필드를 data 필드로서 사용하고 오류가 발생했을 때에는 ‘errorDesc’ 필드로 사용하는 것이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Response</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> status; <span class="comment">/* errorCode와 동일하며, 필드 이름만 바꾸었다. */</span></span><br><span class="line">    <span class="keyword">private</span> T body; <span class="comment">/* errorDesc, data 성격을 모두 가지고 있는 필드이다. */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 예시를 위한 샘플 데이터 객체이다. */</span></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 성공인 경우 예시 */</span></span><br><span class="line"><span class="meta">@RequestMapping</span></span><br><span class="line"><span class="keyword">public</span> Response&lt;Person&gt; <span class="title function_">goodExample</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> Person.builder().name(<span class="string">&quot;홍길동&quot;</span>).age(<span class="number">30</span>).build();</span><br><span class="line">    <span class="keyword">return</span> Response.&lt;Person&gt;builder().status(<span class="number">200</span>).body(person).build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 실패인 경우 예시 */</span></span><br><span class="line"><span class="meta">@RequestMapping</span></span><br><span class="line"><span class="keyword">public</span> Response&lt;String&gt; <span class="title function_">badExample</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Response.&lt;String&gt;builder().status(<span class="number">500</span>).body(<span class="string">&quot;INTERNAL_SERVER_ERROR&quot;</span>).build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 한 컨트롤러에서 실제 사용되는 예시 */</span></span><br><span class="line"><span class="meta">@RequestMapping</span></span><br><span class="line"><span class="keyword">public</span> Response&lt;?&gt; example() &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> Person.builder().name(<span class="string">&quot;홍길동&quot;</span>).age(<span class="number">30</span>).build();</span><br><span class="line">        <span class="keyword">return</span> Response.&lt;Person&gt;builder().status(<span class="number">200</span>).body(person).build();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        <span class="keyword">return</span> Response.&lt;String&gt;builder().status(<span class="number">500</span>).body(<span class="string">&quot;INTERNAL_SERVER_ERROR&quot;</span>).build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>에러 코드를 표현하는 필드 명이 ‘errorCode’ 이였지만 ‘status’ 필드 명으로 변경 하였고 ‘errorDesc’, ‘data’ 두 필드 명을 합쳐서 ‘body’ 필드 명으로 변경하였다.<br>‘한 컨트롤러에서 실제 사용되는 예시’ 이 곳을 보면 컨트롤러의 반환 형에 타입에 Response&lt;?&gt; 형태를 사용하고 있다. 위와 같이 ‘body’ 필드 명을 사용하게 되면 성공했을 때와, 실패했을 때의 ‘body’ 필드 타입이 다르기 때문에 모두 수용할 수 있도록 와일드카드 문법을 사용하고 있다.</p>
+<h3 id="ResponseEntity"><a href="#ResponseEntity" class="headerlink" title="ResponseEntity"></a>ResponseEntity</h3><p>지금까지 응답 객체에 대한 고찰을 하면서 ‘Response’ 객체를 다듬어 왔다. 이 객체를 항상 직접 만들어서 사용할 수도 있지만 Spring Framework 에서 제공하는 ‘ResponseEntity’ 객체가 ‘Response’ 객체와 거의 유사함으로 이를 사용하는 것을 권장한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.http.HttpStatus;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.ResponseEntity;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 예시를 위한 샘플 데이터 구조이다. */</span></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span></span><br><span class="line"><span class="keyword">public</span> ResponseEntity&lt;?&gt; example() &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> Person.builder().name(<span class="string">&quot;홍길동&quot;</span>).age(<span class="number">30</span>).build();</span><br><span class="line">        <span class="keyword">return</span> ResponseEntity.status(HttpStatus.OK).body(person);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        <span class="keyword">return</span> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)</span><br><span class="line">                .body(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>‘ResponseEntity’ 객체는 지금까지 우리가 만든 Response 객체와 굉장히 유사하나, 가장 결정적인 차이가 있고 이 차이 때문에 사실 이 객체를 사용해야 한다.</p>
+<h3 id="HTTP-Header"><a href="#HTTP-Header" class="headerlink" title="HTTP Header"></a>HTTP Header</h3><p>현대의 대부분 API 통신은 HTTP 통신 기반 하에 이루어진다. HTTP 구조는 Header, Body 두 부분으로 나누어지는데 Header 에는 통신을 원활히 하기 위해 필요한 제반 정보들이 존재하고, Body 에는 실제 데이터가 들어간다. 여기서 HTTP STATUS 코드는 본래 Header 영역에 들어가는 정보이고, 우리가 만든 API 응답 객체는 Body 안에 들어간다.<br>즉 다시 말하자면 Response 객체 내부에 있는 status 필드 값을 ‘200’, ‘500’ 같이 특정 코드로 변경한다고 해서 Header 에 있는 HTTP STATUS 코드가 변경되는 것은 아니라는 거다. Response 객체는 우리가 만든 API 응답 객체 이기 때문에 Body 안에서만 영향을 미친다.<br>위처럼 status 필드를 HTTP STATUS 코드를 사용할 때 발생하는 한 가지 문제점은 Header 안에 있는 HTTP STATUS 값과 Body 안에 있는 status 필드 값이 서로 안 맞는 경우가 생길 수 있다.<br>‘ResponseEntity’ 객체가 우리가 만든 ‘Response’ 객체와 가장 다른 점은 status 필드 값이 이 Header의 HTTP STATUS 값이랑 연계가 되어 있다는 것이다. 이 객체를 활용하면 API 안에 status 필드 값에 맞추어 Header 도 변경이 가능하다.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://example.com/2020/12/14/2020-12-14-response/" data-id="cl2h1lz9v00gcf0wb1dzc2qlh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "headline": "API 서버에서 응답 객체에 대한 고찰",
+        "image": "http://example.com",
+        "keywords": "Spring",
+        "genre": "2. Interpark Spring",
+        "datePublished": "2020-12-14",
+        "dateCreated": "2020-12-14",
+        "dateModified": "2022-04-15",
+        "url": "http://example.com/2020/12/14/2020-12-14-response/",
+        "description": "API 개발 작업을 처음 의뢰 받게 되면 가장 먼저 눈에 들어오는 것은 일반적으로 요청과 응답에 대한 API SPEC 일 것이다 . 클라이언트에서 어떤 데이터를 요구하는지, 서버에서는 클라이언트의 요구에 어떻게 응답해줘야 하는지 고민 해야 한다.이 글에 주된 내용은 API 응답 구조를 어떠한 형태로 그리는 것이 보다 나은지 에 대한 이야기이다. 특히 응답 ",
+        "wordCount": 1987
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/12/24/2020-12-24-spring-data-jpa/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            JPA 기본 내용에 대한 고찰
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2020/12/04/2020-12-04-redux-pattern/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Redux 패턴에 대한 고찰</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/04/27/2022-04-27-configure-hexo/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/3-Kakaobank/Hexo/">Hexo</a></p>
+                            <p class="item-title"><a href="/2022/04/27/2022-04-27-configure-hexo/" class="title">Configure hexo</a></p>
+                            <p class="item-date"><time datetime="2022-04-27T02:38:54.000Z" itemprop="datePublished">2022-04-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/04/20/2022-04-22-cross-origin-same-origin/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/3-Kakaobank/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2022/04/20/2022-04-22-cross-origin-same-origin/" class="title">Cross Origin / Same Origin</a></p>
+                            <p class="item-date"><time datetime="2022-04-20T02:38:54.000Z" itemprop="datePublished">2022-04-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/04/14/2022-04-14-webflux/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/3-Kakaobank/Webflux/">Webflux</a></p>
+                            <p class="item-title"><a href="/2022/04/14/2022-04-14-webflux/" class="title">Webflux</a></p>
+                            <p class="item-date"><time datetime="2022-04-14T02:38:54.000Z" itemprop="datePublished">2022-04-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/04/11/2022-04-11-webflux/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/3-Kakaobank/Webflux/">Webflux</a></p>
+                            <p class="item-title"><a href="/2022/04/11/2022-04-11-webflux/" class="title">Webflux</a></p>
+                            <p class="item-date"><time datetime="2022-04-11T02:38:54.000Z" itemprop="datePublished">2022-04-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/04/08/2022-04-08-webflux-routerfunction/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/3-Kakaobank/Spring/">Spring</a></p>
+                            <p class="item-title"><a href="/2022/04/08/2022-04-08-webflux-routerfunction/" class="title">Webflux RouterFunction</a></p>
+                            <p class="item-date"><time datetime="2022-04-08T02:38:54.000Z" itemprop="datePublished">2022-04-08</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/1-Student/">1. Student</a><span class="category-list-count">51</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/1-Student/Algorithm/">Algorithm</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/1-Student/Blog/">Blog</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/1-Student/Machine-learning/">Machine learning</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/1-Student/Project/">Project</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/1-Student/React/">React</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/">2. Interpark</a><span class="category-list-count">108</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Algorithm/">Algorithm</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Blog/">Blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Cloud/">Cloud</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Computer-Science/">Computer Science</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Container/">Container</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Css/">Css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Database/">Database</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Java/">Java</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Network/">Network</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/React/">React</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Spring/">Spring</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/2-Interpark/Typescript/">Typescript</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/">3. Kakaobank</a><span class="category-list-count">51</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/AWS/">AWS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Blog/">Blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Database/">Database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Flutter/">Flutter</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Git/">Git</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Gradle/">Gradle</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/JUnit/">JUnit</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Java/">Java</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Javascript/">Javascript</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Kotlin/">Kotlin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Mac/">Mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Monitoring/">Monitoring</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Redis/">Redis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Spring/">Spring</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Web/">Web</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/3-Kakaobank/Webflux/">Webflux</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/4-Unfinished/">4. Unfinished</a><span class="category-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AOP/" rel="tag">AOP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BackboneJS/" rel="tag">BackboneJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Brew/" rel="tag">Brew</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud/" rel="tag">Cloud</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Science/" rel="tag">Computer Science</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Container/" rel="tag">Container</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Controller/" rel="tag">Controller</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Css/" rel="tag">Css</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DI/" rel="tag">DI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Design-Pattern/" rel="tag">Design Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dto/" rel="tag">Dto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/" rel="tag">Flutter</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graphql/" rel="tag">Graphql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/" rel="tag">Html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intellij/" rel="tag">Intellij</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ionic/" rel="tag">Ionic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit/" rel="tag">JUnit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jackson/" rel="tag">Jackson</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">48</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jekyll/" rel="tag">Jekyll</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jira/" rel="tag">Jira</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jmeter/" rel="tag">Jmeter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jpa/" rel="tag">Jpa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Json/" rel="tag">Json</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jwt/" rel="tag">Jwt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kiba/" rel="tag">Kiba</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-learning/" rel="tag">Machine learning</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/" rel="tag">Memory</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Monitoring/" rel="tag">Monitoring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/" rel="tag">Network</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/O-O-P/" rel="tag">O.O.P</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/" rel="tag">Object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Php/" rel="tag">Php</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/" rel="tag">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reflect/" rel="tag">Reflect</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rest/" rel="tag">Rest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Roofline/" rel="tag">Roofline</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STT/" rel="tag">STT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/" rel="tag">Security</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sentry/" rel="tag">Sentry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">53</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swagger/" rel="tag">Swagger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Telnet/" rel="tag">Telnet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/" rel="tag">Test</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/" rel="tag">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UnderscoreJS/" rel="tag">UnderscoreJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webapp/" rel="tag">Webapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webflux/" rel="tag">Webflux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xml/" rel="tag">Xml</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AOP/" style="font-size: 10px;">AOP</a> <a href="/tags/AWS/" style="font-size: 16.15px;">AWS</a> <a href="/tags/Algorithm/" style="font-size: 18.46px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 10.77px;">Android</a> <a href="/tags/BackboneJS/" style="font-size: 10px;">BackboneJS</a> <a href="/tags/Blog/" style="font-size: 13.85px;">Blog</a> <a href="/tags/Brew/" style="font-size: 10px;">Brew</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Cloud/" style="font-size: 13.08px;">Cloud</a> <a href="/tags/Computer-Science/" style="font-size: 14.62px;">Computer Science</a> <a href="/tags/Container/" style="font-size: 10.77px;">Container</a> <a href="/tags/Controller/" style="font-size: 10.77px;">Controller</a> <a href="/tags/Css/" style="font-size: 12.31px;">Css</a> <a href="/tags/DI/" style="font-size: 10px;">DI</a> <a href="/tags/Database/" style="font-size: 15.38px;">Database</a> <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 10.77px;">Docker</a> <a href="/tags/Dto/" style="font-size: 10px;">Dto</a> <a href="/tags/ElasticSearch/" style="font-size: 12.31px;">ElasticSearch</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Flutter/" style="font-size: 12.31px;">Flutter</a> <a href="/tags/Git/" style="font-size: 13.08px;">Git</a> <a href="/tags/Gradle/" style="font-size: 13.08px;">Gradle</a> <a href="/tags/Graphql/" style="font-size: 10px;">Graphql</a> <a href="/tags/Hexo/" style="font-size: 11.54px;">Hexo</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/Intellij/" style="font-size: 10px;">Intellij</a> <a href="/tags/Ionic/" style="font-size: 10px;">Ionic</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JUnit/" style="font-size: 10px;">JUnit</a> <a href="/tags/Jackson/" style="font-size: 10px;">Jackson</a> <a href="/tags/Java/" style="font-size: 19.23px;">Java</a> <a href="/tags/Javascript/" style="font-size: 17.69px;">Javascript</a> <a href="/tags/Jekyll/" style="font-size: 12.31px;">Jekyll</a> <a href="/tags/Jira/" style="font-size: 10px;">Jira</a> <a href="/tags/Jmeter/" style="font-size: 10px;">Jmeter</a> <a href="/tags/Jpa/" style="font-size: 10px;">Jpa</a> <a href="/tags/Json/" style="font-size: 10px;">Json</a> <a href="/tags/Jwt/" style="font-size: 10px;">Jwt</a> <a href="/tags/Kiba/" style="font-size: 10px;">Kiba</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lombok/" style="font-size: 10.77px;">Lombok</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Machine-learning/" style="font-size: 16.92px;">Machine learning</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/Monitoring/" style="font-size: 10px;">Monitoring</a> <a href="/tags/Mybatis/" style="font-size: 11.54px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Network/" style="font-size: 13.85px;">Network</a> <a href="/tags/Node/" style="font-size: 11.54px;">Node</a> <a href="/tags/O-O-P/" style="font-size: 10px;">O.O.P</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/Php/" style="font-size: 12.31px;">Php</a> <a href="/tags/Postgresql/" style="font-size: 10px;">Postgresql</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/React/" style="font-size: 14.62px;">React</a> <a href="/tags/Redis/" style="font-size: 13.08px;">Redis</a> <a href="/tags/Reflect/" style="font-size: 10px;">Reflect</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rest/" style="font-size: 10px;">Rest</a> <a href="/tags/Roofline/" style="font-size: 10px;">Roofline</a> <a href="/tags/STT/" style="font-size: 10px;">STT</a> <a href="/tags/Security/" style="font-size: 10.77px;">Security</a> <a href="/tags/Sentry/" style="font-size: 10px;">Sentry</a> <a href="/tags/Spring/" style="font-size: 20px;">Spring</a> <a href="/tags/Swagger/" style="font-size: 10px;">Swagger</a> <a href="/tags/Telnet/" style="font-size: 10px;">Telnet</a> <a href="/tags/Test/" style="font-size: 15.38px;">Test</a> <a href="/tags/Typescript/" style="font-size: 10px;">Typescript</a> <a href="/tags/UnderscoreJS/" style="font-size: 10px;">UnderscoreJS</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Web/" style="font-size: 10.77px;">Web</a> <a href="/tags/Webapp/" style="font-size: 10px;">Webapp</a> <a href="/tags/Webflux/" style="font-size: 10.77px;">Webflux</a> <a href="/tags/Webpack/" style="font-size: 10.77px;">Webpack</a> <a href="/tags/Xml/" style="font-size: 10.77px;">Xml</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 John Doe</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://example.com/2020/12/14/2020-12-14-response/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
