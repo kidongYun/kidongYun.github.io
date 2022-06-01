@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Kotlin cookbook | Hexo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Kotlin" />
+    
+    <meta name="description" content="1.1 Executing Kotlin program without local compiler. You can execute Kotlin program in https:&#x2F;&#x2F;play.kotlinlang.org&#x2F; It’s IDE based on Web Platform.  1.2 Installing Kotlin compiler in your local comput">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin cookbook">
+<meta property="og:url" content="http://kidongyun.github.io/2021/10/25/2021-10-25-kotlin-cookbook/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.1 Executing Kotlin program without local compiler. You can execute Kotlin program in https:&#x2F;&#x2F;play.kotlinlang.org&#x2F; It’s IDE based on Web Platform.  1.2 Installing Kotlin compiler in your local comput">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-25T02:38:54.000Z">
+<meta property="article:modified_time" content="2022-06-01T05:59:32.183Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Kotlin">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="Hexo" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Devlog/">Devlog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Service/">Service</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Todo/">Todo</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Yunhwadngdng/">Yunhwadngdng</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Devlog/">Devlog</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-2021-10-25-kotlin-cookbook" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Kotlin cookbook
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2021/10/25/2021-10-25-kotlin-cookbook/" class="article-date">
+       <time datetime="2021-10-25T02:38:54.000Z" itemprop="datePublished">2021-10-25</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2021/10/25/2021-10-25-kotlin-cookbook/" class="article-date">
+     <time datetime="2022-06-01T05:59:32.183Z" itemprop="dateModified">2022-06-01</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Kotlin/" rel="tag">Kotlin</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h2 id="1-1-Executing-Kotlin-program-without-local-compiler"><a href="#1-1-Executing-Kotlin-program-without-local-compiler" class="headerlink" title="1.1 Executing Kotlin program without local compiler."></a>1.1 Executing Kotlin program without local compiler.</h2><ul>
+<li>You can execute Kotlin program in <em><a target="_blank" rel="noopener" href="https://play.kotlinlang.org/">https://play.kotlinlang.org/</a></em></li>
+<li>It’s IDE based on Web Platform.</li>
+</ul>
+<h2 id="1-2-Installing-Kotlin-compiler-in-your-local-computer"><a href="#1-2-Installing-Kotlin-compiler-in-your-local-computer" class="headerlink" title="1.2 Installing Kotlin compiler in your local computer."></a>1.2 Installing Kotlin compiler in your local computer.</h2><ul>
+<li>Itellij &gt; New Project &gt; Java &gt; Kotlin/JVM &gt; Src &gt; New File &gt; …</li>
+</ul>
+<h2 id="1-3-Compiling-Kotlin-file-at-Command-line"><a href="#1-3-Compiling-Kotlin-file-at-Command-line" class="headerlink" title="1.3 Compiling Kotlin file at Command line"></a>1.3 Compiling Kotlin file at Command line</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; kotlinc-jvm XXX.kt        // creating class file for Jvm.</span><br><span class="line"></span><br><span class="line">&gt; kotlin HelloWorldKt       // executing class file.</span><br></pre></td></tr></table></figure>
+<h2 id="2-1-Using-nullable-type-in-Kotlin"><a href="#2-1-Using-nullable-type-in-Kotlin" class="headerlink" title="2.1 Using nullable type in Kotlin"></a>2.1 Using nullable type in Kotlin</h2><p>Unlike Java, Kotlin basically remove the possibility of null. so you should define the type differently to use nullable type. </p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> jkRowling = Person(<span class="string">&quot;Joanne&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;Rowling&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">val</span> first: String, <span class="keyword">val</span> middle: String?, <span class="keyword">val</span> last: String)</span><br></pre></td></tr></table></figure>
+<p>somtimes someone doesn’t have a middle name. so defining the middle name as nullable type is proper. you can define nullable type as adding question mark(= ?).</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> jkRowling = Person(<span class="string">&quot;Joanne&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;Rowling&quot;</span>)</span><br><span class="line"></span><br><span class="line">    jkRowling.middle!!.length   <span class="comment">// you should add double exclamation mark to access nullable type.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(jkRowling.middle != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">val</span> middleNameLength = jkRowling.middle.length;     <span class="comment">// after checking whether it is null or not, then you don&#x27;t need to use double exclamation mark.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">val</span> first: String, <span class="keyword">val</span> middle: String?, <span class="keyword">val</span> last: String)</span><br></pre></td></tr></table></figure>
+<p>prior to access middle name, if you checked nullable type whether it is null or not, then this type is automatically casted to non null type. so you don’t need to use double exclamation mark. but actually double exclamation mark (= !!) is code smell. This keyword would be one of the situation can occur NullPointerException. so Let’s use safe call operator (= ?.) instead of double exclamation mark.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> jkRowling = Person(<span class="string">&quot;Joanne&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;Rowling&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> middleNameLengthNullable = jkRowling.middle?.length     <span class="comment">// This code also return nullable type. (= Int?)</span></span><br><span class="line">    <span class="keyword">val</span> middleNameLength = jkRowling.middle?.length ?: <span class="number">0</span>        <span class="comment">// if you use elvis operator (= ?:) then you can process when it is null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">val</span> first: String, <span class="keyword">val</span> middle: String?, <span class="keyword">val</span> last: String)</span><br></pre></td></tr></table></figure>
+<p>You can keep the safety as using the safe call operator and you always process visibly the null with Elvis operator.</p>
+<h2 id="2-3-Method-overloading-for-Java"><a href="#2-3-Method-overloading-for-Java" class="headerlink" title="2.3 Method overloading for Java"></a>2.3 Method overloading for Java</h2><p>Java doesn’t support default value in parameters. so It’s doesn’t support also the constructor doesn’t have the value for optional parameters.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(addProduct(<span class="string">&quot;Name&quot;</span>, <span class="number">5.0</span>, <span class="string">&quot;Desc&quot;</span>))</span><br><span class="line">    println(addProduct(<span class="string">&quot;Name&quot;</span>, <span class="number">5.0</span>))</span><br><span class="line">    println(addProduct(<span class="string">&quot;Name&quot;</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">addProduct</span><span class="params">(name: <span class="type">String</span>, price: <span class="type">Double</span> = <span class="number">0.0</span>, desc: <span class="type">String</span>? = <span class="literal">null</span>)</span></span> =</span><br><span class="line">    <span class="string">&quot;Adding product with <span class="variable">$name</span>, <span class="subst">$&#123;desc ?: <span class="string">&quot;None&quot;</span>&#125;</span>, and &quot;</span> + NumberFormat.getCurrencyInstance().format(price)</span><br></pre></td></tr></table></figure>
+<p>but if you define <em>@JvmOverloads</em> annotation on the <em>addProduct()</em> funcion, This function will compile many constructors to support method default parameter in Java with overloading technique. the below is the result when you decompile the <em>addProduct()</em> function that is included <em>@JvmOverloads</em> annotation.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@JvmOverloads</span></span><br><span class="line"><span class="meta">@NotNull</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String <span class="title function_">addProduct</span><span class="params">(<span class="meta">@NotNull</span> String name, <span class="type">double</span> price, <span class="meta">@Nullable</span> String desc)</span> &#123;</span><br><span class="line">    Intrinsics.checkParameterIsNotNull(name, <span class="string">&quot;name&quot;</span>);</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@JvmOverloads</span></span><br><span class="line"><span class="meta">@NotNull</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String <span class="title function_">addProduct</span><span class="params">(<span class="meta">@NotNull</span> String name, <span class="type">double</span> price)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> addProduct$<span class="keyword">default</span>(name, price, (String)<span class="literal">null</span>, <span class="number">4</span>, (Object)<span class="literal">null</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@JvmOverloads</span></span><br><span class="line"><span class="meta">@NotNull</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String <span class="title function_">addProduct</span><span class="params">(<span class="meta">@NotNull</span> String name)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> addProduct$<span class="keyword">default</span>(name, <span class="number">0.0D</span>, (String)<span class="literal">null</span>, <span class="number">6</span>, (Object)<span class="literal">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You should remember the important one that <em>@JvmOverloads</em> annotation doesn’t call <em>super</em> keyword. so it means <em>@JvmOverloads</em> annotation only call all arguments constructor for super class.</p>
+<h2 id="2-4-Casting-type-explicitly"><a href="#2-4-Casting-type-explicitly" class="headerlink" title="2.4 Casting type explicitly."></a>2.4 Casting type explicitly.</h2><p>Kotlin doesn’t support cast the data type to more wide implicitly. it means that integer data type can’t assign to long type. but the kotlin offers the useful function like <em>toInt()</em>, <em>toLong()</em> to cast between them.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> intVar: <span class="built_in">Int</span> = <span class="number">3</span></span><br><span class="line">    <span class="keyword">val</span> longVar: <span class="built_in">Long</span> = intVar.toLong()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-6-Power"><a href="#2-6-Power" class="headerlink" title="2.6 Power"></a>2.6 Power</h2><p>Many languages basically support power operator (= ^). but unlike them, the kotlin doens’t support. but you can use <em>Math.pow(double a, double b)</em> function if you need it. additionally you can also use <em>Double.pow(x: Double)</em> or <em>Float.pow(x: Float)</em> functions.</p>
+<p>you should remember the important one that unlike double, float type, integer type doesn’t support <em>pow()</em> function. so you should make it yourself like the below if you want.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="built_in">Int</span>.<span class="title">pow</span><span class="params">(x: <span class="type">Int</span>)</span></span> = toDouble().pow(x).toInt()</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="built_in">Long</span>.<span class="title">pow</span><span class="params">(x: <span class="type">Int</span>)</span></span> = toDouble().pow(x).toLong()</span><br></pre></td></tr></table></figure>
+<p><em>infix</em> keyword can make new custom operator that operate as you want. let’s try to make power operator with <em>infix</em> keyword.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(<span class="number">2</span> `**` <span class="number">3</span>)</span><br><span class="line">    println(<span class="number">2L</span> `**` <span class="number">3</span>)</span><br><span class="line">    println(<span class="number">2F</span> `**` <span class="number">3</span>)</span><br><span class="line">    println(<span class="number">2.0</span> `**` <span class="number">3</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">infix</span> <span class="function"><span class="keyword">fun</span> <span class="built_in">Int</span>.`**`<span class="params">(x: <span class="type">Int</span>)</span></span> = toDouble().pow(x).toInt()</span><br><span class="line"><span class="keyword">infix</span> <span class="function"><span class="keyword">fun</span> <span class="built_in">Long</span>.`**`<span class="params">(x: <span class="type">Int</span>)</span></span> = toDouble().pow(x).toLong()</span><br><span class="line"><span class="keyword">infix</span> <span class="function"><span class="keyword">fun</span> <span class="built_in">Float</span>.`**`<span class="params">(x: <span class="type">Int</span>)</span></span> = pow(x)</span><br><span class="line"><span class="keyword">infix</span> <span class="function"><span class="keyword">fun</span> <span class="built_in">Double</span>.`**`<span class="params">(x: <span class="type">Int</span>)</span></span> = pow(x)</span><br></pre></td></tr></table></figure>
+<h2 id="2-9-Creating-Pair-instance-with-to-keyword"><a href="#2-9-Creating-Pair-instance-with-to-keyword" class="headerlink" title="2.9 Creating Pair instance with to keyword"></a>2.9 Creating Pair instance with <em>to</em> keyword</h2><p>Pair is the data class has two elements named <em>first</em>, <em>second</em>. It is same concept with Map type in Java. the kotlin language support <em>to</em> keyword to create Pair instance easily.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">infix</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;A, B&gt;</span> A.<span class="title">to</span><span class="params">(that: <span class="type">B</span>)</span></span>: Pair&lt;A, B&gt; = Pair(<span class="keyword">this</span>, that)</span><br></pre></td></tr></table></figure>
+<p>The below code show the usage of <em>to</em> keyword. the results of p1, p2 is same. (p1 = p2)</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> p1 = Pair(<span class="string">&quot;a&quot;</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">val</span> p2 = <span class="string">&quot;a&quot;</span> to <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You can create the Pair instance easily with <em>mapOf()</em> and <em>to</em> keyword.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> map = mapOf(<span class="string">&quot;a&quot;</span> to <span class="number">1</span>, <span class="string">&quot;b&quot;</span> to <span class="number">2</span>, <span class="string">&quot;c&quot;</span> to <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    println(map.keys)</span><br><span class="line">    println(map.values)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You can separate key and value like the below code if you want. It’s so intutive.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> pair = <span class="string">&quot;a&quot;</span> to <span class="number">1</span></span><br><span class="line">    <span class="keyword">val</span> (x, y) = pair</span><br><span class="line"></span><br><span class="line">    println(x)</span><br><span class="line">    println(y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-1-Understaning-the-difference-between-const-val-and-val"><a href="#3-1-Understaning-the-difference-between-const-val-and-val" class="headerlink" title="3.1 Understaning the difference between const val and val"></a>3.1 Understaning the difference between <em>const val</em> and <em>val</em></h2><p>all of them support  to define the immutable data. but<br><em>const</em> keyword support to initialize the data when the source code are compiled (compile time initialization). unlike this, <em>val</em> keyword initialize the data when the service is launched (run time initialization).</p>
+<p>You should know the role <em>const</em> and <em>val</em> is different. <em>const</em> do access control one like <em>private</em>, <em>inline</em>. but <em>val</em> is a keyword to define variables.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Task</span></span>(<span class="keyword">val</span> name: String, _priority: <span class="built_in">Int</span>) &#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">val</span> MIN_PRIORITY = <span class="number">1</span></span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">val</span> MAX_PRIORITY = <span class="number">5</span></span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">val</span> DEFAULT_PRIORITY = <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> priority = validPriority(_priority)</span><br><span class="line">        <span class="keyword">set</span>(value) &#123;</span><br><span class="line">            field = validPriority(value)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">validPriority</span><span class="params">(p: <span class="type">Int</span>)</span></span> =</span><br><span class="line">        p.coerceIn(MIN_PRIORITY, MAX_PRIORITY)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MIN<em>PRIORITY, MAX_PRIORITY, DEFAULT_PRIORITY values will initialize when this source code is compiled because of _const</em>.</p>
+<h2 id="3-2-Creating-getter-setter"><a href="#3-2-Creating-getter-setter" class="headerlink" title="3.2 Creating getter, setter"></a>3.2 Creating getter, setter</h2><p>자바에서 전통적으로 객체 내에 존재하는 필드들을 접근할 때에는 getter, setter 함수를 만들어서 사용했다. getter, setter 를 사용하는 이유는 객체지향 프로그래밍 관점에서 encapsulation, 정보은닉 등의 이유로 사용된 것인데 코틀린에서는 Java 코드로 변환할 때 이를 자체적으로 만들어주기 때문에 따로 getter / setter 함수를 정의하지 않고 직접 필드에 접근해도 상관 없다.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> setTest = SetTest()</span><br><span class="line">    </span><br><span class="line">    println(setTest.priority)</span><br><span class="line">    setTest.priority = <span class="number">2</span></span><br><span class="line">    println(setTest.priority)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SetTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> priority = <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>getter / setter 에서 로그를 추가한다거나, 데이터 검증, 전처리 작업, 후처리 작업 등도 진행할 수 있다. 이런 경우를 위해서 코틀린에서는 getter, setter 함수를 커스터마이징 할 수 있는 기능을 제공한다. <em>get()</em>, <em>set()</em> 함수의 형태로 제공한다.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> setTest = SetTest()</span><br><span class="line"></span><br><span class="line">    println(setTest.priority)</span><br><span class="line">    setTest.priority = <span class="number">3</span></span><br><span class="line">    println(setTest.priority)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SetTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> priority = <span class="number">1</span></span><br><span class="line">        <span class="keyword">get</span>() = field + <span class="number">10</span>      <span class="comment">// getter 함수 커스터마이징</span></span><br><span class="line">        <span class="keyword">set</span>(value) &#123; field = value.coerceIn(<span class="number">1.</span><span class="number">.5</span>) &#125;     <span class="comment">// setter 함수 커스터마이징</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>get()</em>, <em>set()</em> 함수에서 field 값을 사용하는 것을 볼 수 있는데, 이는 priority 값을 의미한다. 저 곳에 priority 값을 바로 넣어주면 재귀가 발생해서 결국 stackoverflowexception 이 발생한다. 이를 개선하기 위해서 코틀린은 accessor 영역에서 자기 값을 얻기 위해 field 라는 값을 제공한다. 이를 backing field 라고 부른다.</p>
+<h2 id="3-3-데이터-클래스-정의하기"><a href="#3-3-데이터-클래스-정의하기" class="headerlink" title="3.3 데이터 클래스 정의하기"></a>3.3 데이터 클래스 정의하기</h2><p>자바의 enum 처럼 데이터의 목적으로 사용하고 싶은 클래스를 만들어야 할 경우 클래스를 정의할 때 <em>data</em> 키워드를 사용하면 된다.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> p1 = Product(<span class="string">&quot;baseball&quot;</span>, <span class="number">10.0</span>);</span><br><span class="line">    <span class="keyword">val</span> p2 = Product(<span class="string">&quot;baseball&quot;</span>, <span class="number">10.0</span>, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> products = setOf(p1, p2)</span><br><span class="line">    println(products.size)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Product</span></span>(<span class="keyword">val</span> name: String, <span class="keyword">var</span> price: <span class="built_in">Double</span>, <span class="keyword">var</span> onSale: <span class="built_in">Boolean</span> = <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<p><em>products.size</em> 값은 1이 나올 것이다. data 클래스의 경우 동일한 값을 가지고 있는 객체끼리는 같은 객체로 본다. 그렇기 때문에 <em>setOf()</em> 함수를 통해 두 객체 p1, p2 를 넣을 때 같은 객체로 보고 중복되어 하나는 제거 된다.</p>
+<p>객체의 동일성에 대한 이야기가 나온 김에 추가적으로 <em>copy()</em> 함수에 대한 이야기를 해보자. 이 함수는 깊은 복사가 아닌 얕은 복사를 수행한다. 그렇기 때문에 복사본 객체와 원본 객체는 서로 다른 객체이다.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> item1 = OrderItem(Product(<span class="string">&quot;baseball&quot;</span>, <span class="number">10.0</span>), <span class="number">5</span>)</span><br><span class="line">    <span class="keyword">val</span> item2 = item1.copy()</span><br><span class="line"></span><br><span class="line">    println(item1 == item2)</span><br><span class="line">    println(item1 === item2)</span><br><span class="line">    println(item1.product == item2.product)</span><br><span class="line">    println(item1.product === item2.product)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderItem</span></span>(<span class="keyword">val</span> product: Product, <span class="keyword">val</span> quantity: <span class="built_in">Int</span>)</span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Product</span></span>(<span class="keyword">val</span> name: String, <span class="keyword">var</span> price: <span class="built_in">Double</span>, <span class="keyword">var</span> onSale: <span class="built_in">Boolean</span> = <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<p>복사된 item2 객체와 원본 item1 객체가 서로 다른 객체임을 <em>item1 === item2</em> 연산을 통해 확인할 수 있다. 하나 더 중요한 부분은 그 안에서 공유하고 있는 Product 객체는 서로 같은 객체를 바라보고 있음을 <em>item1.product === item2.product</em> 에서 확인이 가능하다.</p>
+<h2 id="3-4-Backing-property-technique"><a href="#3-4-Backing-property-technique" class="headerlink" title="3.4 Backing property technique"></a>3.4 Backing property technique</h2><p>when you want to control reading the properties, initializing the properties in the class, you can use getter function.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> customer = Customer(<span class="string">&quot;Fred&quot;</span>).apply &#123; messages &#125;</span><br><span class="line">    println(customer.messages)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Customer</span></span>(<span class="keyword">val</span> name: String) &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> _messages: List&lt;String&gt;? = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> messages: List&lt;String&gt;</span><br><span class="line">        <span class="keyword">get</span>() &#123;</span><br><span class="line">            <span class="keyword">if</span> (_messages == <span class="literal">null</span>) &#123;</span><br><span class="line">                _messages = loadMessages()</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> _messages!!</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">loadMessages</span><span class="params">()</span></span>: MutableList&lt;String&gt; =</span><br><span class="line">        mutableListOf(</span><br><span class="line">            <span class="string">&quot;Initial contact&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Convinced them to use Kotlin&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Sold training class. Sweet.&quot;</span></span><br><span class="line">        ).also &#123; println(<span class="string">&quot;Loaded messages&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>in <em>apply()</em> function, messages’s getter method is called. and this coding style is for lazy initialization. the kotlin offers <em>lazy</em> delegation function so we can implement this code more easily.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> customer = Customer(<span class="string">&quot;Fred&quot;</span>).apply &#123; messages &#125;</span><br><span class="line">    println(customer.messages)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Customer</span></span>(<span class="keyword">val</span> name: String) &#123;</span><br><span class="line">    <span class="keyword">val</span>  messages: List&lt;String&gt; <span class="keyword">by</span> lazy &#123; loadMessages() &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">loadMessages</span><span class="params">()</span></span>: MutableList&lt;String&gt; =</span><br><span class="line">        mutableListOf(</span><br><span class="line">            <span class="string">&quot;Initial contact&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Convinced them to use Kotlin&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Sold training class. Sweet.&quot;</span></span><br><span class="line">        ).also &#123; println(<span class="string">&quot;Loaded messages&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-5-Operator-Overloading"><a href="#3-5-Operator-Overloading" class="headerlink" title="3.5 Operator Overloading"></a>3.5 Operator Overloading</h2><p><em>operator</em> keyword can re-define calculation way as you want. </p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Point</span></span>(<span class="keyword">val</span> x: <span class="built_in">Int</span>, <span class="keyword">val</span> y: <span class="built_in">Int</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> Point.<span class="title">unaryMinus</span><span class="params">()</span></span> = Point(-x, -y)</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> point = Point(<span class="number">10</span>, <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(-point)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>unaryMinus() method is all of kotlin class would have. and you can overload it with <em>operator</em> keyword</p>
+<h2 id="3-6-lateinit-keyword"><a href="#3-6-lateinit-keyword" class="headerlink" title="3.6 lateinit keyword"></a>3.6 lateinit keyword</h2><p>non null properies in some class should be initialized in constructor block. but we sometimes encouter the case the parameters don’t have enough to call constructor at that time. we can use <em>lateinit</em> keyword to solve this problem. and you can often see this problen at the spring dependency injection (@Autowired)</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OfficerControllerTests</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">lateinit</span> <span class="keyword">var</span> client: WebTestClient</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">lateinit</span> <span class="keyword">var</span> repository: OfficeRepository</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>val : immutable type</p>
+</li>
+<li><p>var : mutable type</p>
+</li>
+</ul>
+<h2 id="3-7-overriding-equals-hashcode"><a href="#3-7-overriding-equals-hashcode" class="headerlink" title="3.7 overriding equals(), hashcode()"></a>3.7 overriding equals(), hashcode()</h2><p>the one of the features of data class is that you should keep the equality. (it’s little different with equivalence.)</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Customer</span></span>(<span class="keyword">val</span> name: String) &#123;</span><br><span class="line">    <span class="keyword">val</span> messages: List&lt;String&gt; <span class="keyword">by</span> lazy &#123; loadMessages() &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">loadMessages</span><span class="params">()</span></span> : MutableList&lt;String&gt; =</span><br><span class="line">        mutableListOf(</span><br><span class="line">            <span class="string">&quot;Initial contact&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Covinced them to use Kotlin&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Sold training class. Sweet.&quot;</span></span><br><span class="line">        ).also &#123; println(<span class="string">&quot;Loaded messages&quot;</span>) &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">equals</span><span class="params">(other: <span class="type">Any</span>?)</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> === other) <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        <span class="keyword">val</span> otherCustomer = (other <span class="keyword">as</span>? Customer) ?: <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name == otherCustomer.name</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">hashCode</span><span class="params">()</span></span> = name.hashCode()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>you can override <em>equals()</em>, <em>hashCode()</em> methods like the above.</p>
+<h2 id="3-8-creating-singleton-object"><a href="#3-8-creating-singleton-object" class="headerlink" title="3.8 creating singleton object"></a>3.8 creating singleton object</h2><p>you should create singleton object like the below in Java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Runtime</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Runtime</span> <span class="variable">currentRuntime</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Runtime</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Runtime <span class="title function_">getRuntime</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> currentRuntime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// protecting to create instance with constructor </span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Runtime</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>but the kotlin language offers the easy way to create singleton object unlike java.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> MySingleton &#123;</span><br><span class="line">    <span class="keyword">val</span> myProperty = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">myFunction</span><span class="params">()</span></span> = <span class="string">&quot;hello&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(MySingleton.myProperty)</span><br><span class="line">    println(MySingleton.myFunction())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>you just change from <em>class</em> keyword to <em>object</em> keyword. then it will be created as the singleton type object. the below java code is the result of decompiled of <em>MySingleton</em> kotlin object.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">MySingleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">myProperty</span> <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> MySingleton INSTANCE;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">MySingleton</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">getMyProperty</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> myProperty;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">myFunction</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="type">MySingleton</span> <span class="variable">var0</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MySingleton</span>();</span><br><span class="line">        INSTANCE = var0;</span><br><span class="line">        myProperty = <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-9-Nothing-class"><a href="#3-9-Nothing-class" class="headerlink" title="3.9 Nothing class"></a>3.9 Nothing class</h2><figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Nothing</span> <span class="keyword">private</span> <span class="keyword">constructor</span></span>()</span><br></pre></td></tr></table></figure>
+<p>the above code means that Nothing instance cannot be existed. because as you can see the above code, the constructor of Nothing class declared as a private type. and anywhere in Nothing class don’t create new instance. so Nothing instance is not existed in real.</p>
+<p>you can use this type for the value never is existed.</p>
+<h2 id="4-1-fold"><a href="#4-1-fold" class="headerlink" title="4.1 fold"></a>4.1 fold</h2><figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;R&gt;</span> Iterable<span class="type">&lt;T&gt;</span>.<span class="title">fold</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    initial: <span class="type">R</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">    operation: (<span class="type">acc</span>: <span class="type">R</span>, <span class="type">T</span>) -&gt; <span class="type">R</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>: R</span><br></pre></td></tr></table></figure>
+<p>fold function needs two parameters (initial and operation).</p>
+<ul>
+<li>initial : it’s initialization value.</li>
+<li>operation : it’s the way how to calculate them.</li>
+</ul>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sum</span><span class="params">(<span class="keyword">vararg</span> nums: <span class="type">Int</span>)</span></span> = </span><br><span class="line">    nums.fold(<span class="number">0</span>) &#123;acc, n -&gt; acc + n &#125;</span><br></pre></td></tr></table></figure>
+<p>in lambda named operation, acc means a accumulated value and n means n-th value in nums array. the below is factoral function example with <em>fold()</em> function.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">factorialFold</span><span class="params">(n: <span class="type">Long</span>)</span></span>: BigInteger =</span><br><span class="line">    <span class="keyword">when</span>(n) &#123;</span><br><span class="line">        <span class="number">0L</span>, <span class="number">1L</span> -&gt; BigInteger.ONE</span><br><span class="line">        <span class="keyword">else</span> -&gt; (<span class="number">2.</span>.n).fold(BigInteger.ONE) &#123; acc, i -&gt; acc * BigInteger.valueOf(i) &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">fibonacciFold</span><span class="params">(n: <span class="type">Int</span>)</span></span> =</span><br><span class="line">    (<span class="number">2</span> until n).fold(<span class="number">1</span> to <span class="number">1</span>) &#123; (prev, curr), _ -&gt; curr to (prev + curr) &#125;.second</span><br></pre></td></tr></table></figure>
+<p>and it is another example to use <em>fold()</em> function. especially in this function, n value in lambda doesn’t need so just mark it with ‘_’.</p>
+<h2 id="4-2-reduce"><a href="#4-2-reduce" class="headerlink" title="4.2 reduce"></a>4.2 reduce</h2><p>this function is <em>fold()</em> function without initial value.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;S, T : S&gt;</span> Iterable<span class="type">&lt;T&gt;</span>.<span class="title">reduce</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    operation: (<span class="type">acc</span>: <span class="type">S</span>, <span class="type">T</span>) -&gt; <span class="type">S</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>: S</span><br></pre></td></tr></table></figure>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> IntArray.<span class="title">reduce</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    operation: (<span class="type">acc</span>: <span class="type">Int</span>, <span class="type">Int</span>) -&gt; <span class="type">Int</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(isEmpty())</span><br><span class="line">        <span class="keyword">throw</span> UnsupportedOperationException(<span class="string">&quot;Empty array can&#x27;t be reduced.&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> accumulator = <span class="keyword">this</span>[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> (index <span class="keyword">in</span> <span class="number">1.</span>.lastIndex) &#123;</span><br><span class="line">        accumulator = operation(accumulator, <span class="keyword">this</span>[index])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> accumulator;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>this code is real implementation code of <em>reduce</em> in IntArray collection.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sumReduce</span><span class="params">(<span class="keyword">vararg</span>  nums: <span class="type">Int</span>)</span></span> =</span><br><span class="line">    nums.reduce &#123; acc, i -&gt; acc + i &#125;</span><br></pre></td></tr></table></figure>
+<p>and it is the one of the example with <em>reduce()</em> function. this code calculate summation of <em>nums</em> array.</p>
+<h2 id="4-3-tail-recursion"><a href="#4-3-tail-recursion" class="headerlink" title="4.3 tail recursion"></a>4.3 tail recursion</h2><p>factorial calculation is usually implemented by recursion like the below.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">recursiveFactorial</span><span class="params">(n: <span class="type">Long</span>)</span></span>: BigInteger =</span><br><span class="line">    <span class="keyword">when</span> (n) &#123;</span><br><span class="line">        <span class="number">0L</span>, <span class="number">1L</span> -&gt; BigInteger.ONE</span><br><span class="line">        <span class="keyword">else</span> -&gt; BigInteger.valueOf(n) * recursiveFactorial(n - <span class="number">1</span>)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>but <em>recursiveFactorial()</em> function will create new frame in call stack memory when it’s called. so someday it would encounter <em>StackOverflowError</em>. i mean this way would waste your memory. if you wanna optimize memory with recursive call then use <em>tailrec</em>.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@JvmOverloads</span></span><br><span class="line"><span class="keyword">tailrec</span> <span class="function"><span class="keyword">fun</span> <span class="title">factorial</span><span class="params">(n: <span class="type">Long</span>, acc: <span class="type">BigInteger</span> = BigInteger.ONE)</span></span>: BigInteger =</span><br><span class="line">    <span class="keyword">when</span> (n) &#123;</span><br><span class="line">        <span class="number">0L</span> -&gt; BigInteger.ONE</span><br><span class="line">        <span class="number">1L</span> -&gt; acc</span><br><span class="line">        <span class="keyword">else</span> -&gt; factorial(n - <span class="number">1</span>, acc * BigInteger.valueOf(n))</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>this code is work well in 0L, 1L cases. because of @JvmOverloads annotation. I mean you can skip <em>acc</em> value if you want because it has default value (= BigInteger.ONE).</p>
+<p>and <em>tailrec</em> keyword change your code from recursive style to loop style to optimize call stack memory when it’s compiled to Java.</p>
+<h2 id="5-1-array"><a href="#5-1-array" class="headerlink" title="5.1 array"></a>5.1 array</h2><p>The kotlin create the array with <em>arrayOf()</em> function easily. </p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> strings = arrayOf(<span class="string">&quot;this&quot;</span>, <span class="string">&quot;is&quot;</span>, <span class="string">&quot;an&quot;</span>, <span class="string">&quot;array&quot;</span>, <span class="string">&quot;of&quot;</span>, <span class="string">&quot;strings&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> nullStringArray = arrayOfNulls&lt;String&gt;(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> squares = Array(<span class="number">5</span>) &#123;i -&gt; (i * i).toString() &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> Array<span class="type">&lt;out T&gt;</span>.<span class="title">withIndex</span><span class="params">()</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexedValue</span>&lt;<span class="type">out T</span>&gt;</span>(<span class="keyword">public</span> <span class="keyword">val</span> index: <span class="built_in">Int</span>, <span class="keyword">public</span> <span class="keyword">val</span> value: T)</span><br></pre></td></tr></table></figure>
+<p>when you need to get index value in array you can use IndexedValue type with <em>withIndex()</em> function.</p>
+<h2 id="5-2-creating-collection"><a href="#5-2-creating-collection" class="headerlink" title="5.2 creating collection"></a>5.2 creating collection</h2><ul>
+<li>immutable collection : listOf, setOf, mapOf</li>
+<li>mutable collection : mutableListOf, mutableSetOf, mutableMapOf</li>
+</ul>
+<h2 id="5-4-creating-map-with-collection"><a href="#5-4-creating-map-with-collection" class="headerlink" title="5.4 creating map with collection"></a>5.4 creating map with collection</h2><p><em>associate()</em> function can create Map object from collection.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> keys = <span class="string">&#x27;a&#x27;</span>..<span class="string">&#x27;f&#x27;</span></span><br><span class="line"><span class="keyword">val</span> map = keys.associate &#123; it to it.toString().repeat(<span class="number">5</span>).capitalize() &#125;</span><br><span class="line">println(map)</span><br></pre></td></tr></table></figure>
+<h2 id="5-5-returning-default-value-when-collection-is-empty"><a href="#5-5-returning-default-value-when-collection-is-empty" class="headerlink" title="5.5 returning default value when collection is empty"></a>5.5 returning default value when collection is empty</h2><figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Product</span></span>(<span class="keyword">val</span> name: String, <span class="keyword">var</span> price: <span class="built_in">Double</span>, <span class="keyword">var</span> onSale: <span class="built_in">Boolean</span> = <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">onSaleProducts_ifEmptyCollection</span><span class="params">(products: <span class="type">List</span>&lt;<span class="type">Product</span>&gt;)</span></span> =</span><br><span class="line">    products.filter &#123; it.onSale &#125;</span><br><span class="line">        .map &#123; it.name &#125;</span><br><span class="line">        .ifEmpty &#123; listOf(<span class="string">&quot;none&quot;</span>) &#125;</span><br><span class="line">        .joinToString(separator = <span class="string">&quot;, &quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">onSaleProducts_ifEmptyString</span><span class="params">(products: <span class="type">List</span>&lt;<span class="type">Product</span>&gt;)</span></span> =</span><br><span class="line">    products.filter &#123; it.onSale &#125;</span><br><span class="line">        .map &#123; it.name &#125;</span><br><span class="line">        .joinToString(separator = <span class="string">&quot;, &quot;</span>)</span><br><span class="line">        .ifEmpty &#123; <span class="string">&quot;none&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-8-destructuring-list"><a href="#5-8-destructuring-list" class="headerlink" title="5.8 destructuring list"></a>5.8 destructuring list</h2><figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;f&quot;</span>, <span class="string">&quot;g&quot;</span>)</span><br><span class="line"><span class="keyword">val</span> (a, b, c, d, e) = list</span><br><span class="line">println(<span class="string">&quot;<span class="variable">$a</span> <span class="variable">$b</span> <span class="variable">$c</span> <span class="variable">$d</span> <span class="variable">$e</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>you can get the fields of the object like (a, b, c, d, e).</p>
+<h2 id="5-9-sorting-with-multiple-options"><a href="#5-9-sorting-with-multiple-options" class="headerlink" title="5.9 sorting with multiple options."></a>5.9 sorting with multiple options.</h2><figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> Iterable<span class="type">&lt;T&gt;</span>.<span class="title">sortedWith</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    comparator: <span class="type">Comparator</span>&lt;<span class="type">in</span> <span class="type">T</span>&gt;</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>: List&lt;T&gt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">compareBy</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    varargs seletors (T)</span></span> -&gt; Comparable&lt;*&gt;?</span><br><span class="line">): Comparator&lt;T&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Golfer</span></span>(<span class="keyword">val</span> score: <span class="built_in">Int</span>, <span class="keyword">val</span> first: String, <span class="keyword">val</span> last: String)</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> golfers = listOf(</span><br><span class="line">    Golfer(<span class="number">70</span>, <span class="string">&quot;Jack&quot;</span>, <span class="string">&quot;Nicklaus&quot;</span>),</span><br><span class="line">    Golfer(<span class="number">68</span>, <span class="string">&quot;Tom&quot;</span>, <span class="string">&quot;Watson&quot;</span>),</span><br><span class="line">    Golfer(<span class="number">68</span>, <span class="string">&quot;Bubba&quot;</span>, <span class="string">&quot;Watson&quot;</span>),</span><br><span class="line">    Golfer(<span class="number">70</span>, <span class="string">&quot;Tiger&quot;</span>, <span class="string">&quot;Woods&quot;</span>),</span><br><span class="line">    Golfer(<span class="number">68</span>, <span class="string">&quot;Try&quot;</span>, <span class="string">&quot;Webb&quot;</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> sorted = golfers.sortedWith(compareBy(&#123; it.score &#125;, &#123; it.last &#125;, &#123; it.first &#125;))</span><br><span class="line"></span><br><span class="line">    println(sorted)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>comparator be more complexible then the below code is better to read than the above.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Golfer</span></span>(<span class="keyword">val</span> score: <span class="built_in">Int</span>, <span class="keyword">val</span> first: String, <span class="keyword">val</span> last: String)</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> golfers = listOf(</span><br><span class="line">    Golfer(<span class="number">70</span>, <span class="string">&quot;Jack&quot;</span>, <span class="string">&quot;Nicklaus&quot;</span>),</span><br><span class="line">    Golfer(<span class="number">68</span>, <span class="string">&quot;Tom&quot;</span>, <span class="string">&quot;Watson&quot;</span>),</span><br><span class="line">    Golfer(<span class="number">68</span>, <span class="string">&quot;Bubba&quot;</span>, <span class="string">&quot;Watson&quot;</span>),</span><br><span class="line">    Golfer(<span class="number">70</span>, <span class="string">&quot;Tiger&quot;</span>, <span class="string">&quot;Woods&quot;</span>),</span><br><span class="line">    Golfer(<span class="number">68</span>, <span class="string">&quot;Try&quot;</span>, <span class="string">&quot;Webb&quot;</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> comparator = compareBy&lt;Golfer&gt;(Golfer::score)</span><br><span class="line">        .thenBy(Golfer::last)</span><br><span class="line">        .thenBy(Golfer::first)</span><br><span class="line"></span><br><span class="line">    golfers.sortedWith(comparator)</span><br><span class="line">        .forEach(::println)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-10-defining-custom-iterator"><a href="#5-10-defining-custom-iterator" class="headerlink" title="5.10 defining custom iterator"></a>5.10 defining custom iterator</h2><p>It is the definition of <em>Iterator</em> interface in kotlin.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span>&lt;<span class="type">out T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">next</span><span class="params">()</span></span>: T</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">hasNext</span><span class="params">()</span></span>: <span class="built_in">Boolean</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>It’s default way to use <em>Iterator</em></p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Player</span></span>(<span class="keyword">val</span> name: String)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Team</span></span>(<span class="keyword">val</span> name: String, <span class="keyword">val</span> players: MutableList&lt;Player&gt; = mutableListOf()) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">addPlayers</span><span class="params">(<span class="keyword">vararg</span> people: <span class="type">Player</span>)</span></span> =</span><br><span class="line">        players.addAll(people)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> team = Team(<span class="string">&quot;Warriors&quot;</span>)</span><br><span class="line">    team.addPlayers(Player(<span class="string">&quot;Curry&quot;</span>), Player(<span class="string">&quot;Thompson&quot;</span>), Player(<span class="string">&quot;Durant&quot;</span>), Player(<span class="string">&quot;Green&quot;</span>), Player(<span class="string">&quot;Cousins&quot;</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(player <span class="keyword">in</span> team.players) &#123;</span><br><span class="line">        println(player)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>you can access it easier.</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> Team.<span class="title">iterator</span><span class="params">()</span></span> : Iterator&lt;Player&gt; = players.iterator()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (player <span class="keyword">in</span> team) &#123;</span><br><span class="line"> println(player)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-11-Filtering-collection-by-type"><a href="#5-11-Filtering-collection-by-type" class="headerlink" title="5.11 Filtering collection by type."></a>5.11 Filtering collection by type.</h2><figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">val</span> list = listOf(<span class="string">&quot;a&quot;</span>, LocalDate.now(), <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="string">&quot;b&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> strings = list.filter &#123; it <span class="keyword">is</span> String &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (s <span class="keyword">in</span> strings) &#123;</span><br><span class="line"><span class="comment">//        s.length      : it must not be compiled. because strings types is List&lt;Any&gt;.</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="string">&quot;a&quot;</span>, LocalDate.now(), <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="string">&quot;b&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> all = list.filterIsInstance&lt;Any&gt;()</span><br><span class="line"><span class="keyword">val</span> strings = list.filterIsInstance&lt;String&gt;()</span><br><span class="line"><span class="keyword">val</span> ints = list.filterIsInstance&lt;<span class="built_in">Int</span>&gt;()</span><br><span class="line"><span class="keyword">val</span> dates = list.filterIsInstance(LocalDate::<span class="keyword">class</span>.java)</span><br><span class="line"></span><br><span class="line">println(all)</span><br><span class="line">println(strings)</span><br><span class="line">println(ints)</span><br><span class="line">println(dates)</span><br></pre></td></tr></table></figure>
+<h2 id="5-12-Create-array-with-range"><a href="#5-12-Create-array-with-range" class="headerlink" title="5.12 Create array with range."></a>5.12 Create array with range.</h2><figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T : Comparable&lt;T&gt;</span>&gt; T.<span class="title">rangeTo</span><span class="params">(that: <span class="type">T</span>)</span></span> = ClosedRange&lt;T&gt; =</span><br><span class="line">    ComparableRange(<span class="keyword">this</span>, that)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ClosedRange</span>&lt;<span class="type">T: Comparable&lt;T</span>&gt;&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">val</span> start: T</span><br><span class="line">    <span class="keyword">val</span> endInclusive: T</span><br><span class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">contains</span><span class="params">(value: <span class="type">T</span>)</span></span>: <span class="built_in">Boolean</span> =</span><br><span class="line">        value &gt;= start &amp;&amp; value &lt;= endInclusive</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">isEmpty</span><span class="params">()</span></span>: <span class="built_in">Boolean</span> = start &gt; endInclusive</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>코틀린에서는 1..5 처럼 IntRange를 인스턴스화하는 2개의 점 연사자를 사용해서 범위를 생성한다.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://kidongyun.github.io/2021/10/25/2021-10-25-kotlin-cookbook/" data-id="cl3vrg7hv00vmocwbccbadurx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "headline": "Kotlin cookbook",
+        "image": "http://kidongyun.github.io",
+        "keywords": "Kotlin",
+        "genre": "Devlog",
+        "datePublished": "2021-10-25",
+        "dateCreated": "2021-10-25",
+        "dateModified": "2022-06-01",
+        "url": "http://kidongyun.github.io/2021/10/25/2021-10-25-kotlin-cookbook/",
+        "description": "1.1 Executing Kotlin program without local compiler.
+You can execute Kotlin program in https://play.kotlinlang.org/
+It’s IDE based on Web Platform.
+
+1.2 Installing Kotlin compiler in your local comput",
+        "wordCount": 5875
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2021/10/27/2021-10-27-vue-binding-and-event/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Vue event
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2021/10/24/2021-10-24-validation-annotation/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Validation Annotation</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/31/2022-05-31-todo-june-2022/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Todo/">Todo</a></p>
+                            <p class="item-title"><a href="/2022/05/31/2022-05-31-todo-june-2022/" class="title">Todo in 2022 June</a></p>
+                            <p class="item-date"><time datetime="2022-05-31T02:38:54.000Z" itemprop="datePublished">2022-05-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/21/2022-05-21-cheat-engine/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/21/2022-05-21-cheat-engine/" class="title">Cheate Engine</a></p>
+                            <p class="item-date"><time datetime="2022-05-21T02:38:54.000Z" itemprop="datePublished">2022-05-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/15/2022-05-15-kotest/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/15/2022-05-15-kotest/" class="title">Kotest</a></p>
+                            <p class="item-date"><time datetime="2022-05-15T02:38:54.000Z" itemprop="datePublished">2022-05-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/14/2022-05-14-docker-build/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/14/2022-05-14-docker-build/" class="title">Docker build</a></p>
+                            <p class="item-date"><time datetime="2022-05-14T02:38:54.000Z" itemprop="datePublished">2022-05-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/14/2022-05-14-docker-compose/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/14/2022-05-14-docker-compose/" class="title">Docker Compose commands</a></p>
+                            <p class="item-date"><time datetime="2022-05-14T02:38:54.000Z" itemprop="datePublished">2022-05-14</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Devlog/">Devlog</a><span class="category-list-count">217</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service/">Service</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Todo/">Todo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yunhwadngdng/">Yunhwadngdng</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/A-O-P/" rel="tag">A.O.P</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/" rel="tag">API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ableton/" rel="tag">Ableton</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract Class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Adapter-Pattern/" rel="tag">Adapter Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotation/" rel="tag">Annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Brew/" rel="tag">Brew</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Builder-Pattern/" rel="tag">Builder Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CORS/" rel="tag">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cheat-Engine/" rel="tag">Cheat Engine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud/" rel="tag">Cloud</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Architecture/" rel="tag">Computer Architecture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Science/" rel="tag">Computer Science</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ConfigurationProperties/" rel="tag">ConfigurationProperties</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Container/" rel="tag">Container</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Controller/" rel="tag">Controller</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Css/" rel="tag">Css</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DI/" rel="tag">DI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DSL/" rel="tag">DSL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dart/" rel="tag">Dart</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Decompile/" rel="tag">Decompile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Design-Pattern/" rel="tag">Design Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Compose/" rel="tag">Docker Compose</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Draft/" rel="tag">Draft</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DslMarker/" rel="tag">DslMarker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dto/" rel="tag">Dto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EC2/" rel="tag">EC2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elastic-Search/" rel="tag">Elastic Search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity/" rel="tag">Entity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum-Inheritance/" rel="tag">Enum Inheritance</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ExceptionHandling/" rel="tag">ExceptionHandling</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/F-P/" rel="tag">F.P</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facade-Pattern/" rel="tag">Facade Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/" rel="tag">Flutter</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flyweight-Pattern/" rel="tag">Flyweight Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Functional-Programming/" rel="tag">Functional Programming</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FunctionalInterface/" rel="tag">FunctionalInterface</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git-Merge/" rel="tag">Git - Merge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git-Flow/" rel="tag">Git Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitlab/" rel="tag">Gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GraalVM/" rel="tag">GraalVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graphql/" rel="tag">Graphql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/" rel="tag">HTTPS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HandlerMapping/" rel="tag">HandlerMapping</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/High-Level-ElasticSearch/" rel="tag">High Level ElasticSearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/" rel="tag">Html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Index/" rel="tag">Index</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intellij/" rel="tag">Intellij</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ionic/" rel="tag">Ionic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/" rel="tag">JPA</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit/" rel="tag">JUnit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JWT/" rel="tag">JWT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jackson/" rel="tag">Jackson</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jad/" rel="tag">Jad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">44</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-O-O-P/" rel="tag">Java - O.O.P</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jekyll/" rel="tag">Jekyll</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jira/" rel="tag">Jira</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jmeter/" rel="tag">Jmeter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jpa/" rel="tag">Jpa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Json/" rel="tag">Json</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/" rel="tag">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keyboard-Event/" rel="tag">Keyboard Event</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/" rel="tag">Kibana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotest/" rel="tag">Kotest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTeX/" rel="tag">LaTeX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSA/" rel="tag">MSA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-learning/" rel="tag">Machine learning</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matcher/" rel="tag">Matcher</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/" rel="tag">Memory</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Message-Queue/" rel="tag">Message Queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Monitoring/" rel="tag">Monitoring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/" rel="tag">Network</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/O-O-P/" rel="tag">O.O.P</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/" rel="tag">Object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Observer-Pattern/" rel="tag">Observer Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Operating-System/" rel="tag">Operating System</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Php/" rel="tag">Php</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/" rel="tag">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/" rel="tag">Process</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RDS/" rel="tag">RDS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Mobx/" rel="tag">React - Mobx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reactor/" rel="tag">Reactor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recording/" rel="tag">Recording</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rest/" rel="tag">Rest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Roofline/" rel="tag">Roofline</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STT/" rel="tag">STT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sentry/" rel="tag">Sentry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Serialize/" rel="tag">Serialize</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SfDatePicker/" rel="tag">SfDatePicker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Singleton-Pattern/" rel="tag">Singleton Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">56</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-API-Response/" rel="tag">Spring - API - Response</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-HttpClient/" rel="tag">Spring - HttpClient</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Batch/" rel="tag">Spring Batch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Cloud/" rel="tag">Spring Cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Security/" rel="tag">Spring Security</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stub/" rel="tag">Stub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swagger/" rel="tag">Swagger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/" rel="tag">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TLS/" rel="tag">TLS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Telnet/" rel="tag">Telnet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/" rel="tag">Test</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/" rel="tag">Thread</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Timestamp/" rel="tag">Timestamp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transaction/" rel="tag">Transaction</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tunning/" rel="tag">Tunning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/" rel="tag">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UDP/" rel="tag">UDP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Validation/" rel="tag">Validation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webapp/" rel="tag">Webapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webclient/" rel="tag">Webclient</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webflux/" rel="tag">Webflux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xml/" rel="tag">Xml</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/" rel="tag">interview</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/A-O-P/" style="font-size: 10.77px;">A.O.P</a> <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/AWS/" style="font-size: 14.62px;">AWS</a> <a href="/tags/Ableton/" style="font-size: 10px;">Ableton</a> <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract Class</a> <a href="/tags/Adapter-Pattern/" style="font-size: 10px;">Adapter Pattern</a> <a href="/tags/Algorithm/" style="font-size: 18.46px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 10.77px;">Android</a> <a href="/tags/Annotation/" style="font-size: 10px;">Annotation</a> <a href="/tags/Blog/" style="font-size: 13.85px;">Blog</a> <a href="/tags/Brew/" style="font-size: 10px;">Brew</a> <a href="/tags/Builder-Pattern/" style="font-size: 10px;">Builder Pattern</a> <a href="/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Cheat-Engine/" style="font-size: 10px;">Cheat Engine</a> <a href="/tags/Cloud/" style="font-size: 13.08px;">Cloud</a> <a href="/tags/Computer-Architecture/" style="font-size: 10px;">Computer Architecture</a> <a href="/tags/Computer-Science/" style="font-size: 13.85px;">Computer Science</a> <a href="/tags/ConfigurationProperties/" style="font-size: 10px;">ConfigurationProperties</a> <a href="/tags/Container/" style="font-size: 10.77px;">Container</a> <a href="/tags/Controller/" style="font-size: 10.77px;">Controller</a> <a href="/tags/Css/" style="font-size: 12.31px;">Css</a> <a href="/tags/DI/" style="font-size: 10px;">DI</a> <a href="/tags/DSL/" style="font-size: 10px;">DSL</a> <a href="/tags/Dart/" style="font-size: 10.77px;">Dart</a> <a href="/tags/Database/" style="font-size: 14.62px;">Database</a> <a href="/tags/Decompile/" style="font-size: 10px;">Decompile</a> <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 12.31px;">Docker</a> <a href="/tags/Docker-Compose/" style="font-size: 10px;">Docker Compose</a> <a href="/tags/Draft/" style="font-size: 17.69px;">Draft</a> <a href="/tags/DslMarker/" style="font-size: 10px;">DslMarker</a> <a href="/tags/Dto/" style="font-size: 10px;">Dto</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Elastic-Search/" style="font-size: 10.77px;">Elastic Search</a> <a href="/tags/ElasticSearch/" style="font-size: 10.77px;">ElasticSearch</a> <a href="/tags/Entity/" style="font-size: 10px;">Entity</a> <a href="/tags/Enum/" style="font-size: 10.77px;">Enum</a> <a href="/tags/Enum-Inheritance/" style="font-size: 10px;">Enum Inheritance</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/ExceptionHandling/" style="font-size: 10px;">ExceptionHandling</a> <a href="/tags/F-P/" style="font-size: 10px;">F.P</a> <a href="/tags/Facade-Pattern/" style="font-size: 10px;">Facade Pattern</a> <a href="/tags/Flutter/" style="font-size: 12.31px;">Flutter</a> <a href="/tags/Flyweight-Pattern/" style="font-size: 10px;">Flyweight Pattern</a> <a href="/tags/Functional-Programming/" style="font-size: 10px;">Functional Programming</a> <a href="/tags/FunctionalInterface/" style="font-size: 10px;">FunctionalInterface</a> <a href="/tags/Git/" style="font-size: 11.54px;">Git</a> <a href="/tags/Git-Merge/" style="font-size: 10px;">Git - Merge</a> <a href="/tags/Git-Flow/" style="font-size: 10px;">Git Flow</a> <a href="/tags/Gitlab/" style="font-size: 10px;">Gitlab</a> <a href="/tags/GraalVM/" style="font-size: 10px;">GraalVM</a> <a href="/tags/Gradle/" style="font-size: 13.85px;">Gradle</a> <a href="/tags/Graphql/" style="font-size: 10px;">Graphql</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/HandlerMapping/" style="font-size: 10px;">HandlerMapping</a> <a href="/tags/Hexo/" style="font-size: 11.54px;">Hexo</a> <a href="/tags/High-Level-ElasticSearch/" style="font-size: 10px;">High Level ElasticSearch</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/Index/" style="font-size: 10px;">Index</a> <a href="/tags/Intellij/" style="font-size: 10px;">Intellij</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Ionic/" style="font-size: 10px;">Ionic</a> <a href="/tags/JPA/" style="font-size: 12.31px;">JPA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JUnit/" style="font-size: 10px;">JUnit</a> <a href="/tags/JWT/" style="font-size: 10px;">JWT</a> <a href="/tags/Jackson/" style="font-size: 10px;">Jackson</a> <a href="/tags/Jad/" style="font-size: 10px;">Jad</a> <a href="/tags/Java/" style="font-size: 19.23px;">Java</a> <a href="/tags/Java-O-O-P/" style="font-size: 10px;">Java - O.O.P</a> <a href="/tags/Javascript/" style="font-size: 16.92px;">Javascript</a> <a href="/tags/Jekyll/" style="font-size: 12.31px;">Jekyll</a> <a href="/tags/Jira/" style="font-size: 10.77px;">Jira</a> <a href="/tags/Jmeter/" style="font-size: 10px;">Jmeter</a> <a href="/tags/Jpa/" style="font-size: 10px;">Jpa</a> <a href="/tags/Json/" style="font-size: 10px;">Json</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/Keyboard-Event/" style="font-size: 10px;">Keyboard Event</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/Kotest/" style="font-size: 10px;">Kotest</a> <a href="/tags/Kotlin/" style="font-size: 13.85px;">Kotlin</a> <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lombok/" style="font-size: 10.77px;">Lombok</a> <a href="/tags/MSA/" style="font-size: 10px;">MSA</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Machine-learning/" style="font-size: 16.15px;">Machine learning</a> <a href="/tags/Matcher/" style="font-size: 10px;">Matcher</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/Message-Queue/" style="font-size: 10px;">Message Queue</a> <a href="/tags/Monitoring/" style="font-size: 10px;">Monitoring</a> <a href="/tags/Mybatis/" style="font-size: 11.54px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Network/" style="font-size: 14.62px;">Network</a> <a href="/tags/Node/" style="font-size: 11.54px;">Node</a> <a href="/tags/O-O-P/" style="font-size: 10.77px;">O.O.P</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/Observer-Pattern/" style="font-size: 10px;">Observer Pattern</a> <a href="/tags/Operating-System/" style="font-size: 10px;">Operating System</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/Php/" style="font-size: 12.31px;">Php</a> <a href="/tags/Postgresql/" style="font-size: 10px;">Postgresql</a> <a href="/tags/Process/" style="font-size: 10.77px;">Process</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/RDS/" style="font-size: 10px;">RDS</a> <a href="/tags/RabbitMQ/" style="font-size: 10px;">RabbitMQ</a> <a href="/tags/React/" style="font-size: 13.85px;">React</a> <a href="/tags/React-Mobx/" style="font-size: 10px;">React - Mobx</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/Recording/" style="font-size: 10px;">Recording</a> <a href="/tags/Redis/" style="font-size: 13.08px;">Redis</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rest/" style="font-size: 10px;">Rest</a> <a href="/tags/Roofline/" style="font-size: 10px;">Roofline</a> <a href="/tags/STT/" style="font-size: 10px;">STT</a> <a href="/tags/Sentry/" style="font-size: 10px;">Sentry</a> <a href="/tags/Serialize/" style="font-size: 10px;">Serialize</a> <a href="/tags/SfDatePicker/" style="font-size: 10px;">SfDatePicker</a> <a href="/tags/Singleton-Pattern/" style="font-size: 10px;">Singleton Pattern</a> <a href="/tags/Spring/" style="font-size: 20px;">Spring</a> <a href="/tags/Spring-API-Response/" style="font-size: 10px;">Spring - API - Response</a> <a href="/tags/Spring-HttpClient/" style="font-size: 10px;">Spring - HttpClient</a> <a href="/tags/Spring-Batch/" style="font-size: 10px;">Spring Batch</a> <a href="/tags/Spring-Cloud/" style="font-size: 10.77px;">Spring Cloud</a> <a href="/tags/Spring-Security/" style="font-size: 10.77px;">Spring Security</a> <a href="/tags/Stub/" style="font-size: 10px;">Stub</a> <a href="/tags/Swagger/" style="font-size: 10px;">Swagger</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TLS/" style="font-size: 10px;">TLS</a> <a href="/tags/Telnet/" style="font-size: 10px;">Telnet</a> <a href="/tags/Test/" style="font-size: 15.38px;">Test</a> <a href="/tags/Thread/" style="font-size: 10px;">Thread</a> <a href="/tags/Timestamp/" style="font-size: 10px;">Timestamp</a> <a href="/tags/Transaction/" style="font-size: 10px;">Transaction</a> <a href="/tags/Tunning/" style="font-size: 10px;">Tunning</a> <a href="/tags/Typescript/" style="font-size: 10px;">Typescript</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/Validation/" style="font-size: 10px;">Validation</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Web/" style="font-size: 10.77px;">Web</a> <a href="/tags/Webapp/" style="font-size: 10px;">Webapp</a> <a href="/tags/Webclient/" style="font-size: 10px;">Webclient</a> <a href="/tags/Webflux/" style="font-size: 10.77px;">Webflux</a> <a href="/tags/Webpack/" style="font-size: 10.77px;">Webpack</a> <a href="/tags/Xml/" style="font-size: 10.77px;">Xml</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 John Doe</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://kidongyun.github.io/2021/10/25/2021-10-25-kotlin-cookbook/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
