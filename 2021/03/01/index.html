@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Interview Preparing | Hexo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="interview" />
+    
+    <meta name="description" content="1. Dead Lock (교착상태) O교착상태 정의두 A, B 프로세스가 한 공유될 수 있는 자원을 바라보고 있다고 하자. 만약 A 프로세스가 이 자원을 선점하고 있고 A 프로세스는 B 자원이 이 자원을 선점해야 이 자원 선점을 해지할 수 있다. 또 B 프로세스는 이 공유되는 자원을 선점해야 다음 작업이 진행이 가능하다. 이런 경우 두 프로세스의 진행이 불">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Interview Preparing">
+<meta property="og:url" content="http://kidongyun.github.io/2021/03/01/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. Dead Lock (교착상태) O교착상태 정의두 A, B 프로세스가 한 공유될 수 있는 자원을 바라보고 있다고 하자. 만약 A 프로세스가 이 자원을 선점하고 있고 A 프로세스는 B 자원이 이 자원을 선점해야 이 자원 선점을 해지할 수 있다. 또 B 프로세스는 이 공유되는 자원을 선점해야 다음 작업이 진행이 가능하다. 이런 경우 두 프로세스의 진행이 불">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-28T15:54:00.000Z">
+<meta property="article:modified_time" content="2022-05-31T07:34:42.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="interview">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="Hexo" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Devlog/">Devlog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Service/">Service</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Todo/">Todo</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Yunhwadngdng/">Yunhwadngdng</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Devlog/">Devlog</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-2021-03-01-interview.preparing" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Interview Preparing
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2021/03/01/" class="article-date">
+       <time datetime="2021-02-28T15:54:00.000Z" itemprop="datePublished">2021-03-01</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2021/03/01/" class="article-date">
+     <time datetime="2022-05-31T07:34:42.000Z" itemprop="dateModified">2022-05-31</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/interview/" rel="tag">interview</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h2 id="1-Dead-Lock-교착상태-O"><a href="#1-Dead-Lock-교착상태-O" class="headerlink" title="1. Dead Lock (교착상태) O"></a>1. Dead Lock (교착상태) O</h2><h3 id="교착상태-정의"><a href="#교착상태-정의" class="headerlink" title="교착상태 정의"></a>교착상태 정의</h3><p>두 A, B 프로세스가 한 공유될 수 있는 자원을 바라보고 있다고 하자. 만약 A 프로세스가 이 자원을 선점하고 있고 A 프로세스는 B 자원이 이 자원을 선점해야 이 자원 선점을 해지할 수 있다. 또 B 프로세스는 이 공유되는 자원을 선점해야 다음 작업이 진행이 가능하다.</p>
+<p>이런 경우 두 프로세스의 진행이 불가능 하기 때문에 교착상태, dead lock 이라고 표현한다.</p>
+<p>이론적으로 교착상태는 아래의 조건이 모두 성립해야 발생한다.</p>
+<h3 id="교착상태-예방"><a href="#교착상태-예방" class="headerlink" title="교착상태 예방"></a>교착상태 예방</h3><p>상호배제 - 공유되는 자원을 두개 이상의 프로세스가 점유할 수 없다라는 논리는 무시한다는 의미.</p>
+<p>비선점 - 선점이 가능하도록 수정</p>
+<h3 id="교착상태-회피"><a href="#교착상태-회피" class="headerlink" title="교착상태 회피"></a>교착상태 회피</h3><p>은행원 알고리즘.</p>
+<h2 id="2-Transaction-O"><a href="#2-Transaction-O" class="headerlink" title="2. Transaction O"></a>2. Transaction O</h2><h3 id="트랜잭션-정의"><a href="#트랜잭션-정의" class="headerlink" title="트랜잭션 정의"></a>트랜잭션 정의</h3><p>데이터 정합성을 유지하기 위해 정해놓은 최소한의 논리적 작업 단위.</p>
+<h3 id="RDB-DBMS의-트랜잭션-관리"><a href="#RDB-DBMS의-트랜잭션-관리" class="headerlink" title="RDB DBMS의 트랜잭션 관리"></a>RDB DBMS의 트랜잭션 관리</h3><p>DBMS는 기본적으로 질의 처리기와 저장 시스템 두 부분으로 나누어진다.</p>
+<p>그리고 저장 시스템에 메인 메모리에 유지하는 페이지들을 관리하는 페이지 버퍼라는 모듈이있다.<br>이 페이지 버퍼라는 모듈이 트랜잭션 관점에서 굉장히 중요하다.</p>
+<p>수행한 질의에 대해서 커밋을 하지 않았다면 이 버퍼에 수정 내용들이 존재하는데. 이를 활용해서 롤백을 할 수 있다.</p>
+<p>하나의 트랜잭션에서 오류가 발생할 경우 데이터 정합성을 맞추기 위해 롤백이 필요하다.</p>
+<h3 id="Mybatis-같은-SQLMapper-에서의-트랜잭션-관리"><a href="#Mybatis-같은-SQLMapper-에서의-트랜잭션-관리" class="headerlink" title="Mybatis 같은 SQLMapper 에서의 트랜잭션 관리."></a>Mybatis 같은 SQLMapper 에서의 트랜잭션 관리.</h3><p>java에서 RDB 접근할때에는 JDBC API를 주로 사용한다. 이 API 기본적으로 질의를 했을 때 해당 내용을 auto commit하는 옵션이 true로 되어있다.  왜 그렇게 되어있을까. 왜 이렇게 되어있어서 트랜잭션 관리를 하기 어렵게 만들었을까… 그건 나도 모르지 그렇기 때문에 위 버퍼를 활용하기 어렵고 롤백시키가 까다롭다.</p>
+<p>해결할 수 있는 방법 중 하나는 쿼리 자체를 한번에 하도록 하는 것 쿼리 한번에 커밋이 되니까 한번의 쿼리에 데이터 정합성이 맞게 모두 처리하는 방법</p>
+<p>해결할 수 있는 두번째 방법은 auto commit 옵션을 해지하기.</p>
+<p>세번째 방법 @Transactional 어노테이션 적용.</p>
+<h3 id="JDBC-트랜잭션-유지-방법"><a href="#JDBC-트랜잭션-유지-방법" class="headerlink" title="JDBC 트랜잭션 유지 방법"></a>JDBC 트랜잭션 유지 방법</h3><p>JDBC API를 사용할 때 트랜잭션 유지 방법</p>
+<ol>
+<li><p>cath 블록에서 rollback 작업 명시</p>
+</li>
+<li><p>DatasourceTransactionManager</p>
+</li>
+<li><p>@Transactional </p>
+</li>
+</ol>
+<h3 id="JPA-에서의-트랜잭션-관리"><a href="#JPA-에서의-트랜잭션-관리" class="headerlink" title="JPA 에서의 트랜잭션 관리."></a>JPA 에서의 트랜잭션 관리.</h3><p>Persistent Context 에서 애초에 커밋을 바로 하지 않고 트랜잭션이 완료되었을 때 리얼 DB에 커밋을 함.<br>그렇기 때문에 한 트랜잭션 내에서 오류가 발생하면 아에 DB에 넣은 내용이 없기 때문에 롤백 처리가 간단함.</p>
+<h2 id="3-Spring-IoC-DI-DL-O"><a href="#3-Spring-IoC-DI-DL-O" class="headerlink" title="3. Spring IoC DI, DL O"></a>3. Spring IoC DI, DL O</h2><h3 id="IoC-Inversion-Of-Control"><a href="#IoC-Inversion-Of-Control" class="headerlink" title="IoC (Inversion Of Control)"></a>IoC (Inversion Of Control)</h3><p>객체의 생성이나 의존성 주입에 대한 관리 주체를 개발자가 가지는게 아니라 프레임워크, 컨테이너가 가지는 개념이다. </p>
+<p>기존에는 개발자가 했었는데 이 책임을 프레임워크가 가져갔다 해서 IoC 라고 부른다.</p>
+<p>의존성 관리라는 것이 커지면 커질수록 개발자에게는 부담이 되는 요소인데 이를 스프링의 경우 스프링 컨테이너에 빈등록을 하고 바로바로 의존성을 주입할 수 있도록 도와준다.</p>
+<h3 id="DI-Depedency-Injection"><a href="#DI-Depedency-Injection" class="headerlink" title="DI (Depedency Injection)"></a>DI (Depedency Injection)</h3><p>의존성을 주입하는 행위.</p>
+<p>DI 종류 : 필드 주입, 생성자 주입, Setter 주입. -&gt; 생성자 주입을 권장하는데 이유는 순환참조를 방지할 수 있기 떄문.</p>
+<h3 id="DL-Dependency-Lookup"><a href="#DL-Dependency-Lookup" class="headerlink" title="DL (Dependency Lookup)"></a>DL (Dependency Lookup)</h3><p>의존성을 찾는 행위.</p>
+<h3 id="순환-참조와-그-문제-그리고-해결방법"><a href="#순환-참조와-그-문제-그리고-해결방법" class="headerlink" title="순환 참조와 그 문제 그리고 해결방법."></a>순환 참조와 그 문제 그리고 해결방법.</h3><p>A도 B를 의존하고, B도 A를 의존하는 구조. 이렇게 되면 나중에 A`이 등장했을 때 B에 버무리지 못한다. 확장 가능성이 있기 떄문에 이럴때는 B는 A를 추상화 시킨 인터페이스를 의존성으로 가지게 하고, A, A’ 이 이 인터페이스 규격에 맞추어 설계한다.</p>
+<h2 id="5-MVC-Model-View-Controller"><a href="#5-MVC-Model-View-Controller" class="headerlink" title="5. MVC (Model View Controller)"></a>5. MVC (Model View Controller)</h2><h3 id="정의"><a href="#정의" class="headerlink" title="정의"></a>정의</h3><p>Model, View, Controller 세가지 영역으로 나누어서 개발하는 방법. Model은 데이터를 담당하고 View는 화면을 담당합니다. 이 둘사이에서 조건에 따른 처리달라지거나 제어의 목적으로 사용되는 것이 Controller 영역입니다. Spring Framework로 Web MVC를 구현했을 때 JSP, Thymeleaf는 View 영역에 해당하고, Model, Service 쪽은 Model 영역에 해당합니다. Spring Controller가 MVC에서 Controller 영역에 해당합니다.</p>
+<h3 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h3><ol>
+<li><p>각 영역이 담당하는 업무 주제가 날카로워지기 때문에 분업의 효과를 가져올 수 있다.</p>
+</li>
+<li><p>코드들이 분리가 되기 때문에 상호간 의존성이 감소해서 어플리케이션의 유연성과 확장성을 증가시킬 수 있습니다.</p>
+</li>
+<li><p>각 영역이 담당하는 업무가 확실해지기 때문에 디버깅하기가 쉬워진다. 예를 들어 팝업이 안뜨는 오류가 발생했다면 이 오류는 View 영역의 오류일 것입니다.</p>
+</li>
+</ol>
+<h2 id="6-웹서버-O"><a href="#6-웹서버-O" class="headerlink" title="6. 웹서버 O"></a>6. 웹서버 O</h2><h3 id="정의-1"><a href="#정의-1" class="headerlink" title="정의"></a>정의</h3><p>HTTP 프로토콜 기반의 요청을 받아들이고 그 요청에서 원하는 HTML 문서, 이와 관련된 데이터를 반환해주는 프로그램.</p>
+<h3 id="구현-방법"><a href="#구현-방법" class="headerlink" title="구현 방법"></a>구현 방법</h3><h4 id="MPM-Multi-Processing-Module"><a href="#MPM-Multi-Processing-Module" class="headerlink" title="MPM (Multi Processing Module)"></a>MPM (Multi Processing Module)</h4><h5 id="prefork-process"><a href="#prefork-process" class="headerlink" title="prefork (process)"></a>prefork (process)</h5><p>각 요청을 프로세스로 받아서 처리한다. 각 요청에 따라 다른 프로세스를 사용하기 때문에 사용되는 메모리도 독립적이며, 다른 요청들에게 영향을 주지 않는다.<br>매번 PCB를 새로 생성하기 때문에 자원을 많이 사용하게 된다.</p>
+<p>멀티 프로세스 방식 마스터 프로세스가 있고 요청이 들어오면 슬레이브 프로세스를 fork 하여 만들고 이 슬레이브 프로세스에서 요청에 대한 처리를 한다.</p>
+<p>매 요청에 맞춰서 슬레이브 프로세스를 만들어야 하기때문에 프로세스가 계속 늘어나는 문제점과, 매번 요청에 따라서 슬레이브 프로세스로 바꾸는 context switching 비용이 있다.</p>
+<h5 id="worker-thread"><a href="#worker-thread" class="headerlink" title="worker (thread)"></a>worker (thread)</h5><p>각 요청을 스레드로 받아 처리한다. </p>
+<p>프로세별로 제한하는 스레드 개수 만큼 스레드를 생성하며 이를 초과하게 되면 새로운 프로세스를 생성하여 처리.</p>
+<p>쓰레드 기반이기 때문에 프로세스 기반인 prefork 보다는 리소스 부하가 적다.</p>
+<p>매번 쓰레드를 생성하는 비용은 쓰레드 풀을 만들어서 해결할 수 있다고 해도, 쓰레드끼리의 문맥교환 비용이 존재함.</p>
+<p>worker 방법이 prefork 방법에 비해 고속처리, 대량처리가 가능한 것은 아니지만 리소스 부하를 줄일 수 있다.</p>
+<h5 id="event"><a href="#event" class="headerlink" title="event"></a>event</h5><p>nginx 에 대응하기 위해서 apache 에서 event-driven 구조를 지원하도록 업데이트함.</p>
+<h4 id="Event-driven"><a href="#Event-driven" class="headerlink" title="Event-driven"></a>Event-driven</h4><h2 id="7-WAS-O"><a href="#7-WAS-O" class="headerlink" title="7. WAS O"></a>7. WAS O</h2><h3 id="정의-2"><a href="#정의-2" class="headerlink" title="정의"></a>정의</h3><p>기존의 웹서버 기능에 Servlet Container가 포함된 프로그램.<br>동적 컨텐츠를 제공할 수 있다.</p>
+<p>서버의 비즈니스 로직을 실행하여 해당 결과물을 요청 객체에게 반환해주는 프로그램</p>
+<h3 id="웹서버와-WAS를-병행해서-사용하는-이유"><a href="#웹서버와-WAS를-병행해서-사용하는-이유" class="headerlink" title="웹서버와 WAS를 병행해서 사용하는 이유"></a>웹서버와 WAS를 병행해서 사용하는 이유</h3><ol>
+<li><p>2티어 구조로 변경함으로써 각자 역할에 대해서 응집도를 높이고 Loose Coupling. 디버깅도 하기 쉬워진다.</p>
+</li>
+<li><p>성능 향상 - 각자의 서버의 관심사가 몰입되기 때문에 캐시 적중률이 높아질 것 같습니다.</p>
+</li>
+<li><p>웹서버 1대 WAS 여러 대를 둘때 로드밸런싱을 해주는 역할이 웹서버.</p>
+</li>
+<li><p>웹서버만 대외적으로 드러나고 이 웹서버를 통해서 WAS를 접근하게 됨으로 보안이 강화된다. WAS에서는 대부분 DB를 접속하는 기능도 포함되어 있기 때문에 노출시키지 않는 것이 좋다.</p>
+</li>
+</ol>
+<h3 id="웹서버에서-WAS까지-데이터-흐름-이해하기"><a href="#웹서버에서-WAS까지-데이터-흐름-이해하기" class="headerlink" title="웹서버에서 WAS까지 데이터 흐름 이해하기"></a>웹서버에서 WAS까지 데이터 흐름 이해하기</h3><p>톰캣은 apache의 웹서버의 역할도 가지고 있기 때문에 내부적으로는 웹서버 + 서블릿 컨테이너로 구분된다고 할 수 있다.</p>
+<p>웹서버가 처리할 수 없는 동적 컨텐츠에 대한 요청이 들어오면 서블릿 컨테이너에서 이 요청을 처리하기 위한 서블릿을 생성한다.</p>
+<p>실제로 DispatcherServlet 이 녀석은 Servlet 인터페이스를 구현한 객체이다. 그래서 스프링을 띄우고 있는 WAS라면 Servlet Container에서 DispatcherServlet을 실행한다.</p>
+<p>DispatcherServlet은 요청 데이터와 mapping되는 컨트롤러를 찾고 연결한다. 서버쪽의 비지니스 로직 처리가 완료되면 해당 결과물을 ViewResolver를 통해 반환한다.</p>
+<h3 id="WAS의-종류"><a href="#WAS의-종류" class="headerlink" title="WAS의 종류"></a>WAS의 종류</h3><p>tomcat vs undertow vs netty</p>
+<h2 id="8-Docker-O"><a href="#8-Docker-O" class="headerlink" title="8. Docker O"></a>8. Docker O</h2><h3 id="Docker-정의"><a href="#Docker-정의" class="headerlink" title="Docker 정의"></a>Docker 정의</h3><p>컨테이너 기반의 오픈소스 가상화 플랫폼이다. VM 기술과 유사하며, 동일한 하드웨어를 사용하여 어플리케이션을 띄우는 독립된 소프트웨어 공간을 구현한다.</p>
+<h3 id="VM-vs-Container"><a href="#VM-vs-Container" class="headerlink" title="VM vs Container"></a>VM vs Container</h3><p>VM이 Container 방법보다 훨씬 더 강력하게 가상화하고 격리한다. VM은 가상화된 공간에 독립적인 OS를 온전하게 올리는 형태로 거의 완벽하게 Host와 분리된다. 이와 반대로 Cotainer 방법은 호스트와 공유할수 있는 커널들을 공유하며, 어플리케이션을 띄울 때 필요한 커널들만 가상화 공간에 띄운다.</p>
+<p>예를 들어서 VM을 활용해서 가상화된 서비스 3개를 띄운다고 하면, 이 호스트 하드웨어는 총 4개의 운영체제를 띄워야 한다. 그만큼 많은 메모리를 사용하게 되며, 특히나 하드웨어 리소스에 의존된 커널들의 경우. 호스트만 사용하는 기존의 구조과 달리 4개의 커널이 리소스를 사용하려고 하기 때문에 리소스를 모두 사용하게 되면 병목현상도 발생하게 된다. 하지만 Container는 이러한 커널들은 호스트의 것을 공유해서 사용하기 때문에 이 문제가 발생하지 않습니다.</p>
+<p>Container는 완벽히 독립된 공간을 만들지 않기 때문에 얻는 성능적인 부분들이 있지만. 반대로 말 그대로 완전히 독립적이지 않기 때문에 보안적으로는 VM보다 더 취약하다.</p>
+<h3 id="도커의-장점"><a href="#도커의-장점" class="headerlink" title="도커의 장점"></a>도커의 장점</h3><ol>
+<li>호스트의 환경에 의존되지 않은 서비스 제공이 가능하다.</li>
+</ol>
+<p>서비스의 실행 환경이 모두 다르다면 이는 개발환경에서는 정상적으로 동작하던 코드가 실제 운영환경에서도 정상적으로 동작한다라고 보장하기 어려워진다. 도커를 활용하면 하나의 가상화된 공간에서 어플리케이션을 띄울 수 있기 때문에 호스트의 환경에 구애받지 않는다. 예를 들어서 깃랩 서비스를 우분투 서버에 올릴 때와 CentOS에 올릴 때 사용되는 명령어가 다르다. 즉 환경에 어플리케이션이 영향을 받고 있다는 의미인데, 도커를 활용하면 동일한 도커 명령어로 실행이 가능하다.</p>
+<ol>
+<li>이미지를 활용해 CI/CD 단순화가 가능하다.</li>
+</ol>
+<h2 id="9-Docker-Compose-쿠버네티스"><a href="#9-Docker-Compose-쿠버네티스" class="headerlink" title="9. Docker-Compose. 쿠버네티스"></a>9. Docker-Compose. 쿠버네티스</h2><p>MSA가 유행하게되었고 그에 따라 도커와 컨테이너에 대한 기술이 주목받게되었다. 그러다 다수의 컨테이너를 관리할 필요가 생겼고 다수의 컨테이너를 관리할 수 있는 도구인 컨테이너 오케스트레이션 이 등장하게되었다. </p>
+<p>그럼 도커 컴포즈는 무엇인가? 도커 컴포즈는 여러개의 컨테이너를 쉽게 실행할 수 있는 도구이다.</p>
+<p>여러 개의 docker container 들을 관리하는 만들어진 도구이다.</p>
+<p>Docker Compose 는 간단하게 여러 Docker application 들을 어떻게 실행할지 정의하고 실행할 수 있는 툴입니다</p>
+<p>이렇게 local 환경 관리에 Docker Compose 를 이용했을 때 어떤 장점들이 있을까요?</p>
+<p>띄우고 내리는 등의 행위가 편하다<br>Docker 환경이 파일로 관리된다<br>협업 하는 모두가 명령어 하나로 쉽게 같은 환경을 사용할 수 있게된다</p>
+<p>도커는 ‘이미지를 만들고 컨테이너에 띄우는 도구’이고 쿠버네티스는 ‘도커를 관리하는 툴’이다.</p>
+<p>도커라는 것은 컨테이너 기반으로 서비스를 운영할 수 있도록 하는 것.<br>도커의 장점?</p>
+<h2 id="12-SQL-vs-NoSQL"><a href="#12-SQL-vs-NoSQL" class="headerlink" title="12. SQL vs NoSQL"></a>12. SQL vs NoSQL</h2><p>SQL은 기본적으로 데이터의 정합성을 맞추는 것을 가장 중요하게 생각한다. 이를 위해 스키마를 엄격하게 관리하는데. 그렇기 때문에 스키마에 맞지 않는 데이터는 추가할 수 없다. 데이터의 정합성을 맞추기 위해서 가장 기본적으로 지켜야 하는 룰은 동일한 데이터가 해당 데이터베이스에 중복이 되지 않아야 한다. 이를 위해서 정규화라는 과정을 거치며 이 과정을 거치게 되면 일반적으로 테이블들이 작아지고 관계 중심적으로 데이터들을 표현해나간다. (여기서 중요한 점은 데이터 중복이 발생하지 않음을 RDB가 강제하는 것은 아니고, DB 설계를 이렇게 동작하도록 해야 한다. 만약 정규화가 제대로 이루어지지 않는다면 RDB의 목적을 제대로 달성하고 있지 않다고 할 수 있다.)</p>
+<p>NoSQL은 기본적으로 성능을 보다 중요하게 생각한다. 이를 위해 스키마를 없애고. 관계 중심적인 데이터 서술이 아니고 하나의 컬렉션에 이와 관련된 모든 데이터를 넣는다. 즉 SQL 관점에서 여러 테이블이 조인된 형태로 한 다큐먼트에 저장된다. 이렇게 되면 관계되어있는 데이터 검색시 조인을 하는 작업이 필요 없어지기 때문에 성능이 더 좋아진다. 그러나 데이터의 정합성을 보장할 수 없다.</p>
+<h3 id="NoSQL의-용어"><a href="#NoSQL의-용어" class="headerlink" title="NoSQL의 용어"></a>NoSQL의 용어</h3><p> 컬렉션 == 테이블<br> 다큐먼트 == 로우</p>
+<h2 id="13-수직적-확장-Scale-Up-amp-수평적-확장-Scale-Out"><a href="#13-수직적-확장-Scale-Up-amp-수평적-확장-Scale-Out" class="headerlink" title="13. 수직적 확장 (Scale Up) &amp; 수평적 확장 (Scale Out)"></a>13. 수직적 확장 (Scale Up) &amp; 수평적 확장 (Scale Out)</h2><p>수직적 확장 -&gt; 단순히 데이터베이스 서버의 성능을 향상시키는 것.<br>수평적 확장 -&gt; 더 많은 서버가 추가되고 데이터베이스가 전체적으로 분산됨을 의미.</p>
+<p>SQL 데이터베이스는 데이터가 저장되는 엄격한 스키마 때문에 수직적 확장만이 가능. 여러 대의 데이터베이스를 가지기가 어렵다.</p>
+<p>그럼에도 불구하고, 이러한 방식의 커다란 장점은 복잡하고 (어떤 순간에는 느린) 조인을 사용할 필요가 없다는 것입니다. </p>
+<p>SQL의 장점<br>명확하게 정의 된 스키마, 데이터 무결성 보장<br>관계는 각 데이터를 중복없이 한번만 저장됩니다.</p>
+<p>NoSQL의 장점<br>스키마가 없기때문에, 훨씬 더 유연합니다. 즉, 언제든지 저장된 데이터를 조정하고 새로운 “필드”를 추가 할 수 있습니다.<br>데이터는 애플리케이션이 필요로 하는 형식으로 저장됩니다. 이렇게 하면 데이터를 읽어오는 속도가 빨라집니다.<br>수직 및 수평 확장이 가능하므로 데이터베이스가 애플리케이션에서 발생시키는 모든 읽기 / 쓰기 요청을 처리 할 수 있습니다.</p>
+<p>그리고 단점은 아래와 같습니다.</p>
+<p>SQL의 단점<br>상대적으로 덜 유연합니다. 데이터 스키마는 사전에 계획되고 알려져야 합니다. (나중에 수정하기가 번거롭거나 불가능 할 수 도 있습니다.)<br>관계를 맺고 있기 때문에, JOIN문이 많은 매우 복잡한 쿼리가 만들어 질 수 있습니다.<br>수평적 확장이 어렵고, 대체로 수직적 확장만 가능합니다. 즉 어떤 시점에서 (처리 할 수 있는 처리량과 관련하여) 성장 한계에 직면하게 됩니다.</p>
+<p>NoSQL의 단점</p>
+<p>유연성 때문에, 데이터 구조 결정을 하지 못하고 미루게 될 수 있습니다.<br>데이터 중복은 여러 컬렉션과 문서가 (SQL 세계에서 처럼 하나의 테이블에 하나의 레코드가 아니라) 여러 개의 레코드가 변경된 경우 업데이트를 해야 합니다.<br>데이터가 여러 컬렉션에 중복되어 있기 때문에, 수정(update)를 해야 하는 경우 모든 컬렉션에서 수행해야 함을 의미합니다. (SQL 세계에서는 중복된 데이터가 없기 때문에 한번만 수행하면 됩니다.)</p>
+<h2 id="14-MongoDB-vs-Redis"><a href="#14-MongoDB-vs-Redis" class="headerlink" title="14. MongoDB vs Redis"></a>14. MongoDB vs Redis</h2><p>redis 는 인 메모리 데이터 구조 저장소. 그러면 이건 디스크에는 저장을 못하나?</p>
+<p>Redis는 휘발성 메모리, 즉 RAM에 키-값 쌍으로 데이터를 저장하는 메모리 내 데이터 저장소이며 매우 빠릅니다.<br>MongoDB 데이터는 디스크에 저장됩니다</p>
+<p>Redis는 효율적인 캐시 메커니즘으로 작동하지만 데이터베이스로 redis를 선택 하려면 추가 오버 헤드가 필요합니다. -&gt; 레디스는 전체적인 저장소로 사용하기에는 무리가 있고, 캐싱의 목적으로 쓰는게 맞다고 본다<br>메모리도 제한되고. 성능을 위해 많은 것들을 포기한 케이스.</p>
+<p>Spring의 세션 클러스터링은 기본적으로 Redis를 이용하여 진행됩니다.</p>
+<p>NoSQL은 RDBMS에 비해 속도와 확장성이 뛰어납니다. 위 문서를 통해 MySQL과 같은 RDBMS는 속도가 중요한 캐싱에는 적합하지 않다는 것을 알 수 있었습니다.</p>
+<h2 id="15-ELK-Elasticsearch-Logstash-Kibana"><a href="#15-ELK-Elasticsearch-Logstash-Kibana" class="headerlink" title="15. ELK (Elasticsearch, Logstash, Kibana)"></a>15. ELK (Elasticsearch, Logstash, Kibana)</h2><p>Elasticsearch 는 JSON 기반의 분산형 오픈 소스 RESTful 검색 엔진. 예전에 먼가 Redis 처럼 저장소로 생각했는데 그게 아니고 단순히 검색엔진이 아니고 저장소도 있따.</p>
+<p>그러면 데이터는 어디에 저장이 되어 있는 거지? 내부에 자체적으로 저장소를 가지는 거 같다.</p>
+<p>ES는 JVM위에서 구동되기 때문에 JDK를 설치해야 합니다. 자바로 구현되어 있다. 1.8 이상의 버전을 활용해야 한다.</p>
+<p>Elasticsearch 용어</p>
+<p>Database = Index<br>Table = Type<br>Row = Document<br>Column = Field<br>Index = Analyze<br>Primary Key = _id<br>Schema = Mapping<br>Physical partition = Shard<br>Local Partition = Route<br>SQL = Query DSL</p>
+<p>클러스터 - elasticsearch 에서 가장 큰 시스템 단위를 의미. 최소 하나 이상의 노드로 이루어짐. 클러스터간 데이터 접근,교환이 불가능.</p>
+<p>인덱스 - RDBMS에서 데이터베이스에 대응되는 개념.</p>
+<p>샤드 - 데이터를 분산해서 저장하는 방법 (파티션 같은 느낌). 스케일 아웃을 위해서 index를 여러 shard로 쪼갠 것.</p>
+<p>elasticsearch 특징</p>
+<p>scale out - 샤드를 통해서 규모가 수평적으로 늘어날 수 있다.</p>
+<p>schema free - json 문서를 통해 데이터 검색을 수행함으로 스키마 개념이 없다.</p>
+<p>restful - 데이터 CRUD 작업은 HTTP Method 에 맞춰서 수행된다.</p>
+<p>elasticsearch가 강점을 보이는 부분은 문장이나 여러 단어들의 조합이 저장될 때이다. 문장은 여러 단어들로 구성이 되어있고 그 중 중요한 키워도 있고 큰 의미가 없는 단어들도 있다. elasticsearch는 데이터를 저장할 때 의미있는 단어들을 추출해 해당 단어들로 inverted index를 생성한다.</p>
+<p>elasticsearch는 수많은 analyzer와 tokenizer가 존재하는데 이를 잘 활용해야 elasticsearch를 제대로 활용한다 볼 수 있다.</p>
+<h4 id="Logstash"><a href="#Logstash" class="headerlink" title="Logstash"></a>Logstash</h4><p>로그 수집 파이프라인 -&gt; Logstash</p>
+<h2 id="16-운영체제-파이프라인"><a href="#16-운영체제-파이프라인" class="headerlink" title="16. 운영체제 - 파이프라인"></a>16. 운영체제 - 파이프라인</h2><p>차를 만들떄 분업을 하는데 차체를 만들고,안에 엔진을 만들고, 도색을하고 여러 단계를 거치지.</p>
+<p>근데 차를 만들어달라는 요구가 들어옴.<br>5단계의 업무들이 차 한대에 대해서 집중을함. 그래서 만약에 1단계에서 업무를 하고있으면 다른 단계들이 idle 상태이다. 놀고있다는 의미. 비효율적.</p>
+<p>파이프 라인 구조는 다른 단계가 어떤 상태인지는 고려안하고 단지 요구사항 즉 업무가 들어오면 자신의 일을 바로바로 처리하는 구조.</p>
+<p>파이프라인 구조.</p>
+<h2 id="17-파이프라인-하자드"><a href="#17-파이프라인-하자드" class="headerlink" title="17. 파이프라인 하자드"></a>17. 파이프라인 하자드</h2><p>구조적 해저드. structural hazard<br>다른 단계에 있는 명령어들이 동시에 같은 자원을 사용하려고 하는 상황 -&gt; 해당 자원을 여러개 설치하는 방법으로 해결.</p>
+<p>데이터 해저드. data hazard<br>앞 명령어 결과를 사용해야 하는데 앞이 아직 끝이 안나서 그 결과를 사용 못하는 상황 -&gt; 파이프라인 지연, 전발전달로 해결</p>
+<p>시각화 도구 -&gt; Kibana</p>
+<h2 id="18-Java-Executor"><a href="#18-Java-Executor" class="headerlink" title="18. Java Executor"></a>18. Java Executor</h2><p>태스크와 쓰레드를 생성하고 관리하는 것을 분리</p>
+<p>태스크 큐를 이용해 태스크를 관리</p>
+<p>shutdown()을 해줘야만 thread가 모두 중지된다. 만약 빼먹으면 leakage가 발생하는 것이니 주의하자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ExecutorService</span> <span class="variable">execService</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">2</span>); </span><br><span class="line">		</span><br><span class="line">execService.execute(<span class="keyword">new</span> <span class="title class_">MyThreadTask</span>());</span><br><span class="line"></span><br><span class="line">execService.shutdown();</span><br></pre></td></tr></table></figure>
+<h2 id="16-Pub-Sub"><a href="#16-Pub-Sub" class="headerlink" title="16. Pub-Sub"></a>16. Pub-Sub</h2><p>메시지를 보내고 (Publish : 발행) 받는 (Subscribe : 구독) 형태의 통신</p>
+<p>즉 우체부라고 불리는 Publisher가 편지라고 불리는 Message를 Channel 혹은 Broker라고 불리는 우체통에 넣으면 Subscriber라고 불리는 우리가 편지를 가져갈 수 있는 것. Topic 은 501호와 같은 주소를 의미.</p>
+<p>Topic이 있는 Broker 혹은 Channel을 이용한 메시징 시스템이다.</p>
+<h2 id="16-Kafka"><a href="#16-Kafka" class="headerlink" title="16. Kafka"></a>16. Kafka</h2><h2 id="17-RabbitMQ"><a href="#17-RabbitMQ" class="headerlink" title="17. RabbitMQ"></a>17. RabbitMQ</h2><h2 id="18-CDN-Content-Delivery-Network"><a href="#18-CDN-Content-Delivery-Network" class="headerlink" title="18. CDN (Content Delivery Network)"></a>18. CDN (Content Delivery Network)</h2><p>원거리에 있는 서버의 컨텐츠를 매번 네트워크 상으로 데이터를 받는 것은 성능적인 문제가 있기 때문에. 보다 가깐 곳에 프록시 서버를 두고 캐싱하는 방법을 말하는 것 같음.</p>
+<p>CDN은 콘텐츠에 대한 요청이 발생하면 사용자와 가장 가까운 위치에 존재하는 서버로 매핑시켜, 요청된 파일의 캐싱된(사전 저장된) 버전으로 요청을 처리합니다</p>
+<p>인터넷 트래픽의 절반 이상이 CDN(콘텐츠 전송 네트워크)을 통해 전송됩니다. CDN의 목표는 웹 페이지에 대한 요청이 이동해야 하는 물리적 거리를 줄여 요청 제출 시간과 장치에 완전히 로딩되는 웹 페이지 간의 지연 시간을 줄이는 것입니다.</p>
+<p>기본적으로 전세계적으로 인터넷을 연결시켜주는 가장 큰 매체는 해저케이블.</p>
+<h2 id="19-CORS"><a href="#19-CORS" class="headerlink" title="19. CORS"></a>19. CORS</h2><h2 id="20-RESTful-API"><a href="#20-RESTful-API" class="headerlink" title="20. RESTful API"></a>20. RESTful API</h2><p>Resource State Transfer API</p>
+<p>Resource 중심으로 API를 설계한다.</p>
+<p>서버에게 Resource 들은 다양하게 있지만 여기서는 주로 모델, 도메인을 의미.</p>
+<p>API를 설계할때 도메인을 중심으로 설계한다는 것.</p>
+<p>도메인을 조작할 수 있는 CRUD API 를 Http Method에 따라 제공</p>
+<p>URI를 활용하여 Resource를 표현.</p>
+<p>Open API 가 주로 RESTful API 를 사용.</p>
+<p>RESTful API 의 장점 : 클라이언트가 없어도 API를 설계할 수 있따. - 즉 범용적으로 모든 클라이언트들에게 제공 가능한 API를 만듬.<br>특정 클라이언트를 위한 API 가 아니기 때문에 한 클라이언트에게 맞춰진 API를 만들 수는 없지만 매번 API 개발 요청이 들어왔을 때<br>새롭게 만들지 않아도 됨.</p>
+<p>A B C 도메인이 있을 때 RESTful API는 A 를 조작하기 위한 CRUD API, B, c 모두 제공</p>
+<h2 id="21-함수형-프로그래밍"><a href="#21-함수형-프로그래밍" class="headerlink" title="21. 함수형 프로그래밍."></a>21. 함수형 프로그래밍.</h2><h3 id="일급-함수"><a href="#일급-함수" class="headerlink" title="일급 함수."></a>일급 함수.</h3><p>변수나 데이터 구조안에 담을 수 있다.<br>파라미터로 전달할 수 있다.<br>반환값으로 사용할 수 있다.</p>
+<p>전통적인 자바 언어 진영에서 함수형 프로그래밍은 사실 조금은 낯설다. 기본적으로 OOP를 위해 만들어졌기 때문.<br>그 사유로 자바에서는 함수가 클래스 없이 만들수가 없다.</p>
+<p>java8 이후에 람다, 메소드 참조 문법이 생겨나면서 함수형 프로그래밍이 보편화되기 시작.</p>
+<p>함수형 프로그래밍이란. 함수를 일급변수로 볼수 있다는 것.<br>풀어서 설명하자면. 함수를 값처럼 변수에 저장하고 사용할 수 있다.</p>
+<p>함수는 값과 다르게 데이터 그 자체가 아닌 어떠한 처리 동작, 일련의 순서를 표현하는데 이걸 변수에 저장할 수 있다는 의미.<br>함수형 프로그래밍을 활용하면 기존에는 OOP에서 다형성을 활용해서 해결하던 문제들을 FP 방식으로 보다 심플하게 해결할 수 있음.</p>
+<p>예를 들어</p>
+<p>항공사 벤더가 다양하게 있고. 이 벤더들이 공통적으로 상품조회, 결제, 예약 같은 기능을 제공.<br>개념적으로는 동일하지만 실제 구현되는 내용은 다름.</p>
+<p>이럴때 OOP는 상품조회, 결제 등을 표준으로 정의하는 interface를 생성하고. 이를 규격으로 각 항공사 벤더들이 이거에 맞춰서 구현함.</p>
+<p>이런 문제를 FP는 항공사마다 다른 이런 구현 방법을 파라미터로 넘겨줄 수 있음.</p>
+<p>뭔가 개념적으로 동일하고 실제 구현방법이 다를때. OOP적 해결방법이 있고, FP적 해결 방법이있음.</p>
+<p>이둘을 그러면 어떻게 구분해야할까.</p>
+<p>뭔가 규모가 크다면 OOP를 활용한 방법이 더 맞다고 봄.<br>근데 만약 심플하다면 FP로 처리.</p>
+<h3 id="순수-함수"><a href="#순수-함수" class="headerlink" title="순수 함수"></a>순수 함수</h3><p>그리고 함수형 프로그래밍은 순수함수를 적극 활용함.</p>
+<p>순수함수는 기본적으로 데이터의 불변성을 요구함.<br>부수효과(Side Effect)가 없는 함수. 즉 어떤 함수에 동일한 값을 주었을 때 항상 같은 값을 반환하는 함수.<br>입력 값에 대한 결과 값이 항상 동일해야 한다.</p>
+<p>즉 한 함수 범위 내에서 동작되는 내용들은 파라미터로 제공된 값만을 활용해서 처리되어야 하며 외부에서 받게되는 데이터들을 최대한 자제한다.</p>
+<p>실제로 순수함수 형태로 코드를 짜야 테스트 코드를 작성하기도 쉽다.</p>
+<p>쓰레드에도 안전하다. 객체에 값을 넣어놓고 함수에서 이를 호출하는 구조로 만들게 되면. 이 객체들은<br>멀티쓰레드 환경이 되었을 때 각 쓰레드에 의해서 공유되는 데이터가 된다.<br>그래서 이 데이터가 thread-safe하도록 추가적인 작업이 필요하다.</p>
+<p>순수함수 패러다임을 사용할 수 없는 경우는 값을 stateful 해야하는 경우다.<br>예를 들면 빌더패턴이나 java의 stream 기능같은 것이다.</p>
+<h3 id="고차함수-합성함수"><a href="#고차함수-합성함수" class="headerlink" title="고차함수, 합성함수"></a>고차함수, 합성함수</h3><p>이 내용들은 함수를 일급 객체로써 바라볼 수 있기 때문에 나타나는 내용인데.<br>함수 안에서 함수를 받을 수 있고 그러면서 서로 조합이 가능하다는 부분이다.</p>
+<h2 id="22-Call-By-Value-Call-By-Reference"><a href="#22-Call-By-Value-Call-By-Reference" class="headerlink" title="22. Call By Value Call By Reference"></a>22. Call By Value Call By Reference</h2><p>값을 담고있는 메모리를 복사한후 그 복사한 메모리 번지를 넘겨주느냐</p>
+<p>값을 가리키고 있는 메모리번지를 담고 있는 메모리를 복사한 후 그 번지를 넘겨주느냐.</p>
+<h2 id="23-Stack"><a href="#23-Stack" class="headerlink" title="23. Stack"></a>23. Stack</h2><p>세로로된 바구니같은 구조. 밑에있는 데이터들은 위에있는 데이터가 빠져나가야만 빼낼 수 있다.<br>즉 먼저 넣는 자료가 마지막으로 나오게 되는 First In Last Out (FILO), 선입선출 구조.</p>
+<h3 id="프로세서-사이클-메이저-사이클"><a href="#프로세서-사이클-메이저-사이클" class="headerlink" title="프로세서 사이클 (메이저 사이클)"></a>프로세서 사이클 (메이저 사이클)</h3><p>CPU가 동작하는 기본적인 원리는 메이저 사이클 혹은 프로세스 사이클 따른다.</p>
+<p>명령어 인출 -&gt; 명령어 해독 -&gt; 오퍼랜드 인출 -&gt; 실행 -&gt; 인터럽트 조사</p>
+<p>인터럽트가 걸리게 되면 Stack 구조로 구현된 저장소에 이전 프로세스의 메모리 번지를 저장시키고 인터럽트 걸린 프로세스를 시작한다.<br>이게 해결이 되면 해결된 프로세스는 pop 하고 그 아래에 있는 프로세스가 다시 시작.</p>
+<p>스택은 CPU가 명령어들을 수행할 때 가장 기본적으로 사용하는 구조.</p>
+<h2 id="24-인터럽트-vs-폴링"><a href="#24-인터럽트-vs-폴링" class="headerlink" title="24. 인터럽트 vs 폴링"></a>24. 인터럽트 vs 폴링</h2><p>지금하고 있는 프로세스보다 더 중요한 프로세스가 등장하게 되면 더 중요한 프로세스를 처리하게 되는데.<br>이러한 것이 새로운게 기존것을 방해한거로 생각되어 인터럽트 걸렸다라고 표현한다.</p>
+<p>각 CPU 인터럽트의 우선순위가 정해져 있음.</p>
+<p>인터럽트 벡터 : 인터럽트가 발생했을 때 해야할 일을 정해놓은 것으로 바로 인터럽트 서비스 루틴의 시작 주소. 메모리 번지.</p>
+<p>폴링 방법은 계속 대기하는 방법</p>
+<p> “폴링”은 한 프로그램이나 장치에서 다른 프로그램이나 장치들이 어떤 상태에 있는지를 지속적으로 체크하는 전송제어 방식</p>
+<p>시스템 내에 동작 중에 폴링 방식과 이벤트 방식이 있다. 폴링 방식은 어떤 상태인지를 주기적으로 확인해보는 것이다. 폴링 방식을 예를 든다면 우편물이 왔는지를 매번 내가 가서 보는 것이다. 이렇게 매번 오가는게 폴링이다. 주기적으로 알아보는 만큼 오지 않았을 때 나가보는 동안 비효율이 발생을 한다.</p>
+<p>이벤트 방식은 어떤 상태가 되면 알려주는 것이다. 매번 가는 것이 아니라 우편물이 도착했을 때 문자를 보내는 것이다. 훨씬 효율적일 수 있다. 이벤트 방식로 해당 사람이 오면 알려 주는 방식이다. 두 방식에는 차이가 있지만, 언듯 폴링 방식은 비효율적일 거 같다는 생각을 할 수 있다. 하지만 정기적으로 뭔가를 감시하거나 검사를 해야 한다면 폴링방식도 필요할 것이다. 하지만 이벤트 방식을 통해서 트리거를 발생 시켜서 인지를 하게 되면 그 비효율이 줄어들어서 효율적으로 처리 할 수 있다.</p>
+<h2 id="25-큐"><a href="#25-큐" class="headerlink" title="25. 큐"></a>25. 큐</h2><p>가로로 된 통과 같은 구조로 먼저 넣게 되는 자료가 가장 먼저 나오는 First-In First-Out(FIFO) 구조이다.</p>
+<h2 id="26-해시"><a href="#26-해시" class="headerlink" title="26. 해시"></a>26. 해시</h2><p>해시 테이블은 key, value 타입의 데이터를 저장하는 자료구조.</p>
+<p>key 값을 해시함수로 생성하는데 이 key 값이 해시테이블 크기만큼 우선 고유하게 만든다.<br>만약 데이터가 이 해시테이블보다 많다면 이 key 값이 중복될 수도 있다.</p>
+<p>해시값이 중복된 경우 연결리스트 구조로 데이터가 저장이 되며 그 안에서 탐색을 한다.<br>해시테이블보다 데이터 양이 작다면 시간복잡도는 O(1) 이 되며.<br>시간 복잡도를 공간복잡도로 바꾼 형태라고 볼 수 있다.</p>
+<p>해시 값을 생성할때 중요한 포인트는 해시코드가 골고루 분포할 수 있도록 하는게 중요하다.<br>해시코드가 특정 코드에 집중되있다면 해시테이블의 기능을 효과적으로 이용할 수 없다.</p>
+<h2 id="27-리스트"><a href="#27-리스트" class="headerlink" title="27. 리스트"></a>27. 리스트</h2><h3 id="배열리스트"><a href="#배열리스트" class="headerlink" title="배열리스트"></a>배열리스트</h3><p>데이터를 추가/삭제하는데에는 배열리스트가 데이터를 밀고 당기고 해야하기 떄문에 추가적인 연산작업이 있어 오래걸린다.</p>
+<p>데이터를 검색할 때에는 단순히 해당 번지를 조회하면 되기 때문에 연결리스트 보다 빠르다.</p>
+<h3 id="연결리스트"><a href="#연결리스트" class="headerlink" title="연결리스트"></a>연결리스트</h3><p>데이터를 추가/삭제할 때 노드가 가리키는 대상만 바꿔주면 되어 배열리스트에 비해 빠르다.</p>
+<p>데이터를 검색할 때에는 순차접근만 가능하기 때문에 느리다.</p>
+<h2 id="28-우선순위-큐"><a href="#28-우선순위-큐" class="headerlink" title="28. 우선순위 큐"></a>28. 우선순위 큐</h2><p>기본적으로 큐는 FIFO 구조로 먼저 들어간 데이터가 먼저 나와야 한다.</p>
+<p>우선순위 큐는 기본적으로 큐 형태지만. 우선순위를 고려하고. 우선순위가 더 높은 값이 있다면 그 데이터를 먼저 처리한다.</p>
+<p>보통 우선순위 큐를 구현하기 위해서 힙 구조를 활용한다.</p>
+<p>삽입: 데이터가 들어오면 각 노드별로 들어온 데이터가 크거나 작은지를 비교하고 정책에 따라서 크면 왼쪽 노드로 작으면 오른쪽 노드로 진행된다.</p>
+<h2 id="29-힙"><a href="#29-힙" class="headerlink" title="29. 힙"></a>29. 힙</h2><p>최댓값 또는 최솟값을 찾아내는 연산을 쉽게 하기 위해 고안된 구조로, 각 노드의 값이 우선순위가 자식노드 보다 높은 구조다.</p>
+<p>모든 노드에 저장된 값(우선순위)들은 자식 노드들의 것보다 (우선순위가) 크거나 같다.</p>
+<p>따라서 힙은 루트 노드에 우선순위가 가장 높은 데이터를 위치시키는 구조가 됨.</p>
+<p>삽입 : 새로들어오는 데이터를 우선순위가 가장 낮다고 가정하고 가장 단말 노드에 추가한다. 그 후에 부모노드와 값을 비교하면서<br>우선순위가 맞게 될때까지 반복. 새로 들어온 값의 우선순위가 부모보다 낮으면 끝.</p>
+<p>삭제 : 루트노드가 제거되고 난 후. 가장 우선순위가 낮은 데이터를 루트노드로 옮긴다. 그리고 자식노드들과 우선순위를 비교하면서 swap</p>
+<h2 id="31-ARP-Address-Resolution-Protocol"><a href="#31-ARP-Address-Resolution-Protocol" class="headerlink" title="31. ARP (Address Resolution Protocol)"></a>31. ARP (Address Resolution Protocol)</h2><p>Data Link 계층에서 각 함소들끼리 데이터를 주고받고 연결하는 기준은 바로 맥어드레스.<br>이 맥어드레스는 NIC (Network Interface Card) 가 고유하게 가지고 있따.</p>
+<p>IP로 실제로 통신하는게 아니고 맥어드레스를 기준으로 통신을 함. 그렇기 때문에<br>IP를 맥어드레스로 바꿔주는 과정이 필요한데 이게 ARP 프로토콜.</p>
+<p>맥주소는 기본적으로 48비트</p>
+<h2 id="32-패킷"><a href="#32-패킷" class="headerlink" title="32. 패킷"></a>32. 패킷</h2><p>데이터를 통신망을 통해 전송하기 쉽도록 자른 데이터 전송 단위.</p>
+<h2 id="33-경력기간동안-진행한-업무를-어필"><a href="#33-경력기간동안-진행한-업무를-어필" class="headerlink" title="33. 경력기간동안 진행한 업무를 어필"></a>33. 경력기간동안 진행한 업무를 어필</h2><h3 id="신규-항공사-API-연동-서버-구축"><a href="#신규-항공사-API-연동-서버-구축" class="headerlink" title="신규 항공사 API 연동 서버 구축."></a>신규 항공사 API 연동 서버 구축.</h3><p>OTA(Online Travel Agency) 서비스를 하는 부서에서 업무를 함 여기서 주요 상품들은 항공권인데,<br>실시간 항공권 예매 시스템에서 가져야할 대표적인 기능들이 상품조회, 예약, 발권, 결제, 취소 정도가 있음.<br>이거가 항공사 벤더마다 다른 형태로 구현이 되어있어서 이를 하나의 인터페이스로 추상화, 표준화를 하고 클라이언트가 항공사 벤더를 신경쓰지 않고 추상화된 규격을 기준으로 비지니스 로직을 작성할 수 있도록 하였음.</p>
+<p>기존 API 서버는 항공사 상품조회 연동을 실시간적으로 가져오도록 구현되어 있었음. 항공사가 총 8곳, 평균적으로 항공상품을 가져오는데 3~4초 정도 소요가 되었는데. 매번 연동하는 방식보다. 레디스 캐쉬 서버를 두고. 클라이언트들은 이곳에서 스케줄 정보를 가져올 수 있도록 하고. 레디스 캐쉬 서버에서 각 항공사에 주기적으로 상품조회를 함.</p>
+<h2 id="34-TCP-vs-UDP"><a href="#34-TCP-vs-UDP" class="headerlink" title="34. TCP vs UDP"></a>34. TCP vs UDP</h2><p>두 프로토콜 모두 OSI 7 Layer 중 4계층에서 사용되는 프로토콜.</p>
+<p>TCP는 연결지향형 프로토콜입니다. WAN 구간에 구성되어있는 네트워크에 임시적인 가상회선을 구축하고. 이 회선을 통해서만 패킷들을 주고받습니다. 패킷들은 정해진 순서대로 주고받아지며, 패킷을 주고받으면서 오류가 발생하면 재전송을 요청합니다. UDP 프로토콜보다 상대적으로 더 오류율이 적지만 속도가 느리다. 한 비트가 깨지면 파일 전체를 사용할 수 없는 형태의 데이터는 TCP를 사용합니다.</p>
+<p>UDP는 비연결지향형 프로토콜입니다. 패킷들이 네트워크상에서 동일한 목적지를 가지고 서로 다른 루트로 달려옵니다. 도착 순서도 상관이 없으며 이 패킷들이 가지고 있는 번호로 재조합해 OSI 상위 계층으로 넘겨줍니다. 순서를 고려하지 않고, 오류 발생시 재전송을 요청하지 않기 때문에 속도가 상대적으로 높으며 오류율은 높다. 동영상처럼 한 비트가 깨져도 큰 문제가 없는 스트리밍 서비스에 주로 사용됩니다.</p>
+<p>HTTP 프로토콜은 TCP 기반으로 구현되었었지만. HTTP3 부터는 UDP 기반으로 전환되었습니다. QUIC 프로토콜</p>
+<h3 id="35-TCP-3-4-way-handshake"><a href="#35-TCP-3-4-way-handshake" class="headerlink" title="35. TCP 3, 4 way handshake."></a>35. TCP 3, 4 way handshake.</h3><p>TCP 3 Way Handshake 실제 데이터를 주고받기 전에 정확한 전송을 보장하기 위해 상대방과 사전에 세션을 수립하는 과정.</p>
+<p>Client가 나 데이터 보낼거야 라고 SYN을 보낸다.<br>Server는 이 SYN을 받고 나 받을 준비되었다는 ACK를 보낸다. 그러면 Client도 나도 받을 준비 되었어라고 ACK를 보낸다. 이렇게 되면 두 노드간에 데이터를 주고 받을 수 있는 상태가 된다.</p>
+<p>TCP 4 Way Handshake 데이터를 모두 주고 받고, 세션을 종료할 때 사용.</p>
+<p>Client가 나 다 보냈어라고 FIN을 보낸다.<br>Server는 아 끝났구나 알겠어라고 먼저 ACK를 보내고, 세션 종료를 위한 작업을 한뒤 나 종료했어라고 FIN을 보낸다. Client는 너 종료한거 확인했어를 알리기 위해 ACK를 보낸다. 그리고 Client 세션을 종료한다.</p>
+<h2 id="36-HTTP-vs-HTTPS"><a href="#36-HTTP-vs-HTTPS" class="headerlink" title="36. HTTP vs HTTPS"></a>36. HTTP vs HTTPS</h2><p>응용계층 HTTP 프로토콜에서 그 아래에 SSL 계층을 추가해서 보안을 강화.</p>
+<h2 id="37-웹-통신"><a href="#37-웹-통신" class="headerlink" title="37. 웹 통신"></a>37. 웹 통신</h2><p>클라이언트가 웹브라우저 프로그램을 킵니다.</p>
+<p>웹브라우저 프로그램 상단에 특정 URl을 입력하고 엔터를 누릅니다.</p>
+<h3 id="Domain에-사상된-IP-가져오기-DNS-Lookup"><a href="#Domain에-사상된-IP-가져오기-DNS-Lookup" class="headerlink" title="Domain에 사상된 IP 가져오기 (DNS Lookup)"></a>Domain에 사상된 IP 가져오기 (DNS Lookup)</h3><p>URL 정보 중 도메인 정보를 찾기 위해서 먼저 로컬에 있는 hosts 파일을 확인합니다. 이 곳에 해당 정보가 없다면 로컬 DNS서버의 캐시를 찾아보고 여기에도 없다면 로컬 DNS 서버가 상위 DNS 서버들을 재귀적으로 호춣하여 찾아본다.</p>
+<h3 id="ARP-활용해서-IP-gt-Mac-주소-변환"><a href="#ARP-활용해서-IP-gt-Mac-주소-변환" class="headerlink" title="ARP 활용해서 IP -&gt; Mac 주소 변환"></a>ARP 활용해서 IP -&gt; Mac 주소 변환</h3><p>데이터링크 계층에서 노드들끼리 데이터를 주고받을 때에는 IP 기준으로 찾는게 아니고 NIC에 기록되어 있는 맥주소를 기반으로 통신한다. Address Resolution Protocol이 IP를 맥주소로 변환해준다. </p>
+<h3 id="Mac-주소와-포트번호를-활용하여-라우터들이-본인이-가지고-있는-라우팅-테이블과-라우팅-정책을-기반으로-하여-웹서버의-목적지를-찾는다"><a href="#Mac-주소와-포트번호를-활용하여-라우터들이-본인이-가지고-있는-라우팅-테이블과-라우팅-정책을-기반으로-하여-웹서버의-목적지를-찾는다" class="headerlink" title="Mac 주소와 포트번호를 활용하여 라우터들이 본인이 가지고 있는 라우팅 테이블과, 라우팅 정책을 기반으로 하여 웹서버의 목적지를 찾는다."></a>Mac 주소와 포트번호를 활용하여 라우터들이 본인이 가지고 있는 라우팅 테이블과, 라우팅 정책을 기반으로 하여 웹서버의 목적지를 찾는다.</h3><p>라우팅 테이블은 라우터 인근에 연결되어 있는 라우터들의 맥주소를 사상하고 있는 테이블이며 RIP, OSPF 와 같은 라우팅 프로토콜들을 활용하여 목적지 까지의 길을 탐색한다.</p>
+<h3 id="웹-통신은-TCP-기반이기-때문에-3-way-handshake-를-통해서-가상회선을-구축하고-전송이-완료되면-4-way-handshake를-한다"><a href="#웹-통신은-TCP-기반이기-때문에-3-way-handshake-를-통해서-가상회선을-구축하고-전송이-완료되면-4-way-handshake를-한다" class="headerlink" title="웹 통신은 TCP 기반이기 때문에 3-way handshake 를 통해서 가상회선을 구축하고, 전송이 완료되면 4-way handshake를 한다."></a>웹 통신은 TCP 기반이기 때문에 3-way handshake 를 통해서 가상회선을 구축하고, 전송이 완료되면 4-way handshake를 한다.</h3><p>Client가 SYN를 보내고 Server가 받는다.<br>Server가 Client에게 SYN, ACK를 보내고 Client가 받는다.<br>Client가 ACK를 보낸다.</p>
+<p>두 노드의 관점에서는 이렇고. WAN 구간의 관점에서보면. TCP는 연결지향형이기 때문에 이 3 way handshake를 통해서 가상회선을 구축을 한다. 그래서 패킷을 주고 받을 때 이 회선만을 타고 순서대로 전달.</p>
+<h3 id="목적지-맥-주소-포트에서-동작하고-있는-웹서버-프로그램-호출하게-되고-요청이-정적-컨텐츠였다면-웹서버-응답을-내려주고-동적-컨텐츠를-요구한다면-WAS-안에-있는-서블릿-컨테이너에서-서블릿을-생성하고-이-서블릿이-특정-비즈니스-로직을-수행-하고-결과를-반환합니다"><a href="#목적지-맥-주소-포트에서-동작하고-있는-웹서버-프로그램-호출하게-되고-요청이-정적-컨텐츠였다면-웹서버-응답을-내려주고-동적-컨텐츠를-요구한다면-WAS-안에-있는-서블릿-컨테이너에서-서블릿을-생성하고-이-서블릿이-특정-비즈니스-로직을-수행-하고-결과를-반환합니다" class="headerlink" title="목적지 맥 주소:포트에서 동작하고 있는 웹서버 프로그램 호출하게 되고, 요청이 정적 컨텐츠였다면 웹서버 응답을 내려주고, 동적 컨텐츠를 요구한다면 WAS 안에 있는 서블릿 컨테이너에서 서블릿을 생성하고 이 서블릿이 특정 비즈니스 로직을 수행 하고 결과를 반환합니다."></a>목적지 맥 주소:포트에서 동작하고 있는 웹서버 프로그램 호출하게 되고, 요청이 정적 컨텐츠였다면 웹서버 응답을 내려주고, 동적 컨텐츠를 요구한다면 WAS 안에 있는 서블릿 컨테이너에서 서블릿을 생성하고 이 서블릿이 특정 비즈니스 로직을 수행 하고 결과를 반환합니다.</h3><h2 id="38-GET-POST"><a href="#38-GET-POST" class="headerlink" title="38. GET/POST"></a>38. GET/POST</h2><p>GET은 서버의 리소스를 조회하기 위해 설계된 메서드.</p>
+<p>GET은 요청을 전송할 때 필요한 데이터를 Body에 담지 않고, 쿼리스트링을 통해 전송합니다</p>
+<p>POST는 서버의 리소스를 생성/변경하기 위해 설계된 메서드.</p>
+<p>POST는 데이터가 Body로 전송되기 때문에 길이가 제한 없이 데이터를 전송할 수 있습니다.</p>
+<h2 id="39-HTTP-메서드"><a href="#39-HTTP-메서드" class="headerlink" title="39. HTTP 메서드"></a>39. HTTP 메서드</h2><p>GET</p>
+<p>POST</p>
+<p>PUT</p>
+<p>DELETE</p>
+<p>OPTIONS - HTTP OPTIONS method 는 목표 리소스와의 통신 옵션을 설명하기 위해 사용됩니다. 클라이언트는 OPTIONS 메소드의 URL을 특정지을 수 있으며, aterisk(*) 를 통해 서버 전체를 선택할 수 있습니다.</p>
+<p>HEAD - BODY 없이 HEAD 정보만 응답 받을 때 사용.</p>
+<p>PATCH - 자원의 전체를 수정할 때는 PUT, 자원의 일부를 수정할 때는 PATCH</p>
+<h2 id="40-Restful"><a href="#40-Restful" class="headerlink" title="40. Restful"></a>40. Restful</h2><h2 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h2><h3 id="Stop-The-World"><a href="#Stop-The-World" class="headerlink" title="Stop-The-World"></a>Stop-The-World</h3><p>GC를 실행하기 위해서 JVM이 그 위에서 동작하는 어플리케이션의 실행을 멈추는 것.</p>
+<p>top-the-world가 발생하면 GC를 실행하는 쓰레드를 제외한 나머지 쓰레드는 모두 작업을 멈춘다</p>
+<p>대개의 경우 GC 튜닝이란 이 stop-the-world 시간을 줄이는 것이다.</p>
+<p>gc는 말그대로 Garbage Collection을 수행하여 불필요한 Obejct를 Memory 상에서 제거하는 것을 의미합니다.</p>
+<p>System.gc() 가 안좋은 이유. -&gt; 이건 내 판단이데. System.GC() 함수는 FullGC 를 호출하는데. 보통 GC가 처리하는 쓰레기들은<br>young 영역에서 끝이난다. 하지만 이함수는 fullGc 까지 호출하고 그러면 stop the world 를 하기때문에 성능에 무리가 간다.</p>
+<p>JVM의 구성인 Young 영역, Old 영역</p>
+<p>모든 객체가 쓰레기인지 검사하는 무식한 방식의 가비지 컬렉션은 규모가 큰 프로그램에서 심각한 문제가 생길 수 있다.</p>
+<p>JVM GC 설계자들은 경험적으로 대부분의 객체가 생겨나자마자 쓰레기가 된다는 것을 알고 있었다.</p>
+<p>이것을 ‘약한 세대 가설(weak generational hypothesis)’이라 부른다.<br>따라서 매번 전체를 검사하지 않고 일부만 검사할 수 있도록 generational한 구조를 고안해 내었다.</p>
+<p>young generation<br>객체 대부분이 생성될 때 이곳으로 들어간다.<br>이곳이 가득차면 minor gc가 발생한다.</p>
+<p>minor gc가 발생하면 살아있는 객체들만 체크하고 나머지는 다 없애버린다.<br>살아남은 객체들 중 더 오래 쓸 것 같은 것들은 tenured generation으로 옮긴다.</p>
+<p>tenured generation<br>이곳이 가득 차면 major gc가 발생한다.<br>major gc는 minor gc보다 더 오래 걸린다.</p>
+<p>Young 영역(Yong Generation 영역): 새롭게 생성한 객체의 대부분이 여기에 위치한다. 대부분의 객체가 금방 접근 불가능 상태가 되기 때문에 매우 많은 객체가 Young 영역에 생성되었다가 사라진다. 이 영역에서 객체가 사라질때 Minor GC가 발생한다고 말한다.</p>
+<p>Young 영역은 다시 3가지로 나뉨.<br>Eden 영역<br>Survivor 영역 2개 - 서로 계속 스왑함.<br>Eden -&gt; Survivor로 가며, Survivor에서도 계속 살아나면 old 영역으로 간다.</p>
+<p>Old 영역(Old Generation 영역): 접근 불가능 상태로 되지 않아 Young 영역에서 살아남은 객체가 여기로 복사된다. 대부분 Young 영역보다 크게 할당하며, 크기가 큰 만큼 Young 영역보다 GC는 적게 발생한다. 이 영역에서 객체가 사라질 때 Major GC(혹은 Full GC)가 발생한다고 말한다.</p>
+<p>Old 영역은 기본적으로 데이터가 가득 차면 GC를 실행한다.</p>
+<p>Serial GC - Serial GC는 데스크톱의 CPU 코어가 하나만 있을 때 사용하기 위해서 만든 방식이다. Serial GC를 사용하면 애플리케이션의 성능이 많이 떨어진다.</p>
+<p>Parallel GC - Parallel GC는 Serial GC와 기본적인 알고리즘은 같지다. 그러나 Serial GC는 GC를 처리하는 스레드가 하나인 것에 비해, Parallel GC는 GC를 처리하는 쓰레드가 여러 개이다. 그렇기 때문에 Serial GC보다 빠른게 객체를 처리할 수 있다. Parallel GC는 메모리가 충분하고 코어의 개수가 많을 때 유리하다. Parallel GC는 Throughput GC라고도 부른다.</p>
+<p>Parallel Old GC(Parallel Compacting GC)<br>Concurrent Mark &amp; Sweep GC(이하 CMS)<br>G1(Garbage First) GC</p>
+<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><h3 id="JVM의-목적"><a href="#JVM의-목적" class="headerlink" title="JVM의 목적"></a>JVM의 목적</h3><p>자바 가상 머신으로 자바 바이트 코드를 실행할 수 있는 주체다. (Class 파일이 바이트 코드로 작성되어 있다.)</p>
+<p>CPU나 운영체제(플랫폼)의 종류와 무관하게 실행이 가능하다.</p>
+<p>즉 운영체제 위에서 동작하는 프로세스로 자바 코드를 컴파일해서 얻은 바이트 코드를 해당 운영체제가 이해할 수 있는 기계어로 바꿔 실행시켜주는 역할.</p>
+<h3 id="JVM의-구성"><a href="#JVM의-구성" class="headerlink" title="JVM의 구성"></a>JVM의 구성</h3><p>Class Loader, Execution Engine, Garbage Collector, Runtime Data Area</p>
+<ol>
+<li>Class Loader</li>
+</ol>
+<p>자바에서 소스를 작성하면 Person.java 처럼 .java파일이 생성된다.</p>
+<p>.java 소스를 자바컴파일러가 컴파일하면 Person.class 같은 .class파일(바이트코드)이 생성된다.</p>
+<p>이렇게 생성된 클래스파일들을 엮어서 JVM이 운영체제로부터 할당받은 메모리영역인 Runtime Data Area로 적재하는 역할을 Class Loader가 한다. (자바 애플리케이션이 실행중일 때 이런 작업이 수행된다.)</p>
+<ol>
+<li>Execution Engine</li>
+</ol>
+<p>Class Loader에 의해 메모리에 적재된 클래스(바이트 코드)들을 기계어로 변경해 명령어 단위로 실행하는 역할을 한다.</p>
+<p>명령어를 하나 하나 실행하는 인터프리터(Interpreter)방식이 있고 JIT(Just-In-Time) 컴파일러를 이용하는 방식이 있다.</p>
+<p>JIT 컴파일러는 적절한 시간에 전체 바이트 코드를 네이티브 코드로 변경해서 Execution Engine이 네이티브로 컴파일된 코드를 실행하는 것으로 성능을 높이는 방식이다.</p>
+<p>자바는 왜 자바 컴파일러로 바이트 코드를 생성하고 또 그 이후해 자바 인터프리터를 활용해서 기계어로 번역하는가.</p>
+<p>자바를 활용하면 C 언어와 같이 완벽하게 기계어로 매핑된 컴파일이 불가능하다.<br>왜냐하면 플랫폼에 종속적이지 않기 떄문이다.</p>
+<p>왜 자바는 기본적으로 컴파일과 인터프리트를 병행 하는 것 일까?</p>
+<p>바로 기계어로 변환하는 컴파일러의 경우는 프로그램이 작성된 기계상에서실행할 때 매우 효율적으로 실행된다. 이는 대부분의 하드웨어 제어 시스템의 프로그래밍언어가 C인 이유이다. 그러나 이와 동시에 기계 종류에 종속된다는 말이기도 하다. 자바 인터프리팅은 자바 컴파일러를 통해 생성된 클래스파일을 기계어로 변환한다.</p>
+<p>JIT 컴파일(just-in-time compilation) 또는 동적 번역(dynamic translation)은 프로그램을 실제 실행하는 시점에 기계어로 번역하는 컴파일 기법이다.</p>
+<p>전통적인 입장에서 컴퓨터 프로그램을 만드는 방법은 두 가지가 있는데, 인터프리트 방식과 정적 컴파일 방식으로 나눌 수 있다. 이 중 인터프리트 방식은 실행 중 프로그래밍 언어를 읽어가면서 해당 기능에 대응하는 기계어 코드를 실행하며, 반면 정적 컴파일은 실행하기 전에 프로그램 코드를 기계어로 번역한다.</p>
+<p>JIT 컴파일러는 두 가지의 방식을 혼합한 방식으로 생각할 수 있는데, 실행 시점에서 인터프리트 방식으로 기계어 코드를 생성하면서 그 코드를 캐싱하여, 같은 함수가 여러 번 불릴 때 매번 기계어 코드를 생성하는 것을 방지한다.</p>
+<ol>
+<li>Garbage Collector</li>
+</ol>
+<p>Garbage Collector(GC)는 Heap 메모리 영역에 생성(적재)된 객체들 중에 참조되지 않는 객체들을 탐색 후 제거하는 역할을 한다.</p>
+<p>GC가 역할을 하는 시간은 정확히 언제인지를 알 수 없다. (참조가 없어지자마자 해제되는 것을 보장하지 않음)</p>
+<p>또 다른 특징은 GC가 수행되는 동안 GC를 수행하는 쓰레드가 아닌 다른 모든 쓰레드가 일시정지된다.</p>
+<p>특히 Full GC가 일어나서 수 초간 모든 쓰레드가 정지한다면 장애로 이어지는 치명적인 문제가 생길 수 있는 것이다. (GC와 관련된 내용은 아래 Heap영역 메모리를 설명할 때 더 자세히 알아본다.)</p>
+<ol>
+<li>Runtime Data Area</li>
+</ol>
+<p>JVM의 메모리 영역으로 자바 애플리케이션을 실행할 때 사용되는 데이터들을 적재하는 영역이다.</p>
+<p>이 영역은 크게 Method Area, Heap Area, Stack Area, PC Register, Native Method Stack로 나눌 수 있다.</p>
+<ol>
+<li>Method area (메소드 영역)</li>
+</ol>
+<p>클래스 멤버 변수의 이름, 데이터 타입, 접근 제어자 정보같은 필드 정보와 메소드의 이름, 리턴 타입, 파라미터, 접근 제어자 정보같은 메소드 정보, Type정보(Interface인지 class인지), Constant Pool(상수 풀 : 문자 상수, 타입, 필드, 객체 참조가 저장됨), static 변수, final class 변수등이 생성되는 영역이다.</p>
+<ol>
+<li>Heap area (힙 영역)</li>
+</ol>
+<p>new 키워드로 생성된 객체와 배열이 생성되는 영역이다.<br>메소드 영역에 로드된 클래스만 생성이 가능하고 Garbage Collector가 참조되지 않는 메모리를 확인하고 제거하는 영역이다.</p>
+<ol>
+<li>Stack area (스택 영역)</li>
+</ol>
+<p>지역 변수, 파라미터, 리턴 값, 연산에 사용되는 임시 값등이 생성되는 영역이다.</p>
+<p>int a = 10; 이라는 소스를 작성했다면 정수값이 할당될 수 있는 메모리공간을 a라고 잡아두고 그 메모리 영역에 값이 10이 들어간다. 즉, 스택에 메모리에 이름이 a라고 붙여주고 값이 10인 메모리 공간을 만든다.</p>
+<p>클래스 Person p = new Person(); 이라는 소스를 작성했다면 Person p는 스택 영역에 생성되고 new로 생성된 Person 클래스의 인스턴스는 힙 영역에 생성된다.</p>
+<ol>
+<li>PC Register (PC 레지스터)</li>
+</ol>
+<p>Thread(쓰레드)가 생성될 때마다 생성되는 영역으로 Program Counter 즉, 현재 쓰레드가 실행되는 부분의 주소와 명령을 저장하고 있는 영역이다. (*CPU의 레지스터와 다름)</p>
+<p>이것을 이용해서 쓰레드를 돌아가면서 수행할 수 있게 한다.</p>
+<ol>
+<li>Native method stack</li>
+</ol>
+<p>자바 외 언어로 작성된 네이티브 코드를 위한 메모리 영역이다.</p>
+<p>보통 C/C++등의 코드를 수행하기 위한 스택이다. (JNI)</p>
+<p>1,2번인 메소드 영역과 힙 영역을 모든 쓰레드가 공유하고,</p>
+<p>3,4,5번인 스택 영역과 PC 레지스터, Native method stack은 각각의 쓰레드마다 생성되고 공유되지 않는다.</p>
+<h2 id="default-메소드"><a href="#default-메소드" class="headerlink" title="default 메소드"></a>default 메소드</h2><h2 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h2><p>AOP 는 OOP 설계론이 가지는 단점을 커버하기 위해 생겨난 방법.</p>
+<p>객체 중심으로 디자인하기 때문에. 모든 객체들이 가지는 공통 속성에 대해서 중복이 일어난다.</p>
+<h2 id="Spring-IOC"><a href="#Spring-IOC" class="headerlink" title="Spring IOC"></a>Spring IOC</h2><p>IoC란 말 그대로 제어의 역전. 즉 제어권이 바뀌었다는 것.<br>개발자가 객체의 생성, 의존성 관리를 직접하는게 아니고 프레임워크, 컨테이너에서 대신 해준다는 의미.</p>
+<p>이로 인해 개발자가 직접 객체를 관리해야하는 코드들을 줄일 수 있다</p>
+<h2 id="Spring-DL-Dependency-Lookup"><a href="#Spring-DL-Dependency-Lookup" class="headerlink" title="Spring DL (Dependency Lookup)"></a>Spring DL (Dependency Lookup)</h2><p>Dependency Lookup - 의존대서을 검색을 통해 반환받는 방식<br>ex) factory.getBean(id);</p>
+<p>DL은 의존성 검색이다. 이는 빈에 접근하기 위해 컨테이너가 제공하는 API를 이용하여 Bean을 Lookup하는 것이다.</p>
+<h2 id="Spring-DI-Dependency-Injection"><a href="#Spring-DI-Dependency-Injection" class="headerlink" title="Spring DI (Dependency Injection)"></a>Spring DI (Dependency Injection)</h2><p>DI는 의존성 주입. 이는 각 클래스 간에 의존성을 자신이 아닌 외부에서 주입하는 개념.</p>
+<p>의존성 주입을 사용하게 되면 객체 주입을 외부에서 하기 때문에 보다 유연한 코드를 작성할 수 있다.</p>
+<h2 id="TDD-Test-Driven-Development"><a href="#TDD-Test-Driven-Development" class="headerlink" title="TDD (Test Driven Development)"></a>TDD (Test Driven Development)</h2><p>테스트 주도 개발은 매우 짧은 개발 사이클을 반복하는 소프트웨어 개발 프로세스 중 하나이다. 개발자는 먼저 요구사항을 검증하는 자동화된 테스트 케이스를 작성한다. 그런 후에, 그 테스트 케이스를 통과하기 위한 최소한의 코드를 생성한다. 마지막으로 작성한 코드를 표준에 맞도록 리팩토링한다. 이 기법을 개발했더나 ‘재발견’ 한 것으로 인정되는 켄트 백은 2003년에 TDD가 단순한 설계를 장려하고 자신감을 불어넣어준다고 말한다.</p>
+<h2 id="테스트"><a href="#테스트" class="headerlink" title="테스트"></a>테스트</h2><p>유닛테스트 : 함수 하나하나와 같이 코드의 작은 부분을 테스트 하는 것.</p>
+<p>또한, 유닛 테스트는 매우 간단하고 명확하여야 한다.</p>
+<p>기본적으로 테스트를 위한 입력 값을 주어서 그에 대한 함수의 출력 값이 정확 한지 아닌지를 판단하는 것이 유닛 테스트라 할 수 있다.</p>
+<p>코드의 설계가 별로 좋지 못하다면 유닛 테스트를 작성하기도 어려워진다.</p>
+<p>비유하자면, 유닛 테스트는 척추에 비유할 수 있다.</p>
+<p>유닛 테스트를 사용한다면 좋은 코드를 디자인할 수 있을 뿐만 아니라 어떤 함수(메소드)에 변화가 생겼을 때 그 함수가 안전하게 수행되는지를 보장해주고 같은 함수(메소드)를 다른 종류의 테스트에서도 적용하기 쉽게 만들어 준다.</p>
+<p>따라서 함수(메소드) 하나하나 테스트 코드를 작성하는 유닛 테스트는 좀 더 나은 코드를 만들 수 있도록 도와준다.</p>
+<p>통합 테스트 : 서로 다른 시스템들의 상호작용이 잘 이루어 지는지 테스트하는 것.</p>
+<p>기능 테스트 : 사용자와 어플리케이션의 상호작용이 원활하게 이루어지는지 테스트하는 것.</p>
+<h2 id="mod-jk"><a href="#mod-jk" class="headerlink" title="mod_jk"></a>mod_jk</h2><h2 id="캐시"><a href="#캐시" class="headerlink" title="캐시"></a>캐시</h2><p>시간적 지역성<br>한번 액세스한 메모리는 가까운 미래에 다시 액세스할 가능성이 높다.</p>
+<p>공간적 지역성<br>한번 액세스한 메모리 주변은 가까운 미래에 액세스할 가능성이 높다.</p>
+<h2 id="데이터베이스-인덱스"><a href="#데이터베이스-인덱스" class="headerlink" title="데이터베이스 인덱스"></a>데이터베이스 인덱스</h2><p>B+ Tree 구조로 별도의 인덱스 테이블을 만듬.</p>
+<h2 id="shell-script"><a href="#shell-script" class="headerlink" title="shell script"></a>shell script</h2><p>스크립트는 일반적으로 인터럽트 방식으로 동작하는 프로그램. 즉 프로그램의 한 라인씩 읽어 해석하고 실행하는 과정을 반복하도록 만들어진 프로그램.</p>
+<p>쉘이라는 것은 운영체제에서 제공하는 커널 들에 접근할 수 있는 방법. 대화형 형태로 운영체제에서 제공하는 시스템 명령어들을 사용자가 사용할 수 있도록 한다.</p>
+<p>쉘 명령어들을 일련의 순서대로 작성하면 쉘 스크립트가 되며. 인터프리터가 순서대로 해석하고 실행한다.</p>
+<p>쉘 프로그램도 여러 종류가 있는데 </p>
+<p>/bin/sh<br>/bin/bash (bourne-again shell)<br>/bin/csh<br>/bin/ksh<br>/bin/tcsh</p>
+<p>여기서 bash 가 현재 리눅스의 표준 쉘이다. 윈도우에서 사용하는 cmd의 명령어와 리눅스에서의 명령어가 다른 것은 알고 있을 텐데 각 운영체제에 구현된 커널이 다른 것이 영향이 있겠지만 쉘(명령어 해석기, 대화형 프로그램)이 다르기 때문이다.</p>
+<h2 id="컴파일러와-인터프리터"><a href="#컴파일러와-인터프리터" class="headerlink" title="컴파일러와 인터프리터"></a>컴파일러와 인터프리터</h2><h2 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h2><h2 id="프로그램-카운터-PC"><a href="#프로그램-카운터-PC" class="headerlink" title="프로그램 카운터 (PC)"></a>프로그램 카운터 (PC)</h2><p>마이크로프로세서 내부에 있는 레지스터 중 하나로서, 다음에 실행될 명령어의 주소를 가지고 있어 실행할 기계어 코드의 위치를 지정한다.</p>
+<p>프로그램 카운터는 각 명령 주기에 따라서 자동으로 증가되며, 메모리에 있는 명령어들이 순차적으로 실행될 수 있도록 한다.</p>
+<p>단 분기 또는 서브루틴 호출/복귀 등의 명령어는 프로그램 카운터에 실행해야할 위치가 바로 다음 코드가 아니라 새로운 기계어 코드의 위치 값이 들어간다.</p>
+<h2 id="배치-프로그램"><a href="#배치-프로그램" class="headerlink" title="배치 프로그램"></a>배치 프로그램</h2><p>일괄처리(batch processing)란 컴퓨터 프로그램 흐름에 따라 순차적으로 자료를 처리하는 방식.</p>
+<p>개별적으로 어떤 요청이 있을 때마다 실시간으로 통신하는 것이 아니고. 한꺼번에 일괄적으로 대량 건을 처리하는 방법. 특히 배치는 보통 정해진 특정한 시간에 실행된다.</p>
+<ol>
+<li>대량 건의 데이터를 처리.</li>
+<li>틀정 시간에 실행.</li>
+<li>일괄적으로 처리.</li>
+</ol>
+<h2 id="OSI-7-계층"><a href="#OSI-7-계층" class="headerlink" title="OSI 7 계층"></a>OSI 7 계층</h2><h2 id="TCP-handshake-시-SYN-ACK-여기의-숫자들의-의미"><a href="#TCP-handshake-시-SYN-ACK-여기의-숫자들의-의미" class="headerlink" title="TCP handshake 시 SYN, ACK 여기의 숫자들의 의미."></a>TCP handshake 시 SYN, ACK 여기의 숫자들의 의미.</h2><h2 id="TLS"><a href="#TLS" class="headerlink" title="TLS"></a>TLS</h2><h2 id="SSL-Handshake"><a href="#SSL-Handshake" class="headerlink" title="SSL Handshake"></a>SSL Handshake</h2><h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><h2 id="프로세스와-스레드의-차이"><a href="#프로세스와-스레드의-차이" class="headerlink" title="프로세스와 스레드의 차이"></a>프로세스와 스레드의 차이</h2><h2 id="블로킹-논블로킹"><a href="#블로킹-논블로킹" class="headerlink" title="블로킹 논블로킹"></a>블로킹 논블로킹</h2><h2 id="프로세스의-메모리-영역"><a href="#프로세스의-메모리-영역" class="headerlink" title="프로세스의 메모리 영역"></a>프로세스의 메모리 영역</h2><h2 id="프로세스-동기화"><a href="#프로세스-동기화" class="headerlink" title="프로세스 동기화"></a>프로세스 동기화</h2><h2 id="세마포어-뮤텍스"><a href="#세마포어-뮤텍스" class="headerlink" title="세마포어 뮤텍스"></a>세마포어 뮤텍스</h2><h2 id="데이터베이스-인덱스-1"><a href="#데이터베이스-인덱스-1" class="headerlink" title="데이터베이스 인덱스"></a>데이터베이스 인덱스</h2><h2 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h2><h2 id="정규화"><a href="#정규화" class="headerlink" title="정규화"></a>정규화</h2><h2 id="List-vs-Set"><a href="#List-vs-Set" class="headerlink" title="List vs Set"></a>List vs Set</h2><h2 id="정렬-vs-탐색"><a href="#정렬-vs-탐색" class="headerlink" title="정렬 vs 탐색"></a>정렬 vs 탐색</h2><h2 id="단방향-암호화"><a href="#단방향-암호화" class="headerlink" title="단방향 암호화"></a>단방향 암호화</h2><h2 id="JWT-vs-OAuth"><a href="#JWT-vs-OAuth" class="headerlink" title="JWT vs OAuth"></a>JWT vs OAuth</h2><h2 id="인터페이스와-추상클래스-차이"><a href="#인터페이스와-추상클래스-차이" class="headerlink" title="인터페이스와 추상클래스 차이"></a>인터페이스와 추상클래스 차이</h2><h2 id="SOLID-원칙"><a href="#SOLID-원칙" class="headerlink" title="SOLID 원칙"></a>SOLID 원칙</h2><h2 id="POJO-DTO-VO-DAO-Entity-Domain"><a href="#POJO-DTO-VO-DAO-Entity-Domain" class="headerlink" title="POJO DTO VO DAO Entity Domain"></a>POJO DTO VO DAO Entity Domain</h2><h2 id="JPA-장점"><a href="#JPA-장점" class="headerlink" title="JPA 장점"></a>JPA 장점</h2><p> (1) 보다 객체중심적인 코딩이 가능</p>
+<p> (1) 생산성 : CRUD용 SQL을 개발자가 직접 작성하지 않아도 추상화된 메소드를 통해 확인 가능</p>
+<p> (2) 패러다임 불일치 해결 : 객체가 가지고 있는 특성을 엔티티와 호환을 맞추는 것에서 미묘한 차이가 발생했었는데 이를 해결 가능</p>
+<p> (3) 성능 : 1차 캐시를 이용해서 한번 접근했던 데이터에 대해 데이터베이스에 추가적으로 접근하는 것이 아닌, 1차 캐시에서 데이터 확인 가능</p>
+<p> 데이터베이스 벤더를 고려하지 않아도 됨.</p>
+<h2 id="JPA-즉시로딩-지연로딩"><a href="#JPA-즉시로딩-지연로딩" class="headerlink" title="JPA 즉시로딩 지연로딩"></a>JPA 즉시로딩 지연로딩</h2><p>FetchType.EAGER</p>
+<p>FetchType.LAZY</p>
+<h2 id="JPA-N-1-문제"><a href="#JPA-N-1-문제" class="headerlink" title="JPA N+1 문제"></a>JPA N+1 문제</h2><p>이렇게 하위 엔티티들을 첫 쿼리 실행시 한번에 가져오지 않고, Lazy Loading으로 필요한 곳에서 사용되어 쿼리가 실행될때 발생하는 문제가 N+1 쿼리 문제입니다.</p>
+<p>@OneToMany 관계에서 Lazy Loading을 하고 Loop 참조를 하게 되면. N+1 문제 발생.</p>
+<p>이유는 이미 호스트에 해당하는 객체 정보를 가져왔기 때문에 JOIN으로 쿼리가 생성이 안되기 때문.</p>
+<p>해결방법 1. fetchJoin</p>
+<p>JPQL 에서 제공하는 fetchJoin을 활용.</p>
+<h2 id="PreparedStatment와-Statement의-차이는-무엇"><a href="#PreparedStatment와-Statement의-차이는-무엇" class="headerlink" title="PreparedStatment와 Statement의 차이는 무엇"></a>PreparedStatment와 Statement의 차이는 무엇</h2><p>JDBC가 쿼리를 보내는 과정은. 쿼리를 해석하고 컴파일하고 실행하는데. Statement는 매번 이 작업을 반복하지만 PreparedStatement는 이를 캐싱해서 처리한다. </p>
+<h2 id="무중단-배포"><a href="#무중단-배포" class="headerlink" title="무중단 배포"></a>무중단 배포</h2><h2 id="nginx의-로드밸런싱-과정"><a href="#nginx의-로드밸런싱-과정" class="headerlink" title="nginx의 로드밸런싱 과정"></a>nginx의 로드밸런싱 과정</h2><h2 id="클린코드"><a href="#클린코드" class="headerlink" title="클린코드"></a>클린코드</h2><h2 id="Checked-Exception"><a href="#Checked-Exception" class="headerlink" title="Checked Exception"></a>Checked Exception</h2><h2 id="동등성-vs-동일성"><a href="#동등성-vs-동일성" class="headerlink" title="동등성 vs 동일성"></a>동등성 vs 동일성</h2><p>동일하다 는 두 개의 오브젝트가 완전히 같을 경우를 의미하고,</p>
+<p>동등하다 는 두 오브젝트가 같은 정보를 같고 있을 경우를 의미합니다.</p>
+<p>동일하다 의 경우 == 연산자로 표시되고, 동등하다 의 경우 equals 연산자로 표시됩니다.</p>
+<p>오브젝트 간 == 연산자는 주소값의 비교, equals는 내용의 비교가 됩니다</p>
+<h2 id="서블릿"><a href="#서블릿" class="headerlink" title="서블릿"></a>서블릿</h2><p>클라이언트 요청을 처리하고 그 결과를 다시 클라이언트에게 전송하는 Servlet 클래스의 구현 규칙을 지킨 자바 프로그램” (클라이언트의 HTTP 요청에 대해 특정 기능을 수행, HTML문서를 생성등의 응답을 하는 인터넷 서버 프로그램)</p>
+<p>서블릿 생명주기 (servlet Life Cycle)</p>
+<p>서블릿 생성 -&gt; init() -&gt; { service() -&gt; doXxx() } -&gt; destory() -&gt; 서블릿 종료 ( {} 반복 )</p>
+<h2 id="서블릿-컨테이너"><a href="#서블릿-컨테이너" class="headerlink" title="서블릿 컨테이너"></a>서블릿 컨테이너</h2><p>서블릿 컨테이너는 서블릿의 생명주기를 관리하고 요청에 따른 스레드를 생성해준다. 또, 클라이언트의 Request 를 받아주고 Response 를 보낼 수 있게 웹 서버와 소켓을 만들어서 통신을 해준다</p>
+<h2 id="왜-전-회사-그만두고-개발하러-오셨나요"><a href="#왜-전-회사-그만두고-개발하러-오셨나요" class="headerlink" title="왜 전 회사 그만두고 개발하러 오셨나요?"></a>왜 전 회사 그만두고 개발하러 오셨나요?</h2><p>-&gt; 더 뛰어난 개발자들이 있고, 더 높은 수준의 기술을 배우기 위해서.</p>
+<h2 id="지원한-이유는-무엇인지"><a href="#지원한-이유는-무엇인지" class="headerlink" title="지원한 이유는 무엇인지?"></a>지원한 이유는 무엇인지?</h2><p>-&gt; 우선 네이버이고, 금융권이기 때문. 테크핀회사가 가지는 기술력이 높을거라고 판단했음.</p>
+<h2 id="개발이-왜-좋은가"><a href="#개발이-왜-좋은가" class="headerlink" title="개발이 왜 좋은가?"></a>개발이 왜 좋은가?</h2><p>-&gt; 무언가를 끊임없이 고민하게 하게 하고, 이 고민한 내용이 실제로 현실에 반영될 수 있기 때문.</p>
+<h2 id="개발을-왜-시작했는지"><a href="#개발을-왜-시작했는지" class="headerlink" title="개발을 왜 시작했는지."></a>개발을 왜 시작했는지.</h2><p>-&gt; 예전에 컴퓨터 게임을 좋아했고, NIC를 교체해서 인터넷을 고친 경험 등을 본 형이 추천을 해서 들어오게되었고 지금까지도 이 직업을 좋아함.</p>
+<h2 id="어떤-점에서-개발자가-되고-싶은지"><a href="#어떤-점에서-개발자가-되고-싶은지" class="headerlink" title="어떤 점에서 개발자가 되고 싶은지?"></a>어떤 점에서 개발자가 되고 싶은지?</h2><p>-&gt; 무언가를 끊임없이 고민하게 하게 하고, 이 고민한 내용이 실제로 현실에 반영될 수 있기 때문.</p>
+<h2 id="미래에-어떤-개발자가-되고-싶은지"><a href="#미래에-어떤-개발자가-되고-싶은지" class="headerlink" title="미래에 어떤 개발자가 되고 싶은지?"></a>미래에 어떤 개발자가 되고 싶은지?</h2><p>-&gt; 계속 끊임없이 공부하고 고민하는 개발자.</p>
+<h2 id="전공-과목중에-좋아하는-과목이랑-싫어하는-과목-각각"><a href="#전공-과목중에-좋아하는-과목이랑-싫어하는-과목-각각" class="headerlink" title="전공 과목중에 좋아하는 과목이랑 싫어하는 과목 각각"></a>전공 과목중에 좋아하는 과목이랑 싫어하는 과목 각각</h2><p>-&gt; 좋아하는 과목 : 네트워크<br>-&gt; 싫어하는 과목 : 소프트웨어 공학. (그 당시에</p>
+<h2 id="어떤-서비스를-하고-싶은지"><a href="#어떤-서비스를-하고-싶은지" class="headerlink" title="어떤 서비스를 하고 싶은지?"></a>어떤 서비스를 하고 싶은지?</h2><p>-&gt; 기술을 목적으로 생각하는 서비스보다는 하나의 도구로 생각하는게 맞다고 생각함.</p>
+<h2 id="REST"><a href="#REST" class="headerlink" title="REST"></a>REST</h2><p>서버의 리소스 도메인을 중심적으로 개발을 한다. RESTful API라면 API 설계시 리소스 중심적으로 API를 구현한다.</p>
+<p>HTTP URI 로 자원을 표현하고 HTTP Method로 자원을 처리한다.</p>
+<p>Open API 가 Restful API 대표적 예시</p>
+<p>장/단점</p>
+<h2 id="동등성-동일성"><a href="#동등성-동일성" class="headerlink" title="동등성 동일성"></a>동등성 동일성</h2><p>동일성 완전 같은 인스턴스. 가리키는 메모리 주소가 같다. 동등성은 다른 인스턴스이나 완전히 똑같은 경우.</p>
+<h2 id="세션"><a href="#세션" class="headerlink" title="세션"></a>세션</h2><p>HTTP가 stateless 하기 때문에 이전 연결에 대한 정보를 서버쪽에 남기기 위한 기술. 서버가 여러 대라면 이런 세션 정보를 세션 저장소를 만들어서 관리.</p>
+<h2 id="서블릿-1"><a href="#서블릿-1" class="headerlink" title="서블릿"></a>서블릿</h2><p>클라이언트 요청을 처리하고 그 결과를 다시 클라이언트에게 전송하는 Servlet 클래스의 구현 규칙을 지킨 자바 프로그램” (클라이언트의 HTTP 요청에 대해 특정 기능을 수행, HTML문서를 생성등의 응답을 하는 인터넷 서버 프로그램)</p>
+<h2 id="데이터베이스-인덱스-동작-과정"><a href="#데이터베이스-인덱스-동작-과정" class="headerlink" title="데이터베이스 인덱스 동작 과정 *"></a>데이터베이스 인덱스 동작 과정 <em>*</em></h2><p>자주사용되는 칼럼들의 값을 해당 주소값과 같이 보관하는것을 인덱스라 합니다. 인덱스는 값을 정렬하여 저장하기 떄문에 새로운 데이터를 삽입, 삭제 하는것은 오래걸리나 검색은 빠르다.</p>
+<p>인덱스 저장 구조 : B-TREE</p>
+<p>연결리스트 : O(n)</p>
+<p>Binary Search Tree : O(logn) -&gt; 한쪽으로 쏠릴 수 있음.</p>
+<p>B-Tree : 단말노드에 데이터들이 들어가 있음. </p>
+<h2 id="캐시가-무엇인가요-redis-같은-걸-캐싱-서버로-사용해보신적-있으신가요"><a href="#캐시가-무엇인가요-redis-같은-걸-캐싱-서버로-사용해보신적-있으신가요" class="headerlink" title="캐시가 무엇인가요? redis 같은 걸 캐싱 서버로 사용해보신적 있으신가요?"></a>캐시가 무엇인가요? redis 같은 걸 캐싱 서버로 사용해보신적 있으신가요?</h2><p>항공사에서 상품정보를 가져오는 것을 레디스에 넣어두고 캐싱한 적이 있다.</p>
+<h2 id="Call-by-value와-Call-by-reference-차이"><a href="#Call-by-value와-Call-by-reference-차이" class="headerlink" title="Call by value와 Call by reference 차이"></a>Call by value와 Call by reference 차이</h2><p>값을 복사해서 전달. 원래 값이 보존이 된다.</p>
+<p>값을 가리킬는 주소를 복사해서 전달. 원래 값도 수정된다.</p>
+<h2 id="TDD가-무엇인가요"><a href="#TDD가-무엇인가요" class="headerlink" title="TDD가 무엇인가요?"></a>TDD가 무엇인가요?</h2><p>테스트를 먼저 만들고 테스트를 통과하기 위한 소스 코드를 작성하는 방법.</p>
+<h2 id="TDD의-장-단점"><a href="#TDD의-장-단점" class="headerlink" title="TDD의 장, 단점?"></a>TDD의 장, 단점?</h2><p>단점 : TDD를 하면 개발 시간이 늘어난다.</p>
+<p>장점 :<br>    TDD를 하면 결함이 줄어든다. 지속적으로 테스트를 하면서 코드를 작성하기 때문.<br>    TDD를 하면 소스코드의 의존성을 감소시킬 수 있다.</p>
+<h2 id="PreparedStatment와-Statement의-차이는-무엇인가요"><a href="#PreparedStatment와-Statement의-차이는-무엇인가요" class="headerlink" title="PreparedStatment와 Statement의 차이는 무엇인가요?"></a>PreparedStatment와 Statement의 차이는 무엇인가요?</h2><p>PreparedStatement 와 Statement의 가장 큰 차이점은 캐시(cache) 사용여부이다.</p>
+<p>Statement</p>
+<ol>
+<li>단일로 사용될 때 빠른 속도를 지닙니다.</li>
+<li>쿼리에 인자를 부여할 수 없습니다.</li>
+<li>매번 컴파일을 수행해야 합니다.</li>
+</ol>
+<p>PreparedStatement</p>
+<ol>
+<li>쿼리에 인자를 부여할 수 있습니다.</li>
+<li>처음 프리컴파일 된 후, 이후에는 컴파일을 수행하지 않습니다.</li>
+<li>여러번 수행될 때 빠른 속도를 지닙니다.</li>
+</ol>
+<h2 id="전-프로젝트에서-배포-구조-설명해주세요"><a href="#전-프로젝트에서-배포-구조-설명해주세요" class="headerlink" title="전 프로젝트에서 배포 구조 설명해주세요"></a>전 프로젝트에서 배포 구조 설명해주세요</h2><p>gitlab에서 머지를 함 -&gt; jenkins 로 빌드를 함. -&gt; 이미지가 빌드됨 -&gt; 서버에 작성된 쉘스크립트 실행 -&gt; 이미지 다운받고 해당 이미지 실행</p>
+<h2 id="nginx가-어떤-방식으로-로드밸런싱을-할-지-설명해주세요"><a href="#nginx가-어떤-방식으로-로드밸런싱을-할-지-설명해주세요" class="headerlink" title="nginx가 어떤 방식으로 로드밸런싱을 할 지 설명해주세요 *"></a>nginx가 어떤 방식으로 로드밸런싱을 할 지 설명해주세요 <em>*</em></h2><h2 id="클린코드-1"><a href="#클린코드-1" class="headerlink" title="클린코드"></a>클린코드</h2><p>클린코드의 가장 중요한 요소 중 하나는 가독성이라고 볼 수 있습니다. 즉, 모든 팀원이 이해(understandability)하기 쉽도록 작성된 코드</p>
+<h2 id="Deep-Copy와-Shallow-Copy에-대해-설명해주세요"><a href="#Deep-Copy와-Shallow-Copy에-대해-설명해주세요" class="headerlink" title="Deep Copy와 Shallow Copy에 대해 설명해주세요."></a>Deep Copy와 Shallow Copy에 대해 설명해주세요.</h2><h2 id="OAuth-의-흐름에-대해-설명해주세요"><a href="#OAuth-의-흐름에-대해-설명해주세요" class="headerlink" title="OAuth 의 흐름에 대해 설명해주세요."></a>OAuth 의 흐름에 대해 설명해주세요.</h2><p>특정 서비스에서 네이버 로그인 / 카카오 로그인을 클릭 -&gt; 해당 사이트의 로그인 페이지로 넘어감 -&gt; 여기서 인증이 되면 Access Token을 발급해줌 -&gt; redirect_uri 페이지로 리다이렉트</p>
+<h2 id="객체를-나누는-기준이-무엇인가"><a href="#객체를-나누는-기준이-무엇인가" class="headerlink" title="객체를 나누는 기준이 무엇인가? *"></a>객체를 나누는 기준이 무엇인가? <em>*</em></h2><h2 id="커밋-컨벤션에서-feat-chore-refactor-등-각각-어떤-기준으로-나누어-사용했는지"><a href="#커밋-컨벤션에서-feat-chore-refactor-등-각각-어떤-기준으로-나누어-사용했는지" class="headerlink" title="커밋 컨벤션에서 feat, chore, refactor 등. 각각 어떤 기준으로 나누어 사용했는지? *"></a>커밋 컨벤션에서 feat, chore, refactor 등. 각각 어떤 기준으로 나누어 사용했는지? <em>*</em></h2><h2 id="OOP가-무엇인가요"><a href="#OOP가-무엇인가요" class="headerlink" title="OOP가 무엇인가요?"></a>OOP가 무엇인가요?</h2><p>객체지향 프로그래밍. 객체들을 설계하고 이를 기준으로 프로그램을 작성</p>
+<p>즉 어떤 개념에 대해서 추상화한 (속성과 행위를 가진) 객체로 만들어, 그들 사이에서 상호작용을 하며 프로그래밍하는 것을 말한다.</p>
+<h2 id="OOP를-썼을-때-어떤-점이-좋았고-안좋았는지"><a href="#OOP를-썼을-때-어떤-점이-좋았고-안좋았는지" class="headerlink" title="OOP를 썼을 때 어떤 점이 좋았고 안좋았는지? *"></a>OOP를 썼을 때 어떤 점이 좋았고 안좋았는지? <em>*</em></h2><p>FP에 비해서 상대적으로 처리가 무겁다.??</p>
+<h2 id="OOP를-잘하기-위해-어떤-노력을-했는지"><a href="#OOP를-잘하기-위해-어떤-노력을-했는지" class="headerlink" title="OOP를 잘하기 위해 어떤 노력을 했는지?"></a>OOP를 잘하기 위해 어떤 노력을 했는지?</h2><pre><code>SOLID
+- Single Responsibility Principle
+    하나의 객체는 하나의 기능, 책임을 가지며 집중되어야 한다는 원칙.
+
+- Open Close Principle
+    확장의 방법에 대해서는 열려있고 변경에 대해서는 닫혀있어야 한다는 원칙 (코드를 수정하는 것에는 닫혀있고 이를 확장하여 재사용할 수 있어야 한다는 의미)
+    추상화와 다형성을 활용하여 적용 가능.
+
+- Liskov Substitution Principle
+    서브 클래스가 상위 클래스, 인터페이스의 표준 규격을 준수해야한다는 의미.
+
+- Interface Segregation Principle
+
+AOP 적용
+</code></pre><h2 id="클린-코드는-무엇인가요"><a href="#클린-코드는-무엇인가요" class="headerlink" title="클린 코드는 무엇인가요?"></a>클린 코드는 무엇인가요?</h2><p>가독성이 좋은 코드</p>
+<h2 id="왜-코드는-클린해야-하죠"><a href="#왜-코드는-클린해야-하죠" class="headerlink" title="왜 코드는 클린해야 하죠?"></a>왜 코드는 클린해야 하죠?</h2><p>가독성이 좋아야 나중에 코드의 수정이 필요할 때 코드를 분석하는 시간이 감소된다.</p>
+<h2 id="Test코드는-왜-짜야-합니까"><a href="#Test코드는-왜-짜야-합니까" class="headerlink" title="Test코드는 왜 짜야 합니까?"></a>Test코드는 왜 짜야 합니까?</h2><p>모든 비즈니스는 예외 케이스들을 가지고 있고. 이런 것들에 대해서 많이 알고 있는 사람들을 사실 상 베테랑이라고 한다. 근데 이 베테랑들은 이런 지식을 시스템에 녹이는게 아니고 사람이 가지고 있는것.<br>이런 노하우들을 테스트코드, 테스트케이스로 만들어서 남겨두면 시스템 자체가 노하우를 많이 가진 시스템이 된다. 훨씬 튼튼해진다.<br>이것들이 누적되면 많은 예외케이스들에 대해서 미리미리 확인이 가능하다.</p>
+<h2 id="Mock을-사용한-이유는"><a href="#Mock을-사용한-이유는" class="headerlink" title="Mock을 사용한 이유는?"></a>Mock을 사용한 이유는?</h2><p>테스트를 하려고하는 것에 집중을 하려고 하다 보면 어떤 대상의 코드가 의존성을 가지고 있는 경우가 있따. 그 영역은 우리 테스트 커버리지가 아니기 떄문에 가짜 객체 목 객체를 심어준다.<br>또 다른 관점에서 데이터베이스에서 값ㅇ르 가져온느 경우 해당 값은 항상 동일하다고 할 수 없기 때문에 테스트코드가 100% 성공한다고 보기 어렵다.<br>이런 외부에 의존된 코드들은 모킹해야한다.</p>
+<h2 id="트리-구조에-대해-설명-해주세요"><a href="#트리-구조에-대해-설명-해주세요" class="headerlink" title="트리 구조에 대해 설명 해주세요."></a>트리 구조에 대해 설명 해주세요.</h2><p>트리는 계층 모델이다.</p>
+<p>그 자식 노드 또한 0개 이상의 자식 노드를 갖고 있고, 이는 반복적으로 정의된다.</p>
+<h2 id="이진-트리에-대해-설명-해주세요"><a href="#이진-트리에-대해-설명-해주세요" class="headerlink" title="이진 트리에 대해 설명 해주세요."></a>이진 트리에 대해 설명 해주세요.</h2><p>기존 트리 구조에서 자식 노드의 개수를 2개로 제한한 것.</p>
+<h2 id="Binary-Search-Tree에-대해-설명해주세요"><a href="#Binary-Search-Tree에-대해-설명해주세요" class="headerlink" title="Binary Search Tree에 대해 설명해주세요 *"></a>Binary Search Tree에 대해 설명해주세요 <em>*</em></h2><p>노드의 왼쪽 서브트리에는 그 노드의 값보다 작은 값들을 지닌 노드들로 이루어져 있다.<br>노드의 오른쪽 서브트리에는 그 노드의 값보다 큰 값들을 지닌 노드들로 이루어져 있다.</p>
+<h2 id="힙"><a href="#힙" class="headerlink" title="힙 *"></a>힙 <em>*</em></h2><p>모든 레벨에서 노드들이 꽉 채워진 완전이진트리(complete binary tree)를 기본으로 합니다.</p>
+<h2 id="브라우저에서-서버-응답까지의-흐름"><a href="#브라우저에서-서버-응답까지의-흐름" class="headerlink" title="브라우저에서 서버 응답까지의 흐름"></a>브라우저에서 서버 응답까지의 흐름</h2><p>브라우저에서 URL 입력 -&gt; 로컬 hosts 파일과 DNS 서버를 탐색해서 IP를 얻음 -&gt; ARP 프로토콜로 IP -&gt; 맥주소 변경 -&gt; TCP 3 ways handshake로 가상회선 구축 -&gt; HTTP 요청 정보 전달 -&gt; 웹서버에서 수신 후 정적 컨텐츠이면 바로 반환 -&gt; 동적 컨텐츠이면 서블릿 컨테이너에서 서블릿 구현체를 생성 -&gt; 서블릿이 서버의 비즈니스 로직 수행 후 응답 결과 반환 -&gt; 클라이언트에게 응답 정보 전달 -&gt; TCP 4 ways handshake로 가상회선 해제</p>
+<h2 id="CI-CD-에-대해-각각-설명해주세요"><a href="#CI-CD-에-대해-각각-설명해주세요" class="headerlink" title="CI/CD 에 대해 각각 설명해주세요."></a>CI/CD 에 대해 각각 설명해주세요.</h2><p>CI/CD는 약어로, 몇 가지의 다른 의미를 가지고 있습니다. CI/CD의 “CI”는 개발자를 위한 자동화 프로세스인 지속적인 통합(Continuous Integration)을 의미합니다. CI를 성공적으로 구현할 경우 애플리케이션에 대한 새로운 코드 변경 사항이 정기적으로 빌드 및 테스트되어 공유 리포지토리에 통합되므로 여러 명의 개발자가 동시에 애플리케이션 개발과 관련된 코드 작업을 할 경우 서로 충돌할 수 있는 문제를 해결할 수 있습니다.</p>
+<p>CI/CD의 “CD”는 지속적인 서비스 제공(Continuous Delivery) 및/또는 지속적인 배포(Continuous Deployment)를 의미하며 이 두 용어는 상호 교환적으로 사용됩니다. 두 가지 의미 모두 파이프라인의 추가 단계에 대한 자동화를 뜻하지만 때로는 얼마나 많은 자동화가 이루어지고 있는지를 설명하기 위해 별도로 사용되기도 합니다.</p>
+<h2 id="DTO가-무엇이죠"><a href="#DTO가-무엇이죠" class="headerlink" title="DTO가 무엇이죠?"></a>DTO가 무엇이죠?</h2><p>계층 간에 데이터를 전달해주기 위해 만들어지는 객체.</p>
+<h2 id="ManyToOne-쓴-이유는-반대쪽에서-OneToMany-쓸수도-있지-않나요"><a href="#ManyToOne-쓴-이유는-반대쪽에서-OneToMany-쓸수도-있지-않나요" class="headerlink" title="ManyToOne 쓴 이유는? 반대쪽에서 OneToMany 쓸수도 있지 않나요?"></a>ManyToOne 쓴 이유는? 반대쪽에서 OneToMany 쓸수도 있지 않나요?</h2><p>relation에서는 참조 관계가 외래키를 한곳에 두고 동일하지만. 객체의 관점에서는 A, B가 있을 때 A가 B를 참조할 수도 있고 반대로 B가 A를 참조할 수도 있습니다.<br>ManyToOne 사용한 이유는 분명하게 OneToMany 사용처가 다르기때문이죠.</p>
+<h2 id="JPA를-왜-쓰나요-ORM이-나오게-된-이유-어떤-장점이-있죠"><a href="#JPA를-왜-쓰나요-ORM이-나오게-된-이유-어떤-장점이-있죠" class="headerlink" title="JPA를 왜 쓰나요?(ORM이 나오게 된 이유) 어떤 장점이 있죠?"></a>JPA를 왜 쓰나요?(ORM이 나오게 된 이유) 어떤 장점이 있죠?</h2><p>벤더사 독립적이다.</p>
+<p>persistent context 라는 캐싱 영역이 존재한다.</p>
+<p>트랜잭션 관리가 용이하다.</p>
+<p>CRUD 쿼리를 직접 짜지않기 때문에 생산성이 좋아진다.</p>
+<h2 id="Hibernate는-뭘까요"><a href="#Hibernate는-뭘까요" class="headerlink" title="Hibernate는 뭘까요?"></a>Hibernate는 뭘까요?</h2><p>JPA는 인터페이스로써 ORM를 사용하기 위해서 규격화해둔 추상체입니다. 이를 실제로 구현한 것중 하나가 Hibernate입니다. OpneJPA도 있는데. 사용해본 경험은 없습니다.</p>
+<h2 id="transactional-동작-과정"><a href="#transactional-동작-과정" class="headerlink" title="@transactional 동작 과정 *"></a>@transactional 동작 과정 <em>*</em></h2><p>Spring Configuration에 @EnableTransactionManagement 애노테이션을 붙입니다. (스프링 부트에서는 자동으로 해줍니다.)<br>Spring Configuration에 트랜잭션 매니저를 지정합니다.<br>그러면 스프링은 @Transactional 애노테이션이 달린 public 메서드에 대해서 내부적으로 데이터베이스 트랜잭션 코드를 실행해줍니다.</p>
+<h2 id="JPA-FetchType"><a href="#JPA-FetchType" class="headerlink" title="JPA FetchType"></a>JPA FetchType</h2><h2 id="N-1-문제"><a href="#N-1-문제" class="headerlink" title="N+1 문제"></a>N+1 문제</h2><h2 id="엔티티-매핑을-할-때-ManyToOne을-lazy로-설정해주지-않았던-이유"><a href="#엔티티-매핑을-할-때-ManyToOne을-lazy로-설정해주지-않았던-이유" class="headerlink" title="엔티티 매핑을 할 때 ManyToOne을 lazy로 설정해주지 않았던 이유"></a>엔티티 매핑을 할 때 ManyToOne을 lazy로 설정해주지 않았던 이유</h2><h2 id="JPA-FetchType-1"><a href="#JPA-FetchType-1" class="headerlink" title="JPA FetchType"></a>JPA FetchType</h2><h2 id="Transient-Persistent-Removed-Detached"><a href="#Transient-Persistent-Removed-Detached" class="headerlink" title="Transient, Persistent, Removed, Detached"></a>Transient, Persistent, Removed, Detached</h2><h2 id="Controller-RestController는-뭐가-다른가요-응답이-어떻게-다른가요"><a href="#Controller-RestController는-뭐가-다른가요-응답이-어떻게-다른가요" class="headerlink" title="Controller, RestController는 뭐가 다른가요? 응답이 어떻게 다른가요?"></a>Controller, RestController는 뭐가 다른가요? 응답이 어떻게 다른가요?</h2><p>@Controller의 주용도는 view를 리턴하는 것이고, @RestController는 데이터를 리턴하는 것이 주용도라고 할 수 있다.<br>물론 @Controller의 경우 메서드에 @ResponseBody를 사용하여 객체를 리턴할 수 있다.</p>
+<h2 id="Spring에서-Service-Controller-Repository-annotation의-차이점"><a href="#Spring에서-Service-Controller-Repository-annotation의-차이점" class="headerlink" title="Spring에서 Service, Controller, Repository annotation의 차이점"></a>Spring에서 Service, Controller, Repository annotation의 차이점</h2><p>@Component<br>Spring에서 관리되는 객체임을 표시하기 위해 사용하는 가장 기본적인 annotation이다. 즉, scan-auto-detection과 dependency injection을 사용하기 위해서 사용되는 가장 기본 어노테이션이다.</p>
+<p>@Controller<br>Web MVC 코드에 사용되는 어노테이션이다. @RequestMapping 어노테이션을 해당 어노테이션 밑에서만 사용할 수 있다. </p>
+<p>@Repository<br>다 알고 있듯이 data repository를 나타내는 어노테이션이다. @Repository는 플랫폼 특정 exception을 잡아 Spring의 unchecked exception으로 뱉어내준다. ( PersistenceExceptionTranslationPostProcessor )</p>
+<p>@Service<br>비즈니스 로직이나 respository layer 호출하는 함수에 사용된다. 다른 어노테이션과 다르게 @Component에 추가된 기능은 없다. 하지만 나중에 Spring 측에서 추가적인 exception handling을 해줄 수도 있으니 비즈니스 로직에는 해당 어노테이션을 사용하자.</p>
+<h2 id="Spring-MVC-설명"><a href="#Spring-MVC-설명" class="headerlink" title="Spring MVC 설명"></a>Spring MVC 설명</h2><p>웹 요청이 들어옴 -&gt; Servlet 컨테이너에서 Dispatcher Servlet을 실행 -&gt; 이 서블릿이 HandlerMapping 에서 사상되는 컨트롤러를 찾음 -&gt; 비지니스 로직 수행 -&gt; 뷰 리졸버를 확인 -&gt; 뷰 반환</p>
+<h2 id="ControllerAdvice가-무엇인가요"><a href="#ControllerAdvice가-무엇인가요" class="headerlink" title="ControllerAdvice가 무엇인가요?"></a>ControllerAdvice가 무엇인가요?</h2><p>컨트롤러에 공통적으로 적용할 수있는 코드 AOP의 일종으로 보임.</p>
+<h2 id="AOP에-대해-설명해주세요"><a href="#AOP에-대해-설명해주세요" class="headerlink" title="AOP에 대해 설명해주세요"></a>AOP에 대해 설명해주세요</h2><p>Aspect : 위에서 설명한 흩어진 관심사를 모듈화 한 것. 주로 부가기능을 모듈화함.</p>
+<p>Target : Aspect를 적용하는 곳 (클래스, 메서드 .. )</p>
+<h2 id="Unchecked-Checked-Exception-차이가-뭔가요"><a href="#Unchecked-Checked-Exception-차이가-뭔가요" class="headerlink" title="Unchecked, Checked Exception 차이가 뭔가요?"></a>Unchecked, Checked Exception 차이가 뭔가요?</h2><p>RuntimeException을 상속하지 않는 클래스는 Checked Exception, 반대로 상속한 클래스는 Unchecked Exception으로 분류할 수 있다.</p>
+<p>Checked Exception : 컴파일 시점에 확인되는 Exception</p>
+<p>Unchecked Exception : 실행 중 확인이 되는 Exception 그렇기 때문에 RuntimeException 이라고 부름</p>
+<h2 id="프로세스와-쓰레드의-차이점"><a href="#프로세스와-쓰레드의-차이점" class="headerlink" title="프로세스와 쓰레드의 차이점"></a>프로세스와 쓰레드의 차이점</h2><p>프로세스는 커널에 의해 직접 관리되는데 커널 메모리 안에는 각 프로세스마다 관리하고 있는 프로세스에 대한 데이터들이 있다. 이 정보는 Process Control Block(이하 “PCB”)이라고 하는 자료구조 안에 있는데 커널 스케쥴러가 프로세스를 제어하는 데 필요한 정보들이 담겨 있다</p>
+<p>프로세스에는 코드, 데이터, 힙, 스택 메모리 영역 존재.</p>
+<p>먼저 프로세스는 보다 독립적이다. 서로 구분되는 자원을 할당 받아 정말 필요한 경우가 아니면 다른 프로세스에 영향을 미치지 않고 실행된다. 반면 스레드는 프로세스의 하위 집합으로 여러 스레드가 같은 프로세스 자원을 공유하기 때문에 독립적이지 않다. 같은 의미로 프로세스는 보유한 자원에 대한 별개의 주소 공간을 갖지만 스레드는 이 주소 공간을 공유한다.</p>
+<h2 id="PCB에-들어가는-정보"><a href="#PCB에-들어가는-정보" class="headerlink" title="PCB에 들어가는 정보"></a>PCB에 들어가는 정보</h2><p>PID : 프로세스의 고유 번호<br>상태 : 준비, 대기, 실행<br>포인터 : 다음에 실행될 프로세스의 포인터<br>메모리 : 코드, 데이터, 힙, 스택</p>
+<h2 id="IO-NIO-개념"><a href="#IO-NIO-개념" class="headerlink" title="IO/NIO 개념"></a>IO/NIO 개념</h2>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://kidongyun.github.io/2021/03/01/" data-id="cl3vrg7ib00xsocwb7ltf37tk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "headline": "Interview Preparing",
+        "image": "http://kidongyun.github.io",
+        "keywords": "interview",
+        "genre": "Devlog",
+        "datePublished": "2021-03-01",
+        "dateCreated": "2021-03-01",
+        "dateModified": "2022-05-31",
+        "url": "http://kidongyun.github.io/2021/03/01/",
+        "description": "1. Dead Lock (교착상태) O교착상태 정의두 A, B 프로세스가 한 공유될 수 있는 자원을 바라보고 있다고 하자. 만약 A 프로세스가 이 자원을 선점하고 있고 A 프로세스는 B 자원이 이 자원을 선점해야 이 자원 선점을 해지할 수 있다. 또 B 프로세스는 이 공유되는 자원을 선점해야 다음 작업이 진행이 가능하다.
+이런 경우 두 프로세스의 진행이 불",
+        "wordCount": 7913
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2021/03/02/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Effective Java
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2021/02/27/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Computer Science Basic</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/01/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Todo/">Todo</a></p>
+                            <p class="item-title"><a href="/2022/06/01/" class="title">Todo in 2022 June</a></p>
+                            <p class="item-date"><time datetime="2022-06-01T02:38:54.000Z" itemprop="datePublished">2022-06-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/21/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/21/" class="title">Cheate Engine</a></p>
+                            <p class="item-date"><time datetime="2022-05-21T02:38:54.000Z" itemprop="datePublished">2022-05-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/15/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/15/" class="title">Kotest</a></p>
+                            <p class="item-date"><time datetime="2022-05-15T02:38:54.000Z" itemprop="datePublished">2022-05-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/14/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/14/" class="title">Docker build</a></p>
+                            <p class="item-date"><time datetime="2022-05-14T02:38:54.000Z" itemprop="datePublished">2022-05-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/14/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/14/" class="title">Docker Compose commands</a></p>
+                            <p class="item-date"><time datetime="2022-05-14T02:38:54.000Z" itemprop="datePublished">2022-05-14</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Devlog/">Devlog</a><span class="category-list-count">217</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service/">Service</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Todo/">Todo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yunhwadngdng/">Yunhwadngdng</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/A-O-P/" rel="tag">A.O.P</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/" rel="tag">API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ableton/" rel="tag">Ableton</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract Class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Adapter-Pattern/" rel="tag">Adapter Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotation/" rel="tag">Annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Brew/" rel="tag">Brew</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Builder-Pattern/" rel="tag">Builder Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CORS/" rel="tag">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cheat-Engine/" rel="tag">Cheat Engine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud/" rel="tag">Cloud</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Architecture/" rel="tag">Computer Architecture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Science/" rel="tag">Computer Science</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ConfigurationProperties/" rel="tag">ConfigurationProperties</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Container/" rel="tag">Container</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Controller/" rel="tag">Controller</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Css/" rel="tag">Css</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DI/" rel="tag">DI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DSL/" rel="tag">DSL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dart/" rel="tag">Dart</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Decompile/" rel="tag">Decompile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Design-Pattern/" rel="tag">Design Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Compose/" rel="tag">Docker Compose</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Draft/" rel="tag">Draft</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DslMarker/" rel="tag">DslMarker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dto/" rel="tag">Dto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EC2/" rel="tag">EC2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elastic-Search/" rel="tag">Elastic Search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity/" rel="tag">Entity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum-Inheritance/" rel="tag">Enum Inheritance</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ExceptionHandling/" rel="tag">ExceptionHandling</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/F-P/" rel="tag">F.P</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facade-Pattern/" rel="tag">Facade Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/" rel="tag">Flutter</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flyweight-Pattern/" rel="tag">Flyweight Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Functional-Programming/" rel="tag">Functional Programming</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FunctionalInterface/" rel="tag">FunctionalInterface</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git-Merge/" rel="tag">Git - Merge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git-Flow/" rel="tag">Git Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitlab/" rel="tag">Gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GraalVM/" rel="tag">GraalVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graphql/" rel="tag">Graphql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/" rel="tag">HTTPS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HandlerMapping/" rel="tag">HandlerMapping</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/High-Level-ElasticSearch/" rel="tag">High Level ElasticSearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/" rel="tag">Html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Index/" rel="tag">Index</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intellij/" rel="tag">Intellij</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ionic/" rel="tag">Ionic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/" rel="tag">JPA</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit/" rel="tag">JUnit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JWT/" rel="tag">JWT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jackson/" rel="tag">Jackson</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jad/" rel="tag">Jad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">44</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-O-O-P/" rel="tag">Java - O.O.P</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jekyll/" rel="tag">Jekyll</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jira/" rel="tag">Jira</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jmeter/" rel="tag">Jmeter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jpa/" rel="tag">Jpa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Json/" rel="tag">Json</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/" rel="tag">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keyboard-Event/" rel="tag">Keyboard Event</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/" rel="tag">Kibana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotest/" rel="tag">Kotest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTeX/" rel="tag">LaTeX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSA/" rel="tag">MSA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-learning/" rel="tag">Machine learning</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matcher/" rel="tag">Matcher</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/" rel="tag">Memory</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Message-Queue/" rel="tag">Message Queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Monitoring/" rel="tag">Monitoring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/" rel="tag">Network</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/O-O-P/" rel="tag">O.O.P</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/" rel="tag">Object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Observer-Pattern/" rel="tag">Observer Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Operating-System/" rel="tag">Operating System</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Php/" rel="tag">Php</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/" rel="tag">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/" rel="tag">Process</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RDS/" rel="tag">RDS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Mobx/" rel="tag">React - Mobx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reactor/" rel="tag">Reactor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recording/" rel="tag">Recording</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rest/" rel="tag">Rest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Roofline/" rel="tag">Roofline</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STT/" rel="tag">STT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sentry/" rel="tag">Sentry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Serialize/" rel="tag">Serialize</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SfDatePicker/" rel="tag">SfDatePicker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Singleton-Pattern/" rel="tag">Singleton Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">56</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-API-Response/" rel="tag">Spring - API - Response</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-HttpClient/" rel="tag">Spring - HttpClient</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Batch/" rel="tag">Spring Batch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Cloud/" rel="tag">Spring Cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Security/" rel="tag">Spring Security</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stub/" rel="tag">Stub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swagger/" rel="tag">Swagger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/" rel="tag">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TLS/" rel="tag">TLS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Telnet/" rel="tag">Telnet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/" rel="tag">Test</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/" rel="tag">Thread</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Timestamp/" rel="tag">Timestamp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transaction/" rel="tag">Transaction</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tunning/" rel="tag">Tunning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/" rel="tag">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UDP/" rel="tag">UDP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Validation/" rel="tag">Validation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webapp/" rel="tag">Webapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webclient/" rel="tag">Webclient</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webflux/" rel="tag">Webflux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xml/" rel="tag">Xml</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/" rel="tag">interview</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/A-O-P/" style="font-size: 10.77px;">A.O.P</a> <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/AWS/" style="font-size: 14.62px;">AWS</a> <a href="/tags/Ableton/" style="font-size: 10px;">Ableton</a> <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract Class</a> <a href="/tags/Adapter-Pattern/" style="font-size: 10px;">Adapter Pattern</a> <a href="/tags/Algorithm/" style="font-size: 18.46px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 10.77px;">Android</a> <a href="/tags/Annotation/" style="font-size: 10px;">Annotation</a> <a href="/tags/Blog/" style="font-size: 13.85px;">Blog</a> <a href="/tags/Brew/" style="font-size: 10px;">Brew</a> <a href="/tags/Builder-Pattern/" style="font-size: 10px;">Builder Pattern</a> <a href="/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Cheat-Engine/" style="font-size: 10px;">Cheat Engine</a> <a href="/tags/Cloud/" style="font-size: 13.08px;">Cloud</a> <a href="/tags/Computer-Architecture/" style="font-size: 10px;">Computer Architecture</a> <a href="/tags/Computer-Science/" style="font-size: 13.85px;">Computer Science</a> <a href="/tags/ConfigurationProperties/" style="font-size: 10px;">ConfigurationProperties</a> <a href="/tags/Container/" style="font-size: 10.77px;">Container</a> <a href="/tags/Controller/" style="font-size: 10.77px;">Controller</a> <a href="/tags/Css/" style="font-size: 12.31px;">Css</a> <a href="/tags/DI/" style="font-size: 10px;">DI</a> <a href="/tags/DSL/" style="font-size: 10px;">DSL</a> <a href="/tags/Dart/" style="font-size: 10.77px;">Dart</a> <a href="/tags/Database/" style="font-size: 14.62px;">Database</a> <a href="/tags/Decompile/" style="font-size: 10px;">Decompile</a> <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 12.31px;">Docker</a> <a href="/tags/Docker-Compose/" style="font-size: 10px;">Docker Compose</a> <a href="/tags/Draft/" style="font-size: 17.69px;">Draft</a> <a href="/tags/DslMarker/" style="font-size: 10px;">DslMarker</a> <a href="/tags/Dto/" style="font-size: 10px;">Dto</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Elastic-Search/" style="font-size: 10.77px;">Elastic Search</a> <a href="/tags/ElasticSearch/" style="font-size: 10.77px;">ElasticSearch</a> <a href="/tags/Entity/" style="font-size: 10px;">Entity</a> <a href="/tags/Enum/" style="font-size: 10.77px;">Enum</a> <a href="/tags/Enum-Inheritance/" style="font-size: 10px;">Enum Inheritance</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/ExceptionHandling/" style="font-size: 10px;">ExceptionHandling</a> <a href="/tags/F-P/" style="font-size: 10px;">F.P</a> <a href="/tags/Facade-Pattern/" style="font-size: 10px;">Facade Pattern</a> <a href="/tags/Flutter/" style="font-size: 12.31px;">Flutter</a> <a href="/tags/Flyweight-Pattern/" style="font-size: 10px;">Flyweight Pattern</a> <a href="/tags/Functional-Programming/" style="font-size: 10px;">Functional Programming</a> <a href="/tags/FunctionalInterface/" style="font-size: 10px;">FunctionalInterface</a> <a href="/tags/Git/" style="font-size: 11.54px;">Git</a> <a href="/tags/Git-Merge/" style="font-size: 10px;">Git - Merge</a> <a href="/tags/Git-Flow/" style="font-size: 10px;">Git Flow</a> <a href="/tags/Gitlab/" style="font-size: 10px;">Gitlab</a> <a href="/tags/GraalVM/" style="font-size: 10px;">GraalVM</a> <a href="/tags/Gradle/" style="font-size: 13.85px;">Gradle</a> <a href="/tags/Graphql/" style="font-size: 10px;">Graphql</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/HandlerMapping/" style="font-size: 10px;">HandlerMapping</a> <a href="/tags/Hexo/" style="font-size: 11.54px;">Hexo</a> <a href="/tags/High-Level-ElasticSearch/" style="font-size: 10px;">High Level ElasticSearch</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/Index/" style="font-size: 10px;">Index</a> <a href="/tags/Intellij/" style="font-size: 10px;">Intellij</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Ionic/" style="font-size: 10px;">Ionic</a> <a href="/tags/JPA/" style="font-size: 12.31px;">JPA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JUnit/" style="font-size: 10px;">JUnit</a> <a href="/tags/JWT/" style="font-size: 10px;">JWT</a> <a href="/tags/Jackson/" style="font-size: 10px;">Jackson</a> <a href="/tags/Jad/" style="font-size: 10px;">Jad</a> <a href="/tags/Java/" style="font-size: 19.23px;">Java</a> <a href="/tags/Java-O-O-P/" style="font-size: 10px;">Java - O.O.P</a> <a href="/tags/Javascript/" style="font-size: 16.92px;">Javascript</a> <a href="/tags/Jekyll/" style="font-size: 12.31px;">Jekyll</a> <a href="/tags/Jira/" style="font-size: 10.77px;">Jira</a> <a href="/tags/Jmeter/" style="font-size: 10px;">Jmeter</a> <a href="/tags/Jpa/" style="font-size: 10px;">Jpa</a> <a href="/tags/Json/" style="font-size: 10px;">Json</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/Keyboard-Event/" style="font-size: 10px;">Keyboard Event</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/Kotest/" style="font-size: 10px;">Kotest</a> <a href="/tags/Kotlin/" style="font-size: 13.85px;">Kotlin</a> <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lombok/" style="font-size: 10.77px;">Lombok</a> <a href="/tags/MSA/" style="font-size: 10px;">MSA</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Machine-learning/" style="font-size: 16.15px;">Machine learning</a> <a href="/tags/Matcher/" style="font-size: 10px;">Matcher</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/Message-Queue/" style="font-size: 10px;">Message Queue</a> <a href="/tags/Monitoring/" style="font-size: 10px;">Monitoring</a> <a href="/tags/Mybatis/" style="font-size: 11.54px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Network/" style="font-size: 14.62px;">Network</a> <a href="/tags/Node/" style="font-size: 11.54px;">Node</a> <a href="/tags/O-O-P/" style="font-size: 10.77px;">O.O.P</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/Observer-Pattern/" style="font-size: 10px;">Observer Pattern</a> <a href="/tags/Operating-System/" style="font-size: 10px;">Operating System</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/Php/" style="font-size: 12.31px;">Php</a> <a href="/tags/Postgresql/" style="font-size: 10px;">Postgresql</a> <a href="/tags/Process/" style="font-size: 10.77px;">Process</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/RDS/" style="font-size: 10px;">RDS</a> <a href="/tags/RabbitMQ/" style="font-size: 10px;">RabbitMQ</a> <a href="/tags/React/" style="font-size: 13.85px;">React</a> <a href="/tags/React-Mobx/" style="font-size: 10px;">React - Mobx</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/Recording/" style="font-size: 10px;">Recording</a> <a href="/tags/Redis/" style="font-size: 13.08px;">Redis</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rest/" style="font-size: 10px;">Rest</a> <a href="/tags/Roofline/" style="font-size: 10px;">Roofline</a> <a href="/tags/STT/" style="font-size: 10px;">STT</a> <a href="/tags/Sentry/" style="font-size: 10px;">Sentry</a> <a href="/tags/Serialize/" style="font-size: 10px;">Serialize</a> <a href="/tags/SfDatePicker/" style="font-size: 10px;">SfDatePicker</a> <a href="/tags/Singleton-Pattern/" style="font-size: 10px;">Singleton Pattern</a> <a href="/tags/Spring/" style="font-size: 20px;">Spring</a> <a href="/tags/Spring-API-Response/" style="font-size: 10px;">Spring - API - Response</a> <a href="/tags/Spring-HttpClient/" style="font-size: 10px;">Spring - HttpClient</a> <a href="/tags/Spring-Batch/" style="font-size: 10px;">Spring Batch</a> <a href="/tags/Spring-Cloud/" style="font-size: 10.77px;">Spring Cloud</a> <a href="/tags/Spring-Security/" style="font-size: 10.77px;">Spring Security</a> <a href="/tags/Stub/" style="font-size: 10px;">Stub</a> <a href="/tags/Swagger/" style="font-size: 10px;">Swagger</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TLS/" style="font-size: 10px;">TLS</a> <a href="/tags/Telnet/" style="font-size: 10px;">Telnet</a> <a href="/tags/Test/" style="font-size: 15.38px;">Test</a> <a href="/tags/Thread/" style="font-size: 10px;">Thread</a> <a href="/tags/Timestamp/" style="font-size: 10px;">Timestamp</a> <a href="/tags/Transaction/" style="font-size: 10px;">Transaction</a> <a href="/tags/Tunning/" style="font-size: 10px;">Tunning</a> <a href="/tags/Typescript/" style="font-size: 10px;">Typescript</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/Validation/" style="font-size: 10px;">Validation</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Web/" style="font-size: 10.77px;">Web</a> <a href="/tags/Webapp/" style="font-size: 10px;">Webapp</a> <a href="/tags/Webclient/" style="font-size: 10px;">Webclient</a> <a href="/tags/Webflux/" style="font-size: 10.77px;">Webflux</a> <a href="/tags/Webpack/" style="font-size: 10.77px;">Webpack</a> <a href="/tags/Xml/" style="font-size: 10.77px;">Xml</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 John Doe</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://kidongyun.github.io/2021/03/01/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

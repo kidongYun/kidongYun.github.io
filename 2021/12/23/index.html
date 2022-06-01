@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Flutter | Hexo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Flutter,Dart" />
+    
+    <meta name="description" content="3. Dart PrimerYou can practice the grammer of Dart language in the below link   https:&#x2F;&#x2F;dartpad.dartlang.org&#x2F;  when you want to just print something in Dart language 123void main() &amp;#123;  print(&amp;#x27">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter">
+<meta property="og:url" content="http://kidongyun.github.io/2021/12/23/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="3. Dart PrimerYou can practice the grammer of Dart language in the below link   https:&#x2F;&#x2F;dartpad.dartlang.org&#x2F;  when you want to just print something in Dart language 123void main() &amp;#123;  print(&amp;#x27">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://kidongyun.github.io/res/2021-12-23-flutter/1.png">
+<meta property="article:published_time" content="2021-12-23T02:38:54.000Z">
+<meta property="article:modified_time" content="2022-06-01T06:23:07.508Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Flutter">
+<meta property="article:tag" content="Dart">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kidongyun.github.io/res/2021-12-23-flutter/1.png">
+    
+
+    
+        <link rel="alternate" href="/" title="Hexo" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Devlog/">Devlog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Service/">Service</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Todo/">Todo</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Yunhwadngdng/">Yunhwadngdng</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Devlog/">Devlog</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-2021-12-23-flutter" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Flutter
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2021/12/23/" class="article-date">
+       <time datetime="2021-12-23T02:38:54.000Z" itemprop="datePublished">2021-12-23</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2021/12/23/" class="article-date">
+     <time datetime="2022-06-01T06:23:07.508Z" itemprop="dateModified">2022-06-01</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Dart/" rel="tag">Dart</a>, <a class="tag-link-link" href="/tags/Flutter/" rel="tag">Flutter</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h2 id="3-Dart-Primer"><a href="#3-Dart-Primer" class="headerlink" title="3. Dart Primer"></a>3. Dart Primer</h2><p>You can practice the grammer of Dart language in the below link </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://dartpad.dartlang.org/">https://dartpad.dartlang.org/</a></li>
+</ul>
+<p>when you want to just print something in Dart language</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>about variables</p>
+<p>Dart language doesn’t support dynamical variable type basically. as like another languages.</p>
+<p>if you want to use it, you should declare ‘dynamic’ keyword in front of the variable data.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="built_in">int</span> age = <span class="number">30</span>;</span><br><span class="line">  <span class="built_in">print</span>(age);</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">String</span> name = <span class="string">&quot;chun-li&quot;</span>;</span><br><span class="line">  <span class="built_in">print</span>(name);</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">bool</span> isNight = <span class="keyword">false</span>;</span><br><span class="line">  <span class="built_in">print</span>(isNight);</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">dynamic</span> dyName = <span class="string">&#x27;chun-li&#x27;</span>;</span><br><span class="line">  dyName = <span class="number">30</span>;</span><br><span class="line">  <span class="built_in">print</span>(dyName);</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>about functions</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="built_in">String</span> greet = greeting();</span><br><span class="line">  <span class="built_in">print</span>(greet);</span><br><span class="line">  <span class="built_in">int</span> age = getAge();</span><br><span class="line">  <span class="built_in">print</span>(age);</span><br><span class="line">  <span class="built_in">String</span> arrowGreet = arrowGreeting();</span><br><span class="line">  <span class="built_in">print</span>(arrowGreet);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span> greeting() &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span> arrowGreeting() =&gt; <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> getAge() &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">30</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">() &#123;&#125; <span class="comment">// anonymous function</span></span><br></pre></td></tr></table></figure>
+<p>about List</p>
+<p>It’s really similar with Java programming language. if you don’t declare the type of List then this is operated as the list as a dynamic typed.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="built_in">List</span> untypedNames = [<span class="string">&#x27;chun-li&#x27;</span>, <span class="string">&#x27;yoshi&#x27;</span>, <span class="string">&#x27;mario&#x27;</span>];</span><br><span class="line">  </span><br><span class="line">  untypedNames.add(<span class="string">&#x27;luigi&#x27;</span>);</span><br><span class="line">  untypedNames.remove(<span class="string">&#x27;yoshi&#x27;</span>);</span><br><span class="line">  untypedNames.add(<span class="number">30</span>);</span><br><span class="line">  <span class="built_in">print</span>(untypedNames);</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt; typedNames = [<span class="string">&#x27;chun-li&#x27;</span>, <span class="string">&#x27;yoshi&#x27;</span>, <span class="string">&#x27;mario&#x27;</span>];</span><br><span class="line">  typedNames.add(<span class="string">&#x27;luigi&#x27;</span>);</span><br><span class="line">  typedNames.remove(<span class="string">&#x27;yoshi&#x27;</span>);</span><br><span class="line">  <span class="built_in">print</span>(typedNames);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>about class</p>
+<h2 id="4-Creating-a-Flutter-App-in-Android-Studio"><a href="#4-Creating-a-Flutter-App-in-Android-Studio" class="headerlink" title="4. Creating a Flutter App in Android Studio"></a>4. Creating a Flutter App in Android Studio</h2><p>First of all, You should turn on the android studio app and install the ‘flutter’ plugin.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Double shift &gt; Search &#x27;plugins&#x27; &gt; Search flutter &gt; install the flutter app.</span><br></pre></td></tr></table></figure>
+<p><img src="/res/2021-12-23-flutter/1.png" alt=""></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File &gt; New &gt; New Flutter Project</span><br></pre></td></tr></table></figure>
+<p><img src="/res/2021-12-23-flutter/2.png" alt=""></p>
+<p>Flutter SDK path is the location of the git projecty you already cloned like from the below command.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/flutter/flutter.git -b stable</span><br></pre></td></tr></table></figure>
+<p>The below code is the main entry point of this Flutter app. as you learned before, <em>main()</em> method is the entry point of dart programming language. and It’s same with Java programming language.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.dart</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(<span class="keyword">const</span> MyApp());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>MyApp class inherit StatelessWidget. What i am saying is MyApp is the root Widget in our Flutter app. and Flutter concept is all of components of flutter are consisted of Widgets. and Widget is represented by a class syntax of Dart language.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.dart</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyApp</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The below code runs our own MaterialApp.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(MaterialApp(</span><br><span class="line">    home: Text(<span class="string">&#x27;hey ninjas!&#x27;</span>),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-Scaffold-amp-AppBar-Widgets"><a href="#5-Scaffold-amp-AppBar-Widgets" class="headerlink" title="5. Scaffold &amp; AppBar Widgets"></a>5. Scaffold &amp; AppBar Widgets</h2><p>Scaffold widget is going to allow us to implement a basic layout for our app. otherwords, Scaffold widget basically like a wrapper to a few different layout widgets things like the app bar, the body and also floating action button.</p>
+<p>You can get the more detail at the below link.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://api.flutter.dev/flutter/material/Scaffold-class.html">https://api.flutter.dev/flutter/material/Scaffold-class.html</a></li>
+</ul>
+<p>in Flutter, if You want to insert some texts into widget, You should always use <em>Text()</em> widget</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  runApp(MaterialApp(</span><br><span class="line">    home: Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(&#x27;my first app&#x27;),</span><br><span class="line">        centerTitle: true,</span><br><span class="line">      ),</span><br><span class="line">      body: Center(</span><br><span class="line">        child: Text(&#x27;hello ninjas!&#x27;),</span><br><span class="line">      ),</span><br><span class="line">      floatingActionButton: FloatingActionButton(</span><br><span class="line">        onPressed: () &#123;  &#125;,</span><br><span class="line">        child: Text(&#x27;click&#x27;),</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line"></span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-Colours-amp-Font"><a href="#6-Colours-amp-Font" class="headerlink" title="6. Colours &amp; Font"></a>6. Colours &amp; Font</h2><p>You can get free google fonts from the below link</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://fonts.google.com">https://fonts.google.com</a></li>
+</ul>
+<p>let’s create new folder named ‘fonts’ in your app root directory and please move your font files downloaded from <em>fonts.google.com</em> site in there.</p>
+<p>pubspec.yaml file is a configuration file about your flutter app. You should know one thing that the format in this file is really important.</p>
+<p>if you don’t keep the two spaces between each code then it will be not operated well.</p>
+<h2 id="7-Stateless-Widgets-amp-Hot-Reload"><a href="#7-Stateless-Widgets-amp-Hot-Reload" class="headerlink" title="7. Stateless Widgets &amp; Hot Reload"></a>7. Stateless Widgets &amp; Hot Reload</h2><p>We should consider when we create new custom widget whether is stateless widget or stateful widget.</p>
+<ul>
+<li><p>Stateless Widgets</p>
+<ul>
+<li>the state of the widget cannot change over time</li>
+<li>ex) Layout, Color</li>
+</ul>
+</li>
+<li><p>Stateful Widgets</p>
+<ul>
+<li>the state of the widget can change over time</li>
+<li>ex) data</li>
+</ul>
+</li>
+</ul>
+<p>the one of the reason why the widgets are separated as Stateless widget or Stateful widget is hot reload.</p>
+<p>The flutter should catch the change of the widgets for implementing hot-reload function. so that defining whether your widget is stateful or not is needed.</p>
+<p>The <em>build()</em> function in StatelessWidget is what is responsible for building up the widget tree inside the stateless home widgets so all of the stuff in <em>build()</em> function whenever we make a change to the code inside this widget tree flutter is going to detect that when we save it and it’s going to cause the <em>build()</em> function to rerun.<br>that’s is hot reload in action.</p>
+<p>so if you create the widget inherited Stateless thing then the flutter will re run <em>build()</em> function when you save your code.</p>
+<h2 id="8-Images-amp-Assets"><a href="#8-Images-amp-Assets" class="headerlink" title="8. Images &amp; Assets"></a>8. Images &amp; Assets</h2><p>The principle of Assets is same with font. You should change the <em>pubspec.yaml</em> file in your flutter app.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">      body: Center(</span><br><span class="line">        child: Image.asset(<span class="string">&#x27;assets/space-1.jpg&#x27;</span>)</span><br><span class="line">      ),</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">flutter:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## ...</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">assets:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">assets/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="9-Buttons-amp-Icons"><a href="#9-Buttons-amp-Icons" class="headerlink" title="9. Buttons &amp; Icons"></a>9. Buttons &amp; Icons</h2><p>Icon is really simple</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">      body: Center(</span><br><span class="line">        child: Icon(</span><br><span class="line">          Icons.airport_shuttle,</span><br><span class="line">          color: Colors.lightBlue,</span><br><span class="line">          size: <span class="number">50.0</span>,</span><br><span class="line">        )</span><br><span class="line">      ),</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>RaisedButton means that itself has a shadow.</p>
+<p>it has a little shadow it’s raising it away from the page giving it that kind of 3D effect.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">      body: Center(</span><br><span class="line">        child: RaisedButton(</span><br><span class="line">          onPressed: () &#123;</span><br><span class="line">              <span class="built_in">print</span>(<span class="string">&#x27;you clicked me&#x27;</span>);</span><br><span class="line">          &#125;,</span><br><span class="line">          child: Text(<span class="string">&#x27;click me&#x27;</span>),</span><br><span class="line">          color: Colors.lightBlue,</span><br><span class="line">        )</span><br><span class="line">      ),</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>and Flatbutton doesn’t have a shawdow unlike RaisedButton.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">      body: Center(</span><br><span class="line">        child: FlatButton(</span><br><span class="line">          onPressed: () &#123;</span><br><span class="line">              <span class="built_in">print</span>(<span class="string">&#x27;you clicked me&#x27;</span>);</span><br><span class="line">          &#125;,</span><br><span class="line">          child: Text(<span class="string">&#x27;click me&#x27;</span>),</span><br><span class="line">          color: Colors.lightBlue,</span><br><span class="line">        )</span><br><span class="line">      ),</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>if you want use a button with texts and icons then you should use <em>RaisedButton.icon()</em> widget or <em>IconButton</em> widget.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">      body: Center(</span><br><span class="line">        child: RaisedButton.icon(</span><br><span class="line">          onPressed: () &#123;&#125;,</span><br><span class="line">          icon: Icon(</span><br><span class="line">              Icons.mail</span><br><span class="line">          ),</span><br><span class="line">          label: Text(<span class="string">&#x27;mail me&#x27;</span>),</span><br><span class="line">          color: Colors.amber,</span><br><span class="line">        )</span><br><span class="line">      ),</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">      body: Center(</span><br><span class="line">        child: IconButton(</span><br><span class="line">          onPressed: () &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;you clicked me&#x27;</span>);</span><br><span class="line">          &#125;,</span><br><span class="line">          icon: Icon(Icons.alternate_email),</span><br><span class="line">          color: Colors.amber,</span><br><span class="line">        )</span><br><span class="line">      ),</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="10-Containers-amp-Padding"><a href="#10-Containers-amp-Padding" class="headerlink" title="10. Containers &amp; Padding"></a>10. Containers &amp; Padding</h2><p>the container is only the same size as the widget inside it. if we don’t have a child which inside it then the container takes up the whole room available. but it has a child widget like a text widget then the container restricts itself to the size of that child widget.</p>
+<p>About EdgeInsets</p>
+<ul>
+<li>symmetric : top = bottom, left = right</li>
+<li>fromLTRB : each individual values</li>
+<li>all : having same value all of them.</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">      body: Container(</span><br><span class="line">        padding: EdgeInsets.fromLTRB(<span class="number">10.0</span>, <span class="number">20.0</span>, <span class="number">30.0</span>, <span class="number">40.0</span>),</span><br><span class="line">        margin: EdgeInsets.all(<span class="number">30.0</span>),</span><br><span class="line">        color: Colors.grey[<span class="number">400</span>],</span><br><span class="line">        child: Text(<span class="string">&#x27;hello&#x27;</span>),</span><br><span class="line">      ),</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>if you only need a padding option then you can type the code like the below. but you should know Padding widget doesn’t have another properties like margins, colors and so on.</p>
+<p>Padding widget is a padding itself. so You should don’t be misunderstanding. if you need to use all of the properties then you can use Container widget as you did it.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">      body: Padding(</span><br><span class="line">        padding: EdgeInsets.all(<span class="number">90.0</span>),</span><br><span class="line">        child: Text(<span class="string">&#x27;hello&#x27;</span>),</span><br><span class="line">      ),</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="11-Rows"><a href="#11-Rows" class="headerlink" title="11. Rows"></a>11. Rows</h2><p>Rows widget can align your widgets what should be located in Rows children property. It’s like a flexbox in CSS technique.</p>
+<p>main axis is the direction of the row. ad the cross axis is the perpendicular direction.</p>
+<p>MainAxisAlignment.start option is default.<br>CrossAxisAlignment.start option is default also.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">      body: Row(</span><br><span class="line">        mainAxisAlignment: MainAxisAlignment.spaceEvenly,</span><br><span class="line">        crossAxisAlignment: CrossAxisAlignment.start,</span><br><span class="line">        children: &lt;Widget&gt;[</span><br><span class="line">          Text(<span class="string">&#x27;hello, world&#x27;</span>),</span><br><span class="line">          FlatButton(</span><br><span class="line">              onPressed: () &#123;&#125;,</span><br><span class="line">              color: Colors.amber,</span><br><span class="line">              child: Text(<span class="string">&#x27;click me&#x27;</span>),</span><br><span class="line">          ),</span><br><span class="line">          Container(</span><br><span class="line">            color: Colors.cyan,</span><br><span class="line">            padding: EdgeInsets.all(<span class="number">30.0</span>),</span><br><span class="line">            child: Text(<span class="string">&#x27;inside container&#x27;</span>),</span><br><span class="line">          )</span><br><span class="line">        ],</span><br><span class="line">      ),</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="12-Columns"><a href="#12-Columns" class="headerlink" title="12. Columns"></a>12. Columns</h2><p>Columns axis is opposite with Rows one. the main axis in a column is vertical and the cross axis in a column is horizontal.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">      body: Column(</span><br><span class="line">        mainAxisAlignment: MainAxisAlignment.end,</span><br><span class="line">        crossAxisAlignment: CrossAxisAlignment.end,</span><br><span class="line">        children: &lt;Widget&gt;[</span><br><span class="line">          Row(</span><br><span class="line">            children: &lt;Widget&gt;[</span><br><span class="line">              Text(<span class="string">&#x27;hello,&#x27;</span>),</span><br><span class="line">              Text(<span class="string">&#x27; world&#x27;</span>),</span><br><span class="line">            ],</span><br><span class="line">          ),</span><br><span class="line">          Container(</span><br><span class="line">            padding: EdgeInsets.all(<span class="number">20.0</span>),</span><br><span class="line">            color: Colors.cyan,</span><br><span class="line">            child: Text(<span class="string">&#x27;one&#x27;</span>),</span><br><span class="line">          ),</span><br><span class="line">          Container(</span><br><span class="line">            padding: EdgeInsets.all(<span class="number">30.0</span>),</span><br><span class="line">            color: Colors.pinkAccent,</span><br><span class="line">            child: Text(<span class="string">&#x27;two&#x27;</span>),</span><br><span class="line">          ),</span><br><span class="line">          Container(</span><br><span class="line">            padding: EdgeInsets.all(<span class="number">40.0</span>),</span><br><span class="line">            color: Colors.amber,</span><br><span class="line">            child: Text(<span class="string">&#x27;three&#x27;</span>),</span><br><span class="line">          ),</span><br><span class="line">        ],</span><br><span class="line">      ),</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="14-Expanded-Widgets"><a href="#14-Expanded-Widgets" class="headerlink" title="14. Expanded Widgets"></a>14. Expanded Widgets</h2><p>we stil have second and third containers the same size which is the size of the content inside it but the first container now because it’s inside the expanded widget over here it’s taking up all the available space left over.</p>
+<p>flex property in Expanded widget is a portion of the width that we want it to take up. they’re basically fractions of the whole width that they take up.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">      body: Row(</span><br><span class="line">        children: &lt;Widget&gt;[</span><br><span class="line">          Expanded(</span><br><span class="line">              child: Image.asset(<span class="string">&#x27;assets/space-2.jpg&#x27;</span>),</span><br><span class="line">            flex: <span class="number">3</span>,</span><br><span class="line">          ),</span><br><span class="line">          Expanded(</span><br><span class="line">            flex: <span class="number">1</span>,</span><br><span class="line">            child: Container(</span><br><span class="line">              padding: EdgeInsets.all(<span class="number">30.0</span>),</span><br><span class="line">              color: Colors.cyan,</span><br><span class="line">              child: Text(<span class="string">&#x27;1&#x27;</span>),</span><br><span class="line">            ),</span><br><span class="line">          ),</span><br><span class="line">          Expanded(</span><br><span class="line">            flex: <span class="number">1</span>,</span><br><span class="line">            child: Container(</span><br><span class="line">              padding: EdgeInsets.all(<span class="number">30.0</span>),</span><br><span class="line">              color: Colors.pinkAccent,</span><br><span class="line">              child: Text(<span class="string">&#x27;2&#x27;</span>),</span><br><span class="line">            ),</span><br><span class="line">          ),</span><br><span class="line">          Expanded(</span><br><span class="line">            flex: <span class="number">1</span>,</span><br><span class="line">            child: Container(</span><br><span class="line">              padding: EdgeInsets.all(<span class="number">30.0</span>),</span><br><span class="line">              color: Colors.amber,</span><br><span class="line">              child: Text(<span class="string">&#x27;3&#x27;</span>),</span><br><span class="line">            ),</span><br><span class="line">          )</span><br><span class="line">        ],</span><br><span class="line">      ),</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="15-Ninja-ID-Project"><a href="#15-Ninja-ID-Project" class="headerlink" title="15. Ninja ID Project"></a>15. Ninja ID Project</h2><p>I remember scaffold allows us to quickly make a layout for our app things like an app bar and the body all that kind of stuff.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(MaterialApp(</span><br><span class="line">    home: NinjaCard(),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NinjaCard</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> NinjaCard(&#123;Key? key&#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      backgroundColor: Colors.grey[<span class="number">900</span>],</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(<span class="string">&#x27;Ninja ID Card&#x27;</span>),</span><br><span class="line">        centerTitle: <span class="keyword">true</span>,</span><br><span class="line">        backgroundColor: Colors.grey[<span class="number">850</span>],</span><br><span class="line">        elevation: <span class="number">0.0</span>,</span><br><span class="line">      ),</span><br><span class="line">      body: Padding(</span><br><span class="line">        padding: EdgeInsets.fromLTRB(<span class="number">30.0</span>, <span class="number">40.0</span>, <span class="number">30.0</span>, <span class="number">0.0</span>),</span><br><span class="line">        child: Column(</span><br><span class="line">          crossAxisAlignment: CrossAxisAlignment.start,</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            Center(</span><br><span class="line">              child: CircleAvatar(</span><br><span class="line">                backgroundImage: AssetImage(<span class="string">&#x27;assets/thumb.jpg&#x27;</span>),</span><br><span class="line">                radius: <span class="number">40.0</span>,</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            Divider(</span><br><span class="line">              height: <span class="number">90.0</span>,</span><br><span class="line">              color: Colors.grey[<span class="number">800</span>],</span><br><span class="line">            ),</span><br><span class="line">            Text(</span><br><span class="line">              <span class="string">&#x27;NAME&#x27;</span>,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                color: Colors.grey,</span><br><span class="line">                letterSpacing: <span class="number">2.0</span>,</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            SizedBox(height: <span class="number">10.0</span>),</span><br><span class="line">            Text(</span><br><span class="line">              <span class="string">&#x27;Chun-Li&#x27;</span>,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                color: Colors.amberAccent[<span class="number">200</span>],</span><br><span class="line">                letterSpacing: <span class="number">2.0</span>,</span><br><span class="line">                fontSize: <span class="number">28.0</span>,</span><br><span class="line">                fontWeight: FontWeight.bold,</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            SizedBox(height: <span class="number">30.0</span>),</span><br><span class="line">            Text(</span><br><span class="line">              <span class="string">&#x27;CURRENT NINJA LEVEL&#x27;</span>,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                color: Colors.grey,</span><br><span class="line">                letterSpacing: <span class="number">2.0</span>,</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            SizedBox(height: <span class="number">10.0</span>),</span><br><span class="line">            Text(</span><br><span class="line">              <span class="string">&#x27;8&#x27;</span>,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                color: Colors.amberAccent[<span class="number">200</span>],</span><br><span class="line">                letterSpacing: <span class="number">2.0</span>,</span><br><span class="line">                fontSize: <span class="number">28.0</span>,</span><br><span class="line">                fontWeight: FontWeight.bold,</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            SizedBox(height: <span class="number">30.0</span>),</span><br><span class="line">            Row(</span><br><span class="line">              children: &lt;Widget&gt;[</span><br><span class="line">                Icon(</span><br><span class="line">                  Icons.email,</span><br><span class="line">                  color: Colors.grey[<span class="number">400</span>],</span><br><span class="line">                ),</span><br><span class="line">                SizedBox(width: <span class="number">10.0</span>),</span><br><span class="line">                Text(</span><br><span class="line">                  <span class="string">&#x27;chun.li@thenetninja.co.uk&#x27;</span>,</span><br><span class="line">                  style: TextStyle(</span><br><span class="line">                    color: Colors.grey[<span class="number">400</span>],</span><br><span class="line">                    fontSize: <span class="number">18.0</span>,</span><br><span class="line">                    letterSpacing: <span class="number">1.0</span></span><br><span class="line">                  ),</span><br><span class="line">                )</span><br><span class="line">              ],</span><br><span class="line">            )</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="16-Stateful-Widgets"><a href="#16-Stateful-Widgets" class="headerlink" title="16. Stateful Widgets"></a>16. Stateful Widgets</h2><p><em>setState()</em> function takes in as an argument a function itself. this is a trigger of the build function sp then it rebuilt it with the new state. whenever we want to change the state or the data inside a state for Widget what we have to do is use <em>setState()</em> function. this is only way when we use set state that triggers the build function to rerun.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NinjaCard</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> NinjaCard(&#123;Key? key&#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  State&lt;NinjaCard&gt; createState() =&gt; _NinjaCardState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_NinjaCardState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">NinjaCard</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">int</span> ninjaLevel = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      backgroundColor: Colors.grey[<span class="number">900</span>],</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(<span class="string">&#x27;Ninja ID Card&#x27;</span>),</span><br><span class="line">        centerTitle: <span class="keyword">true</span>,</span><br><span class="line">        backgroundColor: Colors.grey[<span class="number">850</span>],</span><br><span class="line">        elevation: <span class="number">0.0</span>,</span><br><span class="line">      ),</span><br><span class="line">      floatingActionButton: FloatingActionButton(</span><br><span class="line">        onPressed: () &#123;</span><br><span class="line">          setState(() &#123;</span><br><span class="line">            ninjaLevel += <span class="number">1</span>;</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">        child: Icon(Icons.add),</span><br><span class="line">        backgroundColor: Colors.grey[<span class="number">800</span>],</span><br><span class="line">      ),</span><br><span class="line">      body: Padding(</span><br><span class="line">        padding: EdgeInsets.fromLTRB(<span class="number">30.0</span>, <span class="number">40.0</span>, <span class="number">30.0</span>, <span class="number">0.0</span>),</span><br><span class="line">        child: Column(</span><br><span class="line">          crossAxisAlignment: CrossAxisAlignment.start,</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            Center(</span><br><span class="line">              child: CircleAvatar(</span><br><span class="line">                backgroundImage: AssetImage(<span class="string">&#x27;assets/thumb.jpg&#x27;</span>),</span><br><span class="line">                radius: <span class="number">40.0</span>,</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            Divider(</span><br><span class="line">              height: <span class="number">90.0</span>,</span><br><span class="line">              color: Colors.grey[<span class="number">800</span>],</span><br><span class="line">            ),</span><br><span class="line">            Text(</span><br><span class="line">              <span class="string">&#x27;NAME&#x27;</span>,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                color: Colors.grey,</span><br><span class="line">                letterSpacing: <span class="number">2.0</span>,</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            SizedBox(height: <span class="number">10.0</span>),</span><br><span class="line">            Text(</span><br><span class="line">              <span class="string">&#x27;Chun-Li&#x27;</span>,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                color: Colors.amberAccent[<span class="number">200</span>],</span><br><span class="line">                letterSpacing: <span class="number">2.0</span>,</span><br><span class="line">                fontSize: <span class="number">28.0</span>,</span><br><span class="line">                fontWeight: FontWeight.bold,</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            SizedBox(height: <span class="number">30.0</span>),</span><br><span class="line">            Text(</span><br><span class="line">              <span class="string">&#x27;CURRENT NINJA LEVEL&#x27;</span>,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                color: Colors.grey,</span><br><span class="line">                letterSpacing: <span class="number">2.0</span>,</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            SizedBox(height: <span class="number">10.0</span>),</span><br><span class="line">            Text(</span><br><span class="line">              <span class="string">&#x27;<span class="subst">$ninjaLevel</span>&#x27;</span>,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                color: Colors.amberAccent[<span class="number">200</span>],</span><br><span class="line">                letterSpacing: <span class="number">2.0</span>,</span><br><span class="line">                fontSize: <span class="number">28.0</span>,</span><br><span class="line">                fontWeight: FontWeight.bold,</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            SizedBox(height: <span class="number">30.0</span>),</span><br><span class="line">            Row(</span><br><span class="line">              children: &lt;Widget&gt;[</span><br><span class="line">                Icon(</span><br><span class="line">                  Icons.email,</span><br><span class="line">                  color: Colors.grey[<span class="number">400</span>],</span><br><span class="line">                ),</span><br><span class="line">                SizedBox(width: <span class="number">10.0</span>),</span><br><span class="line">                Text(</span><br><span class="line">                  <span class="string">&#x27;chun.li@thenetninja.co.uk&#x27;</span>,</span><br><span class="line">                  style: TextStyle(</span><br><span class="line">                    color: Colors.grey[<span class="number">400</span>],</span><br><span class="line">                    fontSize: <span class="number">18.0</span>,</span><br><span class="line">                    letterSpacing: <span class="number">1.0</span></span><br><span class="line">                  ),</span><br><span class="line">                )</span><br><span class="line">              ],</span><br><span class="line">            )</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="17-Lists-of-Data"><a href="#17-Lists-of-Data" class="headerlink" title="17. Lists of Data"></a>17. Lists of Data</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(MaterialApp(</span><br><span class="line">    home: QuoteList(),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuoteList</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> QuoteList(&#123;Key? key&#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  _QuoteListState createState() =&gt; _QuoteListState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_QuoteListState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">QuoteList</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt; quotes = [</span><br><span class="line">    <span class="string">&#x27;Be yourself; everyone else is already taken&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;I have nothing to declare except my genius&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;The truth is rarely pure and never simple&#x27;</span></span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      backgroundColor: Colors.grey[<span class="number">200</span>],</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(<span class="string">&#x27;Awesome Quotes&#x27;</span>),</span><br><span class="line">        backgroundColor: Colors.redAccent,</span><br><span class="line">      ),</span><br><span class="line">      body: Column(</span><br><span class="line">        children: quotes.map((quote) =&gt; Text(quote)).toList(),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="18-Custom-Classes"><a href="#18-Custom-Classes" class="headerlink" title="18. Custom Classes"></a>18. Custom Classes</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Quote.dart</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Quote</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">String</span> text;</span><br><span class="line">  <span class="built_in">String</span> author;</span><br><span class="line"></span><br><span class="line">  Quote(&#123; <span class="keyword">this</span>.text = <span class="string">&quot;&quot;</span>, <span class="keyword">this</span>.author = <span class="string">&quot;&quot;</span> &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Quote myQuote = Quote(text: <span class="string">&#x27;this is the qite text&#x27;</span>, author: <span class="string">&#x27;oscar wilde&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.dart</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_QuoteListState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">QuoteList</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">List</span>&lt;Quote&gt; quotes = [</span><br><span class="line">    Quote(author: <span class="string">&#x27;Osca Wilde&#x27;</span>, text: <span class="string">&#x27;Be yourself; everyone else 1&#x27;</span>),</span><br><span class="line">    Quote(author: <span class="string">&#x27;Osca Wilde&#x27;</span>, text: <span class="string">&#x27;Be yourself; everyone else 2&#x27;</span>),</span><br><span class="line">    Quote(author: <span class="string">&#x27;Osca Wilde&#x27;</span>, text: <span class="string">&#x27;Be yourself; everyone else 3&#x27;</span>)</span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">      body: Column(</span><br><span class="line">        children: quotes.map((quote) =&gt; Text(<span class="string">&#x27;<span class="subst">$&#123;quote.text&#125;</span> - <span class="subst">$&#123;quote.author&#125;</span>&#x27;</span>)).toList(),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="19-Cards"><a href="#19-Cards" class="headerlink" title="19. Cards"></a>19. Cards</h2><p><a target="_blank" rel="noopener" href="https://api.flutter.dev/flutter/material/Card-class.html">https://api.flutter.dev/flutter/material/Card-class.html</a></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_QuoteListState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">QuoteList</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  Widget quoteTemplate(quote) &#123;</span><br><span class="line">    <span class="keyword">return</span> Card(</span><br><span class="line">      margin: EdgeInsets.fromLTRB(<span class="number">16.0</span>, <span class="number">16.0</span>, <span class="number">16.0</span>, <span class="number">0.0</span>),</span><br><span class="line">      child: Padding(</span><br><span class="line">        padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">12.0</span>),</span><br><span class="line">        child: Column(</span><br><span class="line">          crossAxisAlignment: CrossAxisAlignment.stretch,</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            Text(</span><br><span class="line">              quote.text,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                fontSize: <span class="number">18.0</span>,</span><br><span class="line">                color: Colors.grey[<span class="number">600</span>],</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            SizedBox(height: <span class="number">6.0</span>),</span><br><span class="line">            Text(</span><br><span class="line">              quote.author,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                fontSize: <span class="number">14.0</span>,</span><br><span class="line">                color: Colors.grey[<span class="number">800</span>]</span><br><span class="line">              ),</span><br><span class="line">            )</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">      body: Column(</span><br><span class="line">        children: quotes.map((quote) =&gt; quoteTemplate(quote)).toList(),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="20-Extracting-Widgets"><a href="#20-Extracting-Widgets" class="headerlink" title="20. Extracting Widgets"></a>20. Extracting Widgets</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:quotes/quote.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuoteCard</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">final</span> Quote quote;</span><br><span class="line">  QuoteCard(&#123; <span class="keyword">required</span> <span class="keyword">this</span>.quote &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Card(</span><br><span class="line">      margin: EdgeInsets.fromLTRB(<span class="number">16.0</span>, <span class="number">16.0</span>, <span class="number">16.0</span>, <span class="number">0.0</span>),</span><br><span class="line">      child: Padding(</span><br><span class="line">        padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">12.0</span>),</span><br><span class="line">        child: Column(</span><br><span class="line">          crossAxisAlignment: CrossAxisAlignment.stretch,</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            Text(</span><br><span class="line">              quote.text,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                fontSize: <span class="number">18.0</span>,</span><br><span class="line">                color: Colors.grey[<span class="number">600</span>],</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            SizedBox(height: <span class="number">6.0</span>),</span><br><span class="line">            Text(</span><br><span class="line">              quote.author,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                  fontSize: <span class="number">14.0</span>,</span><br><span class="line">                  color: Colors.grey[<span class="number">800</span>]</span><br><span class="line">              ),</span><br><span class="line">            )</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:quotes/quote.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;quote_card.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_QuoteListState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">QuoteList</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    </span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">      body: Column(</span><br><span class="line">        children: quotes.map((quote) =&gt; QuoteCard(quote: quote)).toList(),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="21-Function-Arguments"><a href="#21-Function-Arguments" class="headerlink" title="21. Function Arguments"></a>21. Function Arguments</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// quote_card.dart</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuoteCard</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">final</span> Quote quote;</span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">Function</span>() delete;</span><br><span class="line">  QuoteCard(&#123; <span class="keyword">required</span> <span class="keyword">this</span>.quote, <span class="keyword">required</span> <span class="keyword">this</span>.delete &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Card(</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">            FlatButton.icon(</span><br><span class="line">              onPressed: delete,</span><br><span class="line">              label: Text(<span class="string">&#x27;delete quote&#x27;</span>),</span><br><span class="line">              icon: Icon(Icons.delete)</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_QuoteListState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">QuoteList</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">          delete: () &#123;</span><br><span class="line">            setState(() &#123;</span><br><span class="line">              quotes.remove(quote);</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="23-Maps-amp-Routing"><a href="#23-Maps-amp-Routing" class="headerlink" title="23. Maps &amp; Routing"></a>23. Maps &amp; Routing</h2><p><em>Navigator.pushNamed()</em> is named because we’re going to supply a named round we’re going to use the name of one o the routes to that router and then it’s called push because essentially what we do is push another screen on top of the screen. the screen is still going to exist underneath it’s just that we’re pushing another one on top of it.</p>
+<p>It is important concept to understand and we are going to be doing more routing as we go through the rest of this course so that we can see different ways to push and pop routes on and off this kind of stack and manage our routes in an efficient way.</p>
+<h2 id="24-Widget-Lifecycle"><a href="#24-Widget-Lifecycle" class="headerlink" title="24. Widget Lifecycle"></a>24. Widget Lifecycle</h2><ul>
+<li><p>Stateless</p>
+<ul>
+<li>State does not change over time</li>
+<li>build function only runs once</li>
+</ul>
+</li>
+<li><p>Stateful</p>
+<ul>
+<li>State Can change over time</li>
+<li>setState() triggers the build function</li>
+</ul>
+</li>
+<li><p>initState()</p>
+<ul>
+<li>called only once when the widget is created</li>
+<li>subscribe to streams or any object that could change our widget data</li>
+</ul>
+</li>
+<li><p>build()</p>
+<ul>
+<li>builds the widget tree</li>
+<li>a build is triggered every time we use setState()</li>
+</ul>
+</li>
+<li><p>dispose()</p>
+<ul>
+<li>when the widget / set object is removed</li>
+</ul>
+</li>
+</ul>
+<h2 id="25-Asynchronous-Code"><a href="#25-Asynchronous-Code" class="headerlink" title="25. Asynchronous Code"></a>25. Asynchronous Code</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_ChooseLocationState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">ChooseLocation</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> getData() <span class="keyword">async</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// simulate network request for a username</span></span><br><span class="line">    <span class="built_in">String</span> username = <span class="keyword">await</span> Future.delayed(<span class="built_in">Duration</span>(seconds: <span class="number">3</span>), () &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;yoshi&#x27;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// simulate network request to get bio of the username</span></span><br><span class="line">    <span class="built_in">String</span> bio = <span class="keyword">await</span> Future.delayed(<span class="built_in">Duration</span>(seconds: <span class="number">2</span>), () &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;vegan, musician &amp; egg collector&#x27;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;<span class="subst">$username</span> - <span class="subst">$bio</span>&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">int</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> initState() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line">    getData();</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;hey there&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ... </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="26-Flutter-Packages-http"><a href="#26-Flutter-Packages-http" class="headerlink" title="26. Flutter Packages (http)"></a>26. Flutter Packages (http)</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://pub.dev/flutter">https://pub.dev/flutter</a></li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dependencies:</span></span><br><span class="line">  <span class="attr">flutter:</span></span><br><span class="line">    <span class="attr">sdk:</span> <span class="string">flutter</span></span><br><span class="line">  <span class="attr">http:</span> <span class="string">^0.12.0+2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_LoadingState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">Loading</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> getData() <span class="keyword">async</span> &#123;</span><br><span class="line">    Response response = <span class="keyword">await</span> <span class="keyword">get</span>(<span class="string">&#x27;https://jsonplaceholder.typicode.com/todos/1&#x27;</span>);</span><br><span class="line">    <span class="built_in">Map</span> data = jsonDecode(response.body);</span><br><span class="line">    <span class="built_in">print</span>(data);</span><br><span class="line">    <span class="built_in">print</span>(data[<span class="string">&#x27;title&#x27;</span>]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="28-WorldTime-Custom-Class"><a href="#28-WorldTime-Custom-Class" class="headerlink" title="28. WorldTime Custom Class"></a>28. WorldTime Custom Class</h2><p>the funcion with async is going to take some time to do it might take two seconds today because we have to go out and reach the data and bring it back.</p>
+<p>you should remember if we run an asynchronous function this doesn’t stop the code from carrying on. it just does this in the background and then the rest of the code carries on.</p>
+<p>to solve what it would be nice to do is maybe put await keyword in front of an asynchronous function. then we’re waiting for this to finish before it carries on.</p>
+<p>for that we should return specific type that we need in an asynchronous function if we want to use the await keyword in front of a cuson aynchronous function we have to place the Future keyword with return type.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// world_time.dart</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WorldTime</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">String</span> location; <span class="comment">// location name for the UI</span></span><br><span class="line">  <span class="keyword">late</span> <span class="built_in">String</span> time; <span class="comment">// the time in that location</span></span><br><span class="line">  <span class="built_in">String</span> flag; <span class="comment">// url to an asset flag icon</span></span><br><span class="line">  <span class="built_in">String</span> url; <span class="comment">// location url for api endpoint</span></span><br><span class="line"></span><br><span class="line">  WorldTime(&#123; <span class="keyword">required</span> <span class="keyword">this</span>.location, <span class="keyword">required</span> <span class="keyword">this</span>.flag, <span class="keyword">required</span> <span class="keyword">this</span>.url &#125;);</span><br><span class="line"></span><br><span class="line">  Future&lt;<span class="keyword">void</span>&gt; getTime() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="comment">// make the request</span></span><br><span class="line">    Response response = <span class="keyword">await</span> <span class="keyword">get</span>(<span class="string">&#x27;http://worldtimeapi.org/api/timezone/<span class="subst">$url</span>&#x27;</span>);</span><br><span class="line">    <span class="built_in">Map</span> data = jsonDecode(response.body);</span><br><span class="line">    <span class="built_in">print</span>(data);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// get properties from data</span></span><br><span class="line">    <span class="built_in">String</span> datetime = data[<span class="string">&#x27;datetime&#x27;</span>];</span><br><span class="line">    <span class="built_in">String</span> offset = data[<span class="string">&#x27;utc_offset&#x27;</span>].substring(<span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line">    <span class="comment">// print(datetime);</span></span><br><span class="line">    <span class="comment">// print(offset);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// create DateTime object</span></span><br><span class="line">    <span class="built_in">DateTime</span> now = <span class="built_in">DateTime</span>.parse(datetime);</span><br><span class="line">    now.add(<span class="built_in">Duration</span>(hours: <span class="built_in">int</span>.parse(offset)));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// set the time property</span></span><br><span class="line">    time = now.toString();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_LoadingState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">Loading</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">String</span> time = <span class="string">&#x27;loading&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> setupWorldTime() <span class="keyword">async</span> &#123;</span><br><span class="line">    WorldTime instance = WorldTime(location: <span class="string">&#x27;Berlin&#x27;</span>, flag: <span class="string">&#x27;germany.png&#x27;</span>, url: <span class="string">&#x27;Europe/Berlin&#x27;</span>);</span><br><span class="line">    <span class="keyword">await</span> instance.getTime();</span><br><span class="line">    <span class="built_in">print</span>(instance.time);</span><br><span class="line">    setState(() &#123;</span><br><span class="line">      time = instance.time;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> initState() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line">    setupWorldTime();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      body: Padding(</span><br><span class="line">        padding: EdgeInsets.all(<span class="number">50.0</span>),</span><br><span class="line">        child: Text(time),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://github.com/iamshaunjp/flutter-beginners-tutorial">https://github.com/iamshaunjp/flutter-beginners-tutorial</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://kidongyun.github.io/2021/12/23/" data-id="cl3vrg7hx00vpocwbb3qohhuw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "headline": "Flutter",
+        "image": "http://kidongyun.github.io/res/2021-12-23-flutter/1.png",
+        "keywords": "Flutter Dart",
+        "genre": "Devlog",
+        "datePublished": "2021-12-23",
+        "dateCreated": "2021-12-23",
+        "dateModified": "2022-06-01",
+        "url": "http://kidongyun.github.io/2021/12/23/",
+        "description": "3. Dart PrimerYou can practice the grammer of Dart language in the below link 
+
+https://dartpad.dartlang.org/
+
+when you want to just print something in Dart language
+123void main() &#123;  print(&#x27",
+        "wordCount": 10055
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2021/12/28/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            SfDatePicker in Flutter
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2021/12/12/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Managing api version in Spring with HandlerMapping</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/01/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Todo/">Todo</a></p>
+                            <p class="item-title"><a href="/2022/06/01/" class="title">Todo in 2022 June</a></p>
+                            <p class="item-date"><time datetime="2022-06-01T02:38:54.000Z" itemprop="datePublished">2022-06-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/21/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/21/" class="title">Cheate Engine</a></p>
+                            <p class="item-date"><time datetime="2022-05-21T02:38:54.000Z" itemprop="datePublished">2022-05-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/15/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/15/" class="title">Kotest</a></p>
+                            <p class="item-date"><time datetime="2022-05-15T02:38:54.000Z" itemprop="datePublished">2022-05-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/14/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/14/" class="title">Docker build</a></p>
+                            <p class="item-date"><time datetime="2022-05-14T02:38:54.000Z" itemprop="datePublished">2022-05-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/14/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/14/" class="title">Docker Compose commands</a></p>
+                            <p class="item-date"><time datetime="2022-05-14T02:38:54.000Z" itemprop="datePublished">2022-05-14</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Devlog/">Devlog</a><span class="category-list-count">217</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service/">Service</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Todo/">Todo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yunhwadngdng/">Yunhwadngdng</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/A-O-P/" rel="tag">A.O.P</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/" rel="tag">API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ableton/" rel="tag">Ableton</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract Class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Adapter-Pattern/" rel="tag">Adapter Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotation/" rel="tag">Annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Brew/" rel="tag">Brew</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Builder-Pattern/" rel="tag">Builder Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CORS/" rel="tag">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cheat-Engine/" rel="tag">Cheat Engine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud/" rel="tag">Cloud</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Architecture/" rel="tag">Computer Architecture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Science/" rel="tag">Computer Science</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ConfigurationProperties/" rel="tag">ConfigurationProperties</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Container/" rel="tag">Container</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Controller/" rel="tag">Controller</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Css/" rel="tag">Css</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DI/" rel="tag">DI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DSL/" rel="tag">DSL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dart/" rel="tag">Dart</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Decompile/" rel="tag">Decompile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Design-Pattern/" rel="tag">Design Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Compose/" rel="tag">Docker Compose</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Draft/" rel="tag">Draft</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DslMarker/" rel="tag">DslMarker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dto/" rel="tag">Dto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EC2/" rel="tag">EC2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elastic-Search/" rel="tag">Elastic Search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity/" rel="tag">Entity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum-Inheritance/" rel="tag">Enum Inheritance</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ExceptionHandling/" rel="tag">ExceptionHandling</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/F-P/" rel="tag">F.P</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facade-Pattern/" rel="tag">Facade Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/" rel="tag">Flutter</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flyweight-Pattern/" rel="tag">Flyweight Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Functional-Programming/" rel="tag">Functional Programming</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FunctionalInterface/" rel="tag">FunctionalInterface</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git-Merge/" rel="tag">Git - Merge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git-Flow/" rel="tag">Git Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitlab/" rel="tag">Gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GraalVM/" rel="tag">GraalVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graphql/" rel="tag">Graphql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/" rel="tag">HTTPS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HandlerMapping/" rel="tag">HandlerMapping</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/High-Level-ElasticSearch/" rel="tag">High Level ElasticSearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/" rel="tag">Html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Index/" rel="tag">Index</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intellij/" rel="tag">Intellij</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ionic/" rel="tag">Ionic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/" rel="tag">JPA</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit/" rel="tag">JUnit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JWT/" rel="tag">JWT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jackson/" rel="tag">Jackson</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jad/" rel="tag">Jad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">44</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-O-O-P/" rel="tag">Java - O.O.P</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jekyll/" rel="tag">Jekyll</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jira/" rel="tag">Jira</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jmeter/" rel="tag">Jmeter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jpa/" rel="tag">Jpa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Json/" rel="tag">Json</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/" rel="tag">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keyboard-Event/" rel="tag">Keyboard Event</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/" rel="tag">Kibana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotest/" rel="tag">Kotest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTeX/" rel="tag">LaTeX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSA/" rel="tag">MSA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-learning/" rel="tag">Machine learning</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matcher/" rel="tag">Matcher</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/" rel="tag">Memory</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Message-Queue/" rel="tag">Message Queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Monitoring/" rel="tag">Monitoring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/" rel="tag">Network</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/O-O-P/" rel="tag">O.O.P</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/" rel="tag">Object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Observer-Pattern/" rel="tag">Observer Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Operating-System/" rel="tag">Operating System</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Php/" rel="tag">Php</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/" rel="tag">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/" rel="tag">Process</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RDS/" rel="tag">RDS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Mobx/" rel="tag">React - Mobx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reactor/" rel="tag">Reactor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recording/" rel="tag">Recording</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rest/" rel="tag">Rest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Roofline/" rel="tag">Roofline</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STT/" rel="tag">STT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sentry/" rel="tag">Sentry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Serialize/" rel="tag">Serialize</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SfDatePicker/" rel="tag">SfDatePicker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Singleton-Pattern/" rel="tag">Singleton Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">56</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-API-Response/" rel="tag">Spring - API - Response</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-HttpClient/" rel="tag">Spring - HttpClient</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Batch/" rel="tag">Spring Batch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Cloud/" rel="tag">Spring Cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Security/" rel="tag">Spring Security</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stub/" rel="tag">Stub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swagger/" rel="tag">Swagger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/" rel="tag">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TLS/" rel="tag">TLS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Telnet/" rel="tag">Telnet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/" rel="tag">Test</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/" rel="tag">Thread</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Timestamp/" rel="tag">Timestamp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transaction/" rel="tag">Transaction</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tunning/" rel="tag">Tunning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/" rel="tag">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UDP/" rel="tag">UDP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Validation/" rel="tag">Validation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webapp/" rel="tag">Webapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webclient/" rel="tag">Webclient</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webflux/" rel="tag">Webflux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xml/" rel="tag">Xml</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/" rel="tag">interview</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/A-O-P/" style="font-size: 10.77px;">A.O.P</a> <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/AWS/" style="font-size: 14.62px;">AWS</a> <a href="/tags/Ableton/" style="font-size: 10px;">Ableton</a> <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract Class</a> <a href="/tags/Adapter-Pattern/" style="font-size: 10px;">Adapter Pattern</a> <a href="/tags/Algorithm/" style="font-size: 18.46px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 10.77px;">Android</a> <a href="/tags/Annotation/" style="font-size: 10px;">Annotation</a> <a href="/tags/Blog/" style="font-size: 13.85px;">Blog</a> <a href="/tags/Brew/" style="font-size: 10px;">Brew</a> <a href="/tags/Builder-Pattern/" style="font-size: 10px;">Builder Pattern</a> <a href="/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Cheat-Engine/" style="font-size: 10px;">Cheat Engine</a> <a href="/tags/Cloud/" style="font-size: 13.08px;">Cloud</a> <a href="/tags/Computer-Architecture/" style="font-size: 10px;">Computer Architecture</a> <a href="/tags/Computer-Science/" style="font-size: 13.85px;">Computer Science</a> <a href="/tags/ConfigurationProperties/" style="font-size: 10px;">ConfigurationProperties</a> <a href="/tags/Container/" style="font-size: 10.77px;">Container</a> <a href="/tags/Controller/" style="font-size: 10.77px;">Controller</a> <a href="/tags/Css/" style="font-size: 12.31px;">Css</a> <a href="/tags/DI/" style="font-size: 10px;">DI</a> <a href="/tags/DSL/" style="font-size: 10px;">DSL</a> <a href="/tags/Dart/" style="font-size: 10.77px;">Dart</a> <a href="/tags/Database/" style="font-size: 14.62px;">Database</a> <a href="/tags/Decompile/" style="font-size: 10px;">Decompile</a> <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 12.31px;">Docker</a> <a href="/tags/Docker-Compose/" style="font-size: 10px;">Docker Compose</a> <a href="/tags/Draft/" style="font-size: 17.69px;">Draft</a> <a href="/tags/DslMarker/" style="font-size: 10px;">DslMarker</a> <a href="/tags/Dto/" style="font-size: 10px;">Dto</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Elastic-Search/" style="font-size: 10.77px;">Elastic Search</a> <a href="/tags/ElasticSearch/" style="font-size: 10.77px;">ElasticSearch</a> <a href="/tags/Entity/" style="font-size: 10px;">Entity</a> <a href="/tags/Enum/" style="font-size: 10.77px;">Enum</a> <a href="/tags/Enum-Inheritance/" style="font-size: 10px;">Enum Inheritance</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/ExceptionHandling/" style="font-size: 10px;">ExceptionHandling</a> <a href="/tags/F-P/" style="font-size: 10px;">F.P</a> <a href="/tags/Facade-Pattern/" style="font-size: 10px;">Facade Pattern</a> <a href="/tags/Flutter/" style="font-size: 12.31px;">Flutter</a> <a href="/tags/Flyweight-Pattern/" style="font-size: 10px;">Flyweight Pattern</a> <a href="/tags/Functional-Programming/" style="font-size: 10px;">Functional Programming</a> <a href="/tags/FunctionalInterface/" style="font-size: 10px;">FunctionalInterface</a> <a href="/tags/Git/" style="font-size: 11.54px;">Git</a> <a href="/tags/Git-Merge/" style="font-size: 10px;">Git - Merge</a> <a href="/tags/Git-Flow/" style="font-size: 10px;">Git Flow</a> <a href="/tags/Gitlab/" style="font-size: 10px;">Gitlab</a> <a href="/tags/GraalVM/" style="font-size: 10px;">GraalVM</a> <a href="/tags/Gradle/" style="font-size: 13.85px;">Gradle</a> <a href="/tags/Graphql/" style="font-size: 10px;">Graphql</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/HandlerMapping/" style="font-size: 10px;">HandlerMapping</a> <a href="/tags/Hexo/" style="font-size: 11.54px;">Hexo</a> <a href="/tags/High-Level-ElasticSearch/" style="font-size: 10px;">High Level ElasticSearch</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/Index/" style="font-size: 10px;">Index</a> <a href="/tags/Intellij/" style="font-size: 10px;">Intellij</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Ionic/" style="font-size: 10px;">Ionic</a> <a href="/tags/JPA/" style="font-size: 12.31px;">JPA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JUnit/" style="font-size: 10px;">JUnit</a> <a href="/tags/JWT/" style="font-size: 10px;">JWT</a> <a href="/tags/Jackson/" style="font-size: 10px;">Jackson</a> <a href="/tags/Jad/" style="font-size: 10px;">Jad</a> <a href="/tags/Java/" style="font-size: 19.23px;">Java</a> <a href="/tags/Java-O-O-P/" style="font-size: 10px;">Java - O.O.P</a> <a href="/tags/Javascript/" style="font-size: 16.92px;">Javascript</a> <a href="/tags/Jekyll/" style="font-size: 12.31px;">Jekyll</a> <a href="/tags/Jira/" style="font-size: 10.77px;">Jira</a> <a href="/tags/Jmeter/" style="font-size: 10px;">Jmeter</a> <a href="/tags/Jpa/" style="font-size: 10px;">Jpa</a> <a href="/tags/Json/" style="font-size: 10px;">Json</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/Keyboard-Event/" style="font-size: 10px;">Keyboard Event</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/Kotest/" style="font-size: 10px;">Kotest</a> <a href="/tags/Kotlin/" style="font-size: 13.85px;">Kotlin</a> <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lombok/" style="font-size: 10.77px;">Lombok</a> <a href="/tags/MSA/" style="font-size: 10px;">MSA</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Machine-learning/" style="font-size: 16.15px;">Machine learning</a> <a href="/tags/Matcher/" style="font-size: 10px;">Matcher</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/Message-Queue/" style="font-size: 10px;">Message Queue</a> <a href="/tags/Monitoring/" style="font-size: 10px;">Monitoring</a> <a href="/tags/Mybatis/" style="font-size: 11.54px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Network/" style="font-size: 14.62px;">Network</a> <a href="/tags/Node/" style="font-size: 11.54px;">Node</a> <a href="/tags/O-O-P/" style="font-size: 10.77px;">O.O.P</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/Observer-Pattern/" style="font-size: 10px;">Observer Pattern</a> <a href="/tags/Operating-System/" style="font-size: 10px;">Operating System</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/Php/" style="font-size: 12.31px;">Php</a> <a href="/tags/Postgresql/" style="font-size: 10px;">Postgresql</a> <a href="/tags/Process/" style="font-size: 10.77px;">Process</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/RDS/" style="font-size: 10px;">RDS</a> <a href="/tags/RabbitMQ/" style="font-size: 10px;">RabbitMQ</a> <a href="/tags/React/" style="font-size: 13.85px;">React</a> <a href="/tags/React-Mobx/" style="font-size: 10px;">React - Mobx</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/Recording/" style="font-size: 10px;">Recording</a> <a href="/tags/Redis/" style="font-size: 13.08px;">Redis</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rest/" style="font-size: 10px;">Rest</a> <a href="/tags/Roofline/" style="font-size: 10px;">Roofline</a> <a href="/tags/STT/" style="font-size: 10px;">STT</a> <a href="/tags/Sentry/" style="font-size: 10px;">Sentry</a> <a href="/tags/Serialize/" style="font-size: 10px;">Serialize</a> <a href="/tags/SfDatePicker/" style="font-size: 10px;">SfDatePicker</a> <a href="/tags/Singleton-Pattern/" style="font-size: 10px;">Singleton Pattern</a> <a href="/tags/Spring/" style="font-size: 20px;">Spring</a> <a href="/tags/Spring-API-Response/" style="font-size: 10px;">Spring - API - Response</a> <a href="/tags/Spring-HttpClient/" style="font-size: 10px;">Spring - HttpClient</a> <a href="/tags/Spring-Batch/" style="font-size: 10px;">Spring Batch</a> <a href="/tags/Spring-Cloud/" style="font-size: 10.77px;">Spring Cloud</a> <a href="/tags/Spring-Security/" style="font-size: 10.77px;">Spring Security</a> <a href="/tags/Stub/" style="font-size: 10px;">Stub</a> <a href="/tags/Swagger/" style="font-size: 10px;">Swagger</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TLS/" style="font-size: 10px;">TLS</a> <a href="/tags/Telnet/" style="font-size: 10px;">Telnet</a> <a href="/tags/Test/" style="font-size: 15.38px;">Test</a> <a href="/tags/Thread/" style="font-size: 10px;">Thread</a> <a href="/tags/Timestamp/" style="font-size: 10px;">Timestamp</a> <a href="/tags/Transaction/" style="font-size: 10px;">Transaction</a> <a href="/tags/Tunning/" style="font-size: 10px;">Tunning</a> <a href="/tags/Typescript/" style="font-size: 10px;">Typescript</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/Validation/" style="font-size: 10px;">Validation</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Web/" style="font-size: 10.77px;">Web</a> <a href="/tags/Webapp/" style="font-size: 10px;">Webapp</a> <a href="/tags/Webclient/" style="font-size: 10px;">Webclient</a> <a href="/tags/Webflux/" style="font-size: 10.77px;">Webflux</a> <a href="/tags/Webpack/" style="font-size: 10.77px;">Webpack</a> <a href="/tags/Xml/" style="font-size: 10.77px;">Xml</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 John Doe</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://kidongyun.github.io/2021/12/23/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

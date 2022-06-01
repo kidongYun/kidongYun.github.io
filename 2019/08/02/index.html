@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Linear Regression with One Variable | Hexo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Machine learning" />
+    
+    <meta name="description" content="What is the linkear regression theory?Regression theory is widely used in Computer Science nowadays. The main feature of this theory is this theory use the mathmatical function expression to predict f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linear Regression with One Variable">
+<meta property="og:url" content="http://kidongyun.github.io/2019/08/02/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="What is the linkear regression theory?Regression theory is widely used in Computer Science nowadays. The main feature of this theory is this theory use the mathmatical function expression to predict f">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://kidongyun.github.io/res/2019-08-02-linear-regression-with-one-variable/1.png">
+<meta property="article:published_time" content="2019-08-02T02:21:54.000Z">
+<meta property="article:modified_time" content="2022-05-31T07:07:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Machine learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kidongyun.github.io/res/2019-08-02-linear-regression-with-one-variable/1.png">
+    
+
+    
+        <link rel="alternate" href="/" title="Hexo" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Devlog/">Devlog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Service/">Service</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Todo/">Todo</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Yunhwadngdng/">Yunhwadngdng</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Devlog/">Devlog</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-2019-08-02-linear-regression-with-one-variable" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Linear Regression with One Variable
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2019/08/02/" class="article-date">
+       <time datetime="2019-08-02T02:21:54.000Z" itemprop="datePublished">2019-08-02</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2019/08/02/" class="article-date">
+     <time datetime="2022-05-31T07:07:24.000Z" itemprop="dateModified">2022-05-31</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Machine-learning/" rel="tag">Machine learning</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h2 id="What-is-the-linkear-regression-theory"><a href="#What-is-the-linkear-regression-theory" class="headerlink" title="What is the linkear regression theory?"></a>What is the linkear regression theory?</h2><p>Regression theory is widely used in Computer Science nowadays. The main feature of this theory is this theory use the mathmatical function expression to predict future don’t know now. for that, the features of data should be expressed as a numeric one to make a mathematical function. and secondly we should find the best model represent the data.</p>
+<p>if this model can be expressed as linear model. then it is usually named <em>Linear Regression</em>. let’s know about linear regression theory now.</p>
+<p><img src="/res/2019-08-02-linear-regression-with-one-variable/1.png" alt=""></p>
+<h2 id="3-steps-of-linear-regression-model"><a href="#3-steps-of-linear-regression-model" class="headerlink" title="3 steps of linear regression model."></a>3 steps of linear regression model.</h2><hr/>
+
+<ul>
+<li>Defining Hypothesis model.</li>
+<li>Defining Cost function to calculate errors.</li>
+<li>Minify the errors with <em>Gradient Descent</em>.</li>
+</ul>
+<hr/>
+
+<h2 id="Defining-Hypothesis-model"><a href="#Defining-Hypothesis-model" class="headerlink" title="Defining Hypothesis model."></a>Defining Hypothesis model.</h2><p>The hypothesis model is needed to generalize the data in regression theory. you should make a choice the hypothesis model before the calculation. if you choose the linear model for hypthesis than it would be called linear regression model.</p>
+<h2 id="Defining-Cost-function-to-calculate-errors"><a href="#Defining-Cost-function-to-calculate-errors" class="headerlink" title="Defining Cost function to calculate errors."></a>Defining Cost function to calculate errors.</h2><p>The errors means the difference between the real data and predicted data with hypothesis. if the errors is smaller than the hypothesis model is more fit with the data. if this model is good enough than you can extract valuable information with this hypothesis model.</p>
+<h2 id="Minify-the-errors-with-Gradient-Descent"><a href="#Minify-the-errors-with-Gradient-Descent" class="headerlink" title="Minify the errors with Gradient Descent."></a>Minify the errors with <em>Gradient Descent</em>.</h2><p>we should find the way decrease errors enough to get optimized hypothesis model. Gradient Descent way is one of the solution can find the minimum of errors value point.</p>
+<h3 id="Hypothesis"><a href="#Hypothesis" class="headerlink" title="Hypothesis."></a>Hypothesis.</h3><p>간단히 말해, 주어진 데이터들이 좌표평면 공간에 표현되어 있을 때 이를 가장 잘 표현할 수 있는 하나의 함수식, 모델을 결정하는 일이다. 이해를 위해 한가지 예를 들어 진행해보자. 아래의 그래프에 표현된 것은 ‘공부한 시간’과 ‘성적’의 관계에 대한 데이터다.</p>
+<p><br/></p>
+<p><img src="/res/2019-08-02-linear-regression-with-one-variable/2.png" alt=""></p>
+<p>양의 상관관계를 가지는 ‘공부한 시간’, ‘성적’와 관련된 데이터들을 표현하기 위해 여러가지 모델들을 고려해 보자. 아래의 모델들이 충분히 후보군에 포함될 수 있을 것이다.</p>
+<p><br/></p>
+<p><strong>Candidate of Hypothesis Models</strong></p>
+<p><br/></p>
+<p><img src="/res/2019-08-02-linear-regression-with-one-variable/3.png" alt=""></p>
+<p><br/></p>
+<p><img src="/res/2019-08-02-linear-regression-with-one-variable/4.png" alt=""></p>
+<p><br/></p>
+<p><img src="/res/2019-08-02-linear-regression-with-one-variable/5.png" alt=""></p>
+<p>모두 보기에 합리적일 것 같은 후보 모델들이다. 여기서 나는 보라색 점선을 가진 3번째 모델을 선택하도록 하겠다. 그 이유는 모델이 일차함수로 만들어져 있기 때문이다. </p>
+<p>실제로 이 데이터들을 표현하는 모델을 결정하는 일은 굉장히 중요하다. 모델을 보다 정확하게 하기 위해서는 보다 많은 데이터들을 가지는 것이 좋다. 또 좋은 모델을 결정하기 위한 일련의 절차가 있는데 이는 추후에 알아보도록 하자.</p>
+<p>보라색 점선은 일차함수이다. 고로 분명 <em>y = wx + b</em> 함수식의 형태로 표현될 것이다. <strong>Linear Regression에서 궁극적으로 목표하는 것은 이 일차함수 식이 보라색 점선처럼 될 수 있도록 w, b 값을 유추해내는 것이다.</strong></p>
+<script type="math/tex; mode=display">model : y = wx + b</script><p>그러나 이번 글에서는 보다 쉬운 이해를 이해 b 변수는 생략한 모델로 진행하도록 하겠다.</p>
+<script type="math/tex; mode=display">Model : y = wx</script><h3 id="Cost-Function-에러의-정의와-산출"><a href="#Cost-Function-에러의-정의와-산출" class="headerlink" title="Cost Function. (에러의 정의와 산출)"></a>Cost Function. (에러의 정의와 산출)</h3><p>앞서 표현한 Hypothesis Model이 데이터를 가장 잘 표현하게 하기 위해서 Error의 개념을 사용하여 Cost Function을 정의한다. </p>
+<p><img src="/res/2019-08-02-linear-regression-with-one-variable/6.png" alt=""></p>
+<p>위 그래프를 보자. 검은 점들은 실제 데이터들을 나타내고 보라색 점선은 가설 모델이다. 그리고 빨간 실선은 실제 데이터와 모델을 통해 예측되어진 값의 차이를 보여준다. 이 값을 앞으로 Error라고 표현하겠다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error = 실제 데이터와 예측된 값의 차이</span><br></pre></td></tr></table></figure>
+<p>만약 위 그래프에 표현된 실제 데이터의 위치를 <em>(x, y)</em> 라고 한다면 Error는 다음과 같이 표현될 수 있다.</p>
+<script type="math/tex; mode=display">Error = (wx - y)^2</script><p>Error는 Scalar 값이기 때문에 부호를 없애기 위해서 제곱을 취했다. 자 이제 이 Error의 개념을 모든 데이터들에게 적용시켜 보자.</p>
+<p><img src="/res/2019-08-02-linear-regression-with-one-variable/7.png" alt=""></p>
+<script type="math/tex; mode=display">Errors = \sum_{i=1}^{n} (wx_i - y_i)^2</script><p>모든 데이터를 적용하기 위해 Error 수식에 i, n 변수를 사용했다. n은 데이터들의 총 개수를 뜻하며 i는 각 데이터들이다. 그러나 지금 이 수식은 완전하지 못하다. Error의 의미는 실제 데이터들과 모델을 통한 예측값의 차이를 표현하는 것인데 지금 수식을 통해서는 데이터가 많아져도 Error 값이 커진다. 이를 위해 n 값으로 나누어 주자.</p>
+<script type="math/tex; mode=display">Errors = {1 \over n}\sum_{i=1}^{n} (wx_i - y_i)^2</script><p>위와 같은 Error를 구하기 위한 방법론은 machine learning에만 국한된 것이 아닌 범용적으로 사용되는 알고리즘이다. 최소제곱법(Least Squared Method)라고 부르며 알고리즘 자체에 궁금한 것이 있다면 이를 검색해 찾아보자. 마지막으로 다음 단계인 Gradient Descent 에서는 미분을 진행한다. 이를 위해 계산을 편히 하기 위하여 미리 2로 나누어 주자.</p>
+<script type="math/tex; mode=display">Cost Function = {1 \over 2n}\sum_{i=1}^{n} (wx_i - y_i)^2</script><h3 id="Gradient-Descent-에러의-최소화"><a href="#Gradient-Descent-에러의-최소화" class="headerlink" title="Gradient Descent (에러의 최소화)"></a>Gradient Descent (에러의 최소화)</h3><p>Gradient Descent 단계를 진행하기 앞서 지금까지의 내용을 간략히 정리해 보자. Hypothesis 단계에서 데이터를 표현하기 위한 모델 하나를 결정 했다. 그리고 이 모델이 데이터를 가장 잘 표현하게 하기 위해서 Error의 개념을 도입했고 이 Error는 실제 데이터의 값과 모델을 통한 예측 값의 차이를 의미한다. 마지막으로 모든 데이터들의 Error 값을 합한 것이 Cost Function이였다. 즉 Cost Function은 실제 데이터 값과 예측 값의 차이의 합임으로 이 값이 최소화된다면 Model이 data를 잘 표현했다고 말할 수 있다.</p>
+<script type="math/tex; mode=display">Model : y = wx</script><script type="math/tex; mode=display">Cost Function = {1 \over 2n}\sum_{i=1}^{n} (wx_i - y_i)^2</script><p>앞서 정의된 Cost Function을 최소화 시키기 위하여 경사감소법(Gradient Descent)를 활용한다. 이번엔 Cost Function의 그래프를 그려보도록 하자. 이 그래프는 이차함수로 표현된다. 이는 Cost Function의 수식을 살펴보거나 직접 값을 대입해보면 충분히 이해할 수 있을 것이다.</p>
+<p><br/></p>
+<p><img src="/res/2019-08-02-linear-regression-with-one-variable/8.png" alt=""></p>
+<p>현재 Cost Function 그래프에 나타나 있는 초록색 점이 우리의 현재 값이라고 가정해보자. 이 값이 최소값을 가지게 하려면 보라색 점이 있는 곳 까지 도달해야 한다. 이를 위해 미분을 활용해보자. 미분은 그래프 상에서 접선의 기울기로 표현된다. 보라색 점에 도달하게 되면 그 때의 접선의 기울기는 0이기 때문에 미분 값을 0으로 볼 수 있다. </p>
+<p><img src="/res/2019-08-02-linear-regression-with-one-variable/9.png" alt=""></p>
+<script type="math/tex; mode=display">{ \partial \over \partial w } Cost Function = {1 \over n}\sum_{i=1}^{n} (wx_i - y_i) (x_i) = 0</script><p>여기서 중요한 것은 현재 우리가 구하려는 것은 데이터를 가장 잘 표현하기 위한 모델임으로 결국 w의 값을 찾는 것임을 명심하자. 그렇기 때문에 w값 기준으로 미분하였다. <em>x, y</em> 값은 실제 데이터다.</p>
+<p>앞에서 Cost Function의 미분 값이 0에 도달 했을 때 모델이 데이터를 가장 잘 표현한다는 것은 이해했다. 이제 0에 도달하기 위하여 Gradient Descent 방법을 활용한다. 이는 크게 어려운 것이 아니고 미분 값이 0에 도달할 때 까지 w값을 바꾸어 가며 반복하는 것이다.</p>
+<script type="math/tex; mode=display">w_{n+1} = w_n - \alpha { \partial \over \partial w} Cost Function</script><p>위의 수식이 Gradient Descent Cost Function의 미분 값이 0에 수렴하도록 계속 반복하면서 w의 값을 바꾸는 구조를 가지고 있다. alpha 값은 하이퍼 파라미터로 Gradient Descent의 반복할 때 값이 변하는 크기를 결정한다. 보통 learning rate라고 표현하며 자세히는 <a target="_blank" rel="noopener" href="https://github.com/kidongyun/artineer">alpha : learning rate</a>{: target=”_blank”} 글을 참고하라.</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>Machine Learning 분야에서 Linear Regression에 대해서 살펴보았다. 이는 Hypothesis, Cost Function, Gradient Descent 3단계로 구분되는데 Hypothesis에서 데이터들을 가장 잘 표현하기 위한 모델을 선정하였고 Linear Regression 이 모델이 일차함수로 나타난다. Cost Function을 통해 데이터과 모델의 차이를 정의하였고 이를 Gradient Descent 방법으로 최소화하여 데이터를 가장 잘 표현하는 모델을 만드는 방법을 알아보았다.</p>
+<h3 id="Tesorflow-Example"><a href="#Tesorflow-Example" class="headerlink" title="Tesorflow Example"></a>Tesorflow Example</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">&#x27;TF_CPP_MIN_LOG_LEVEL&#x27;</span>] = <span class="string">&#x27;2&#x27;</span></span><br><span class="line"></span><br><span class="line">x_train = [<span class="number">1.60</span>, <span class="number">1.63</span>, <span class="number">1.65</span>, <span class="number">1.66</span>, <span class="number">1.71</span>, <span class="number">1.70</span>, <span class="number">1.73</span>, <span class="number">1.70</span>, <span class="number">1.73</span>]</span><br><span class="line">y_train = [<span class="number">23.0</span>, <span class="number">23.5</span>, <span class="number">24.0</span>, <span class="number">23.5</span>, <span class="number">24.0</span>, <span class="number">24.0</span>, <span class="number">24.5</span>, <span class="number">24.0</span>, <span class="number">25.0</span>]</span><br><span class="line"></span><br><span class="line">a = tf.Variable(tf.random_normal([<span class="number">1</span>]), name=<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">b = tf.Variable(tf.random_normal([<span class="number">1</span>]), name=<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"></span><br><span class="line">hypothesis = a * x_train + b</span><br><span class="line"></span><br><span class="line">e = tf.reduce_mean(tf.square(hypothesis - y_train))</span><br><span class="line"></span><br><span class="line">optimizer =tf.train.GradientDescentOptimizer(learning_rate=<span class="number">0.01</span>)</span><br><span class="line">train = optimizer.minimize(e)</span><br><span class="line"></span><br><span class="line">sess. tf.Session()</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2001</span>) :</span><br><span class="line">    sess.run(train)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> step % <span class="number">20</span> == <span class="number">0</span> :</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Iteration : &quot;</span>, step, <span class="string">&quot; e : &quot;</span>, sess.run(e), <span class="string">&quot; ( y =&quot;</span>, sess.run(a), <span class="string">&quot; x + &quot;</span>, sess.run(b), <span class="string">&quot;)&quot;</span> )</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://kidongyun.github.io/2019/08/02/" data-id="cl3vrg7bg001focwbemk2hech" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "headline": "Linear Regression with One Variable",
+        "image": "http://kidongyun.github.io/res/2019-08-02-linear-regression-with-one-variable/1.png",
+        "keywords": "Machine learning",
+        "genre": "Devlog",
+        "datePublished": "2019-08-02",
+        "dateCreated": "2019-08-02",
+        "dateModified": "2022-05-31",
+        "url": "http://kidongyun.github.io/2019/08/02/",
+        "description": "What is the linkear regression theory?Regression theory is widely used in Computer Science nowadays. The main feature of this theory is this theory use the mathmatical function expression to predict f",
+        "wordCount": 1246
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/08/02/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Alpha. Learning Rate
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/08/01/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Conventional programming vs Machine Learning programming</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/06/01/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Todo/">Todo</a></p>
+                            <p class="item-title"><a href="/2022/06/01/" class="title">Todo in 2022 June</a></p>
+                            <p class="item-date"><time datetime="2022-06-01T02:38:54.000Z" itemprop="datePublished">2022-06-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/21/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/21/" class="title">Cheate Engine</a></p>
+                            <p class="item-date"><time datetime="2022-05-21T02:38:54.000Z" itemprop="datePublished">2022-05-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/15/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/15/" class="title">Kotest</a></p>
+                            <p class="item-date"><time datetime="2022-05-15T02:38:54.000Z" itemprop="datePublished">2022-05-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/14/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/14/" class="title">Docker build</a></p>
+                            <p class="item-date"><time datetime="2022-05-14T02:38:54.000Z" itemprop="datePublished">2022-05-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2022/05/14/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Devlog/">Devlog</a></p>
+                            <p class="item-title"><a href="/2022/05/14/" class="title">Docker Compose commands</a></p>
+                            <p class="item-date"><time datetime="2022-05-14T02:38:54.000Z" itemprop="datePublished">2022-05-14</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Devlog/">Devlog</a><span class="category-list-count">217</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Service/">Service</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Todo/">Todo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yunhwadngdng/">Yunhwadngdng</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/A-O-P/" rel="tag">A.O.P</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/" rel="tag">API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ableton/" rel="tag">Ableton</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract Class</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Adapter-Pattern/" rel="tag">Adapter Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotation/" rel="tag">Annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/" rel="tag">Blog</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Brew/" rel="tag">Brew</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Builder-Pattern/" rel="tag">Builder Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CORS/" rel="tag">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cache/" rel="tag">Cache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cheat-Engine/" rel="tag">Cheat Engine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud/" rel="tag">Cloud</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Architecture/" rel="tag">Computer Architecture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Computer-Science/" rel="tag">Computer Science</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ConfigurationProperties/" rel="tag">ConfigurationProperties</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Container/" rel="tag">Container</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Controller/" rel="tag">Controller</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Css/" rel="tag">Css</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DI/" rel="tag">DI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DSL/" rel="tag">DSL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dart/" rel="tag">Dart</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Decompile/" rel="tag">Decompile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Design-Pattern/" rel="tag">Design Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker-Compose/" rel="tag">Docker Compose</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Draft/" rel="tag">Draft</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DslMarker/" rel="tag">DslMarker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dto/" rel="tag">Dto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EC2/" rel="tag">EC2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elastic-Search/" rel="tag">Elastic Search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entity/" rel="tag">Entity</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum-Inheritance/" rel="tag">Enum Inheritance</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ExceptionHandling/" rel="tag">ExceptionHandling</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/F-P/" rel="tag">F.P</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Facade-Pattern/" rel="tag">Facade Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/" rel="tag">Flutter</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flyweight-Pattern/" rel="tag">Flyweight Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Functional-Programming/" rel="tag">Functional Programming</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FunctionalInterface/" rel="tag">FunctionalInterface</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git-Merge/" rel="tag">Git - Merge</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git-Flow/" rel="tag">Git Flow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitlab/" rel="tag">Gitlab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GraalVM/" rel="tag">GraalVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graphql/" rel="tag">Graphql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/" rel="tag">HTTPS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HandlerMapping/" rel="tag">HandlerMapping</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/High-Level-ElasticSearch/" rel="tag">High Level ElasticSearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/" rel="tag">Html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Index/" rel="tag">Index</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intellij/" rel="tag">Intellij</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ionic/" rel="tag">Ionic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/" rel="tag">JPA</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JUnit/" rel="tag">JUnit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JWT/" rel="tag">JWT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jackson/" rel="tag">Jackson</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jad/" rel="tag">Jad</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">44</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-O-O-P/" rel="tag">Java - O.O.P</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jekyll/" rel="tag">Jekyll</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jira/" rel="tag">Jira</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jmeter/" rel="tag">Jmeter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jpa/" rel="tag">Jpa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Json/" rel="tag">Json</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/" rel="tag">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keyboard-Event/" rel="tag">Keyboard Event</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/" rel="tag">Kibana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotest/" rel="tag">Kotest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTeX/" rel="tag">LaTeX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MSA/" rel="tag">MSA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-learning/" rel="tag">Machine learning</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matcher/" rel="tag">Matcher</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory/" rel="tag">Memory</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Message-Queue/" rel="tag">Message Queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Monitoring/" rel="tag">Monitoring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/" rel="tag">Network</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/O-O-P/" rel="tag">O.O.P</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Object/" rel="tag">Object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Observer-Pattern/" rel="tag">Observer Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Operating-System/" rel="tag">Operating System</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Php/" rel="tag">Php</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Postgresql/" rel="tag">Postgresql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/" rel="tag">Process</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RDS/" rel="tag">RDS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Mobx/" rel="tag">React - Mobx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reactor/" rel="tag">Reactor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recording/" rel="tag">Recording</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rest/" rel="tag">Rest</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Roofline/" rel="tag">Roofline</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STT/" rel="tag">STT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sentry/" rel="tag">Sentry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Serialize/" rel="tag">Serialize</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SfDatePicker/" rel="tag">SfDatePicker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Singleton-Pattern/" rel="tag">Singleton Pattern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">56</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-API-Response/" rel="tag">Spring - API - Response</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-HttpClient/" rel="tag">Spring - HttpClient</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Batch/" rel="tag">Spring Batch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Cloud/" rel="tag">Spring Cloud</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Security/" rel="tag">Spring Security</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stub/" rel="tag">Stub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swagger/" rel="tag">Swagger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP/" rel="tag">TCP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TLS/" rel="tag">TLS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Telnet/" rel="tag">Telnet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/" rel="tag">Test</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/" rel="tag">Thread</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Timestamp/" rel="tag">Timestamp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transaction/" rel="tag">Transaction</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tunning/" rel="tag">Tunning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript/" rel="tag">Typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UDP/" rel="tag">UDP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Validation/" rel="tag">Validation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webapp/" rel="tag">Webapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webclient/" rel="tag">Webclient</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webflux/" rel="tag">Webflux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xml/" rel="tag">Xml</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/" rel="tag">interview</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/A-O-P/" style="font-size: 10.77px;">A.O.P</a> <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/AWS/" style="font-size: 14.62px;">AWS</a> <a href="/tags/Ableton/" style="font-size: 10px;">Ableton</a> <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract Class</a> <a href="/tags/Adapter-Pattern/" style="font-size: 10px;">Adapter Pattern</a> <a href="/tags/Algorithm/" style="font-size: 18.46px;">Algorithm</a> <a href="/tags/Android/" style="font-size: 10.77px;">Android</a> <a href="/tags/Annotation/" style="font-size: 10px;">Annotation</a> <a href="/tags/Blog/" style="font-size: 13.85px;">Blog</a> <a href="/tags/Brew/" style="font-size: 10px;">Brew</a> <a href="/tags/Builder-Pattern/" style="font-size: 10px;">Builder Pattern</a> <a href="/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Cheat-Engine/" style="font-size: 10px;">Cheat Engine</a> <a href="/tags/Cloud/" style="font-size: 13.08px;">Cloud</a> <a href="/tags/Computer-Architecture/" style="font-size: 10px;">Computer Architecture</a> <a href="/tags/Computer-Science/" style="font-size: 13.85px;">Computer Science</a> <a href="/tags/ConfigurationProperties/" style="font-size: 10px;">ConfigurationProperties</a> <a href="/tags/Container/" style="font-size: 10.77px;">Container</a> <a href="/tags/Controller/" style="font-size: 10.77px;">Controller</a> <a href="/tags/Css/" style="font-size: 12.31px;">Css</a> <a href="/tags/DI/" style="font-size: 10px;">DI</a> <a href="/tags/DSL/" style="font-size: 10px;">DSL</a> <a href="/tags/Dart/" style="font-size: 10.77px;">Dart</a> <a href="/tags/Database/" style="font-size: 14.62px;">Database</a> <a href="/tags/Decompile/" style="font-size: 10px;">Decompile</a> <a href="/tags/Design-Pattern/" style="font-size: 10px;">Design Pattern</a> <a href="/tags/Docker/" style="font-size: 12.31px;">Docker</a> <a href="/tags/Docker-Compose/" style="font-size: 10px;">Docker Compose</a> <a href="/tags/Draft/" style="font-size: 17.69px;">Draft</a> <a href="/tags/DslMarker/" style="font-size: 10px;">DslMarker</a> <a href="/tags/Dto/" style="font-size: 10px;">Dto</a> <a href="/tags/EC2/" style="font-size: 10px;">EC2</a> <a href="/tags/Elastic-Search/" style="font-size: 10.77px;">Elastic Search</a> <a href="/tags/ElasticSearch/" style="font-size: 10.77px;">ElasticSearch</a> <a href="/tags/Entity/" style="font-size: 10px;">Entity</a> <a href="/tags/Enum/" style="font-size: 10.77px;">Enum</a> <a href="/tags/Enum-Inheritance/" style="font-size: 10px;">Enum Inheritance</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/ExceptionHandling/" style="font-size: 10px;">ExceptionHandling</a> <a href="/tags/F-P/" style="font-size: 10px;">F.P</a> <a href="/tags/Facade-Pattern/" style="font-size: 10px;">Facade Pattern</a> <a href="/tags/Flutter/" style="font-size: 12.31px;">Flutter</a> <a href="/tags/Flyweight-Pattern/" style="font-size: 10px;">Flyweight Pattern</a> <a href="/tags/Functional-Programming/" style="font-size: 10px;">Functional Programming</a> <a href="/tags/FunctionalInterface/" style="font-size: 10px;">FunctionalInterface</a> <a href="/tags/Git/" style="font-size: 11.54px;">Git</a> <a href="/tags/Git-Merge/" style="font-size: 10px;">Git - Merge</a> <a href="/tags/Git-Flow/" style="font-size: 10px;">Git Flow</a> <a href="/tags/Gitlab/" style="font-size: 10px;">Gitlab</a> <a href="/tags/GraalVM/" style="font-size: 10px;">GraalVM</a> <a href="/tags/Gradle/" style="font-size: 13.85px;">Gradle</a> <a href="/tags/Graphql/" style="font-size: 10px;">Graphql</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/HandlerMapping/" style="font-size: 10px;">HandlerMapping</a> <a href="/tags/Hexo/" style="font-size: 11.54px;">Hexo</a> <a href="/tags/High-Level-ElasticSearch/" style="font-size: 10px;">High Level ElasticSearch</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/Index/" style="font-size: 10px;">Index</a> <a href="/tags/Intellij/" style="font-size: 10px;">Intellij</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Ionic/" style="font-size: 10px;">Ionic</a> <a href="/tags/JPA/" style="font-size: 12.31px;">JPA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JUnit/" style="font-size: 10px;">JUnit</a> <a href="/tags/JWT/" style="font-size: 10px;">JWT</a> <a href="/tags/Jackson/" style="font-size: 10px;">Jackson</a> <a href="/tags/Jad/" style="font-size: 10px;">Jad</a> <a href="/tags/Java/" style="font-size: 19.23px;">Java</a> <a href="/tags/Java-O-O-P/" style="font-size: 10px;">Java - O.O.P</a> <a href="/tags/Javascript/" style="font-size: 16.92px;">Javascript</a> <a href="/tags/Jekyll/" style="font-size: 12.31px;">Jekyll</a> <a href="/tags/Jira/" style="font-size: 10.77px;">Jira</a> <a href="/tags/Jmeter/" style="font-size: 10px;">Jmeter</a> <a href="/tags/Jpa/" style="font-size: 10px;">Jpa</a> <a href="/tags/Json/" style="font-size: 10px;">Json</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/Keyboard-Event/" style="font-size: 10px;">Keyboard Event</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/Kotest/" style="font-size: 10px;">Kotest</a> <a href="/tags/Kotlin/" style="font-size: 13.85px;">Kotlin</a> <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lombok/" style="font-size: 10.77px;">Lombok</a> <a href="/tags/MSA/" style="font-size: 10px;">MSA</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Machine-learning/" style="font-size: 16.15px;">Machine learning</a> <a href="/tags/Matcher/" style="font-size: 10px;">Matcher</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/Message-Queue/" style="font-size: 10px;">Message Queue</a> <a href="/tags/Monitoring/" style="font-size: 10px;">Monitoring</a> <a href="/tags/Mybatis/" style="font-size: 11.54px;">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Network/" style="font-size: 14.62px;">Network</a> <a href="/tags/Node/" style="font-size: 11.54px;">Node</a> <a href="/tags/O-O-P/" style="font-size: 10.77px;">O.O.P</a> <a href="/tags/Object/" style="font-size: 10px;">Object</a> <a href="/tags/Observer-Pattern/" style="font-size: 10px;">Observer Pattern</a> <a href="/tags/Operating-System/" style="font-size: 10px;">Operating System</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/Php/" style="font-size: 12.31px;">Php</a> <a href="/tags/Postgresql/" style="font-size: 10px;">Postgresql</a> <a href="/tags/Process/" style="font-size: 10.77px;">Process</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/RDS/" style="font-size: 10px;">RDS</a> <a href="/tags/RabbitMQ/" style="font-size: 10px;">RabbitMQ</a> <a href="/tags/React/" style="font-size: 13.85px;">React</a> <a href="/tags/React-Mobx/" style="font-size: 10px;">React - Mobx</a> <a href="/tags/Reactor/" style="font-size: 10px;">Reactor</a> <a href="/tags/Recording/" style="font-size: 10px;">Recording</a> <a href="/tags/Redis/" style="font-size: 13.08px;">Redis</a> <a href="/tags/Regression/" style="font-size: 10px;">Regression</a> <a href="/tags/Rest/" style="font-size: 10px;">Rest</a> <a href="/tags/Roofline/" style="font-size: 10px;">Roofline</a> <a href="/tags/STT/" style="font-size: 10px;">STT</a> <a href="/tags/Sentry/" style="font-size: 10px;">Sentry</a> <a href="/tags/Serialize/" style="font-size: 10px;">Serialize</a> <a href="/tags/SfDatePicker/" style="font-size: 10px;">SfDatePicker</a> <a href="/tags/Singleton-Pattern/" style="font-size: 10px;">Singleton Pattern</a> <a href="/tags/Spring/" style="font-size: 20px;">Spring</a> <a href="/tags/Spring-API-Response/" style="font-size: 10px;">Spring - API - Response</a> <a href="/tags/Spring-HttpClient/" style="font-size: 10px;">Spring - HttpClient</a> <a href="/tags/Spring-Batch/" style="font-size: 10px;">Spring Batch</a> <a href="/tags/Spring-Cloud/" style="font-size: 10.77px;">Spring Cloud</a> <a href="/tags/Spring-Security/" style="font-size: 10.77px;">Spring Security</a> <a href="/tags/Stub/" style="font-size: 10px;">Stub</a> <a href="/tags/Swagger/" style="font-size: 10px;">Swagger</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/TLS/" style="font-size: 10px;">TLS</a> <a href="/tags/Telnet/" style="font-size: 10px;">Telnet</a> <a href="/tags/Test/" style="font-size: 15.38px;">Test</a> <a href="/tags/Thread/" style="font-size: 10px;">Thread</a> <a href="/tags/Timestamp/" style="font-size: 10px;">Timestamp</a> <a href="/tags/Transaction/" style="font-size: 10px;">Transaction</a> <a href="/tags/Tunning/" style="font-size: 10px;">Tunning</a> <a href="/tags/Typescript/" style="font-size: 10px;">Typescript</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/Validation/" style="font-size: 10px;">Validation</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Web/" style="font-size: 10.77px;">Web</a> <a href="/tags/Webapp/" style="font-size: 10px;">Webapp</a> <a href="/tags/Webclient/" style="font-size: 10px;">Webclient</a> <a href="/tags/Webflux/" style="font-size: 10.77px;">Webflux</a> <a href="/tags/Webpack/" style="font-size: 10.77px;">Webpack</a> <a href="/tags/Xml/" style="font-size: 10.77px;">Xml</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 John Doe</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://kidongyun.github.io/2019/08/02/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
